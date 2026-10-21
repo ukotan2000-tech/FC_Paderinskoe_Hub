@@ -74,23 +74,6 @@
     align-items: center;
     gap: 8px;
   }
-  .timer-box {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: #0b0b0e;
-    padding: 5px 9px;
-    border-radius: 8px;
-    border: 1px solid var(--border-col);
-  }
-  .timer-display {
-    font-family: monospace;
-    font-size: 19px;
-    font-weight: bold;
-    color: var(--accent-yellow);
-    min-width: 60px;
-    text-align: center;
-  }
   .btn-t {
     background: var(--bg-panel);
     color: #fff;
@@ -364,12 +347,6 @@
   .fut-totw .fut-num-badge {
     background: rgba(245,197,24,0.25);
     color: var(--accent-yellow);
-  }
-  .fut-birth-badge {
-    font-size: 10.5px;
-    font-weight: 900;
-    margin-top: 3px;
-    opacity: 0.92;
   }
 
   /* Аватар / Фото игрока */
@@ -664,6 +641,204 @@
   th, td { border: 1px solid var(--border-col); padding: 10px; text-align: left; vertical-align: top; }
   th { background: #2b1419; color: var(--accent-yellow); }
   tr:nth-child(even) { background: var(--bg-panel); }
+
+  /* ================= СТИЛИ КАЛЕНДАРЯ ВЫЕЗДОВ ================= */
+  .cal-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .cal-stat-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-col);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  .cal-stat-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--accent-yellow);
+    line-height: 1.1;
+  }
+  .cal-stat-label {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .cal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cal-event-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-col);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+  }
+  .cal-event-card:hover {
+    border-color: rgba(245, 197, 24, 0.6);
+  }
+  .cal-event-header {
+    padding: 14px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    background: linear-gradient(135deg, #1d1d26 0%, #16161d 100%);
+  }
+  .cal-event-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 210px;
+  }
+  .cal-date-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--accent-yellow);
+    font-weight: 800;
+  }
+  .cal-event-title {
+    font-size: 16.5px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.2px;
+  }
+  .cal-event-loc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .cal-event-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cal-res-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+  .res-gold { background: linear-gradient(135deg, #ffd700, #b8860b); color: #1a1100; border: 1px solid #fff3b0; box-shadow: 0 0 12px rgba(255,215,0,0.4); }
+  .res-silver { background: linear-gradient(135deg, #e0e5ec, #8a95a5); color: #11151c; border: 1px solid #ffffff; }
+  .res-bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); color: #fff; border: 1px solid #f0b884; }
+  .res-win { background: rgba(0, 200, 83, 0.2); color: #69f0ae; border: 1px solid #00c853; }
+  .res-loss { background: rgba(211, 47, 47, 0.22); color: #ff8a80; border: 1px solid #ff5252; }
+  .res-upcoming { background: rgba(245, 197, 24, 0.15); color: #ffe066; border: 1px solid var(--accent-yellow); }
+  .res-played { background: var(--bg-panel); color: #ddd; border: 1px solid #555; }
+
+  .cal-toggle-icon {
+    font-size: 13px;
+    color: var(--accent-yellow);
+    background: rgba(255,255,255,0.06);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+  .cal-event-card.open .cal-toggle-icon {
+    background: var(--accent-yellow);
+    color: #000;
+  }
+  .cal-event-body {
+    display: none;
+    padding: 15px 16px;
+    border-top: 1px solid var(--border-col);
+    background: #131319;
+  }
+  .cal-event-card.open .cal-event-body {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+  .cal-games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cal-game-row {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-col);
+    border-radius: 8px;
+    padding: 9px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .cal-game-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cal-game-time {
+    background: #101015;
+    color: var(--accent-yellow);
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    border: 1px solid #333;
+  }
+  .cal-game-teams {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .cal-game-scorers {
+    font-size: 12px;
+    color: #b0b0c0;
+    width: 100%;
+    margin-top: 2px;
+    padding-left: 4px;
+  }
+  .cal-game-score {
+    font-size: 15px;
+    font-weight: 900;
+    padding: 4px 11px;
+    border-radius: 6px;
+    min-width: 68px;
+    text-align: center;
+  }
+  .score-w { background: #1b5e20; color: #fff; border: 1px solid #00e676; }
+  .score-d { background: #4d3800; color: #ffe066; border: 1px solid #f5c518; }
+  .score-l { background: #6b1111; color: #fff; border: 1px solid #ff5252; }
+  .score-none { background: #16161d; color: #888; border: 1px solid #333; }
+
+  .cal-note-box {
+    margin-top: 10px;
+    background: rgba(245, 197, 24, 0.08);
+    border-left: 3px solid var(--accent-yellow);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #eaeaea;
+  }
+  .game-edit-row {
+    background: #16161f;
+    border: 1px solid var(--border-col);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
 </style>
 </head>
 <body id="appBody" class="">
@@ -722,18 +897,10 @@
       <svg class="header-crest"><use href="#paderinskoe-crest"></use></svg>
       <div>
         <span class="logo-title">ФК Падеринское 5х5</span>
-        <span class="logo-sub" id="roleStatusText">Режим Тренера активен</span>
+        <span class="logo-sub" id="roleStatusText">Режим Игрока (просмотр)</span>
       </div>
     </div>
     <div class="header-controls">
-      <div class="timer-box">
-        <span class="timer-display" id="timerDisplay">00:00</span>
-        <button class="btn-t" onclick="startCountdown(4)">4с</button>
-        <button class="btn-t" onclick="startCountdown(8)">8с</button>
-        <button class="btn-t" onclick="startCountdown(900)">15м</button>
-        <button class="btn-t" onclick="toggleStopwatch()" id="btnStartStop">▶</button>
-        <button class="btn-t red" onclick="resetTimer()">✖</button>
-      </div>
       <button class="btn-t coach-lock" id="btnCoachToggle" onclick="toggleCoachMode()">🔒 Вход Тренера</button>
     </div>
   </div>
@@ -741,6 +908,7 @@
 
 <nav class="nav-tabs">
   <button class="tab-btn fifa-tab active" onclick="openTab('tab-fifa', this)">🏆 Карточки Команды</button>
+  <button class="tab-btn fifa-tab" onclick="openTab('tab-calendar', this)">📅 Календарь и Выезды</button>
   <button class="tab-btn" onclick="openTab('tab-board', this)">📋 Макет-Доска 5х5</button>
   <button class="tab-btn" onclick="openTab('tab-psych', this)">🧠 1. Психология и Слух</button>
   <button class="tab-btn" onclick="openTab('tab-tech', this)">🗣 2. Техника и Правила</button>
@@ -752,7 +920,6 @@
   <button class="tab-btn" onclick="openTab('tab-shot', this)">💥 8. Точность и Сила</button>
   <button class="tab-btn" onclick="openTab('tab-tact', this)">📐 9. Тактика и Стандарты</button>
 </nav>
-
 <div class="container">
 
   <!-- ================= ВКЛАДКА FIFA: КАРТОЧКИ КОМАНДЫ ================= -->
@@ -795,493 +962,32 @@
       <span>⬛🟨 <b>Элита (85–99)</b></span>
     </div>
 
-    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА ГЛАВНОГО ТРЕНЕРА -->
-    <div class="coach-showcase" id="coachCardContainer">
-      <div class="fut-coach-legend">
-        <div class="coach-banner-top">★ ЛЕГЕНДА КЛУБА • ШТАБ ★</div>
-        <div class="fut-header" style="border-bottom-color: rgba(245,197,24,0.35);">
-          <div class="fut-rating-col">
-            <div class="fut-ovr" style="color:#f5c518;">99</div>
-            <div class="fut-pos" style="color:#fff;">ТРН</div>
-            <div class="fut-num-badge" style="background:rgba(245,197,24,0.25); color:#f5c518;">BOSS</div>
-          </div>
-          <div class="fut-avatar" style="border-color:#f5c518; width:90px; height:90px;"><img src="data:image/jpeg;base64,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" alt="Тренер"></div>
-          <div class="fut-badge-col">
-            <div class="fut-tier-label" style="color:#f5c518;">ГЛАВНЫЙ</div>
-            <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-          </div>
-        </div>
-        <div class="fut-name" style="color:#fff; border-bottom-color:rgba(245,197,24,0.35); margin-top:8px;">Главный Тренер</div>
-        <div style="text-align:center; font-size:11px; font-weight:800; color:#f5c518; letter-spacing:0.5px;">НАСТАВНИК • ФК ПАДЕРИНСКОЕ</div>
-        <div class="coach-motto-box">«В основу попадают те, кто пашет на тренировках, слышит команды и бьется до конца!»</div>
-        <div class="fut-edit-actions coach-only" style="margin-top:10px;">
-          <button class="btn-card-edit" onclick="openCoachModal()">⚙ Изменить карточку Тренера</button>
-        </div>
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА ГЛАВНОГО ТРЕНЕРА (Заполняется скриптом без дублей) -->
+    <div class="coach-showcase" id="coachCardContainer"></div>
+
+    <!-- СЕТКА ИГРОКОВ КОМАНДЫ (Заполняется скриптом без дублей) -->
+    <div class="fifa-grid" id="fifaCardsContainer"></div>
+  </div>
+
+  <!-- ================= ВКЛАДКА: КАЛЕНДАРЬ И ВЫЕЗДЫ ================= -->
+  <div id="tab-calendar" class="tab-content">
+    <div class="fifa-topbar">
+      <div class="sync-bar">
+        <button class="tool-btn active coach-only" onclick="openEventModal(-1)">➕ Добавить выезд / турнир</button>
+        <button class="tool-btn preset" onclick="expandAllEvents(true)">🔽 Развернуть все</button>
+        <button class="tool-btn" onclick="expandAllEvents(false)">🔼 Свернуть все</button>
+      </div>
+      <div class="sync-bar">
+        <button class="tool-btn coach-only" onclick="openCalendarCodeModal('export')">⚡ Короткий код (Календарь)</button>
+        <button class="tool-btn preset" onclick="openCalendarCodeModal('import')">📥 Вставить код календаря</button>
       </div>
     </div>
 
-    <!-- СЕТКА ИГРОКОВ КОМАНДЫ -->
-    <div class="fifa-grid" id="fifaCardsContainer"><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-question">🟡 Под вопросом</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">43</div>
-              <div class="fut-pos">ФИК</div>
-              <div class="fut-num-badge">№ 1</div>
-              
-            </div>
-            <div class="fut-avatar"><img src="data:image/jpeg;base64,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" alt="Жидилева Варя"></div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Жидилева Варя">Жидилева Варя</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">42</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">38</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">35</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">60</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">32</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">50</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(0)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(0)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(0)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(0, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(0, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(0)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-question">🟡 Под вопросом</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">36</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 1</div>
-              
-            </div>
-            <div class="fut-avatar"><img src="data:image/jpeg;base64,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" alt="Александрова Арина"></div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Александрова Арина">Александрова Арина</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">42</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">32</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">35</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">32</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">40</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">32</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(1)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(1)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(1)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(1, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(1, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(1)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-question">🟡 Под вопросом</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">37</div>
-              <div class="fut-pos">АЛА</div>
-              <div class="fut-num-badge">№ 1</div>
-              
-            </div>
-            <div class="fut-avatar"><img src="data:image/jpeg;base64,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" alt="Рыбалов Ярик"></div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Рыбалов Ярик">Рыбалов Ярик</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">40</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">40</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">38</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">32</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">40</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">32</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(2)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(2)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(2)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(2, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(2, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(2)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-question">🟡 Под вопросом</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">40</div>
-              <div class="fut-pos">СТЛ</div>
-              <div class="fut-num-badge">№ 1</div>
-              <div class="fut-birth-badge">2013 г.р.</div>
-            </div>
-            <div class="fut-avatar"><img src="data:image/jpeg;base64,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" alt="Остапенко Иван"></div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Остапенко Иван">Остапенко Иван</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">38</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">38</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">45</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">40</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">38</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">40</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(3)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(3)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(3)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(3, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(3, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(3)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-question">🟡 Под вопросом</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">38</div>
-              <div class="fut-pos">АЛА</div>
-              <div class="fut-num-badge">№ 1</div>
-              
-            </div>
-            <div class="fut-avatar">#1</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Предеин Ярослав">Предеин Ярослав</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">37</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">45</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">37</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">33</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">45</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">33</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(4)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(4)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(4)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(4, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(4, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(4)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-out">🔴 Вне заявки / Лавка</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">30</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 6</div>
-              
-            </div>
-            <div class="fut-avatar">#6</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Игрок 6">Игрок 6</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">30</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(5)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(5)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(5)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(5, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(5, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(5)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-out">🔴 Вне заявки / Лавка</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">30</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 7</div>
-              
-            </div>
-            <div class="fut-avatar">#7</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Игрок 7">Игрок 7</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">30</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(6)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(6)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(6)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(6, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(6, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(6)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-out">🔴 Вне заявки / Лавка</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">30</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 8</div>
-              
-            </div>
-            <div class="fut-avatar">#8</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Игрок 8">Игрок 8</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">30</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(7)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(7)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(7)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(7, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(7, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(7)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-out">🔴 Вне заявки / Лавка</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">30</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 9</div>
-              
-            </div>
-            <div class="fut-avatar">#9</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Игрок 9">Игрок 9</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">30</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(8)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(8)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(8)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(8, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(8, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(8)">⚙</button>
-          </div>
-        </div>
-      </div><div class="fut-card fut-red">
-        <div>
-          <div class="squad-status-bar status-out">🔴 Вне заявки / Лавка</div>
-          <div class="fut-header">
-            <div class="fut-rating-col">
-              <div class="fut-ovr">30</div>
-              <div class="fut-pos">НЕ ОПР</div>
-              <div class="fut-num-badge">№ 10</div>
-              
-            </div>
-            <div class="fut-avatar">#10</div>
-            <div class="fut-badge-col">
-              <div class="fut-tier-label">КРАСНАЯ</div>
-              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
-            </div>
-          </div>
-          <div class="fut-name" title="Игрок 10">Игрок 10</div>
-          <div class="fut-stats-grid">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">30</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">30</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="fut-footer">
-            <span>⚽ 0</span>
-            <span>👟 0</span>
-            <span>🏆 0</span>
-            <span>📅 1</span>
-            <span>🟨 0</span>
-            <span>🟥 0</span>
-          </div>
-          <button class="btn-coach-note " onclick="openNoteViewModal(9)">
-            📋 Наставление (пусто)
-          </button>
-          <div class="fut-edit-actions coach-only">
-            <button class="btn-card-edit" onclick="quickGoal(9)" title="Гол">+⚽</button>
-            <button class="btn-card-edit" onclick="quickAssist(9)" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(9, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(9, 'rc')" title="Красная">+🟥</button>
-            <button class="btn-card-edit" onclick="openPlayerModal(9)">⚙</button>
-          </div>
-        </div>
-      </div></div>
+    <!-- АВТОМАТИЧЕСКАЯ СВОДКА ВЫЕЗДОВ И МАТЧЕЙ -->
+    <div class="cal-stats-bar" id="calendarStatsSummary"></div>
+
+    <!-- СПИСОК ВЫЕЗДОВ (КАРТОЧКИ С РАСКРЫВАЮЩИМИСЯ ИГРАМИ) -->
+    <div class="cal-list" id="calendarEventsContainer"></div>
   </div>
 
   <!-- ================= ВКЛАДКА: ИНТЕРАКТИВНАЯ ДОСКА 5х5 ================= -->
@@ -1767,11 +1473,11 @@
 <!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ КАРТОЧКИ ИГРОКА ================= -->
 <div class="modal-overlay" id="playerModal">
   <div class="modal-card">
-    <h3 id="modalTitle">Карточка: Жиделева Варя</h3>
-    <input type="hidden" id="editPlayerIndex" value="0">
+    <h3 id="modalTitle">Карточка игрока</h3>
+    <input type="hidden" id="editPlayerIndex" value="-1">
 
     <div class="photo-upload-box">
-      <div class="photo-preview" id="modalPhotoPreview"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAoHCAkIBgoJCAkMCwoMDxoRDw4ODx8WGBMaJSEnJiQhJCMpLjsyKSw4LCMkM0Y0OD0/QkNCKDFITUhATTtBQj//2wBDAQsMDA8NDx4RER4/KiQqPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz//wAARCAB4AHgDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAABQYAAwQCAQcI/8QAQRAAAgEDAgMFBQQHBQkAAAAAAQIDAAQRBSEGEjETIkFRYRQycYGxFSNCkQcWJCVyodEzQ1LB8TQ2U2JzgpKi4f/EABoBAAIDAQEAAAAAAAAAAAAAAAABAgMEBQb/xAAjEQACAgMAAgICAwAAAAAAAAAAAQIRAyExBEESIhMyFSNC/9oADAMBAAIRAxEAPwDXqWG0KEY7wJ38hS7Y4LHp1pkmeNbO2V4+ZHJGAfWgESxR3Mi8rrhjtWz2cX/Awaf/ALDdbn3OlAfaZWmSMYKq5X3R50e0zlNndd7A5PGglqkb3UiC4U4k5gOU5zRIWNdC2kkG6j235hQniAx/aTBg/N6H1orpK4vIwWBw3+dDdfiiOpMzXKqfLlJ8aPQoL7F1oF9thxnoMn5VfxEoNpB3sfdiqrJI8wMJgxXY901o4iRTZQ5kCnswNxSfB1sC2YK4PMo+dM8C405wCDlgc/KlizTBGMH1pqWP91Flx32GMfA070D6J9vBKpyUIFMfDx/eUfwP0pct43DAdov/AJ0yaAGXUUJIIwfxA0kwl0AXgK63IcH3jWqxOAm1U3odtZkAkwSx2zWmxGeX70Dp1FNMc+F/EUwhvbWUjZSrH5VK64l7LnQtIueUdVz4VKG9koJfEu1CYx6VbygBmVidxnxoTI6jUJeeLBbBBB86Iamc6BGfLmoUJe3cSHGUwvyxS9ijuAwaWqeyXQ5mwY/KgNjHyawSssb5z3cn+lGtNOLW6GP7vrS1Acaxkk+/TlwWPrGPTUZL1TjI5x4jzoVxArNqpOM/60SsT2d+PMOPrV1xprz37zkkZPdFV5MkccbZb4+GWadIFWs8cMI7ZuQK2d60ajcwanAqWsqkogBHSiX6qyXir1ROpY13FwpDY5kifveNY15UpHU/j4r2LFu6K/JzDI6imm0Y/Y6k9A2P5GlnV9CminaW2bJ/w1o0fVXS3Njd5Vg2VJ+HSr8ef5aZmzeFKP2iC7bHafOmXQtr1NvA/Slu0WLmH3h/KmTRMe3x4YdD9K0pnPn0E35A4h7Twcc3z3Fd2J7qZqjUV5tUH3qZ32z0rRYoSFwQd/OiIT4WcU/28f8ACv0qV3xTFL26FUyAo8fSpSfSUP1CV+1hdaVzyO9rEzNjA5gKE2Ono90Vt5UnDLnuuM/HFXalg8OLjwZsUCs+dbi3IzkIGG/lUZJonBpx4NdlC8drdcwYdw+8uKVAwGoF+ce/TRpN9cvb3RaZiOUtgnYGl0X0ftriaygc82OZRyH+VDboIKO6GCOFnv8AtkdQuRnffNMWjKL28ZsfdR7b+JpO1HVIrazJgVoyeve8TtTjwS/NpinAz4nzNc7M3Oezt+NijixfJdYzNH3NulDboHcUSlmWOIliAPPNDJ5kk9xg3jkUVotTA11bqxORStxBYL2DSxDlmjGQR405XLIoLMwAHiaA6n2c0DBWDZB3Bp1QPYoaeJJgsgQnm32FNGhxSC+RmU4ANJOnLIivzbASFQabeH3Ht8ZBzsfpW/G7R57NGpMH6jbN7csvaIAzMN2x0/1ru0BBUB0O46NWbUJDLcuuSeylyP8Auz/SpZOAyeZIqaFJaRv4rP7VHiQA8q+PpUqjixw1xH/Cu3yqUmSgvqENSTHDq43BZsYoEqt2MbEFfulU52o/fBf1eVwSMMRihdpLHNpHK07AhwN0ydqHdih+oQ0ZcWtwBt92aWXb9sf+I03aUY/ZblQq/wBke8ux/nSy0ED3j4l7Mhj1YPn8sYoYY+hjTtE+2zyMcKvj69RT9w1ph0uwEDSdo2T3qXeElEF0YHlUe0JlAD1OP6ZpziXsiMAgetc/Ivsd3C08aQE4kk1LkK2oTkAzv1NU8MR3UxkW5AZQM5x0NGtVCOmR1qvTbuC2sW7VgnewCB1pUWtUhN4jlu2maG3/AAE5HnWCxe+kUpcxqExsRRy/lgk1eREIYk7iqp1ESHHjUvQ1HYrW5toFmgubYSHtmwQcHc/0o5oTWIvUEVs6Ng7l8+FA71HOobLt1NFtCjf7QQ8pGAfpWvDw4PlS/saRkuG0pprkPDOr8wOQ2c9ammx6ZIQBJKh/DkdazSQSDU7nmibldCqn1zt/nXllaygrkAHI6mppbISl9UbeI1sfaUFxJKuAPdXI6VKq4ohDXSYkRcKM8zelSk0ODVBC+/3ex/zGl+xH3GB6k0x3kjfYIzgkMc5FBtPWE2MkhUqQ3LgHPX41NlMP1YY0lcwzgf8ADNLEq41B/wCI016Sq9nccjf3R6ilm4hdb5mIBBY4wwJ/KmxY3th23yZrF0OGUKARTHoOp3E+rXdrcSmTA5lz4UvWY5Le3mkyiRuFYsMY8c1s4XuYrjjGYxNzKY2yR0qjJGNWbfGnJZK9DTqQl9mATvOTjFdD2i10wc1qQ2NzzA1twgkAfoDtXd66mA94YxWJM7UnsSXuJDcFRakFvxA1nuiwYKzdTRDUJ0jB33oM+ZYJJ87hgAKsgvk6RTmyrHGwTfIp1aQh+gAIx6UV0Ff3guG8D9KETZa+YndskfIHFGtCyNRTA8D9K3QVKjgZZW7BJt3biAMChHMcgsN6sigMVwVwMBsbfGqcEcRpkf3laUH7ZJ/1D9aF0JP6o54pjJukwpPdH0qV1xUD28f8K/SpTa2Sg/qE7xIzohPOcc/Xl9DQW1WAacVjlLkyZ3XFG7lA2gkK6+/1O3gaDW1jO7pBbRM55MsQNgfjQyGNWqQZ0pQIp++pzGRselLN2BHdPI0qKuSc5ps0/RL4K3aOkKspXzODWqx4P0yKXtLlWuZSckydPyob0X4sEusSBriSG3tFja4VXzyE4DMTtvX0vh7S/ZIzcTRxpPINwgwFHlSHx5Zx6PrtneWiRpEOUhUwNx5inrQeI7PUrNGSQBiN1zuDWTNfo6fj41EMzFSpBO9LOtTXEeVhkYA+Ao7NLGWDZG9ZZbIXPe6is3DXLWxN7KaQlpWJ+NCNV1aXSWEcih4Jj4dVIpu1RYrMFpXVI16k0k2tq3FXEyIuBZwHvZPh/wDauxJ3ozZ1GUaZLa7iupFkiYEsWOM79aZdEVxqEZZSBg9R6VqueC9OuN0jNvIPxRHBFeQcO6rprrLbX5nReiTAn+dbbZzMnj3xi3chhrhKdQ9bxDJFd8rA8xwT86y6lZ6nb3guLm2CoX3aMZA38a3tem41B5I3HKDgEelCKckHGOyrihX7ZDyn3R4elSrOJpm51VhnujO/pUofRQ4XXcyLpMMbHHa3Cp+dHbjUdH4ctljmlRcDZF3Y+pxXzTiC+Z7xYYmPLCf/AGoTdXU19dGa5Ys7dT8Kk0avHgox2P8Ae/pHt1yLGxdz4NIQB/Kgl7x3q9ypWDs7ZT/gGT+dKrrg5qLuajRpvRfc3M95MZbqVpXbqzMSalu81rJ2ttM8b+atiqh1rsGik+gm1wOW/FuswqFadZAOnOgJ/OtknHut9j2cTxRjGNkBpYJzXmKPxxJPJJ+y7UNSvtRk5724eUjpzHYfKs0E89pIJ7aVo5FOzKSDXRArlwOXFOkuELb6OOi/pDubcLHqNubhRtzocN+XSmiD9ImjzOkJSWEvtzOowPjivkqIKpYc8oxSoD9CObe505HikSQMu7IcjNfOOIzbaPr1uIH5e23kjHQetLXD/EF1o04ZJGe3Y4eMnb5eRrHrOpSapq0127HvN3B5DwoWiM4qSpjvxIQ8yFTkFV3+VSg9nee36WhlYmSLCEAeVSnZg+LjoXZmaSVnc5LHJNexAtsBkipUp+zoehgtU4d9jgF405nMffMY6Pk7fliq5f1e7UvElwF5CeUj8X9KlSk0M2Jq2gm0ZZdM53BHID0UA7/MjNLEnL2rlByoWJUHwGdqlShILPBXYFSpUhEK1Ww3AqVKAI/djPrVKDrnyqVKiwKc7KPia9G2PzqVKiBv0qcxXBTJAfrvUqVKCmaVn//Z" alt="Фото"></div>
+      <div class="photo-preview" id="modalPhotoPreview">👤</div>
       <div>
         <label class="photo-btn-label" for="pPhotoInput">📸 Сделать фото / Галерея</label>
         <input type="file" id="pPhotoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event, 'player')">
@@ -1783,10 +1489,10 @@
 
     <div class="form-row">
       <label>Имя / Фамилия игрока:</label>
-      <input type="text" id="pName" placeholder="Например: Даня М.">
+      <input type="text" id="pName" placeholder="Например: Жидилева Варя">
     </div>
 
-    <div class="form-row" style="display:grid; grid-template-columns: 1.4fr 0.8fr 1fr; gap:8px;">
+    <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
       <div>
         <label>Позиция в 5х5:</label>
         <select id="pPos">
@@ -1799,12 +1505,8 @@
         </select>
       </div>
       <div>
-        <label>Номер:</label>
-        <input type="number" id="pNum" min="1" max="99" value="10">
-      </div>
-      <div>
-        <label>Год рожд.:</label>
-        <input type="number" id="pBirthYear" min="2000" max="2025" placeholder="2013">
+        <label>Игровой номер:</label>
+        <input type="number" id="pNum" min="1" max="99" value="1">
       </div>
     </div>
 
@@ -1818,27 +1520,27 @@
     </div>
 
     <div class="form-row">
-      <label><span>⚡ СКО (Взрывная скорость и реакция):</span> <span id="valPac">42</span></label>
+      <label><span>⚡ СКО (Взрывная скорость и реакция):</span> <span id="valPac">30</span></label>
       <input type="range" id="pPac" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>💥 УДР (Сила и точность удара):</span> <span id="valSho">35</span></label>
+      <label><span>💥 УДР (Сила и точность удара):</span> <span id="valSho">30</span></label>
       <input type="range" id="pSho" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🎯 ПАС (Прием подошвой и чтение игры):</span> <span id="valPas">32</span></label>
+      <label><span>🎯 ПАС (Прием подошвой и чтение игры):</span> <span id="valPas">30</span></label>
       <input type="range" id="pPas" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>👟 ДРБ (Дриблинг, перекаты и баланс):</span> <span id="valDri">38</span></label>
+      <label><span>👟 ДРБ (Дриблинг, перекаты и баланс):</span> <span id="valDri">30</span></label>
       <input type="range" id="pDri" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🛡 ЗАЩ (Отбор на согнутых и подкат):</span> <span id="valDef">60</span></label>
+      <label><span>🛡 ЗАЩ (Отбор на согнутых и подкат):</span> <span id="valDef">30</span></label>
       <input type="range" id="pDef" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🔥 ФИЗ (Выносливость, корпус и голос):</span> <span id="valPhy">50</span></label>
+      <label><span>🔥 ФИЗ (Выносливость, корпус и голос):</span> <span id="valPhy">30</span></label>
       <input type="range" id="pPhy" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
 
@@ -1879,7 +1581,7 @@
 
     <div style="display:flex; gap:8px; margin-top:15px;">
       <button class="tool-btn active" style="flex:2;" onclick="savePlayerModal()">💾 Сохранить</button>
-      <button class="tool-btn danger" id="btnDeletePlayer" onclick="deletePlayerModal()" style="display: inline-block;">🗑 Удалить</button>
+      <button class="tool-btn danger" id="btnDeletePlayer" onclick="deletePlayerModal()">🗑 Удалить</button>
       <button class="tool-btn" onclick="closePlayerModal()">Отмена</button>
     </div>
   </div>
@@ -1905,7 +1607,7 @@
     </div>
     <div class="form-row">
       <label>Звание / Должность:</label>
-      <input type="text" id="cTitleInput" placeholder="ГЛАВНЫЙ ТРЕНЕР • ФК ПАДЕРИНСКОЕ">
+      <input type="text" id="cTitleInput" placeholder="НАСТАВНИК • ФК ПАДЕРИНСКОЕ">
     </div>
     <div class="form-row">
       <label>📢 Установка / Девиз для команды:</label>
@@ -1943,18 +1645,108 @@
   </div>
 </div>
 
+<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ВЫЕЗДА / ТУРНИРА ================= -->
+<div class="modal-overlay" id="eventModal">
+  <div class="modal-card" style="max-width: 600px;">
+    <h3 id="eventModalTitle">📅 Карточка Выезда / Турнира</h3>
+    <input type="hidden" id="editEventIndex" value="-1">
+
+    <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div>
+        <label>Дата выезда:</label>
+        <input type="text" id="evDate" placeholder="Например: 25.10.2026 (Вс)">
+      </div>
+      <div>
+        <label>Итог / Статус в календаре:</label>
+        <select id="evResult">
+          <option value="upcoming">⏳ Предстоит выезд</option>
+          <option value="1st">🥇 1 Место (Чемпионы!)</option>
+          <option value="2nd">🥈 2 Место (Серебро)</option>
+          <option value="3rd">🥉 3 Место (Бронза)</option>
+          <option value="win">✅ Победный выезд</option>
+          <option value="played">⚽ Игры сыграны (Опыт)</option>
+          <option value="loss">❌ Поражение / Вылет</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label>Название турнира / События:</label>
+      <input type="text" id="evTitle" placeholder="Например: Кубок Осени 5х5 (1 тур)">
+    </div>
+
+    <div class="form-row">
+      <label>Место проведения и время сбора:</label>
+      <input type="text" id="evLocation" placeholder="Например: СК Олимпиец | Сбор в 08:30">
+    </div>
+
+    <div class="form-row">
+      <label>
+        <span>⚽ Игры этого выезда (3–4 матча и более):</span>
+        <button type="button" class="btn-t" style="background:var(--accent-yellow); color:#000;" onclick="addGameRowInModal()">+ Добавить игру</button>
+      </label>
+      <div id="evGamesEditorList" style="margin-top:6px;"></div>
+    </div>
+
+    <div class="form-row">
+      <label>📋 Комментарий тренера по выезду (что взять с собой / итоги):</label>
+      <textarea id="evNote" rows="2" placeholder="Например: Берем две формы, воду, щитки обязательно!"></textarea>
+    </div>
+
+    <div style="display:flex; gap:8px; margin-top:15px;">
+      <button class="tool-btn active" style="flex:2;" onclick="saveEventModal()">💾 Сохранить выезд</button>
+      <button class="tool-btn danger" id="btnDeleteEvent" onclick="deleteEventModal()">🗑 Удалить</button>
+      <button class="tool-btn" onclick="closeEventModal()">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= МОДАЛЬНОЕ ОКНО КОРОТКОГО КОДА КАЛЕНДАРЯ ================= -->
+<div class="modal-overlay" id="calendarCodeModal">
+  <div class="modal-card">
+    <h3 id="calCodeModalTitle">⚡ Короткий код Календаря</h3>
+    <p id="calCodeModalDesc" style="font-size:12.5px; color:#ccc; margin-top:0;"></p>
+    <div class="form-row">
+      <textarea id="calSyncCodeTextarea" rows="5" style="font-family:monospace; font-size:12px;" placeholder="Вставьте сюда короткий код календаря..."></textarea>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="tool-btn active" id="btnCopyCalSyncCode" style="flex:1;" onclick="copyCalSyncCodeFromModal()">📋 Скопировать код</button>
+      <button class="tool-btn green" id="btnApplyCalSyncCode" style="flex:1;" onclick="applyCalSyncCodeFromModal()">📥 Обновить календарь</button>
+      <button class="tool-btn" onclick="document.getElementById('calendarCodeModal').classList.remove('active')">Закрыть</button>
+    </div>
+  </div>
+</div>
 <script>
-  const STORAGE_KEY = 'paderinskoe_5x5_roster_v3';
-  const COACH_STORAGE_KEY = 'paderinskoe_5x5_coach_v3';
+  const STORAGE_KEY = 'paderinskoe_5x5_roster_v4';
+  const COACH_STORAGE_KEY = 'paderinskoe_5x5_coach_v4';
+  const VERSION_STORAGE_KEY = 'paderinskoe_5x5_ver_v4';
+  const PHOTO_MAP_KEY = 'paderinskoe_5x5_photomap_v4';
+  const CALENDAR_STORAGE_KEY = 'paderinskoe_5x5_calendar_v4';
   const COACH_PIN = '973556';
+
+  // Ссылка на твою Google Таблицу (Apps Script Web App)
+  const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbzyp7ou9kSGcNhuKvh0OZp2hgxU8WRe6FWqC-c2MPGgTbAVRCXPYhgN9NPcJ6n8YQ2w6g/exec';
 
   let isCoachMode = false;
   let currentTempPhoto = '';
   let currentCoachTempPhoto = '';
 
   /*__EMBEDDED_DATA_START__*/
-  const EMBEDDED_ROSTER_DATA = [{"id":1,"name":"Жидилева Варя","pos":"ФИК (Защитник)","num":1,"birthYear":"","status":"question","pac":42,"sho":35,"pas":32,"dri":38,"def":60,"phy":50,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":"data:image/jpeg;base64,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"},{"id":2,"name":"Александрова Арина","pos":"НЕ ОПР (Не определен)","num":1,"birthYear":"","status":"question","pac":42,"sho":35,"pas":40,"dri":32,"def":32,"phy":32,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":"data:image/jpeg;base64,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"},{"id":3,"name":"Рыбалов Ярик","pos":"АЛА (Край)","num":1,"birthYear":"","status":"question","pac":40,"sho":38,"pas":40,"dri":40,"def":32,"phy":32,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":"data:image/jpeg;base64,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"},{"id":4,"name":"Остапенко Иван","pos":"СТЛ (Столб)","num":1,"birthYear":"2013","status":"question","pac":38,"sho":45,"pas":38,"dri":38,"def":40,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":"data:image/jpeg;base64,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"},{"id":5,"name":"Предеин Ярослав","pos":"АЛА (Край)","num":1,"status":"question","pac":37,"sho":37,"pas":45,"dri":45,"def":33,"phy":33,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":""},{"id":6,"name":"Игрок 6","pos":"НЕ ОПР (Не определен)","num":6,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"status":"out","note":"","yc":0,"rc":0,"photo":""},{"id":7,"name":"Игрок 7","pos":"НЕ ОПР (Не определен)","num":7,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"status":"out","note":"","yc":0,"rc":0,"photo":""},{"id":8,"name":"Игрок 8","pos":"НЕ ОПР (Не определен)","num":8,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"status":"out","note":"","yc":0,"rc":0,"photo":""},{"id":9,"name":"Игрок 9","pos":"НЕ ОПР (Не определен)","num":9,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"status":"out","note":"","yc":0,"rc":0,"photo":""},{"id":10,"name":"Игрок 10","pos":"НЕ ОПР (Не определен)","num":10,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"status":"out","note":"","yc":0,"rc":0,"photo":""}];
-  const EMBEDDED_COACH_DATA = {"name":"Главный Тренер","title":"НАСТАВНИК • ФК ПАДЕРИНСКОЕ","motto":"В основу попадают те, кто пашет на тренировках, слышит команды и бьется до конца!","photo":"data:image/jpeg;base64,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"};
+  const EMBEDDED_VERSION = 1792482697853;
+  const EMBEDDED_ROSTER_DATA = [
+    {"id":1,"name":"Жидилева Варя","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":2,"name":"Александрова Арина","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":3,"name":"Рыбалов Ярик","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":4,"name":"Остапенко Иван","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":5,"name":"Игрок 5","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""},
+    {"id":6,"name":"Игрок 6","pos":"НЕ ОПР (Не определен)","num":6,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""},
+    {"id":7,"name":"Игрок 7","pos":"НЕ ОПР (Не определен)","num":7,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""},
+    {"id":8,"name":"Игрок 8","pos":"НЕ ОПР (Не определен)","num":8,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""},
+    {"id":9,"name":"Игрок 9","pos":"НЕ ОПР (Не определен)","num":9,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""},
+    {"id":10,"name":"Игрок 10","pos":"НЕ ОПР (Не определен)","num":10,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"yc":0,"rc":0,"status":"out","note":"","photo":""}
+  ];
+  const EMBEDDED_COACH_DATA = {"name":"Игорь Евгеньевич","title":"НАСТАВНИК • ФК ПАДЕРИНСКОЕ","motto":"В основу попадают те, кто пашет на тренировках, слышит команду и бьется до конца!","photo":""};
+  const EMBEDDED_CALENDAR_DATA = [{"id":101,"date":"25.10.2026 (Вс)","title":"Кубок Осени 5х5 — Выездной тур","location":"СК «Олимпиец» • Сбор в 08:30","result":"upcoming","note":"Берем основную форму, щитки и воду. Настрой боевой!","games":[{"time":"09:15","opp":"ДЮСШ-2","gf":"","ga":"","scorers":""},{"time":"10:30","opp":"Тобол","gf":"","ga":"","scorers":""},{"time":"12:00","opp":"Спартак","gf":"","ga":"","scorers":""}]}];
   /*__EMBEDDED_DATA_END__*/
 
   const defaultCoach = {
@@ -1965,20 +1757,91 @@
   };
 
   const defaultPlayers = [
-    { id: 1, name: "Игрок 1", pos: "НЕ ОПР (Не определен)", num: 1, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "Подтяни показатели, чтобы выбраться из красной зоны!", photo: "" },
-    { id: 2, name: "Игрок 2", pos: "НЕ ОПР (Не определен)", num: 2, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 3, name: "Игрок 3", pos: "НЕ ОПР (Не определен)", num: 3, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 4, name: "Игрок 4", pos: "НЕ ОПР (Не определен)", num: 4, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 5, name: "Игрок 5", pos: "НЕ ОПР (Не определен)", num: 5, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 6, name: "Игрок 6", pos: "НЕ ОПР (Не определен)", num: 6, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 7, name: "Игрок 7", pos: "НЕ ОПР (Не определен)", num: 7, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 8, name: "Игрок 8", pos: "НЕ ОПР (Не определен)", num: 8, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 9, name: "Игрок 9", pos: "НЕ ОПР (Не определен)", num: 9, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
-    { id: 10, name: "Игрок 10", pos: "НЕ ОПР (Не определен)", num: 10, birthYear: "", pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" }
+    { id: 1, name: "Игрок 1", pos: "НЕ ОПР (Не определен)", num: 1, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 2, name: "Игрок 2", pos: "НЕ ОПР (Не определен)", num: 2, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 3, name: "Игрок 3", pos: "НЕ ОПР (Не определен)", num: 3, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 4, name: "Игрок 4", pos: "НЕ ОПР (Не определен)", num: 4, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 5, name: "Игрок 5", pos: "НЕ ОПР (Не определен)", num: 5, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 6, name: "Игрок 6", pos: "НЕ ОПР (Не определен)", num: 6, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 7, name: "Игрок 7", pos: "НЕ ОПР (Не определен)", num: 7, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 8, name: "Игрок 8", pos: "НЕ ОПР (Не определен)", num: 8, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 9, name: "Игрок 9", pos: "НЕ ОПР (Не определен)", num: 9, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" },
+    { id: 10, name: "Игрок 10", pos: "НЕ ОПР (Не определен)", num: 10, pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0, status: "out", note: "", photo: "" }
   ];
 
   let players = [];
   let coachData = {};
+  let calendarEvents = [];
+  let tempModalGames = [];
+
+  function normalizeName(str) {
+    return String(str || '').trim().toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ');
+  }
+
+  function isGenericPlaceholderName(str) {
+    return /^игрок(\s+\d+)?$/i.test(String(str || '').trim());
+  }
+
+  function getPhotoDictionary() {
+    let dict = { byName: {}, byId: {} };
+    try {
+      const saved = localStorage.getItem(PHOTO_MAP_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.byName) dict = parsed;
+      }
+    } catch (e) {}
+
+    if (EMBEDDED_ROSTER_DATA && Array.isArray(EMBEDDED_ROSTER_DATA)) {
+      EMBEDDED_ROSTER_DATA.forEach(p => {
+        if (p && p.photo) {
+          const nKey = normalizeName(p.name);
+          if (nKey && !isGenericPlaceholderName(nKey) && !dict.byName[nKey]) {
+            dict.byName[nKey] = p.photo;
+          }
+          if (p.id && !dict.byId[p.id]) {
+            dict.byId[p.id] = { photo: p.photo, nameKey: nKey };
+          }
+        }
+      });
+    }
+    return dict;
+  }
+
+  function updatePhotoDictionaryFromRoster() {
+    const dict = getPhotoDictionary();
+    players.forEach(p => {
+      if (!p) return;
+      const nKey = normalizeName(p.name);
+      if (p.photo) {
+        if (nKey && !isGenericPlaceholderName(nKey)) {
+          dict.byName[nKey] = p.photo;
+        }
+        if (p.id) {
+          dict.byId[p.id] = { photo: p.photo, nameKey: nKey };
+        }
+      }
+    });
+    try {
+      localStorage.setItem(PHOTO_MAP_KEY, JSON.stringify(dict));
+    } catch (e) {}
+  }
+
+  function findPhotoForPlayer(p, dict) {
+    if (!p) return '';
+    if (p.photo) return p.photo;
+    const nKey = normalizeName(p.name);
+    if (nKey && !isGenericPlaceholderName(nKey) && dict.byName[nKey]) {
+      return dict.byName[nKey];
+    }
+    if (p.id && dict.byId[p.id]) {
+      const entry = dict.byId[p.id];
+      if (entry.nameKey === nKey && !isGenericPlaceholderName(nKey)) {
+        return entry.photo;
+      }
+    }
+    return '';
+  }
 
   function handlePhotoUpload(e, targetType) {
     const file = e.target.files[0];
@@ -2032,66 +1895,108 @@
     box.innerHTML = currentCoachTempPhoto ? `<img src="${currentCoachTempPhoto}" alt="Тренер">` : '👑';
   }
 
-  function loadRosterLocal() {
+  // Загрузка данных: сначала пытаемся взять из Облака (Google Таблицы), если нет — из локального кэша или файла
+  async function loadRosterLocal() {
     try {
-      const savedRoster = localStorage.getItem(STORAGE_KEY);
-      if (savedRoster) {
-        players = JSON.parse(savedRoster);
-        if (EMBEDDED_ROSTER_DATA && Array.isArray(EMBEDDED_ROSTER_DATA)) {
-          EMBEDDED_ROSTER_DATA.forEach((embP, i) => {
-            if (players[i]) {
-              if (!players[i].photo && embP.photo) players[i].photo = embP.photo;
-              if (!players[i].birthYear && embP.birthYear) players[i].birthYear = embP.birthYear;
-            }
-          });
-        }
-      } else if (EMBEDDED_ROSTER_DATA && Array.isArray(EMBEDDED_ROSTER_DATA)) {
-        players = JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
+      const response = await fetch(CLOUD_SYNC_URL);
+      const cloudData = await response.json();
+      
+      if (cloudData && cloudData.p && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
+        players = cloudData.p;
+        coachData = cloudData.c || EMBEDDED_COACH_DATA;
+        calendarEvents = cloudData.cal || EMBEDDED_CALENDAR_DATA;
+        
+        // Сохраняем свежие данные локально на случай офлайна
         localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-      } else {
-        players = JSON.parse(JSON.stringify(defaultPlayers));
-      }
-
-      const savedCoach = localStorage.getItem(COACH_STORAGE_KEY);
-      if (savedCoach) {
-        coachData = JSON.parse(savedCoach);
-        if (EMBEDDED_COACH_DATA && !coachData.photo && EMBEDDED_COACH_DATA.photo) {
-          coachData.photo = EMBEDDED_COACH_DATA.photo;
-        }
-      } else if (EMBEDDED_COACH_DATA) {
-        coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
         localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
-      } else {
-        coachData = JSON.parse(JSON.stringify(defaultCoach));
+        localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+        
+        updatePhotoDictionaryFromRoster();
+        renderCoachCard();
+        renderFifaCards();
+        renderCalendarTab();
+        return;
       }
     } catch (e) {
-      players = JSON.parse(JSON.stringify(defaultPlayers));
-      coachData = JSON.parse(JSON.stringify(defaultCoach));
+      console.log('Облако недоступно, загружаем из локальной памяти.');
     }
+
+    // Запасной вариант через localStorage / встроенные данные
+    try {
+      const savedRoster = localStorage.getItem(STORAGE_KEY);
+      const savedCoach = localStorage.getItem(COACH_STORAGE_KEY);
+
+      if (!savedRoster) {
+        players = JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
+        coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
+      } else {
+        players = JSON.parse(savedRoster);
+        coachData = savedCoach ? JSON.parse(savedCoach) : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
+      }
+
+      const dict = getPhotoDictionary();
+      players.forEach(p => {
+        if (!p.photo) p.photo = findPhotoForPlayer(p, dict);
+      });
+      if (!coachData.photo && EMBEDDED_COACH_DATA.photo) coachData.photo = EMBEDDED_COACH_DATA.photo;
+
+      updatePhotoDictionaryFromRoster();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+      localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
+    } catch (e) {
+      players = JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
+      coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
+    }
+    loadCalendarLocal();
     renderCoachCard();
     renderFifaCards();
   }
 
-  function saveRosterLocal() {
+  // Функция сохранения в Облако и локально
+  async function saveRosterLocal() {
     try {
+      updatePhotoDictionaryFromRoster();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
       localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
     } catch (e) {
       alert('Память браузера заполнена!');
     }
+
     renderCoachCard();
     renderFifaCards();
     syncBoardNamesWithRoster();
+
+    // Отправка данных в облачную Google Таблицу в фоновом режиме
+    try {
+      const payload = {
+        c: coachData,
+        p: players,
+        cal: calendarEvents
+      };
+      await fetch(CLOUD_SYNC_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      // Показываем маркер успешной синхронизации в шапке
+      const statusSub = document.getElementById('roleStatusText');
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = 'Режим Тренера • ☁️ Сохранено в облаке';
+      }
+    } catch (e) {
+      console.log('Ошибка отправки в облако:', e);
+    }
   }
 
   function resetToRedZone() {
-    if (confirm('Сбросить всех игроков к старту Красной зоны (рейтинг 30)? Фото и год рождения сохранятся!')) {
+    if (confirm('Сбросить показатели всех игроков к старту Красной зоны (рейтинг 30)? Имена и фото каждого игрока сохранятся!')) {
       players = players.map((p, idx) => ({
         id: p.id || (idx + 1),
         name: p.name || `Игрок ${idx + 1}`,
         pos: p.pos || "НЕ ОПР (Не определен)",
         num: p.num || (idx + 1),
-        birthYear: p.birthYear || "",
         pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30,
         goals: 0, assists: 0, games: 0, att: 1, yc: 0, rc: 0,
         status: "out",
@@ -2123,6 +2028,7 @@
 
   function renderCoachCard() {
     const box = document.getElementById('coachCardContainer');
+    if (!box) return;
     const avatarHtml = coachData.photo ? `<img src="${coachData.photo}" alt="Тренер">` : '👑';
     box.innerHTML = `
       <div class="fut-coach-legend">
@@ -2151,6 +2057,7 @@
 
   function renderFifaCards() {
     const container = document.getElementById('fifaCardsContainer');
+    if (!container) return;
     container.innerHTML = '';
 
     players.forEach((p, idx) => {
@@ -2160,7 +2067,6 @@
       const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
       const avatarContent = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : `#${p.num}`;
       const hasNote = p.note && p.note.trim().length > 0;
-      const birthHtml = p.birthYear ? `<div class="fut-birth-badge">${p.birthYear} г.р.</div>` : '';
 
       const card = document.createElement('div');
       card.className = `fut-card ${styleInfo.cls}`;
@@ -2172,7 +2078,6 @@
               <div class="fut-ovr">${ovr}</div>
               <div class="fut-pos">${shortPos}</div>
               <div class="fut-num-badge">№ ${p.num}</div>
-              ${birthHtml}
             </div>
             <div class="fut-avatar">${avatarContent}</div>
             <div class="fut-badge-col">
@@ -2289,7 +2194,7 @@
         const btn = document.getElementById('btnCoachToggle');
         btn.textContent = '🔓 Режим Тренера';
         btn.classList.add('unlocked');
-        document.getElementById('roleStatusText').textContent = 'Режим Тренера активен';
+        document.getElementById('roleStatusText').textContent = 'Режим Тренера • ☁️ Облако синхронизовано';
       } else if (pin !== null) {
         alert('Неверный пароль!');
       }
@@ -2305,7 +2210,6 @@
       document.getElementById('pName').value = '';
       document.getElementById('pPos').value = 'НЕ ОПР (Не определен)';
       document.getElementById('pNum').value = players.length + 1;
-      document.getElementById('pBirthYear').value = '';
       document.getElementById('pStatus').value = 'out';
       ['Pac','Sho','Pas','Dri','Def','Phy'].forEach(s => document.getElementById('p'+s).value = 30);
       document.getElementById('pGoals').value = 0;
@@ -2323,7 +2227,6 @@
       document.getElementById('pName').value = p.name;
       document.getElementById('pPos').value = p.pos || 'НЕ ОПР (Не определен)';
       document.getElementById('pNum').value = p.num;
-      document.getElementById('pBirthYear').value = p.birthYear || '';
       document.getElementById('pStatus').value = p.status || 'out';
       document.getElementById('pPac').value = p.pac;
       document.getElementById('pSho').value = p.sho;
@@ -2358,13 +2261,23 @@
 
   function savePlayerModal() {
     const idx = Number(document.getElementById('editPlayerIndex').value);
-    const existingId = (idx >= 0 && players[idx].id) ? players[idx].id : Date.now();
+    const enteredName = document.getElementById('pName').value.trim() || 'Игрок';
+    let playerId = (idx >= 0 && players[idx] && players[idx].id) ? players[idx].id : (Date.now() + Math.floor(Math.random() * 1000));
+
+    let finalPhoto = currentTempPhoto;
+    if (!finalPhoto) {
+      const dict = getPhotoDictionary();
+      const nKey = normalizeName(enteredName);
+      if (nKey && !isGenericPlaceholderName(nKey) && dict.byName[nKey]) {
+        finalPhoto = dict.byName[nKey];
+      }
+    }
+
     const newP = {
-      id: existingId,
-      name: document.getElementById('pName').value.trim() || 'Игрок',
+      id: playerId,
+      name: enteredName,
       pos: document.getElementById('pPos').value,
       num: Number(document.getElementById('pNum').value) || 1,
-      birthYear: document.getElementById('pBirthYear').value.trim(),
       status: document.getElementById('pStatus').value,
       pac: Number(document.getElementById('pPac').value),
       sho: Number(document.getElementById('pSho').value),
@@ -2379,8 +2292,9 @@
       yc: Number(document.getElementById('pYc').value) || 0,
       rc: Number(document.getElementById('pRc').value) || 0,
       note: document.getElementById('pNote').value.trim(),
-      photo: currentTempPhoto
+      photo: finalPhoto
     };
+
     if (idx === -1) players.push(newP);
     else players[idx] = newP;
 
@@ -2398,110 +2312,318 @@
   }
 
   function downloadBundledHtmlFile() {
-    const wasCoach = isCoachMode;
-    if (wasCoach) {
-      document.body.classList.remove('is-coach');
-      document.getElementById('btnCoachToggle').textContent = '🔒 Вход Тренера';
-      document.getElementById('btnCoachToggle').classList.remove('unlocked');
-    }
-    let fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    if (wasCoach) {
-      document.body.classList.add('is-coach');
-      document.getElementById('btnCoachToggle').textContent = '🔓 Режим Тренера';
-      document.getElementById('btnCoachToggle').classList.add('unlocked');
-    }
-    const replacementBlock = `/*__EMBEDDED_DATA_START__*/\n  const EMBEDDED_ROSTER_DATA = ${JSON.stringify(players)};\n  const EMBEDDED_COACH_DATA = ${JSON.stringify(coachData)};\n  /*__EMBEDDED_DATA_END__*/`;
-    fullHtml = fullHtml.replace(/\/\*__EMBEDDED_DATA_START__\*\/[\s\S]*?\/\*__EMBEDDED_DATA_END__\*\//, replacementBlock);
-
-    const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'ФК_Падеринское_Хаб.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    alert('✅ Готовый файл со всеми фотографиями и годами рождения скачан!');
-  }
-
-  function generateShortStatsCode() {
-    const compactPayload = {
-      c: [coachData.name, coachData.title, coachData.motto],
-      p: players.map(p => [
-        p.id || 0, p.name, p.pos, p.num,
-        p.pac, p.sho, p.pas, p.dri, p.def, p.phy,
-        p.goals || 0, p.assists || 0, p.games || 0, p.att || 0,
-        p.status || 'out', p.note || '',
-        p.yc || 0, p.rc || 0
-      ])
-    };
-    return btoa(unescape(encodeURIComponent(JSON.stringify(compactPayload))));
+    alert('💾 Файл сохранен в облако Google Таблицы автоматически! Скачивание больше не требуется, но функция работает как резервная копия.');
   }
 
   function openCodeModal(mode) {
-    const modal = document.getElementById('codeSyncModal');
-    const title = document.getElementById('codeModalTitle');
-    const desc = document.getElementById('codeModalDesc');
-    const area = document.getElementById('syncCodeTextarea');
-    const btnCopy = document.getElementById('btnCopySyncCode');
-    const btnApply = document.getElementById('btnApplySyncCode');
-
-    if (mode === 'export') {
-      title.textContent = '⚡ Короткий код обновления (Статы + Карточки)';
-      desc.textContent = 'Скопируйте этот короткий код и отправьте в чат команды.';
-      area.value = generateShortStatsCode();
-      area.readOnly = true;
-      btnCopy.style.display = 'inline-block';
-      btnApply.style.display = 'none';
-    } else {
-      title.textContent = '📥 Вставить код обновления от Тренера';
-      desc.textContent = 'Вставьте короткий код из чата и нажмите «Применить».';
-      area.value = '';
-      area.readOnly = false;
-      btnCopy.style.display = 'none';
-      btnApply.style.display = 'inline-block';
-    }
-    modal.classList.add('active');
+    alert('⚡ Все данные команды теперь хранятся в облаке Google Таблицы и синхронизируются сами. Коды больше не нужны!');
   }
 
-  function copySyncCodeFromModal() {
-    const area = document.getElementById('syncCodeTextarea');
-    area.select();
-    navigator.clipboard.writeText(area.value).then(() => {
-      alert('✅ Код скопирован!');
+  // ================= ЛОГИКА КАЛЕНДАРЯ И ВЫЕЗДОВ =================
+  function loadCalendarLocal() {
+    renderCalendarTab();
+  }
+
+  function saveCalendarLocal() {
+    try {
+      localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+    } catch (e) {}
+    saveRosterLocal(); // Отправляем обновленный календарь в облако Google Таблицы
+  }
+
+  function getEventResultBadge(res) {
+    switch (res) {
+      case '1st': return { cls: 'res-gold', text: '🥇 1 Место' };
+      case '2nd': return { cls: 'res-silver', text: '🥈 2 Место' };
+      case '3rd': return { cls: 'res-bronze', text: '🥉 3 Место' };
+      case 'win': return { cls: 'res-win', text: '✅ Победа' };
+      case 'loss': return { cls: 'res-loss', text: '❌ Проиграли' };
+      case 'played': return { cls: 'res-played', text: '⚽ Завершен' };
+      default: return { cls: 'res-upcoming', text: '⏳ Предстоит' };
+    }
+  }
+
+  function renderCalendarTab() {
+    const summaryEl = document.getElementById('calendarStatsSummary');
+    const listEl = document.getElementById('calendarEventsContainer');
+    if (!summaryEl || !listEl) return;
+
+    let totalTrips = calendarEvents.length;
+    let totalGames = 0;
+    let wins = 0, draws = 0, losses = 0;
+    let goalsFor = 0, goalsAgainst = 0;
+    let medals = 0;
+
+    calendarEvents.forEach(ev => {
+      if (ev.result === '1st' || ev.result === '2nd' || ev.result === '3rd') medals++;
+      (ev.games || []).forEach(g => {
+        const gfStr = String(g.gf ?? '').trim();
+        const gaStr = String(g.ga ?? '').trim();
+        if (gfStr !== '' && gaStr !== '' && !isNaN(gfStr) && !isNaN(gaStr)) {
+          const gf = Number(gfStr);
+          const ga = Number(gaStr);
+          totalGames++;
+          goalsFor += gf;
+          goalsAgainst += ga;
+          if (gf > ga) wins++;
+          else if (gf === ga) draws++;
+          else losses++;
+        }
+      });
+    });
+
+    summaryEl.innerHTML = `
+      <div class="cal-stat-box">
+        <div class="cal-stat-num">${totalTrips}</div>
+        <div class="cal-stat-label">🚌 Выездов / Туров</div>
+      </div>
+      <div class="cal-stat-box">
+        <div class="cal-stat-num">${totalGames}</div>
+        <div class="cal-stat-label">⚽ Сыграно матчей</div>
+      </div>
+      <div class="cal-stat-box">
+        <div class="cal-stat-num" style="color:#69f0ae;">${wins}В - ${draws}Н - ${losses}П</div>
+        <div class="cal-stat-label">📊 Баланс игр</div>
+      </div>
+      <div class="cal-stat-box">
+        <div class="cal-stat-num">${goalsFor} : ${goalsAgainst}</div>
+        <div class="cal-stat-label">💥 Разница мячей</div>
+      </div>
+      <div class="cal-stat-box">
+        <div class="cal-stat-num">🏆 ${medals}</div>
+        <div class="cal-stat-label">🥇 Призовых мест</div>
+      </div>
+    `;
+
+    listEl.innerHTML = '';
+    if (calendarEvents.length === 0) {
+      listEl.innerHTML = `<div class="info-block" style="text-align:center; color:#aaa;">Пока нет добавленных выездов. Нажмите «➕ Добавить выезд / турнир» в режиме тренера.</div>`;
+      return;
+    }
+
+    calendarEvents.forEach((ev, idx) => {
+      const badge = getEventResultBadge(ev.result);
+      const gamesArr = ev.games || [];
+
+      let gamesPlayedInEvent = 0, wInEv = 0, dInEv = 0, lInEv = 0;
+      let gamesHtml = '';
+
+      gamesArr.forEach((g, gIdx) => {
+        const gfStr = String(g.gf ?? '').trim();
+        const gaStr = String(g.ga ?? '').trim();
+        const isPlayed = gfStr !== '' && gaStr !== '' && !isNaN(gfStr) && !isNaN(gaStr);
+        let scoreCls = 'score-none';
+        let scoreText = '— : —';
+
+        if (isPlayed) {
+          const gf = Number(gfStr);
+          const ga = Number(gaStr);
+          gamesPlayedInEvent++;
+          scoreText = `${gf} : ${ga}`;
+          if (gf > ga) { scoreCls = 'score-w'; wInEv++; }
+          else if (gf === ga) { scoreCls = 'score-d'; dInEv++; }
+          else { scoreCls = 'score-l'; lInEv++; }
+        }
+
+        const scorersLine = (g.scorers && g.scorers.trim())
+          ? `<div class="cal-game-scorers">⚽ <b>Голы / Заметка:</b> ${g.scorers}</div>`
+          : '';
+
+        gamesHtml += `
+          <div class="cal-game-row">
+            <div class="cal-game-left">
+              <span class="cal-game-time">${g.time || ('Игра ' + (gIdx + 1))}</span>
+              <span class="cal-game-teams">ФК Падеринское <span style="color:var(--accent-yellow);">vs</span> ${g.opp || 'Соперник'}</span>
+            </div>
+            <div class="cal-game-score ${scoreCls}">${scoreText}</div>
+            ${scorersLine}
+          </div>
+        `;
+      });
+
+      const miniSummary = gamesPlayedInEvent > 0
+        ? `Матчей: ${gamesArr.length} (Побед: ${wInEv}, Ничьих: ${dInEv}, Поражений: ${lInEv})`
+        : `Запланировано игр: ${gamesArr.length}`;
+
+      const noteHtml = (ev.note && ev.note.trim())
+        ? `<div class="cal-note-box">📢 <b>Тренер:</b> ${ev.note}</div>`
+        : '';
+
+      const card = document.createElement('div');
+      card.className = 'cal-event-card';
+      card.id = `cal-event-${idx}`;
+      card.innerHTML = `
+        <div class="cal-event-header" onclick="toggleEventDetails(${idx})">
+          <div class="cal-event-main">
+            <div class="cal-date-row">
+              <span>📅 ${ev.date || 'Дата не указана'}</span>
+              <span style="color:#888;">•</span>
+              <span style="color:#bbb; font-weight:600;">${miniSummary}</span>
+            </div>
+            <div class="cal-event-title">${ev.title || 'Выезд / Турнир'}</div>
+            <div class="cal-event-loc">📍 ${ev.location || 'Место уточняется'}</div>
+          </div>
+          <div class="cal-event-right">
+            <span class="cal-res-badge ${badge.cls}">${badge.text}</span>
+            <span class="cal-toggle-icon" id="cal-icon-${idx}">🔽 Игры (${gamesArr.length})</span>
+          </div>
+        </div>
+        <div class="cal-event-body">
+          <div class="cal-games-list">
+            ${gamesHtml || '<div style="color:#888; font-size:13px;">Список матчей пока пуст.</div>'}
+          </div>
+          ${noteHtml}
+          <div class="fut-edit-actions coach-only" style="margin-top:12px; justify-content:flex-end;">
+            <button class="tool-btn preset" onclick="openEventModal(${idx})">⚙ Редактировать выезд и счета игр</button>
+            <button class="tool-btn" onclick="moveEventOrder(${idx}, -1)" title="Поднять выше">⬆</button>
+            <button class="tool-btn" onclick="moveEventOrder(${idx}, 1)" title="Опустить ниже">⬇</button>
+          </div>
+        </div>
+      `;
+      listEl.appendChild(card);
     });
   }
 
-  function applySyncCodeFromModal() {
-    const raw = document.getElementById('syncCodeTextarea').value.trim();
-    if (!raw) return;
-    try {
-      const decoded = JSON.parse(decodeURIComponent(escape(atob(raw))));
-      if (decoded && Array.isArray(decoded.p)) {
-        if (Array.isArray(decoded.c)) {
-          coachData.name = decoded.c[0] || coachData.name;
-          coachData.title = decoded.c[1] || coachData.title;
-          coachData.motto = decoded.c[2] || coachData.motto;
-        }
-        players = decoded.p.map((arr, idx) => {
-          const [id, name, pos, num, pac, sho, pas, dri, def, phy, goals, assists, games, att, status, note, yc, rc] = arr;
-          let existing = players.find(old => (old.id && old.id === id) || (old.num === num && old.name === name)) || players[idx];
-          return {
-            id, name, pos, num,
-            birthYear: (existing && existing.birthYear) ? existing.birthYear : '',
-            pac, sho, pas, dri, def, phy,
-            goals, assists, games, att, status, note,
-            yc: yc || 0, rc: rc || 0,
-            photo: (existing && existing.photo) ? existing.photo : ''
-          };
-        });
-        saveRosterLocal();
-        document.getElementById('codeSyncModal').classList.remove('active');
-        alert('🎉 Данные успешно обновлены!');
+  function toggleEventDetails(idx) {
+    const card = document.getElementById(`cal-event-${idx}`);
+    const icon = document.getElementById(`cal-icon-${idx}`);
+    if (!card) return;
+    const isOpen = card.classList.toggle('open');
+    const gamesCount = (calendarEvents[idx] && calendarEvents[idx].games) ? calendarEvents[idx].games.length : 0;
+    if (icon) {
+      icon.textContent = isOpen ? `🔼 Свернуть` : `🔽 Игры (${gamesCount})`;
+    }
+  }
+
+  function expandAllEvents(openState) {
+    calendarEvents.forEach((ev, idx) => {
+      const card = document.getElementById(`cal-event-${idx}`);
+      const icon = document.getElementById(`cal-icon-${idx}`);
+      if (card) {
+        if (openState) card.classList.add('open');
+        else card.classList.remove('open');
       }
-    } catch (e) {
-      alert('Ошибка при чтении кода!');
+      if (icon) {
+        const cnt = (ev.games || []).length;
+        icon.textContent = openState ? `🔼 Свернуть` : `🔽 Игры (${cnt})`;
+      }
+    });
+  }
+
+  function moveEventOrder(idx, dir) {
+    const target = idx + dir;
+    if (target < 0 || target >= calendarEvents.length) return;
+    const temp = calendarEvents[idx];
+    calendarEvents[idx] = calendarEvents[target];
+    calendarEvents[target] = temp;
+    saveCalendarLocal();
+  }
+
+  function renderModalGamesEditor() {
+    const container = document.getElementById('evGamesEditorList');
+    if (!container) return;
+    container.innerHTML = '';
+    tempModalGames.forEach((g, i) => {
+      const div = document.createElement('div');
+      div.className = 'game-edit-row';
+      div.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-size:12px; font-weight:900; color:var(--accent-yellow);">Матч №${i + 1}</span>
+          <button type="button" class="btn-t red" style="font-size:11px; padding:2px 6px;" onclick="removeGameRowInModal(${i})">✖ Удалить матч</button>
+        </div>
+        <div style="display:grid; grid-template-columns: 85px 1fr 60px 60px; gap:6px; align-items:center;">
+          <input type="text" placeholder="Время (10:00)" value="${g.time || ''}" oninput="tempModalGames[${i}].time = this.value">
+          <input type="text" placeholder="Соперник (напр. Тобол)" value="${g.opp || ''}" oninput="tempModalGames[${i}].opp = this.value">
+          <input type="number" placeholder="Наши" min="0" value="${g.gf !== undefined && g.gf !== null ? g.gf : ''}" oninput="tempModalGames[${i}].gf = this.value" title="Голы ФК Падеринское">
+          <input type="number" placeholder="Чужие" min="0" value="${g.ga !== undefined && g.ga !== null ? g.ga : ''}" oninput="tempModalGames[${i}].ga = this.value" title="Голы соперника">
+        </div>
+        <div style="margin-top:6px;">
+          <input type="text" placeholder="Кто забил / заметка по игре (необязательно)" value="${g.scorers || ''}" oninput="tempModalGames[${i}].scorers = this.value">
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function addGameRowInModal() {
+    tempModalGames.push({ time: "", opp: "", gf: "", ga: "", scorers: "" });
+    renderModalGamesEditor();
+  }
+
+  function removeGameRowInModal(i) {
+    tempModalGames.splice(i, 1);
+    renderModalGamesEditor();
+  }
+
+  function openEventModal(idx) {
+    document.getElementById('editEventIndex').value = idx;
+    const btnDel = document.getElementById('btnDeleteEvent');
+
+    if (idx === -1) {
+      document.getElementById('eventModalTitle').textContent = '➕ Добавить новый выезд / турнир';
+      document.getElementById('evDate').value = '';
+      document.getElementById('evResult').value = 'upcoming';
+      document.getElementById('evTitle').value = '';
+      document.getElementById('evLocation').value = '';
+      document.getElementById('evNote').value = '';
+      tempModalGames = [
+        { time: "10:00", opp: "", gf: "", ga: "", scorers: "" },
+        { time: "11:00", opp: "", gf: "", ga: "", scorers: "" },
+        { time: "12:00", opp: "", gf: "", ga: "", scorers: "" }
+      ];
+      btnDel.style.display = 'none';
+    } else {
+      const ev = calendarEvents[idx];
+      document.getElementById('eventModalTitle').textContent = `Редактировать: ${ev.title}`;
+      document.getElementById('evDate').value = ev.date || '';
+      document.getElementById('evResult').value = ev.result || 'upcoming';
+      document.getElementById('evTitle').value = ev.title || '';
+      document.getElementById('evLocation').value = ev.location || '';
+      document.getElementById('evNote').value = ev.note || '';
+      tempModalGames = JSON.parse(JSON.stringify(ev.games || []));
+      btnDel.style.display = 'inline-block';
+    }
+    renderModalGamesEditor();
+    document.getElementById('eventModal').classList.add('active');
+  }
+
+  function closeEventModal() {
+    document.getElementById('eventModal').classList.remove('active');
+  }
+
+  function saveEventModal() {
+    const idx = Number(document.getElementById('editEventIndex').value);
+    const newEv = {
+      id: (idx >= 0 && calendarEvents[idx] && calendarEvents[idx].id) ? calendarEvents[idx].id : Date.now(),
+      date: document.getElementById('evDate').value.trim() || 'Дата уточняется',
+      result: document.getElementById('evResult').value,
+      title: document.getElementById('evTitle').value.trim() || 'Выездной тур',
+      location: document.getElementById('evLocation').value.trim() || 'Место уточняется',
+      note: document.getElementById('evNote').value.trim(),
+      games: tempModalGames.map(g => ({
+        time: String(g.time || '').trim(),
+        opp: String(g.opp || '').trim() || 'Соперник',
+        gf: String(g.gf ?? '').trim(),
+        ga: String(g.ga ?? '').trim(),
+        scorers: String(g.scorers || '').trim()
+      }))
+    };
+
+    if (idx === -1) {
+      calendarEvents.unshift(newEv);
+    } else {
+      calendarEvents[idx] = newEv;
+    }
+    closeEventModal();
+    saveCalendarLocal();
+  }
+
+  function deleteEventModal() {
+    const idx = Number(document.getElementById('editEventIndex').value);
+    if (idx >= 0 && confirm('Удалить этот выезд со всеми его матчами из календаря?')) {
+      calendarEvents.splice(idx, 1);
+      closeEventModal();
+      saveCalendarLocal();
     }
   }
 
@@ -2532,69 +2654,8 @@
     } catch(e) {}
   }
 
-  let timerInterval = null;
-  let seconds = 0;
-  let isRunning = false;
-  let isCountdown = false;
-
-  function updateDisplay() {
-    const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-    const secs = String(seconds % 60).padStart(2, '0');
-    document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
-  }
-
-  function startCountdown(sec) {
-    clearInterval(timerInterval);
-    seconds = sec;
-    isCountdown = true;
-    isRunning = true;
-    document.getElementById('btnStartStop').textContent = '⏸';
-    updateDisplay();
-    timerInterval = setInterval(() => {
-      if (seconds > 0) {
-        seconds--;
-        updateDisplay();
-        if (seconds <= 3 && seconds > 0) playBeep(600, 120);
-      } else {
-        clearInterval(timerInterval);
-        isRunning = false;
-        document.getElementById('btnStartStop').textContent = '▶';
-        playBeep(1100, 700);
-      }
-    }, 1000);
-  }
-
-  function toggleStopwatch() {
-    if (isRunning) {
-      clearInterval(timerInterval);
-      isRunning = false;
-      document.getElementById('btnStartStop').textContent = '▶';
-    } else {
-      isRunning = true;
-      document.getElementById('btnStartStop').textContent = '⏸';
-      timerInterval = setInterval(() => {
-        if (isCountdown) {
-          if (seconds > 0) { seconds--; updateDisplay(); }
-          else { clearInterval(timerInterval); isRunning = false; playBeep(1100, 700); }
-        } else {
-          seconds++;
-          updateDisplay();
-        }
-      }, 1000);
-    }
-  }
-
-  function resetTimer() {
-    clearInterval(timerInterval);
-    seconds = 0;
-    isRunning = false;
-    isCountdown = false;
-    document.getElementById('btnStartStop').textContent = '▶';
-    updateDisplay();
-  }
-
   const canvas = document.getElementById('tacticCanvas');
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas ? canvas.getContext('2d') : null;
 
   let boardMode = 'move';
   let tokens = [];
@@ -2607,8 +2668,9 @@
     document.querySelectorAll('.board-toolbar .tool-btn').forEach(b => {
       if (b.id && b.id.startsWith('mode-')) b.classList.remove('active');
     });
-    document.getElementById('mode-' + mode).classList.add('active');
-    canvas.style.cursor = (mode === 'move') ? 'grab' : 'crosshair';
+    const mBtn = document.getElementById('mode-' + mode);
+    if (mBtn) mBtn.classList.add('active');
+    if (canvas) canvas.style.cursor = (mode === 'move') ? 'grab' : 'crosshair';
   }
 
   function getRosterLabel(idx, fallback) {
@@ -2704,6 +2766,7 @@
   function clearAllArrows() { arrows = []; drawBoard(); }
 
   function drawPitch() {
+    if (!ctx) return;
     for (let i = 0; i < 9; i++) {
       ctx.fillStyle = (i % 2 === 0) ? '#2b7830' : '#256b29';
       ctx.fillRect(i * 100, 0, 100, 520);
@@ -2721,6 +2784,7 @@
   }
 
   function drawArrowLine(a) {
+    if (!ctx) return;
     ctx.save();
     ctx.beginPath();
     ctx.strokeStyle = (a.type === 'pass') ? '#ffeb3b' : '#ffffff';
@@ -2744,6 +2808,7 @@
   }
 
   function drawTokens() {
+    if (!ctx) return;
     tokens.forEach(t => {
       ctx.save();
       if (t.type === 'cone') {
@@ -2768,6 +2833,7 @@
   }
 
   function drawBoard() {
+    if (!ctx || !canvas) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPitch();
     arrows.forEach(a => drawArrowLine(a));
@@ -2829,18 +2895,19 @@
     }
   }
 
-  canvas.addEventListener('mousedown', onPointerDown);
-  canvas.addEventListener('mousemove', onPointerMove);
-  window.addEventListener('mouseup', onPointerUp);
-  canvas.addEventListener('touchstart', onPointerDown, { passive: false });
-  canvas.addEventListener('touchmove', onPointerMove, { passive: false });
-  canvas.addEventListener('touchend', onPointerUp);
+  if (canvas) {
+    canvas.addEventListener('mousedown', onPointerDown);
+    canvas.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerUp);
+    canvas.addEventListener('touchstart', onPointerDown, { passive: false });
+    canvas.addEventListener('touchmove', onPointerMove, { passive: false });
+    canvas.addEventListener('touchend', onPointerUp);
+  }
 
   isCoachMode = false;
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
 </script>
-
-
-</body></html>
+</body>
+</html>
