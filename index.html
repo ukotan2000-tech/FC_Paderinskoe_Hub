@@ -1158,8 +1158,8 @@
       </div>
     </div>
     <div class="header-controls">
-      <span class="btn-t coach-only" style="cursor:default; border-color:#00e676; color:#69f0ae; background:#14291d;" title="Сколько раз игроки открывали сайт">
-        👁 Визитов: <b id="visitCount">...</b>
+      <span class="btn-t coach-only" style="cursor:default; border-color:#00e676; color:#69f0ae; background:#14291d;" title="Общие визиты / За сегодня">
+        👁 Всего: <b id="visitCount">...</b> | Сегодня: <b id="visitTodayCount">...</b>
       </span>
       <button class="btn-t coach-lock" id="btnCoachToggle" onclick="toggleCoachMode()">🔒 Вход Тренера</button>
     </div>
@@ -2261,6 +2261,41 @@
         players = cloudData.p;
         coachData = cloudData.c || EMBEDDED_COACH_DATA;
         calendarEvents = cloudData.cal || EMBEDDED_CALENDAR_DATA;
+		
+// --- СЧЕТЧИК ВИЗИТОВ ЗА ВСЁ ВРЕМЯ И ЗА ДЕНЬ ---
+        const todayStr = new Date().toLocaleDateString('ru-RU'); // Получаем текущую дату (напр. "23.10.2026")
+        
+        if (!coachData.dailyStats) coachData.dailyStats = { date: todayStr, count: 0 };
+        
+        // Если настался новый день — сбрасываем счетчик за день на 0
+        if (coachData.dailyStats.date !== todayStr) {
+          coachData.dailyStats.date = todayStr;
+          coachData.dailyStats.count = 0;
+        }
+
+        coachData.visits = Number(coachData.visits || 0);
+        
+        // Увеличиваем счетчики 1 раз за сессию браузера
+        if (!sessionStorage.getItem('visit_counted')) {
+          sessionStorage.setItem('visit_counted', '1');
+          coachData.visits += 1;
+          coachData.dailyStats.count += 1;
+
+          // Тихо отправляем обновленные данные в Google Таблицу
+          fetch(CLOUD_SYNC_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ c: coachData, p: players, cal: calendarEvents })
+          }).catch(() => {});
+        }
+
+        // Выводим цифры на экран тренера
+        const vEl = document.getElementById('visitCount');
+        if (vEl) vEl.textContent = coachData.visits;
+        const vTodayEl = document.getElementById('visitTodayCount');
+        if (vTodayEl) vTodayEl.textContent = coachData.dailyStats.count;
+        // -----------------------------------------
         
         players.forEach(p => restorePlayerPassportFields(p, dict));
 
@@ -2279,7 +2314,7 @@
       console.log('Облако недоступно, загружаем из локальной памяти.');
     }
 
-    try {
+   try {
       const savedRoster = localStorage.getItem(STORAGE_KEY);
       const savedCoach = localStorage.getItem(COACH_STORAGE_KEY);
       const savedCal = localStorage.getItem(CALENDAR_STORAGE_KEY);
@@ -2299,6 +2334,12 @@
       coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
       calendarEvents = JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
     }
+
+    const vElFallback = document.getElementById('visitCount');
+    if (vElFallback) vElFallback.textContent = coachData.visits || 1;
+    const vTodayFallback = document.getElementById('visitTodayCount');
+    if (vTodayFallback) vTodayFallback.textContent = (coachData.dailyStats ? coachData.dailyStats.count : 1);
+
     renderCoachCard();
     renderPodium();
     renderFifaCards();
@@ -3456,20 +3497,7 @@
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
-  // Подсчет посещений сайта (отображается только тренеру)
-  async function initCoachVisitCounter() {
-    try {
-      // Увеличиваем счетчик на +1 при входе
-      const res = await fetch('https://api.counterapi.dev/v1/fc_paderinskoe_5x5/hub_visits/up');
-      const data = await res.json();
-      if (data && data.count !== undefined) {
-        document.getElementById('visitCount').textContent = data.count;
-      }
-    } catch (e) {
-      document.getElementById('visitCount').textContent = '—';
-    }
-  }
-  initCoachVisitCounter();
+
 </script>
 </body>
 </html>
