@@ -1158,6 +1158,9 @@
       </div>
     </div>
     <div class="header-controls">
+      <span class="btn-t coach-only" style="cursor:default; border-color:#00e676; color:#69f0ae; background:#14291d;" title="Сколько раз игроки открывали сайт">
+        👁 Визитов: <b id="visitCount">...</b>
+      </span>
       <button class="btn-t coach-lock" id="btnCoachToggle" onclick="toggleCoachMode()">🔒 Вход Тренера</button>
     </div>
   </div>
@@ -2556,6 +2559,11 @@
           <button class="btn-coach-note ${hasNote ? 'has-note' : ''}" onclick="openNoteViewModal(${idx})">
             ${hasNote ? '📩 Наставление (Открыть!)' : '📋 Наставление (пусто)'}
           </button>
+          ${hasNote ? `
+            <div class="coach-only" style="width:100%; justify-content:center; margin-top:5px; padding:3px 6px; border-radius:5px; font-size:10.5px; font-weight:800; background:${p.noteReadAt ? 'rgba(0,200,83,0.22)' : 'rgba(255,196,0,0.2)'}; color:${p.noteReadAt ? '#69f0ae' : '#ffe066'}; border:1px solid ${p.noteReadAt ? '#00c853' : '#f5c518'};">
+              ${p.noteReadAt ? `👀 Прочитано: ${p.noteReadAt}` : '⏳ Не прочитано игроком'}
+            </div>
+          ` : ''}
           <div class="fut-edit-actions coach-only">
             <button class="btn-card-edit" onclick="quickMvp(${idx})" title="Лучший на тренировке (+1 звезда)">+⭐</button>
             <button class="btn-card-edit" onclick="quickGoal(${idx})" title="Гол">+⚽</button>
@@ -2671,12 +2679,24 @@
     alert(`✅ Тренировка засчитана!\nОтмечено игроков: ${presentCount}\nВыдано звезд «Лучший на тренировке»: ${starCount}`);
   }
 
-  function openNoteViewModal(idx) {
+ function openNoteViewModal(idx) {
     const p = players[idx];
     document.getElementById('noteViewTitle').textContent = `📩 Наставление для: ${p.name}`;
-    const noteText = (p.note && p.note.trim()) ? p.note : 'Тренер пока не оставил персональных замечаний.';
+    const hasNote = p.note && p.note.trim().length > 0;
+    const noteText = hasNote ? p.note : 'Тренер пока не оставил персональных замечаний.';
     document.getElementById('noteViewContent').textContent = noteText;
     document.getElementById('noteViewModal').classList.add('active');
+
+    // Если наставление есть и его открыл ИГРОК (не в режиме тренера) — ставим метку времени прочтения
+    if (hasNote && !isCoachMode) {
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
+      saveRosterLocal(); // Сохраняем отметку в облако (Google Таблицу)
+    }
   }
 
   function openCoachModal() {
@@ -2826,6 +2846,7 @@
       yc: Number(document.getElementById('pYc').value) || 0,
       rc: Number(document.getElementById('pRc').value) || 0,
       note: document.getElementById('pNote').value.trim(),
+      noteReadAt: (idx >= 0 && players[idx] && players[idx].note === document.getElementById('pNote').value.trim()) ? (players[idx].noteReadAt || '') : '',
       photo: finalPhoto
     };
 
@@ -3435,6 +3456,20 @@
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
+  // Подсчет посещений сайта (отображается только тренеру)
+  async function initCoachVisitCounter() {
+    try {
+      // Увеличиваем счетчик на +1 при входе
+      const res = await fetch('https://api.counterapi.dev/v1/fc_paderinskoe_5x5/hub_visits/up');
+      const data = await res.json();
+      if (data && data.count !== undefined) {
+        document.getElementById('visitCount').textContent = data.count;
+      }
+    } catch (e) {
+      document.getElementById('visitCount').textContent = '—';
+    }
+  }
+  initCoachVisitCounter();
 </script>
 </body>
 </html>
