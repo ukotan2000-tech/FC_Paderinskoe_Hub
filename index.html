@@ -267,10 +267,6 @@
     justify-content: space-between;
   }
   .podium-slot:hover { transform: translateY(-4px); }
-  .podium-slot.slot-rising {
-    border-color: #00e676;
-    background: linear-gradient(145deg, #11261a 0%, #15151d 100%);
-  }
   .podium-role-badge {
     font-size: 11px;
     font-weight: 900;
@@ -281,10 +277,6 @@
     color: #000;
     margin-bottom: 10px;
     letter-spacing: 0.4px;
-  }
-  .slot-rising .podium-role-badge {
-    background: linear-gradient(90deg, #00c853, #b9f6ca, #00c853);
-    color: #00240c;
   }
   .podium-avatar {
     width: 68px;
@@ -334,43 +326,72 @@
     line-height: 1.3;
   }
 
-  /* ЦЕНТРАЛЬНАЯ ЛЕГЕНДАРНАЯ КАРТОЧКА ТРЕНЕРА */
+  /* ================= БЛОК ДВУХ ТРЕНЕРОВ (ЛЕГЕНДА И ИГРАЮЩИЙ ТРЕНЕР) ================= */
   .coach-showcase {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 22px;
+    align-items: stretch;
+    gap: 28px;
+    margin-bottom: 24px;
   }
+  /* 1. Карточка Наставника-Легенды (99 все статы) */
   .fut-coach-legend {
-    width: 310px;
+    width: 315px;
     border-radius: 24px 24px 20px 20px;
-    padding: 16px;
+    padding: 15px;
     background: linear-gradient(135deg, #1a0508 0%, #3d0e14 35%, #121829 70%, #6e4e08 100%);
     color: #ffe89e;
     border: 3px solid #f5c518;
     box-shadow: 0 0 28px rgba(245, 197, 24, 0.45), inset 0 0 15px rgba(245, 197, 24, 0.2);
     position: relative;
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .fut-coach-legend:hover { transform: translateY(-4px); }
+
+  /* 2. Эксклюзивная карточка Играющего Тренера (выделяется среди игроков!) */
+  .fut-playing-coach {
+    width: 315px;
+    border-radius: 24px 24px 20px 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #06211c 0%, #0d3b33 38%, #101b2d 72%, #0c4d3c 100%);
+    color: #e0fff9;
+    border: 3px solid #00e676;
+    box-shadow: 0 0 28px rgba(0, 230, 118, 0.4), inset 0 0 16px rgba(245, 197, 24, 0.25);
+    position: relative;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .fut-playing-coach:hover { transform: translateY(-4px); }
+
   .coach-banner-top {
     text-align: center;
     font-size: 11px;
     font-weight: 900;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     color: #000;
     background: linear-gradient(90deg, #c49316, #ffee88, #c49316);
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 10px;
     margin-bottom: 10px;
     text-transform: uppercase;
+  }
+  .coach-banner-top.playing-banner {
+    background: linear-gradient(90deg, #00c853, #b9f6ca, #f5c518);
+    color: #00240c;
   }
   .coach-motto-box {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(245, 197, 24, 0.4);
     border-radius: 8px;
-    padding: 8px 10px;
-    margin-top: 8px;
-    font-size: 12.5px;
+    padding: 7px 10px;
+    margin-top: 7px;
+    font-size: 12px;
     color: #fff;
     text-align: center;
     font-style: italic;
@@ -378,13 +399,13 @@
   }
 
   /* СЕТКА ИГРОКОВ */
-  .fifa-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-    gap: 22px;
-    justify-items: center;
-  }
-
+   .fifa-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+   gap: 22px;
+   justify-items: center;
+   align-items: start; /* <-- Добавь эту строчку */
+ }
   /* Щит карточки игрока */
   .fut-card {
     width: 275px;
@@ -397,7 +418,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .fut-card:hover { transform: translateY(-4px); }
 
@@ -441,7 +462,7 @@
     font-weight: 900;
     padding: 3px 8px;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.4px;
   }
@@ -459,6 +480,33 @@
     background: rgba(183, 28, 28, 0.92);
     color: #ffffff;
     border: 1px solid #ff8a80;
+  }
+
+  /* Спец-плашки: Именинник и Дисквалификация КК */
+  .bday-banner {
+    background: linear-gradient(90deg, #ff4081, #ffd740, #ff4081);
+    color: #000;
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+    padding: 3px 6px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    box-shadow: 0 0 10px rgba(255, 64, 129, 0.6);
+    animation: pulseBday 1.5s infinite alternate;
+  }
+  @keyframes pulseBday { from { transform: scale(0.98); } to { transform: scale(1.02); } }
+
+  .card-timer-alert {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid #ff5252;
+    color: #ffebee;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-align: center;
+    padding: 3px 6px;
+    border-radius: 6px;
+    margin-top: 5px;
   }
 
   .fut-header {
@@ -1190,7 +1238,8 @@
         <button class="tool-btn active coach-only" onclick="openPlayerModal(-1)">➕ Добавить игрока</button>
         <button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
         <select class="sort-select" id="skillSortSelect" onchange="sortPlayersBy(this.value)">
-          <option value="ovr">🔽 Сортировать по навыку...</option>
+          <option value="ovr">🔽 Сортировать по навыку / роли...</option>
+          <option value="pos">📌 По Позиции (ВРТ ➔ ФИК ➔ АЛА ➔ СТЛ)</option>
           <option value="mvp">⭐ По Звездам MVP</option>
           <option value="pac">⚡ По Скорости (СКО)</option>
           <option value="sho">💥 По Удару (УДР)</option>
@@ -1205,10 +1254,18 @@
           <option value="yc">🟨 По Желтым карточкам</option>
           <option value="rc">🟥 По Красным карточкам</option>
         </select>
+        <select class="sort-select" id="roleFilterSelect" onchange="renderFifaCards()" style="border-color: var(--accent-yellow);">
+          <option value="ALL">👥 Все роли (Весь состав)</option>
+          <option value="ВРТ">🧤 Только ВРТ (Вратари)</option>
+          <option value="ФИК">🛡 Только ФИК (Защитники)</option>
+          <option value="АЛА">⚡ Только АЛА (Края)</option>
+          <option value="СТЛ">💥 Только СТЛ (Столбы)</option>
+          <option value="УНИ">🔄 Только УНИ (Универсалы)</option>
+          <option value="НЕ ОПР">❓ Не определены</option>
+        </select>
       </div>
 
       <div class="sync-bar">
-        <button class="tool-btn green coach-only" onclick="downloadBundledHtmlFile()">💾 1. Скачать резерв с ФОТО</button>
         <button class="tool-btn danger coach-only" onclick="resetToRedZone()">🔄 Сброс (Старт 30)</button>
       </div>
     </div>
@@ -1216,7 +1273,7 @@
     <!-- РАСКРЫВАЮЩАЯСЯ ПАМЯТКА ДЛЯ ДЕТЕЙ -->
     <div class="kids-guide-banner" id="kidsGuideBanner">
       <div class="kids-guide-header" onclick="document.getElementById('kidsGuideBanner').classList.toggle('open')">
-        <span>❓ ПАМЯТКА ИГРОКАМ: Что означают буквы (СКО, ПАС, ФИЗ) и как попасть на Подиум Лидеров?</span>
+        <span>❓ ПАМЯТКА ИГРОКАМ: Навыки (СКО, ПАС, ФИЗ), Подиум Лидеров и Сгорание Карточек (🟨/🟥)</span>
         <span>🔽 Нажми, чтобы прочитать</span>
       </div>
       <div class="kids-guide-body">
@@ -1230,8 +1287,10 @@
           <div class="kids-guide-item">🔥 <b>ФИЗ (Физика и Дух):</b> Твоя выносливость на всю смену, борьба плечом в плечо и громкий подсказ («Горишь!», «Один!»).</div>
         </div>
         <div style="margin-top: 12px;">
-          <b>2. Как попасть на Подиум Лидеров (Символическая Пятёрка 5х5)?</b><br>
-          На подиуме ровно 5 мест стартового состава: <b>Вратарь, Фиксо, два Ала и Столб</b>! Компьютер считает твой <b>Индекс Лидера</b>: складывает профильные навыки позиции, прибавляет баллы за каждую <b>тренировку (📅)</b>, <b>голы (⚽)</b>, <b>пасы (👟)</b> и дает огромный бонус <b>+20 баллов за каждую редкую Звезду MVP (⭐)</b> — её тренер вручает только лучшим игрокам матча на турнире или за выдающуюся самоотдачу на тренировке!
+          <b>2. Как попасть на Подиум Лидеров и правила дисциплинарных карточек (🟨 и 🟥):</b><br>
+          • На подиуме 5 мест основы: <b>Вратарь, Фиксо, два Ала и Столб</b>! Компьютер считает твой <b>Индекс Лидера</b> (профильные навыки + 📅 тренировки + ⚽ голы + 👟 пасы + <b>20 баллов за каждую редкую Звезду MVP ⭐</b>).<br>
+          • 🟨 <b>Желтая карточка</b> отнимает очки рейтинга и висит ровно <b>7 дней (неделю)</b> с момента получения, после чего автоматически сгорает.<br>
+          • 🟥 <b>Красная карточка</b> висит <b>3 дня</b>: пока она активна, игрок получает <b>полный запрет на Подиум Лидеров</b>!
         </div>
       </div>
     </div>
@@ -1245,14 +1304,14 @@
       <span>⬛🟨 <b>Элита (85–99)</b></span>
     </div>
 
-    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА ГЛАВНОГО ТРЕНЕРА -->
+    <!-- ЦЕНТРАЛЬНАЯ ВИТРИНА ТРЕНЕРСКОГО ШТАБА (2 ТРЕНЕРА: ЛЕГЕНДА И ИГРАЮЩИЙ ТРЕНЕР) -->
     <div class="coach-showcase" id="coachCardContainer"></div>
 
-    <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ (СИМВОЛИЧЕСКАЯ СБОРНАЯ 5х5 + ПРОРЫВ) -->
+    <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ (СИМВОЛИЧЕСКАЯ СБОРНАЯ 5х5) -->
     <div class="podium-section">
       <div class="podium-header">
         <h3 class="podium-title">🏆 Подиум Лидеров: Символическая Пятёрка</h3>
-        <div class="podium-sub">Автоматический рейтинг лучших игроков по позициям (Навыки роли + 📅 Тренировки + ⭐ Звезды Тренера + ⚽/👟 Результат)</div>
+        <div class="podium-sub">Автоматический рейтинг лучших игроков по позициям (Навыки роли + 📅 Тренировки + ⭐ Звезды Тренера + ⚽/👟 Результат • Без активных 🟥)</div>
       </div>
       <div class="podium-grid" id="podiumContainer"></div>
     </div>
@@ -1318,7 +1377,7 @@
       <ul class="badge-list">
         <li><b>Для чего карточки нужны Тренеру:</b> По карточкам и Журналу тренировок тренер видит полную картину — кто ходит без пропусков, кто получает звезды «Лучший на тренировке» (⭐), какие навыки растут и главное — <b>кого брать в основу на выездные турниры</b>.</li>
         <li><b>Жесткий закон отбора в состав:</b> Если у игрока слабая карточка (Красная или Оранжевая зона), он пропускает тренировки или ленится — на соревнованиях он <b>либо сидит на скамейке запасных, либо остается дома вне заявки</b>.</li>
-        <li><b>Жесткая привязка по Имени и Дате рождения:</b> У каждого игрока в карточке прописана полная дата рождения — это твой личный футбольный паспорт в клубе, к которому навсегда привязаны твоё фото, статистика и награды.</li>
+        <li><b>Автоматическое сгорание карточек:</b> Желтая карточка (🟨) действует <b>7 дней</b> и снижает баллы Подиума. Красная карточка (🟥) действует <b>3 дня</b> и полностью блокирует попадание игрока на Подиум Лидеров.</li>
       </ul>
     </div>
 
@@ -1373,10 +1432,10 @@
     <div class="info-block">
       <h2>3. Как считается Подиум Лидеров по позициям (Честная математика)</h2>
       <ul class="badge-list">
-        <li>🧤 <b>Лучший Вратарь (ВРТ):</b> Сумма всех вратарских навыков + <b>15 баллов за каждую Звезду ⭐</b> + 4 балла за каждую тренировку + бонусы за игры и голевые броски рукой.</li>
-        <li>🛡 <b>Лучший Защитник (ФИК — Фиксо):</b> Главный упор на <b>Защиту (ЗАЩ × 2)</b>, Физику (ФИЗ) и Первый пас (ПАС) + <b>15 баллов за каждую Звезду ⭐</b> + 3 балла за тренировку + пасы и голы.</li>
-        <li>⚡ <b>АЛА #1 и АЛА #2 (Два лучших Края):</b> В схеме 5х5 на поле два края, поэтому на подиум попадают сразу <b>два лучших игрока с позицией АЛА</b> по сумме очков! Главный упор на <b>Скорость (СКО × 1.5)</b>, <b>Дриблинг (ДРБ × 1.5)</b> и Пас + <b>15 баллов за каждую Звезду ⭐</b> + голы, пасы и тренировки.</li>
-        <li>💥 <b>Лучший Столб (СТЛ — Нападающий):</b> Главный упор на <b>Удар (УДР × 2)</b>, <b>Физику/Корпус (ФИЗ × 1.5)</b> и Пас + <b>15 баллов за каждую Звезду ⭐</b> + повышенный бонус за забитые голы и тренировки.</li>
+        <li>🧤 <b>Лучший Вратарь (ВРТ):</b> Сумма всех вратарских навыков + <b>20 баллов за каждую Звезду ⭐</b> + 4 балла за каждую тренировку + бонусы за игры и голевые броски рукой.</li>
+        <li>🛡 <b>Лучший Защитник (ФИК — Фиксо):</b> Главный упор на <b>Защиту (ЗАЩ × 2)</b>, Физику (ФИЗ) и Первый пас (ПАС) + <b>20 баллов за каждую Звезду ⭐</b> + 3 балла за тренировку + пасы и голы.</li>
+        <li>⚡ <b>АЛА #1 и АЛА #2 (Два лучших Края):</b> В схеме 5х5 на поле два края, поэтому на подиум попадают сразу <b>два лучших игрока с позицией АЛА</b> по сумме очков! Главный упор на <b>Скорость (СКО × 1.5)</b>, <b>Дриблинг (ДРБ × 1.5)</b> и Пас + <b>20 баллов за каждую Звезду ⭐</b> + голы, пасы и тренировки.</li>
+        <li>💥 <b>Лучший Столб (СТЛ — Нападающий):</b> Главный упор на <b>Удар (УДР × 2)</b>, <b>Физику/Корпус (ФИЗ × 1.5)</b> и Пас + <b>20 баллов за каждую Звезду ⭐</b> + повышенный бонус за забитые голы и тренировки.</li>
       </ul>
     </div>
 
@@ -1433,6 +1492,7 @@
       </tbody></table>
     </div>
   </div>
+
   <!-- ================= ВКЛАДКА 3: СКОРОСТЬ И РЕАКЦИЯ ================= -->
   <div id="tab-speed" class="tab-content">
     <div class="grid">
@@ -1562,7 +1622,6 @@
       </div>
     </div>
   </div>
-
   <!-- ================= ВКЛАДКА 5: ДРИБЛИНГ 5х5 ================= -->
   <div id="tab-drib" class="tab-content">
     <div class="grid">
@@ -1917,11 +1976,11 @@
 
     <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
       <div>
-        <label>🟨 Желтые (ЖК):</label>
+        <label>🟨 Активные ЖК (сгорают за 7 дн.):</label>
         <input type="number" id="pYc" min="0" value="0">
       </div>
       <div>
-        <label>🟥 Красные (КК):</label>
+        <label>🟥 Активные КК (сгорают за 3 дн.):</label>
         <input type="number" id="pRc" min="0" value="0">
       </div>
     </div>
@@ -1958,32 +2017,98 @@
   </div>
 </div>
 
-<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ КАРТОЧКИ ТРЕНЕРА ================= -->
+<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ТРЕНЕРОВ (ЛЕГЕНДА ИЛИ ИГРАЮЩИЙ ТРЕНЕР) ================= -->
 <div class="modal-overlay" id="coachModal">
   <div class="modal-card">
-    <h3>👑 Редактировать карточку Тренера</h3>
+    <h3 id="coachModalHeader">👑 Редактировать карточку Тренера</h3>
+    <input type="hidden" id="editCoachType" value="playing">
+
     <div class="photo-upload-box">
       <div class="photo-preview" id="coachPhotoPreview">👑</div>
       <div>
-        <label class="photo-btn-label" for="cPhotoInput">📸 Фото Тренера</label>
+        <label class="photo-btn-label" for="cPhotoInput">📸 Загрузить фото Тренера</label>
         <input type="file" id="cPhotoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event, 'coach')">
         <div style="margin-top:4px;">
           <button type="button" class="btn-t red" style="font-size:11px; padding:3px 7px;" onclick="removeCoachPhoto()">✖ Убрать фото</button>
         </div>
       </div>
     </div>
+
     <div class="form-row">
       <label>Имя / Отчество Тренера:</label>
-      <input type="text" id="cNameInput" placeholder="Главный Тренер">
+      <input type="text" id="cNameInput" placeholder="Имя Тренера">
     </div>
     <div class="form-row">
-      <label>Звание / Должность:</label>
+      <label>Звание / Должность на карточке:</label>
       <input type="text" id="cTitleInput" placeholder="НАСТАВНИК • ФК ПАДЕРИНСКОЕ">
     </div>
     <div class="form-row">
-      <label>📢 Установка / Девиз для команды:</label>
-      <textarea id="cMottoInput" rows="3" placeholder="Дисциплина бьет класс!"></textarea>
+      <label>📢 Установка / Девиз:</label>
+      <textarea id="cMottoInput" rows="2" placeholder="Дисциплина бьет класс!"></textarea>
     </div>
+
+    <!-- Блок характеристик специально для Играющего Тренера -->
+    <div id="playingCoachStatsSection" style="display:none; border-top:1px solid var(--border-col); padding-top:10px; margin-top:10px;">
+      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px;">
+        <div>
+          <label>Позиция:</label>
+          <input type="text" id="cPosInput" placeholder="УНИ / ТРН">
+        </div>
+        <div>
+          <label>Номер:</label>
+          <input type="number" id="cNumInput" min="1" max="99" value="10">
+        </div>
+        <div>
+          <label>🎂 Дата рожд.:</label>
+          <input type="date" id="cDobInput">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label><span>⚡ СКО (Скорость):</span> <span id="valCPac">85</span></label>
+        <input type="range" id="cPac" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+      <div class="form-row">
+        <label><span>💥 УДР (Удар):</span> <span id="valCSho">85</span></label>
+        <input type="range" id="cSho" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+      <div class="form-row">
+        <label><span>🎯 ПАС (Передачи):</span> <span id="valCPas">85</span></label>
+        <input type="range" id="cPas" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+      <div class="form-row">
+        <label><span>👟 ДРБ (Дриблинг):</span> <span id="valCDri">85</span></label>
+        <input type="range" id="cDri" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+      <div class="form-row">
+        <label><span>🛡 ЗАЩ (Защита):</span> <span id="valCDef">85</span></label>
+        <input type="range" id="cDef" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+      <div class="form-row">
+        <label><span>🔥 ФИЗ (Физика):</span> <span id="valCPhy">85</span></label>
+        <input type="range" id="cPhy" min="30" max="99" value="85" oninput="updateCoachSliders()">
+      </div>
+
+      <div class="form-row" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px;">
+        <div>
+          <label>⚽ Голы:</label>
+          <input type="number" id="cGoals" min="0" value="0">
+        </div>
+        <div>
+          <label>👟 Пасы:</label>
+          <input type="number" id="cAssists" min="0" value="0">
+        </div>
+        <div>
+          <label>🏆 Игры:</label>
+          <input type="number" id="cGames" min="0" value="0">
+        </div>
+        <div>
+          <label>📅 Трен:</label>
+          <input type="number" id="cAtt" min="0" value="1">
+        </div>
+      </div>
+    </div>
+
     <div style="display:flex; gap:8px; margin-top:15px;">
       <button class="tool-btn active" style="flex:1;" onclick="saveCoachModal()">💾 Сохранить карточку тренера</button>
       <button class="tool-btn" onclick="closeCoachModal()">Отмена</button>
@@ -2002,7 +2127,7 @@
 
 <!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ВЫЕЗДА / ТУРНИРА ================= -->
 <div class="modal-overlay" id="eventModal">
-  <div class="modal-card" style="max-width: 600px;">
+  <div class="modal-card" style="max-width: 620px;">
     <h3 id="eventModalTitle">📅 Карточка Выезда / Турнира</h3>
     <input type="hidden" id="editEventIndex" value="-1">
 
@@ -2025,9 +2150,15 @@
       </div>
     </div>
 
-    <div class="form-row">
-      <label>Название турнира / События:</label>
-      <input type="text" id="evTitle" placeholder="Например: Кубок Осени 5х5 (1 тур)">
+    <div class="form-row" style="display:grid; grid-template-columns: 1.2fr 1fr; gap:10px;">
+      <div>
+        <label>Название турнира / События:</label>
+        <input type="text" id="evTitle" placeholder="Например: Кубок Осени 5х5">
+      </div>
+      <div>
+        <label title="Под каким именем играет наша команда на этом выезде">🛡 Название нашей команды:</label>
+        <input type="text" id="evTeamName" placeholder="ФК Падеринское / Сборная">
+      </div>
     </div>
 
     <div class="form-row">
@@ -2037,7 +2168,7 @@
 
     <div class="form-row">
       <label>
-        <span>⚽ Игры этого выезда (3–4 матча и более):</span>
+        <span>⚽ Игры этого выезда (можно менять название нашей команды в каждом матче):</span>
         <button type="button" class="btn-t" style="background:var(--accent-yellow); color:#000;" onclick="addGameRowInModal()">+ Добавить игру</button>
       </label>
       <div id="evGamesEditorList" style="margin-top:6px;"></div>
@@ -2064,6 +2195,10 @@
   const CALENDAR_STORAGE_KEY = 'paderinskoe_5x5_calendar_v4';
   const COACH_PIN = '973556';
 
+  // Время жизни карточек в миллисекундах: ЖК = 7 дней, КК = 3 дня
+  const YC_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
+  const RC_DURATION_MS = 3 * 24 * 60 * 60 * 1000;
+
   // Ссылка на твою Google Таблицу (Apps Script Web App)
   const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbzyp7ou9kSGcNhuKvh0OZp2hgxU8WRe6FWqC-c2MPGgTbAVRCXPYhgN9NPcJ6n8YQ2w6g/exec';
 
@@ -2074,19 +2209,30 @@
   /*__EMBEDDED_DATA_START__*/
   const EMBEDDED_VERSION = 1792482697854;
   const EMBEDDED_ROSTER_DATA = [
-    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""},
-    {"id":6,"name":"Игрок 6","dob":"","pos":"НЕ ОПР (Не определен)","num":6,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""},
-    {"id":7,"name":"Игрок 7","dob":"","pos":"НЕ ОПР (Не определен)","num":7,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""},
-    {"id":8,"name":"Игрок 8","dob":"","pos":"НЕ ОПР (Не определен)","num":8,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""},
-    {"id":9,"name":"Игрок 9","dob":"","pos":"НЕ ОПР (Не определен)","num":9,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""},
-    {"id":10,"name":"Игрок 10","dob":"","pos":"НЕ ОПР (Не определен)","num":10,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""}
+    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
+    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
+    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
+    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
+    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"status":"out","note":"","photo":""}
   ];
-  const EMBEDDED_COACH_DATA = {"name":"Игорь Евгеньевич","title":"НАСТАВНИК • ФК ПАДЕРИНСКОЕ","motto":"В основу попадают те, кто пашет на тренировках, слышит команду и бьется до конца!","photo":""};
-  const EMBEDDED_CALENDAR_DATA = [{"id":101,"date":"25.10.2026 (Вс)","title":"Кубок Осени 5х5 — Выездной тур","location":"СК «Олимпиец» • Сбор в 08:30","result":"upcoming","note":"Берем основную форму, щитки и воду. Настрой боевой!","games":[{"time":"09:15","opp":"ДЮСШ-2","gf":"","ga":"","scorers":""},{"time":"10:30","opp":"Тобол","gf":"","ga":"","scorers":""},{"time":"12:00","opp":"Спартак","gf":"","ga":"","scorers":""}]}];
+  const EMBEDDED_COACH_DATA = {
+    "name": "Игорь Евгеньевич",
+    "title": "ИГРАЮЩИЙ ТРЕНЕР • ФК ПАДЕРИНСКОЕ",
+    "motto": "В основу попадают те, кто пашет на тренировках, слышит команду и бьется до конца!",
+    "photo": "",
+    "pos": "УНИ / ТРН",
+    "num": 10,
+    "dob": "",
+    "pac": 85, "sho": 85, "pas": 86, "dri": 85, "def": 84, "phy": 86,
+    "goals": 0, "assists": 0, "games": 0, "att": 1,
+    "legend": {
+      "name": "Тренер-Наставник",
+      "title": "ЛЕГЕНДА КЛУБА • УЧИТЕЛЬ ТРЕНЕРА",
+      "motto": "Фундамент побед закладывается характером, уважением к делу и железной дисциплиной!",
+      "photo": ""
+    }
+  };
+  const EMBEDDED_CALENDAR_DATA = [{"id":101,"date":"25.10.2026 (Вс)","title":"Кубок Осени 5х5 — Выездной тур","teamName":"ФК Падеринское","location":"СК «Олимпиец» • Сбор в 08:30","result":"upcoming","note":"Берем основную форму, щитки и воду. Настрой боевой!","games":[{"time":"09:15","ourTeam":"ФК Падеринское","opp":"ДЮСШ-2","gf":"","ga":"","scorers":""},{"time":"10:30","ourTeam":"ФК Падеринское","opp":"Тобол","gf":"","ga":"","scorers":""},{"time":"12:00","ourTeam":"ФК Падеринское","opp":"Спартак","gf":"","ga":"","scorers":""}]}];
   /*__EMBEDDED_DATA_END__*/
 
   let players = [];
@@ -2102,14 +2248,31 @@
     return /^игрок(\s+\d+)?$/i.test(String(str || '').trim());
   }
 
-  // Формирует жесткий ключ-паспорт: Имя + Дата Рождения
   function getPassportKey(name, dob) {
     const nKey = normalizeName(name);
     const dKey = String(dob || '').trim();
     return dKey ? `${nKey}__${dKey}` : nKey;
   }
 
-  // Красивое отображение даты рождения и возраста на карточке
+  // Проверка дня рождения (сегодня или в ближайшие 3 дня)
+  function getBirthdayStatus(dobStr) {
+    if (!dobStr) return null;
+    const parts = String(dobStr).split('-');
+    if (parts.length !== 3) return null;
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let nextBday = new Date(now.getFullYear(), month, day);
+    if (nextBday < today) {
+      nextBday = new Date(now.getFullYear() + 1, month, day);
+    }
+    const diffDays = Math.round((nextBday - today) / (1000 * 60 * 60 * 24));
+    if (diffDays === 0) return '🎉 СЕГОДНЯ ДЕНЬ РОЖДЕНИЯ! 🎂';
+    if (diffDays > 0 && diffDays <= 3) return `🎂 День рождения через ${diffDays} дн.!`;
+    return null;
+  }
+
   function formatDobDisplay(dobStr) {
     if (!dobStr) return '🎂 Дата рожд. не указана';
     const parts = String(dobStr).split('-');
@@ -2128,16 +2291,101 @@
     return `🎂 ${formatted}${ageLabel}`;
   }
 
-  // Словарь жесткой привязки паспорта (сохраняет Дату рождения, Звезды и Фото за конкретным именем)
+  // ================= ТАЙМЕР И АВТОСГОРАНИЕ КАРТОЧЕК (ЖК 7 ДНЕЙ, КК 3 ДНЯ) =================
+  function syncAndCleanPlayerCards(p) {
+    const now = Date.now();
+    if (!Array.isArray(p.ycList)) {
+      p.ycList = [];
+      const initialYc = Number(p.yc || 0);
+      for (let i = 0; i < initialYc; i++) p.ycList.push(now);
+    }
+    if (!Array.isArray(p.rcList)) {
+      p.rcList = [];
+      const initialRc = Number(p.rc || 0);
+      for (let i = 0; i < initialRc; i++) p.rcList.push(now);
+    }
+
+    const prevYcLen = p.ycList.length;
+    const prevRcLen = p.rcList.length;
+
+    p.ycList = p.ycList.filter(ts => (now - Number(ts)) < YC_DURATION_MS);
+    p.rcList = p.rcList.filter(ts => (now - Number(ts)) < RC_DURATION_MS);
+
+    p.yc = p.ycList.length;
+    p.rc = p.rcList.length;
+
+    return (prevYcLen !== p.yc || prevRcLen !== p.rc);
+  }
+
+  function cleanAllPlayersCards() {
+    let changed = false;
+    players.forEach(p => {
+      if (syncAndCleanPlayerCards(p)) changed = true;
+    });
+    return changed;
+  }
+
+  function formatRemainingTime(msLeft) {
+    if (msLeft <= 0) return '0ч';
+    const totalHours = Math.ceil(msLeft / (1000 * 60 * 60));
+    const days = Math.floor(totalHours / 24);
+    const hours = totalHours % 24;
+    if (days > 0) return `${days}д ${hours}ч`;
+    return `${hours}ч`;
+  }
+
+  function getCardExpiryHint(p) {
+    const now = Date.now();
+    const hints = [];
+    if (p.rc > 0 && Array.isArray(p.rcList) && p.rcList.length > 0) {
+      const oldestRc = Math.min(...p.rcList);
+      const left = RC_DURATION_MS - (now - oldestRc);
+      hints.push(`⛔ БАН ПОДИУМА (🟥 сгорит через ${formatRemainingTime(left)})`);
+    }
+    if (p.yc > 0 && Array.isArray(p.ycList) && p.ycList.length > 0) {
+      const oldestYc = Math.min(...p.ycList);
+      const left = YC_DURATION_MS - (now - oldestYc);
+      hints.push(`🟨 ЖК сгорит через ${formatRemainingTime(left)}`);
+    }
+    return hints.join(' • ');
+  }
+
+  // Гарантируем, что у объекта тренера есть и твои статы, и объект Легенды
+  function ensureCoachStructure() {
+    if (!coachData || typeof coachData !== 'object') {
+      coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
+    }
+    if (!coachData.name) coachData.name = 'Игорь Евгеньевич';
+    if (!coachData.title) coachData.title = 'ИГРАЮЩИЙ ТРЕНЕР • ФК ПАДЕРИНСКОЕ';
+    if (!coachData.motto) coachData.motto = 'В основу попадают те, кто пашет на тренировках, слышит команду и бьется до конца!';
+    if (!coachData.pos) coachData.pos = 'УНИ / ТРН';
+    if (!coachData.num) coachData.num = 10;
+    if (coachData.dob === undefined) coachData.dob = '';
+    ['pac', 'sho', 'pas', 'dri', 'def', 'phy'].forEach(k => {
+      if (coachData[k] === undefined || coachData[k] === null) coachData[k] = 85;
+    });
+    ['goals', 'assists', 'games', 'att'].forEach(k => {
+      if (coachData[k] === undefined || coachData[k] === null) coachData[k] = (k === 'att' ? 1 : 0);
+    });
+    if (!coachData.legend || typeof coachData.legend !== 'object') {
+      coachData.legend = {
+        name: 'Тренер-Наставник',
+        title: 'ЛЕГЕНДА КЛУБА • УЧИТЕЛЬ ТРЕНЕРА',
+        motto: 'Фундамент побед закладывается характером, уважением к делу и железной дисциплиной!',
+        photo: ''
+      };
+    }
+  }
+
   function getPassportDictionary() {
-    let dict = { byName: {}, byPassport: {}, byId: {} };
+    let dict = { byName: {}, byPassport: {}, byId: {}, coachPhotos: {} };
     try {
       const saved = localStorage.getItem(PASSPORT_MAP_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed && parsed.byName) dict = parsed;
+        if (!dict.coachPhotos) dict.coachPhotos = {};
       }
-      // Поддержка старого словаря фото
       const oldPhotos = localStorage.getItem(PHOTO_MAP_KEY);
       if (oldPhotos) {
         const oldParsed = JSON.parse(oldPhotos);
@@ -2178,6 +2426,9 @@
       }
     });
 
+    if (coachData && coachData.photo) dict.coachPhotos.playing = coachData.photo;
+    if (coachData && coachData.legend && coachData.legend.photo) dict.coachPhotos.legend = coachData.legend.photo;
+
     try {
       localStorage.setItem(PASSPORT_MAP_KEY, JSON.stringify(dict));
       localStorage.setItem(PHOTO_MAP_KEY, JSON.stringify(photoOnlyDict));
@@ -2196,6 +2447,7 @@
     }
     if (p.mvp === undefined || p.mvp === null) p.mvp = 0;
     if (p.dob === undefined || p.dob === null) p.dob = '';
+    syncAndCleanPlayerCards(p);
   }
 
   function handlePhotoUpload(e, targetType) {
@@ -2256,32 +2508,43 @@
     try {
       const response = await fetch(CLOUD_SYNC_URL);
       const cloudData = await response.json();
-      
+
       if (cloudData && cloudData.p && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
         players = cloudData.p;
         coachData = cloudData.c || EMBEDDED_COACH_DATA;
         calendarEvents = cloudData.cal || EMBEDDED_CALENDAR_DATA;
-		
-// --- СЧЕТЧИК ВИЗИТОВ ЗА ВСЁ ВРЕМЯ И ЗА ДЕНЬ ---
-        const todayStr = new Date().toLocaleDateString('ru-RU'); // Получаем текущую дату (напр. "23.10.2026")
-        
+        ensureCoachStructure();
+
+        if (!coachData.photo && dict.coachPhotos && dict.coachPhotos.playing) {
+          coachData.photo = dict.coachPhotos.playing;
+        }
+        if (!coachData.legend.photo && dict.coachPhotos && dict.coachPhotos.legend) {
+          coachData.legend.photo = dict.coachPhotos.legend;
+        }
+
+        // --- СЧЕТЧИК ВИЗИТОВ ЗА ВСЁ ВРЕМЯ И ЗА ДЕНЬ ---
+        const todayStr = new Date().toLocaleDateString('ru-RU');
         if (!coachData.dailyStats) coachData.dailyStats = { date: todayStr, count: 0 };
-        
-        // Если настался новый день — сбрасываем счетчик за день на 0
         if (coachData.dailyStats.date !== todayStr) {
           coachData.dailyStats.date = todayStr;
           coachData.dailyStats.count = 0;
         }
-
         coachData.visits = Number(coachData.visits || 0);
-        
-        // Увеличиваем счетчики 1 раз за сессию браузера
+
+        players.forEach(p => restorePlayerPassportFields(p, dict));
+        const cardsExpired = cleanAllPlayersCards();
+
         if (!sessionStorage.getItem('visit_counted')) {
           sessionStorage.setItem('visit_counted', '1');
           coachData.visits += 1;
           coachData.dailyStats.count += 1;
-
-          // Тихо отправляем обновленные данные в Google Таблицу
+          fetch(CLOUD_SYNC_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ c: coachData, p: players, cal: calendarEvents })
+          }).catch(() => {});
+        } else if (cardsExpired) {
           fetch(CLOUD_SYNC_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -2290,19 +2553,15 @@
           }).catch(() => {});
         }
 
-        // Выводим цифры на экран тренера
         const vEl = document.getElementById('visitCount');
         if (vEl) vEl.textContent = coachData.visits;
         const vTodayEl = document.getElementById('visitTodayCount');
         if (vTodayEl) vTodayEl.textContent = coachData.dailyStats.count;
-        // -----------------------------------------
-        
-        players.forEach(p => restorePlayerPassportFields(p, dict));
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
         localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
         localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
-        
+
         updatePassportDictionaryFromRoster();
         renderCoachCard();
         renderPodium();
@@ -2314,7 +2573,7 @@
       console.log('Облако недоступно, загружаем из локальной памяти.');
     }
 
-   try {
+    try {
       const savedRoster = localStorage.getItem(STORAGE_KEY);
       const savedCoach = localStorage.getItem(COACH_STORAGE_KEY);
       const savedCal = localStorage.getItem(CALENDAR_STORAGE_KEY);
@@ -2322,9 +2581,10 @@
       players = savedRoster ? JSON.parse(savedRoster) : JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
       coachData = savedCoach ? JSON.parse(savedCoach) : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
       calendarEvents = savedCal ? JSON.parse(savedCal) : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
+      ensureCoachStructure();
 
       players.forEach(p => restorePlayerPassportFields(p, dict));
-      if (!coachData.photo && EMBEDDED_COACH_DATA.photo) coachData.photo = EMBEDDED_COACH_DATA.photo;
+      cleanAllPlayersCards();
 
       updatePassportDictionaryFromRoster();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
@@ -2333,6 +2593,7 @@
       players = JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
       coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
       calendarEvents = JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
+      ensureCoachStructure();
     }
 
     const vElFallback = document.getElementById('visitCount');
@@ -2348,6 +2609,7 @@
 
   // Сохранение в локальную память и в облачную Google Таблицу
   async function saveRosterLocal() {
+    cleanAllPlayersCards();
     try {
       updatePassportDictionaryFromRoster();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
@@ -2373,7 +2635,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      
+
       const statusSub = document.getElementById('roleStatusText');
       if (isCoachMode && statusSub) {
         statusSub.textContent = 'Режим Тренера • ☁️ Сохранено в облаке';
@@ -2393,6 +2655,7 @@
         num: p.num || (idx + 1),
         pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30,
         goals: 0, assists: 0, games: 0, att: 1, mvp: 0, yc: 0, rc: 0,
+        ycList: [], rcList: [],
         status: "out",
         note: "Докажи свою полезность на тренировках!",
         photo: p.photo || ""
@@ -2405,7 +2668,7 @@
     return Math.round((Number(p.pac) + Number(p.sho) + Number(p.pas) + Number(p.dri) + Number(p.def) + Number(p.phy)) / 6);
   }
 
-// ================= УМНЫЕ ФОРМУЛЫ ПОДИУМА ЛИДЕРОВ (ТОП-5) =================
+  // ================= УМНЫЕ ФОРМУЛЫ ПОДИУМА ЛИДЕРОВ (ТОП-5) =================
   function calcRoleScore(p, roleType) {
     const pac = Number(p.pac || 30);
     const sho = Number(p.sho || 30);
@@ -2421,7 +2684,6 @@
     const yc = Number(p.yc || 0);
     const rc = Number(p.rc || 0);
 
-    // Редкая звезда MVP дает мощный бонус +20 баллов
     const disciplineBonus = (att * 3) + (mvp * 20) - (yc * 5) - (rc * 15);
 
     if (roleType === 'ВРТ') {
@@ -2445,7 +2707,9 @@
     if (!box) return;
 
     const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
-    const pool = realPlayers.length > 0 ? realPlayers : players;
+    const basePool = realPlayers.length > 0 ? realPlayers : players;
+    // Жесткий запрет на Подиум при активной Красной карточке!
+    const pool = basePool.filter(p => Number(p.rc || 0) === 0);
 
     const getPosCode = (p) => String(p.pos || 'НЕ ОПР').split(' (')[0];
 
@@ -2478,7 +2742,7 @@
             <div class="podium-role-badge">${s.title}</div>
             <div class="podium-avatar">⏳</div>
             <div class="podium-player-name" style="color:#888;">Место свободно</div>
-            <div class="podium-score-pill">Назначь позицию</div>
+            <div class="podium-score-pill">Назначь позицию (без 🟥)</div>
             <div class="podium-formula-hint">${s.hint}</div>
           </div>
         `;
@@ -2516,33 +2780,107 @@
     return { cls: 'status-out', text: '🔴 Вне заявки / Лавка' };
   }
 
+  // Рендер сразу ДВУХ карточек тренеров: 1) Наставник-Легенда (все 99) и 2) Играющий Тренер (свои статы)
   function renderCoachCard() {
     const box = document.getElementById('coachCardContainer');
     if (!box) return;
-    const avatarHtml = coachData.photo ? `<img src="${coachData.photo}" alt="Тренер">` : '👑';
+    ensureCoachStructure();
+
+    const leg = coachData.legend;
+    const legAvatar = leg.photo ? `<img src="${leg.photo}" alt="${leg.name}">` : '🏆';
+
+    const playOvr = calcOvr(coachData);
+    const playAvatar = coachData.photo ? `<img src="${coachData.photo}" alt="${coachData.name}">` : '👑';
+    const playDob = coachData.dob ? formatDobDisplay(coachData.dob) : '⚡ Действующий Играющий Тренер';
+
     box.innerHTML = `
+      <!-- 1. КАРТОЧКА НАСТАВНИКА — ЛЕГЕНДЫ КЛУБА (ВСЕ СТАТЫ 99) -->
       <div class="fut-coach-legend">
-        <div class="coach-banner-top">★ ЛЕГЕНДА КЛУБА • ШТАБ ★</div>
-        <div class="fut-header" style="border-bottom-color: rgba(245,197,24,0.35);">
-          <div class="fut-rating-col">
-            <div class="fut-ovr" style="color:#f5c518;">99</div>
-            <div class="fut-pos" style="color:#fff;">ТРН</div>
-            <div class="fut-num-badge" style="background:rgba(245,197,24,0.25); color:#f5c518;">BOSS</div>
+        <div>
+          <div class="coach-banner-top">★ ЛЕГЕНДА КЛУБА • НАСТАВНИК ★</div>
+          <div class="fut-header" style="border-bottom-color: rgba(245,197,24,0.35);">
+            <div class="fut-rating-col">
+              <div class="fut-ovr" style="color:#f5c518;">99</div>
+              <div class="fut-pos" style="color:#fff;">ЛЕГ</div>
+              <div class="fut-num-badge" style="background:rgba(245,197,24,0.25); color:#f5c518;">GURU</div>
+            </div>
+            <div class="fut-avatar" style="border-color:#f5c518; width:88px; height:88px;">${legAvatar}</div>
+            <div class="fut-badge-col">
+              <div class="fut-tier-label" style="color:#f5c518;">УЧИТЕЛЬ</div>
+              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
+            </div>
           </div>
-          <div class="fut-avatar" style="border-color:#f5c518; width:90px; height:90px;">${avatarHtml}</div>
-          <div class="fut-badge-col">
-            <div class="fut-tier-label" style="color:#f5c518;">ГЛАВНЫЙ</div>
-            <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
+          <div class="fut-name" style="color:#fff; margin-top:8px;">${leg.name || 'Тренер-Наставник'}</div>
+          <div class="fut-dob-line" style="background:rgba(245,197,24,0.2); color:#ffe89e;">🏆 Школа Мастерства • Эталон 99</div>
+          <div class="fut-stats-grid" style="border-top-color:rgba(245,197,24,0.3); color:#ffe89e;">
+            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">99</span></div>
           </div>
         </div>
-        <div class="fut-name" style="color:#fff; border-bottom:2px solid rgba(245,197,24,0.35); padding-bottom:4px; margin-top:8px;">${coachData.name || 'Главный Тренер'}</div>
-        <div style="text-align:center; font-size:11px; font-weight:800; color:#f5c518; letter-spacing:0.5px;">${coachData.title || 'НАСТАВНИК • ФК ПАДЕРИНСКОЕ'}</div>
-        <div class="coach-motto-box">«${coachData.motto || 'Дисциплина бьет класс!'}»</div>
-        <div class="fut-edit-actions coach-only" style="margin-top:10px;">
-          <button class="btn-card-edit" onclick="openCoachModal()">⚙ Изменить карточку Тренера</button>
+        <div>
+          <div style="text-align:center; font-size:10.5px; font-weight:800; color:#f5c518; margin-top:6px;">${leg.title || 'ЛЕГЕНДА КЛУБА • УЧИТЕЛЬ ТРЕНЕРА'}</div>
+          <div class="coach-motto-box">«${leg.motto || 'Фундамент побед закладывается характером и дисциплиной!'}»</div>
+          <div class="fut-edit-actions coach-only" style="margin-top:8px;">
+            <button class="btn-card-edit" onclick="openCoachModal('legend')">⚙ Настроить карточку Легенды</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. КАРТОЧКА ИГРАЮЩЕГО ГЛАВНОГО ТРЕНЕРА (РЕДАКТИРУЕМЫЕ СТАТЫ) -->
+      <div class="fut-playing-coach">
+        <div>
+          <div class="coach-banner-top playing-banner">⚡ ГЛАВНЫЙ ИГРАЮЩИЙ ТРЕНЕР ⚡</div>
+          <div class="fut-header" style="border-bottom-color: rgba(0,230,118,0.35);">
+            <div class="fut-rating-col">
+              <div class="fut-ovr" style="color:#00e676;">${playOvr}</div>
+              <div class="fut-pos" style="color:#ffe066;">${coachData.pos || 'ТРН'}</div>
+              <div class="fut-num-badge" style="background:rgba(0,230,118,0.22); color:#69f0ae;">№ ${coachData.num || 10}</div>
+            </div>
+            <div class="fut-avatar" style="border-color:#00e676; width:88px; height:88px;">${playAvatar}</div>
+            <div class="fut-badge-col">
+              <div class="fut-tier-label" style="color:#00e676;">НАСТАВНИК</div>
+              <svg class="card-club-crest"><use href="#paderinskoe-crest"></use></svg>
+            </div>
+          </div>
+          <div class="fut-name" style="color:#fff; margin-top:8px;">${coachData.name || 'Игорь Евгеньевич'}</div>
+          <div class="fut-dob-line" style="background:rgba(0,230,118,0.18); color:#b9f6ca;">${playDob}</div>
+          <div class="fut-stats-grid" style="border-top-color:rgba(0,230,118,0.3); color:#e0fff9;">
+            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pac}</span></div>
+            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.dri}</span></div>
+            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.sho}</span></div>
+            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.def}</span></div>
+            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pas}</span></div>
+            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.phy}</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="fut-footer" style="grid-template-columns: repeat(4, 1fr); border-top-color:rgba(0,230,118,0.3);">
+            <span title="Голы">⚽ ${coachData.goals || 0}</span>
+            <span title="Голевые пасы">👟 ${coachData.assists || 0}</span>
+            <span title="Игры">🏆 ${coachData.games || 0}</span>
+            <span title="Тренировки">📅 ${coachData.att || 1}🔥</span>
+          </div>
+          <div class="coach-motto-box" style="border-color:rgba(0,230,118,0.45);">«${coachData.motto || 'Дисциплина бьет класс!'}»</div>
+          <div class="fut-edit-actions coach-only" style="margin-top:8px;">
+            <button class="btn-card-edit" onclick="quickCoachStat('goals')" title="Добавить гол">+⚽</button>
+            <button class="btn-card-edit" onclick="quickCoachStat('assists')" title="Добавить пас">+👟</button>
+            <button class="btn-card-edit" onclick="quickCoachStat('att')" title="Добавить тренировку">+📅</button>
+            <button class="btn-card-edit" style="flex:2;" onclick="openCoachModal('playing')">⚙ Мои статы и профиль</button>
+          </div>
         </div>
       </div>
     `;
+  }
+
+  function quickCoachStat(field) {
+    ensureCoachStructure();
+    coachData[field] = Number(coachData[field] || 0) + 1;
+    playBeep(1150, 150);
+    saveRosterLocal();
   }
 
   function renderFifaCards() {
@@ -2550,19 +2888,29 @@
     if (!container) return;
     container.innerHTML = '';
 
+    const roleFilterEl = document.getElementById('roleFilterSelect');
+    const selectedRole = roleFilterEl ? roleFilterEl.value : 'ALL';
+
     players.forEach((p, idx) => {
+      const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
+      if (selectedRole !== 'ALL' && shortPos !== selectedRole) return;
+
       const ovr = calcOvr(p);
       const styleInfo = getCardClass(ovr);
       const statusInfo = getStatusBadge(p.status || 'out');
-      const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
       const avatarContent = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : `#${p.num}`;
       const hasNote = p.note && p.note.trim().length > 0;
       const dobDisplay = formatDobDisplay(p.dob);
+      const bdayBannerText = getBirthdayStatus(p.dob);
+      const cardExpiryText = getCardExpiryHint(p);
+      const attCount = Number(p.att || 0);
+      const fireIcon = attCount >= 10 ? '🔥' : '';
 
       const card = document.createElement('div');
       card.className = `fut-card ${styleInfo.cls}`;
       card.innerHTML = `
         <div>
+          ${bdayBannerText ? `<div class="bday-banner">${bdayBannerText}</div>` : ''}
           <div class="squad-status-bar ${statusInfo.cls}">${statusInfo.text}</div>
           <div class="fut-header">
             <div class="fut-rating-col">
@@ -2588,14 +2936,15 @@
           </div>
         </div>
         <div>
+          ${cardExpiryText ? `<div class="card-timer-alert">${cardExpiryText}</div>` : ''}
           <div class="fut-mvp-banner">⭐ Звезда MVP (Игра / Трен): ${p.mvp || 0}</div>
           <div class="fut-footer">
             <span title="Голы">⚽ ${p.goals || 0}</span>
             <span title="Голевые пасы">👟 ${p.assists || 0}</span>
             <span title="Игры на турнирах">🏆 ${p.games || 0}</span>
-            <span title="Посещено тренировок">📅 ${p.att || 0}</span>
-            <span title="Желтые карточки">🟨 ${p.yc || 0}</span>
-            <span title="Красные карточки">🟥 ${p.rc || 0}</span>
+            <span title="Посещено тренировок (от 10 — огонек серии)">📅 ${attCount}${fireIcon}</span>
+            <span title="Желтые карточки (сгорают через 7 дней)">🟨 ${p.yc || 0}</span>
+            <span title="Красные карточки (сгорают через 3 дня, бан Подиума)">🟥 ${p.rc || 0}</span>
           </div>
           <button class="btn-coach-note ${hasNote ? 'has-note' : ''}" onclick="openNoteViewModal(${idx})">
             ${hasNote ? '📩 Наставление (Открыть!)' : '📋 Наставление (пусто)'}
@@ -2609,8 +2958,8 @@
             <button class="btn-card-edit" onclick="quickMvp(${idx})" title="Лучший на тренировке (+1 звезда)">+⭐</button>
             <button class="btn-card-edit" onclick="quickGoal(${idx})" title="Гол">+⚽</button>
             <button class="btn-card-edit" onclick="quickAssist(${idx})" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(${idx}, 'yc')" title="Желтая">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(${idx}, 'rc')" title="Красная">+🟥</button>
+            <button class="btn-card-edit" onclick="quickCard(${idx}, 'yc')" title="Желтая на 7 дней">+🟨</button>
+            <button class="btn-card-edit" onclick="quickCard(${idx}, 'rc')" title="Красная на 3 дня">+🟥</button>
             <button class="btn-card-edit" onclick="openPlayerModal(${idx})">⚙</button>
           </div>
         </div>
@@ -2638,14 +2987,32 @@
   }
 
   function quickCard(idx, type) {
-    players[idx][type] = Number(players[idx][type] || 0) + 1;
+    const p = players[idx];
+    syncAndCleanPlayerCards(p);
+    if (type === 'rc') {
+      p.rcList.push(Date.now());
+      p.rc = p.rcList.length;
+    } else {
+      p.ycList.push(Date.now());
+      p.yc = p.ycList.length;
+    }
     playBeep(type === 'rc' ? 300 : 520, 350);
     saveRosterLocal();
   }
 
+  // Сортировка по навыкам, рейтингу или позиции (ВРТ -> ФИК -> АЛА -> СТЛ -> УНИ -> НЕ ОПР)
   function sortPlayersBy(criteria) {
+    const posOrder = { 'ВРТ': 1, 'ФИК': 2, 'АЛА': 3, 'СТЛ': 4, 'УНИ': 5, 'НЕ ОПР': 6 };
     if (criteria === 'ovr') {
       players.sort((a, b) => calcOvr(b) - calcOvr(a));
+    } else if (criteria === 'pos') {
+      players.sort((a, b) => {
+        const posA = String(a.pos || 'НЕ ОПР').split(' (')[0];
+        const posB = String(b.pos || 'НЕ ОПР').split(' (')[0];
+        const orderDiff = (posOrder[posA] || 99) - (posOrder[posB] || 99);
+        if (orderDiff !== 0) return orderDiff;
+        return calcOvr(b) - calcOvr(a);
+      });
     } else {
       players.sort((a, b) => Number(b[criteria] || 0) - Number(a[criteria] || 0));
     }
@@ -2720,7 +3087,7 @@
     alert(`✅ Тренировка засчитана!\nОтмечено игроков: ${presentCount}\nВыдано звезд «Лучший на тренировке»: ${starCount}`);
   }
 
- function openNoteViewModal(idx) {
+  function openNoteViewModal(idx) {
     const p = players[idx];
     document.getElementById('noteViewTitle').textContent = `📩 Наставление для: ${p.name}`;
     const hasNote = p.note && p.note.trim().length > 0;
@@ -2728,7 +3095,6 @@
     document.getElementById('noteViewContent').textContent = noteText;
     document.getElementById('noteViewModal').classList.add('active');
 
-    // Если наставление есть и его открыл ИГРОК (не в режиме тренера) — ставим метку времени прочтения
     if (hasNote && !isCoachMode) {
       const now = new Date();
       const day = String(now.getDate()).padStart(2, '0');
@@ -2736,18 +3102,57 @@
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
-      saveRosterLocal(); // Сохраняем отметку в облако (Google Таблицу)
+      saveRosterLocal();
     }
   }
 
-  function openCoachModal() {
+  // Открытие окна редактирования тренера ('legend' или 'playing')
+  function openCoachModal(coachType = 'playing') {
+    ensureCoachStructure();
+    document.getElementById('editCoachType').value = coachType;
     document.getElementById('cPhotoInput').value = '';
-    document.getElementById('cNameInput').value = coachData.name || '';
-    document.getElementById('cTitleInput').value = coachData.title || '';
-    document.getElementById('cMottoInput').value = coachData.motto || '';
-    currentCoachTempPhoto = coachData.photo || '';
+    const statsSec = document.getElementById('playingCoachStatsSection');
+
+    if (coachType === 'legend') {
+      document.getElementById('coachModalHeader').textContent = '🏆 Настроить карточку Наставника-Легенды (Все 99)';
+      document.getElementById('cNameInput').value = coachData.legend.name || '';
+      document.getElementById('cTitleInput').value = coachData.legend.title || '';
+      document.getElementById('cMottoInput').value = coachData.legend.motto || '';
+      currentCoachTempPhoto = coachData.legend.photo || '';
+      statsSec.style.display = 'none';
+    } else {
+      document.getElementById('coachModalHeader').textContent = '⚡ Моя карточка Играющего Тренера';
+      document.getElementById('cNameInput').value = coachData.name || '';
+      document.getElementById('cTitleInput').value = coachData.title || '';
+      document.getElementById('cMottoInput').value = coachData.motto || '';
+      document.getElementById('cPosInput').value = coachData.pos || 'УНИ / ТРН';
+      document.getElementById('cNumInput').value = coachData.num || 10;
+      document.getElementById('cDobInput').value = coachData.dob || '';
+      document.getElementById('cPac').value = coachData.pac || 85;
+      document.getElementById('cSho').value = coachData.sho || 85;
+      document.getElementById('cPas').value = coachData.pas || 85;
+      document.getElementById('cDri').value = coachData.dri || 85;
+      document.getElementById('cDef').value = coachData.def || 85;
+      document.getElementById('cPhy').value = coachData.phy || 85;
+      document.getElementById('cGoals').value = coachData.goals || 0;
+      document.getElementById('cAssists').value = coachData.assists || 0;
+      document.getElementById('cGames').value = coachData.games || 0;
+      document.getElementById('cAtt').value = coachData.att || 1;
+      currentCoachTempPhoto = coachData.photo || '';
+      statsSec.style.display = 'block';
+      updateCoachSliders();
+    }
+
     renderCoachPhotoPreview();
     document.getElementById('coachModal').classList.add('active');
+  }
+
+  function updateCoachSliders() {
+    ['Pac','Sho','Pas','Dri','Def','Phy'].forEach(s => {
+      const valEl = document.getElementById('valC' + s);
+      const inpEl = document.getElementById('c' + s);
+      if (valEl && inpEl) valEl.textContent = inpEl.value;
+    });
   }
 
   function closeCoachModal() {
@@ -2755,10 +3160,34 @@
   }
 
   function saveCoachModal() {
-    coachData.name = document.getElementById('cNameInput').value.trim() || 'Главный Тренер';
-    coachData.title = document.getElementById('cTitleInput').value.trim() || 'НАСТАВНИК • ФК ПАДЕРИНСКОЕ';
-    coachData.motto = document.getElementById('cMottoInput').value.trim() || 'Дисциплина бьет класс!';
-    coachData.photo = currentCoachTempPhoto;
+    ensureCoachStructure();
+    const coachType = document.getElementById('editCoachType').value;
+
+    if (coachType === 'legend') {
+      coachData.legend.name = document.getElementById('cNameInput').value.trim() || 'Тренер-Наставник';
+      coachData.legend.title = document.getElementById('cTitleInput').value.trim() || 'ЛЕГЕНДА КЛУБА • УЧИТЕЛЬ ТРЕНЕРА';
+      coachData.legend.motto = document.getElementById('cMottoInput').value.trim() || 'Фундамент побед закладывается характером и дисциплиной!';
+      coachData.legend.photo = currentCoachTempPhoto;
+    } else {
+      coachData.name = document.getElementById('cNameInput').value.trim() || 'Игорь Евгеньевич';
+      coachData.title = document.getElementById('cTitleInput').value.trim() || 'ИГРАЮЩИЙ ТРЕНЕР • ФК ПАДЕРИНСКОЕ';
+      coachData.motto = document.getElementById('cMottoInput').value.trim() || 'Дисциплина бьет класс!';
+      coachData.pos = document.getElementById('cPosInput').value.trim() || 'ТРН';
+      coachData.num = Number(document.getElementById('cNumInput').value) || 10;
+      coachData.dob = document.getElementById('cDobInput').value.trim() || '';
+      coachData.pac = Number(document.getElementById('cPac').value) || 85;
+      coachData.sho = Number(document.getElementById('cSho').value) || 85;
+      coachData.pas = Number(document.getElementById('cPas').value) || 85;
+      coachData.dri = Number(document.getElementById('cDri').value) || 85;
+      coachData.def = Number(document.getElementById('cDef').value) || 85;
+      coachData.phy = Number(document.getElementById('cPhy').value) || 85;
+      coachData.goals = Number(document.getElementById('cGoals').value) || 0;
+      coachData.assists = Number(document.getElementById('cAssists').value) || 0;
+      coachData.games = Number(document.getElementById('cGames').value) || 0;
+      coachData.att = Number(document.getElementById('cAtt').value) || 1;
+      coachData.photo = currentCoachTempPhoto;
+    }
+
     closeCoachModal();
     saveRosterLocal();
   }
@@ -2810,6 +3239,7 @@
       btnDel.style.display = 'none';
     } else {
       const p = players[idx];
+      syncAndCleanPlayerCards(p);
       document.getElementById('modalTitle').textContent = `Карточка: ${p.name}`;
       document.getElementById('pName').value = p.name;
       document.getElementById('pDob').value = p.dob || '';
@@ -2866,6 +3296,19 @@
       }
     }
 
+    const desiredYc = Number(document.getElementById('pYc').value) || 0;
+    const desiredRc = Number(document.getElementById('pRc').value) || 0;
+    const now = Date.now();
+
+    let ycList = (idx >= 0 && players[idx] && Array.isArray(players[idx].ycList)) ? [...players[idx].ycList] : [];
+    let rcList = (idx >= 0 && players[idx] && Array.isArray(players[idx].rcList)) ? [...players[idx].rcList] : [];
+
+    while (ycList.length < desiredYc) ycList.push(now);
+    if (ycList.length > desiredYc) ycList = ycList.slice(ycList.length - desiredYc);
+
+    while (rcList.length < desiredRc) rcList.push(now);
+    if (rcList.length > desiredRc) rcList = rcList.slice(rcList.length - desiredRc);
+
     const newP = {
       id: playerId,
       name: enteredName,
@@ -2884,8 +3327,10 @@
       games: Number(document.getElementById('pGames').value) || 0,
       att: Number(document.getElementById('pAtt').value) || 0,
       mvp: Number(document.getElementById('pMvp').value) || 0,
-      yc: Number(document.getElementById('pYc').value) || 0,
-      rc: Number(document.getElementById('pRc').value) || 0,
+      yc: ycList.length,
+      rc: rcList.length,
+      ycList: ycList,
+      rcList: rcList,
       note: document.getElementById('pNote').value.trim(),
       noteReadAt: (idx >= 0 && players[idx] && players[idx].note === document.getElementById('pNote').value.trim()) ? (players[idx].noteReadAt || '') : '',
       photo: finalPhoto
@@ -2905,10 +3350,6 @@
       closePlayerModal();
       saveRosterLocal();
     }
-  }
-
-  function downloadBundledHtmlFile() {
-    alert('💾 Все данные, даты рождения, звезды и фотографии автоматически сохранены в твою облачную Google Таблицу!');
   }
 
   // ================= ЛОГИКА КАЛЕНДАРЯ И ВЫЕЗДОВ =================
@@ -2993,6 +3434,7 @@
     calendarEvents.forEach((ev, idx) => {
       const badge = getEventResultBadge(ev.result);
       const gamesArr = ev.games || [];
+      const defaultTeamName = (ev.teamName && ev.teamName.trim()) ? ev.teamName.trim() : 'ФК Падеринское';
 
       let gamesPlayedInEvent = 0, wInEv = 0, dInEv = 0, lInEv = 0;
       let gamesHtml = '';
@@ -3014,6 +3456,7 @@
           else { scoreCls = 'score-l'; lInEv++; }
         }
 
+        const ourTeamLabel = (g.ourTeam && g.ourTeam.trim()) ? g.ourTeam.trim() : defaultTeamName;
         const scorersLine = (g.scorers && g.scorers.trim())
           ? `<div class="cal-game-scorers">⚽ <b>Голы / Заметка:</b> ${g.scorers}</div>`
           : '';
@@ -3022,7 +3465,7 @@
           <div class="cal-game-row">
             <div class="cal-game-left">
               <span class="cal-game-time">${g.time || ('Игра ' + (gIdx + 1))}</span>
-              <span class="cal-game-teams">ФК Падеринское <span style="color:var(--accent-yellow);">vs</span> ${g.opp || 'Соперник'}</span>
+              <span class="cal-game-teams">${ourTeamLabel} <span style="color:var(--accent-yellow);">vs</span> ${g.opp || 'Соперник'}</span>
             </div>
             <div class="cal-game-score ${scoreCls}">${scoreText}</div>
             ${scorersLine}
@@ -3046,6 +3489,8 @@
           <div class="cal-event-main">
             <div class="cal-date-row">
               <span>📅 ${ev.date || 'Дата не указана'}</span>
+              <span style="color:#888;">•</span>
+              <span style="color:#69f0ae;">🛡 ${defaultTeamName}</span>
               <span style="color:#888;">•</span>
               <span style="color:#bbb; font-weight:600;">${miniSummary}</span>
             </div>
@@ -3112,6 +3557,8 @@
     const container = document.getElementById('evGamesEditorList');
     if (!container) return;
     container.innerHTML = '';
+    const defaultTeam = document.getElementById('evTeamName').value.trim() || 'ФК Падеринское';
+
     tempModalGames.forEach((g, i) => {
       const div = document.createElement('div');
       div.className = 'game-edit-row';
@@ -3120,10 +3567,11 @@
           <span style="font-size:12px; font-weight:900; color:var(--accent-yellow);">Матч №${i + 1}</span>
           <button type="button" class="btn-t red" style="font-size:11px; padding:2px 6px;" onclick="removeGameRowInModal(${i})">✖ Удалить матч</button>
         </div>
-        <div style="display:grid; grid-template-columns: 85px 1fr 60px 60px; gap:6px; align-items:center;">
-          <input type="text" placeholder="Время (10:00)" value="${g.time || ''}" oninput="tempModalGames[${i}].time = this.value">
-          <input type="text" placeholder="Соперник (напр. Тобол)" value="${g.opp || ''}" oninput="tempModalGames[${i}].opp = this.value">
-          <input type="number" placeholder="Наши" min="0" value="${g.gf !== undefined && g.gf !== null ? g.gf : ''}" oninput="tempModalGames[${i}].gf = this.value" title="Голы ФК Падеринское">
+        <div style="display:grid; grid-template-columns: 75px 1fr 1fr 54px 54px; gap:6px; align-items:center;">
+          <input type="text" placeholder="Время" value="${g.time || ''}" oninput="tempModalGames[${i}].time = this.value" title="Время начала матча">
+          <input type="text" placeholder="Наша команда" value="${g.ourTeam || defaultTeam}" oninput="tempModalGames[${i}].ourTeam = this.value" title="Название нашей команды / Сборной в этом матче">
+          <input type="text" placeholder="Соперник" value="${g.opp || ''}" oninput="tempModalGames[${i}].opp = this.value" title="Название команды соперника">
+          <input type="number" placeholder="Наши" min="0" value="${g.gf !== undefined && g.gf !== null ? g.gf : ''}" oninput="tempModalGames[${i}].gf = this.value" title="Наши голы">
           <input type="number" placeholder="Чужие" min="0" value="${g.ga !== undefined && g.ga !== null ? g.ga : ''}" oninput="tempModalGames[${i}].ga = this.value" title="Голы соперника">
         </div>
         <div style="margin-top:6px;">
@@ -3135,7 +3583,8 @@
   }
 
   function addGameRowInModal() {
-    tempModalGames.push({ time: "", opp: "", gf: "", ga: "", scorers: "" });
+    const defaultTeam = document.getElementById('evTeamName').value.trim() || 'ФК Падеринское';
+    tempModalGames.push({ time: "", ourTeam: defaultTeam, opp: "", gf: "", ga: "", scorers: "" });
     renderModalGamesEditor();
   }
 
@@ -3153,23 +3602,29 @@
       document.getElementById('evDate').value = '';
       document.getElementById('evResult').value = 'upcoming';
       document.getElementById('evTitle').value = '';
+      document.getElementById('evTeamName').value = 'ФК Падеринское';
       document.getElementById('evLocation').value = '';
       document.getElementById('evNote').value = '';
       tempModalGames = [
-        { time: "10:00", opp: "", gf: "", ga: "", scorers: "" },
-        { time: "11:00", opp: "", gf: "", ga: "", scorers: "" },
-        { time: "12:00", opp: "", gf: "", ga: "", scorers: "" }
+        { time: "10:00", ourTeam: "ФК Падеринское", opp: "", gf: "", ga: "", scorers: "" },
+        { time: "11:00", ourTeam: "ФК Падеринское", opp: "", gf: "", ga: "", scorers: "" },
+        { time: "12:00", ourTeam: "ФК Падеринское", opp: "", gf: "", ga: "", scorers: "" }
       ];
       btnDel.style.display = 'none';
     } else {
       const ev = calendarEvents[idx];
+      const teamNameVal = (ev.teamName && ev.teamName.trim()) ? ev.teamName.trim() : 'ФК Падеринское';
       document.getElementById('eventModalTitle').textContent = `Редактировать: ${ev.title}`;
       document.getElementById('evDate').value = ev.date || '';
       document.getElementById('evResult').value = ev.result || 'upcoming';
       document.getElementById('evTitle').value = ev.title || '';
+      document.getElementById('evTeamName').value = teamNameVal;
       document.getElementById('evLocation').value = ev.location || '';
       document.getElementById('evNote').value = ev.note || '';
-      tempModalGames = JSON.parse(JSON.stringify(ev.games || []));
+      tempModalGames = JSON.parse(JSON.stringify(ev.games || [])).map(g => ({
+        ...g,
+        ourTeam: (g.ourTeam && g.ourTeam.trim()) ? g.ourTeam.trim() : teamNameVal
+      }));
       btnDel.style.display = 'inline-block';
     }
     renderModalGamesEditor();
@@ -3182,15 +3637,18 @@
 
   function saveEventModal() {
     const idx = Number(document.getElementById('editEventIndex').value);
+    const teamNameVal = document.getElementById('evTeamName').value.trim() || 'ФК Падеринское';
     const newEv = {
       id: (idx >= 0 && calendarEvents[idx] && calendarEvents[idx].id) ? calendarEvents[idx].id : Date.now(),
       date: document.getElementById('evDate').value.trim() || 'Дата уточняется',
       result: document.getElementById('evResult').value,
       title: document.getElementById('evTitle').value.trim() || 'Выездной тур',
+      teamName: teamNameVal,
       location: document.getElementById('evLocation').value.trim() || 'Место уточняется',
       note: document.getElementById('evNote').value.trim(),
       games: tempModalGames.map(g => ({
         time: String(g.time || '').trim(),
+        ourTeam: String(g.ourTeam || '').trim() || teamNameVal,
         opp: String(g.opp || '').trim() || 'Соперник',
         gf: String(g.gf ?? '').trim(),
         ga: String(g.ga ?? '').trim(),
@@ -3497,7 +3955,6 @@
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
-
 </script>
 </body>
 </html>
