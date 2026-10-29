@@ -2360,8 +2360,8 @@
   const RC_DURATION_MS = 3 * 24 * 60 * 60 * 1000;
 
   // Ссылка на твою Google Таблицу (Apps Script Web App)
-  const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbzyp7ou9kSGcNhuKvh0OZp2hgxU8WRe6FWqC-c2MPGgTbAVRCXPYhgN9NPcJ6n8YQ2w6g/exec';
-
+  const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbymD4YSZkPo_Mw_FNmXbfHMNpuK_GkahTf9coHzaU9ssOZPo47es6gOy-WHbDFTW-GcFw/exec';
+  
   let isCoachMode = false;
   let currentTempPhoto = '';
   let currentCoachTempPhoto = '';
@@ -2661,49 +2661,38 @@
     const box = document.getElementById('coachPhotoPreview');
     box.innerHTML = currentCoachTempPhoto ? `<img src="${currentCoachTempPhoto}" alt="Тренер">` : '👑';
   }
-// Автоматическая проверка свежести данных при открытии сайта
+// Автоматическая проверка и подгрузка свежих данных из Google Таблицы
   async function checkAppVersion() {
-    try {
-      const res = await fetch(CLOUD_SYNC_URL + '?v=' + Date.now());
-      const data = await res.json();
-      // Если на сервере появились свежие данные, которых нет в памяти — обновляем экран
-      if (data && data.p && JSON.stringify(data.p) !== localStorage.getItem(STORAGE_KEY)) {
-        console.log('Обнаружены свежие данные в таблице, обновляем...');
-      }
-    } catch(e) {}
+    await loadRosterLocal();
   }
-  // Загрузка данных: сначала из Google Таблицы, затем резерв из памяти
+
+  // Загрузка данных: Google Таблица — ГЛАВНЫЙ источник для всех!
   async function loadRosterLocal() {
-    const dict = getPassportDictionary();
     try {
-      const response = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now());
+      const response = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now(), { cache: 'no-store' });
       const cloudData = await response.json();
 
-      if (cloudData && cloudData.p && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
+      if (cloudData && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
+        // 1. Берем данные напрямую из Google Таблицы (перебиваем любой старый кеш!)
         players = cloudData.p;
-        coachData = cloudData.c || EMBEDDED_COACH_DATA;
-        calendarEvents = cloudData.cal || EMBEDDED_CALENDAR_DATA;
+        coachData = (cloudData.c && Object.keys(cloudData.c).length > 0) ? cloudData.c : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
+        calendarEvents = (Array.isArray(cloudData.cal) && cloudData.cal.length > 0) ? cloudData.cal : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
         ensureCoachStructure();
 
-        if (!coachData.photo && dict.coachPhotos && dict.coachPhotos.playing) {
-          coachData.photo = dict.coachPhotos.playing;
-        }
-        if (!coachData.legend.photo && dict.coachPhotos && dict.coachPhotos.legend) {
-          coachData.legend.photo = dict.coachPhotos.legend;
-        }
-
-        // --- СЧЕТЧИК ВИЗИТОВ ЗА ВСЁ ВРЕМЯ И ЗА ДЕНЬ ---
+        // 2. Счетчик визитов
         const todayStr = new Date().toLocaleDateString('ru-RU');
-        if (!coachData.dailyStats) coachData.dailyStats = { date: todayStr, count: 0 };
+        if (!coachData.dailyStats || typeof coachData.dailyStats !== 'object') {
+          coachData.dailyStats = { date: todayStr, count: 0 };
+        }
         if (coachData.dailyStats.date !== todayStr) {
           coachData.dailyStats.date = todayStr;
           coachData.dailyStats.count = 0;
         }
         coachData.visits = Number(coachData.visits || 0);
 
-        players.forEach(p => restorePlayerPassportFields(p, dict));
-        const cardsExpired = cleanAllPlayersCards();
+        cleanAllPlayersCards();
 
+        // Отправляем ТОЛЬКО +1 визит (не перезаписывая базу игроков!)
         if (!sessionStorage.getItem('visit_counted')) {
           sessionStorage.setItem('visit_counted', '1');
           coachData.visits += 1;
@@ -2711,15 +2700,12 @@
           fetch(CLOUD_SYNC_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ c: coachData, p: players, cal: calendarEvents })
-          }).catch(() => {});
-        } else if (cardsExpired) {
-          fetch(CLOUD_SYNC_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ c: coachData, p: players, cal: calendarEvents })
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'visit',
+              visits: coachData.visits,
+              dailyStats: coachData.dailyStats
+            })
           }).catch(() => {});
         }
 
@@ -2728,11 +2714,14 @@
         const vTodayEl = document.getElementById('visitTodayCount');
         if (vTodayEl) vTodayEl.textContent = coachData.dailyStats.count;
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-        localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
-        localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+        // Обновляем локальный кеш свежими данными из таблицы
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+          localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
+          localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+          updatePassportDictionaryFromRoster();
+        } catch(e) {}
 
-        updatePassportDictionaryFromRoster();
         renderCoachCard();
         renderPodium();
         renderFifaCards();
@@ -2740,9 +2729,11 @@
         return;
       }
     } catch (e) {
-      console.log('Облако недоступно, загружаем из локальной памяти.');
+      console.log('Таблица временно недоступна или пуста, берем резерв из памяти:', e);
     }
 
+    // Резервная загрузка (только если нет интернета или таблица еще совсем пустая до первого сохранения тренера)
+    const dict = getPassportDictionary();
     try {
       const savedRoster = localStorage.getItem(STORAGE_KEY);
       const savedCoach = localStorage.getItem(COACH_STORAGE_KEY);
@@ -2755,10 +2746,6 @@
 
       players.forEach(p => restorePlayerPassportFields(p, dict));
       cleanAllPlayersCards();
-
-      updatePassportDictionaryFromRoster();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-      localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
     } catch (e) {
       players = JSON.parse(JSON.stringify(EMBEDDED_ROSTER_DATA));
       coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
@@ -2784,8 +2771,9 @@
       updatePassportDictionaryFromRoster();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
       localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
+      localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
     } catch (e) {
-      alert('Память браузера заполнена!');
+      console.warn('Локальный кеш переполнен, сохраняем напрямую в Google Таблицу...');
     }
 
     renderCoachCard();
@@ -2793,8 +2781,14 @@
     renderFifaCards();
     syncBoardNamesWithRoster();
 
+    const statusSub = document.getElementById('roleStatusText');
+    if (isCoachMode && statusSub) {
+      statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
+    }
+
     try {
       const payload = {
+        action: 'full_save',
         c: coachData,
         p: players,
         cal: calendarEvents
@@ -2802,20 +2796,21 @@
       await fetch(CLOUD_SYNC_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
 
-      const statusSub = document.getElementById('roleStatusText');
       if (isCoachMode && statusSub) {
-        statusSub.textContent = 'Режим Тренера • ☁️ Сохранено в облаке';
+        statusSub.textContent = 'Режим Тренера • ✅ Сохранено в Google Таблице!';
       }
     } catch (e) {
       console.log('Ошибка отправки в облако:', e);
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = 'Режим Тренера • ❌ Ошибка связи с таблицей';
+      }
     }
   }
-
-  function resetToRedZone() {
+function resetToRedZone() {
     if (confirm('Сбросить показатели всех игроков к старту Красной зоны (рейтинг 30)? Имена, даты рождения и фото каждого игрока сохранятся!')) {
       players = players.map((p, idx) => ({
         id: p.id || (idx + 1),
@@ -2837,7 +2832,6 @@
   function calcOvr(p) {
     return Math.round((Number(p.pac) + Number(p.sho) + Number(p.pas) + Number(p.dri) + Number(p.def) + Number(p.phy)) / 6);
   }
-
   // ================= УМНЫЕ ФОРМУЛЫ ПОДИУМА ЛИДЕРОВ (ТОП-5) =================
   function calcRoleScore(p, roleType) {
     const pac = Number(p.pac || 30);
@@ -3272,7 +3266,18 @@
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
-      saveRosterLocal();
+      // Вместо saveRosterLocal(); отправляем точечную метку прочтения:
+      fetch(CLOUD_SYNC_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'read_note',
+          playerIndex: idx,
+          readAt: p.noteReadAt
+        })
+      }).catch(() => {});
+      renderFifaCards();
     }
   }
 
