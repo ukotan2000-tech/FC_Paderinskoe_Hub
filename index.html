@@ -1144,6 +1144,101 @@
     padding: 10px;
     margin-bottom: 8px;
   }
+  /* ================= СТИЛИ ОКНА ПОДЕЛИТЬСЯ И QR-КОДОВ ================= */
+  .btn-t.share-hub-btn {
+    background: linear-gradient(135deg, #0077ff 0%, #0044aa 100%);
+    border-color: #66b0ff;
+    color: #fff;
+    padding: 6px 12px;
+  }
+  .btn-t.share-hub-btn:hover {
+    background: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: #000;
+  }
+  .share-actions-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    justify-content: center;
+  }
+  .share-soc-btn {
+    flex: 1;
+    min-width: 135px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.15s, filter 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .share-soc-btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
+  .share-vk { background: #0077ff; }
+  .share-tg { background: #24A1DE; }
+  .share-copy { background: #2b2b38; border-color: var(--accent-yellow); color: var(--accent-yellow); }
+  .share-native { background: #1b5e20; border-color: #00e676; }
+
+  .qr-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .qr-item-card {
+    background: var(--bg-panel);
+    border: 1.5px solid var(--border-col);
+    border-radius: 12px;
+    padding: 12px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+  }
+  .qr-item-card.qr-vk-group { border-color: #0077ff; }
+  .qr-item-card.qr-vk-chat { border-color: #00e676; }
+  .qr-item-card.qr-site { border-color: var(--accent-yellow); }
+
+  .qr-badge-title {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .qr-img-box {
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 10px;
+    width: 146px;
+    height: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  }
+  .qr-img-box img {
+    width: 130px;
+    height: 130px;
+    display: block;
+  }
+  .qr-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
 </style>
 </head>
 <body id="appBody" class="">
@@ -1209,6 +1304,7 @@
       <span class="btn-t coach-only" style="cursor:default; border-color:#00e676; color:#69f0ae; background:#14291d;" title="Общие визиты / За сегодня">
         👁 Всего: <b id="visitCount">...</b> | Сегодня: <b id="visitTodayCount">...</b>
       </span>
+      <button class="btn-t share-hub-btn" onclick="openShareHubModal()">📲 ВК, Чат и QR</button>
       <button class="btn-t coach-lock" id="btnCoachToggle" onclick="toggleCoachMode()">🔒 Вход Тренера</button>
     </div>
   </div>
@@ -2183,6 +2279,66 @@
       <button class="tool-btn active" style="flex:2;" onclick="saveEventModal()">💾 Сохранить выезд</button>
       <button class="tool-btn danger" id="btnDeleteEvent" onclick="deleteEventModal()">🗑 Удалить</button>
       <button class="tool-btn" onclick="closeEventModal()">Отмена</button>
+    </div>
+  </div>
+</div>
+<!-- ================= МОДАЛЬНОЕ ОКНО: ПОДЕЛИТЬСЯ И QR-КОДЫ КОМАНДЫ ================= -->
+<div class="modal-overlay" id="shareHubModal">
+  <div class="modal-card" style="max-width: 640px;">
+    <h3>📲 Ссылки и QR-коды ФК Падеринское</h3>
+    <p style="font-size:12.5px; color:#ccc; margin-top:0; text-align:center;">
+      Отправь ссылку на наш Командный Хаб друзьям или наведи камеру телефона на нужный QR-код!
+    </p>
+
+    <!-- Кнопки Поделиться сайтом -->
+    <div class="share-actions-bar">
+      <button type="button" class="share-soc-btn share-copy" onclick="copySiteUrl()">📋 Скопировать ссылку</button>
+      <a id="shareVkLink" href="#" target="_blank" rel="noopener" class="share-soc-btn share-vk">💙 Поделиться в ВК</a>
+      <a id="shareTgLink" href="#" target="_blank" rel="noopener" class="share-soc-btn share-tg">✈️ Отправить в Telegram</a>
+      <button type="button" id="btnNativeShare" class="share-soc-btn share-native" style="display:none;" onclick="triggerNativeShare()">📲 Поделиться...</button>
+    </div>
+
+    <!-- Поле для ссылки сайта (если открыто локально с компьютера, можно вписать адрес) -->
+    <div class="form-row" style="margin-bottom: 12px;">
+      <label style="font-size:11.5px; color:#aaa;">🌐 Ссылка на наш сайт (для генерации QR-кода сайта):</label>
+      <input type="text" id="siteShareUrlInput" oninput="updateSiteQrCode()" placeholder="Вставь ссылку на сайт...">
+    </div>
+
+    <!-- 3 карточки с QR-кодами -->
+    <div class="qr-cards-grid">
+      <!-- 1. QR Сайта -->
+      <div class="qr-item-card qr-site">
+        <div class="qr-badge-title" style="color:var(--accent-yellow);">🏆 Командный Хаб</div>
+        <div class="qr-img-box">
+          <img id="qrSiteImg" src="" alt="QR Сайта">
+        </div>
+        <div class="qr-desc">Карточки игроков, Подиум и Календарь</div>
+        <button type="button" class="btn-t" style="width:100%; background:var(--accent-yellow); color:#000;" onclick="copySiteUrl()">📋 Скопировать</button>
+      </div>
+
+      <!-- 2. QR Группы ВК -->
+      <div class="qr-item-card qr-vk-group">
+        <div class="qr-badge-title" style="color:#66b0ff;">💙 Группа ВКонтакте</div>
+        <div class="qr-img-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=https%3A%2F%2Fvk.ru%2Ffc.paderinka" alt="QR Группы ВК">
+        </div>
+        <div class="qr-desc">Официальное сообщество ФК Падеринское</div>
+        <a href="https://vk.ru/fc.paderinka" target="_blank" rel="noopener" class="btn-t" style="width:100%; background:#0077ff; color:#fff; text-decoration:none; display:block; text-align:center;">Перейти в группу ➔</a>
+      </div>
+
+      <!-- 3. QR Чата ВК -->
+      <div class="qr-item-card qr-vk-chat">
+        <div class="qr-badge-title" style="color:#69f0ae;">💬 Чат Команды</div>
+        <div class="qr-img-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=https%3A%2F%2Fvk.me%2Fjoin%2FEAI%2FSD9pB5ici8%2F6C_jTscQvHJIOsrPnpqQ%3D" alt="QR Чата ВК">
+        </div>
+        <div class="qr-desc">Общий командный чат ВКонтакте</div>
+        <a href="https://vk.me/join/EAI/SD9pB5ici8/6C_jTscQvHJIOsrPnpqQ=" target="_blank" rel="noopener" class="btn-t" style="width:100%; background:#00c853; color:#00240c; text-decoration:none; display:block; text-align:center;">Вступить в чат ➔</a>
+      </div>
+    </div>
+
+    <div style="margin-top:15px;">
+      <button class="tool-btn" style="width:100%;" onclick="closeShareHubModal()">Закрыть окно</button>
     </div>
   </div>
 </div>
@@ -3955,6 +4111,80 @@
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
+  
+  // ================= ФУНКЦИИ ОКНА ПОДЕЛИТЬСЯ И QR-КОДОВ =================
+  function getDefaultSiteUrl() {
+    const loc = window.location.href;
+    // Если файл открыт в интернете (например на GitHub Pages) — берем его реальный адрес
+    if (loc.startsWith('http://') || loc.startsWith('https://')) {
+      return loc;
+    }
+    // Если открыт локально с компьютера — подставляем сохраненный адрес или группу ВК
+    return localStorage.getItem('paderinskoe_custom_site_url') || 'https://vk.ru/fc.paderinka';
+  }
+
+  function openShareHubModal() {
+    const urlInput = document.getElementById('siteShareUrlInput');
+    if (urlInput && !urlInput.value) {
+      urlInput.value = getDefaultSiteUrl();
+    }
+    updateSiteQrCode();
+    if (navigator.share) {
+      document.getElementById('btnNativeShare').style.display = 'inline-flex';
+    }
+    document.getElementById('shareHubModal').classList.add('active');
+  }
+
+  function closeShareHubModal() {
+    document.getElementById('shareHubModal').classList.remove('active');
+  }
+
+  function updateSiteQrCode() {
+    const urlInput = document.getElementById('siteShareUrlInput');
+    const rawUrl = (urlInput && urlInput.value.trim()) ? urlInput.value.trim() : getDefaultSiteUrl();
+    try {
+      localStorage.setItem('paderinskoe_custom_site_url', rawUrl);
+    } catch (e) {}
+
+    const encodedUrl = encodeURIComponent(rawUrl);
+    const shareTitle = encodeURIComponent('ФК Падеринское 5х5 — Командный Хаб и Карточки Игроков ⚽🏆');
+
+    const qrImg = document.getElementById('qrSiteImg');
+    if (qrImg) {
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=${encodedUrl}`;
+    }
+
+    const vkBtn = document.getElementById('shareVkLink');
+    if (vkBtn) vkBtn.href = `https://vk.com/share.php?url=${encodedUrl}&title=${shareTitle}`;
+
+    const tgBtn = document.getElementById('shareTgLink');
+    if (tgBtn) tgBtn.href = `https://t.me/share/url?url=${encodedUrl}&text=${shareTitle}`;
+  }
+
+  function copySiteUrl() {
+    const urlInput = document.getElementById('siteShareUrlInput');
+    const rawUrl = (urlInput && urlInput.value.trim()) ? urlInput.value.trim() : getDefaultSiteUrl();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(rawUrl).then(() => {
+        playBeep(1100, 150);
+        alert('✅ Ссылка скопирована в буфер обмена!\n' + rawUrl);
+      }).catch(() => prompt('Скопируй ссылку:', rawUrl));
+    } else {
+      prompt('Скопируй ссылку:', rawUrl);
+    }
+  }
+
+  function triggerNativeShare() {
+    const urlInput = document.getElementById('siteShareUrlInput');
+    const rawUrl = (urlInput && urlInput.value.trim()) ? urlInput.value.trim() : getDefaultSiteUrl();
+    if (navigator.share) {
+      navigator.share({
+        title: 'ФК Падеринское 5х5 — Командный Хаб',
+        text: 'Заходи в наш Командный Хаб ФК Падеринское 5х5! ⚽🏆',
+        url: rawUrl
+      }).catch(() => {});
+    }
+  }
 </script>
 </body>
 </html>
