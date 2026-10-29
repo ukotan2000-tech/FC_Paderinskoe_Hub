@@ -3,6 +3,10 @@
 <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;⚽&lt;/text&gt;&lt;/svg&gt;">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Защита от кеширования в браузерах -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>ФК Падеринское — Командный Хаб 5х5</title>
 <style>
   :root {
@@ -2657,12 +2661,22 @@
     const box = document.getElementById('coachPhotoPreview');
     box.innerHTML = currentCoachTempPhoto ? `<img src="${currentCoachTempPhoto}" alt="Тренер">` : '👑';
   }
-
+// Автоматическая проверка свежести данных при открытии сайта
+  async function checkAppVersion() {
+    try {
+      const res = await fetch(CLOUD_SYNC_URL + '?v=' + Date.now());
+      const data = await res.json();
+      // Если на сервере появились свежие данные, которых нет в памяти — обновляем экран
+      if (data && data.p && JSON.stringify(data.p) !== localStorage.getItem(STORAGE_KEY)) {
+        console.log('Обнаружены свежие данные в таблице, обновляем...');
+      }
+    } catch(e) {}
+  }
   // Загрузка данных: сначала из Google Таблицы, затем резерв из памяти
   async function loadRosterLocal() {
     const dict = getPassportDictionary();
     try {
-      const response = await fetch(CLOUD_SYNC_URL);
+      const response = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now());
       const cloudData = await response.json();
 
       if (cloudData && cloudData.p && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
