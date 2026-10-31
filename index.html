@@ -1346,6 +1346,212 @@
     accent-color: #2979ff;
     cursor: pointer;
   }
+  /* ================= ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 (КУБОК И МЕДАЛИ) ================= */
+  .top3-yearly-section {
+    background: radial-gradient(circle at 50% 0%, #2e240c 0%, #14141d 65%, #0e0e14 100%);
+    border: 2px solid var(--accent-yellow);
+    border-radius: 18px;
+    padding: 20px 16px 18px 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.8), inset 0 0 25px rgba(245, 197, 24, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .top3-header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .top3-title {
+    font-size: 21px;
+    font-weight: 900;
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(245, 197, 24, 0.4);
+  }
+  .top3-sub {
+    font-size: 12.5px;
+    color: #dcdce6;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .top3-countdown-pill {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(245, 197, 24, 0.5);
+    color: #ffe066;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .top3-stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    max-width: 920px;
+    margin: 10px auto 14px auto;
+    flex-wrap: wrap;
+  }
+  .top3-step {
+    flex: 1;
+    min-width: 235px;
+    max-width: 285px;
+    border-radius: 16px 16px 10px 10px;
+    padding: 14px 12px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease;
+  }
+  .top3-step:hover { transform: translateY(-5px); }
+
+  /* 1 МЕСТО: ЗОЛОТО + КУБОК */
+  .step-gold {
+    order: 2;
+    min-height: 310px;
+    background: linear-gradient(160deg, #4a3505 0%, #1c170b 55%, #2e2104 100%);
+    border: 2.5px solid #ffd700;
+    box-shadow: 0 0 28px rgba(255, 215, 0, 0.35);
+    z-index: 2;
+  }
+  /* 2 МЕСТО: СЕРЕБРО */
+  .step-silver {
+    order: 1;
+    min-height: 270px;
+    background: linear-gradient(160deg, #323842 0%, #17191f 60%, #23272e 100%);
+    border: 2px solid #e0e5ec;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  }
+  /* 3 МЕСТО: БРОНЗА */
+  .step-bronze {
+    order: 3;
+    min-height: 250px;
+    background: linear-gradient(160deg, #422611 0%, #1a130e 60%, #2e1a0b 100%);
+    border: 2px solid #dfa06e;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  }
+
+  .top3-prize-banner {
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 5px 8px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    letter-spacing: 0.4px;
+  }
+  .step-gold .top3-prize-banner {
+    background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b);
+    color: #1a1100;
+    font-size: 11.5px;
+    box-shadow: 0 2px 10px rgba(255,215,0,0.4);
+  }
+  .step-silver .top3-prize-banner {
+    background: linear-gradient(90deg, #8a95a5, #ffffff, #8a95a5);
+    color: #11151c;
+  }
+  .step-bronze .top3-prize-banner {
+    background: linear-gradient(90deg, #8b4513, #f3be94, #8b4513);
+    color: #1f0d00;
+  }
+
+  .top3-avatar {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    margin: 0 auto 8px auto;
+    background: #101015;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  }
+  .step-gold .top3-avatar {
+    width: 90px;
+    height: 90px;
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
+  }
+  .step-silver .top3-avatar { border: 2.5px solid #e0e5ec; }
+  .step-bronze .top3-avatar { border: 2.5px solid #dfa06e; }
+  .top3-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .top3-name {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .step-gold .top3-name { font-size: 17.5px; color: #ffe885; }
+
+  .top3-role-sub {
+    font-size: 11px;
+    color: #bbb;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .top3-points-box {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+  .step-gold .top3-points-box {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.14);
+  }
+  .top3-points-val {
+    font-size: 17px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .step-gold .top3-points-val { color: #ffd700; font-size: 19px; }
+
+  .top3-stats-mini {
+    font-size: 11px;
+    color: #ccc;
+    margin-top: 3px;
+    font-weight: 700;
+  }
+  .top3-gap-hint {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffab91;
+    margin-top: 4px;
+  }
+  .step-gold .top3-gap-hint { color: #69f0ae; }
+
+  .top3-chasers-bar {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid var(--border-col);
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) {
+    .step-gold { order: 1; min-height: auto; }
+    .step-silver { order: 2; min-height: auto; }
+    .step-bronze { order: 3; min-height: auto; }
+  }
 </style>
 </head>
 <body id="appBody" class="">
@@ -1509,6 +1715,19 @@
 
     <!-- ЦЕНТРАЛЬНАЯ ВИТРИНА ТРЕНЕРСКОГО ШТАБА (2 ТРЕНЕРА: ЛЕГЕНДА И ИГРАЮЩИЙ ТРЕНЕР) -->
     <div class="coach-showcase" id="coachCardContainer"></div>
+	
+	<!-- ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3: КУБОК ЛУЧШЕГО ИГРОКА И МЕДАЛИ -->
+    <div class="top3-yearly-section">
+      <div class="top3-header">
+        <h3 class="top3-title">🏆 Главный Подиум Года: ТОП-3 Игрока Сезона</h3>
+        <div class="top3-sub">
+          В конце года тройка лучших получает <b>Золотую 🥇, Серебряную 🥈 и Бронзовую 🥉 медали</b>, а Лидер сезона забирает <b>Кубок Лучшего Игрока 🏆</b>!
+        </div>
+        <div class="top3-countdown-pill" id="top3CountdownText">⏳ Подсчет дней до финала сезона...</div>
+      </div>
+      <div class="top3-stage" id="top3YearlyContainer"></div>
+      <div class="top3-chasers-bar" id="top3ChasersContainer"></div>
+    </div>
 
     <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ (СИМВОЛИЧЕСКАЯ СБОРНАЯ 5х5) -->
     <div class="podium-section">
@@ -3442,8 +3661,117 @@ function resetToRedZone() {
     }
     return Math.round(pac + sho + pas + dri + def + phy + activityAndCards);
   }
+  
+// ================= РАСЧЕТ ГОДОВОГО ПОДИУМА ТОП-3 (КУБОК И МЕДАЛИ) =================
+  function calcYearlyTopScore(p) {
+    // ⛔ Если позиция не определена или это системный игрок — исключаем с годового подиума
+    const pos = String(p.pos || '').split(' (')[0].trim();
+    if (pos === 'НЕ ОПР' || isGenericPlaceholderName(p.name)) return -9999;
+    
+    // Если активна красная карточка — полный бан подиума
+    if (Number(p.rc || 0) > 0) return -9999; 
+
+    const skillsSum = Number(p.pac || 30) + Number(p.sho || 30) + Number(p.pas || 30) +
+                      Number(p.dri || 30) + Number(p.def || 30) + Number(p.phy || 30);
+    const attPts = Number(p.att || 0) * 3;       // Тренировка = +3 балла
+    const gamesPts = Number(p.games || 0) * 5;   // Турнир = +5 баллов
+    const goalsPts = Number(p.goals || 0) * 3;   // Гол = +3 балла
+    const astPts = Number(p.assists || 0) * 3;   // Пас = +3 балла
+    const mvpPts = Number(p.mvp || 0) * 20;      // Звезда MVP = +20 баллов
+    const ycPenalty = Number(p.yc || 0) * 20;    // Активная ЖК = -20 баллов
+    return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty);
+  }
+
+  function renderYearlyTop3() {
+    const stageEl = document.getElementById('top3YearlyContainer');
+    const chasersEl = document.getElementById('top3ChasersContainer');
+    const timerEl = document.getElementById('top3CountdownText');
+    if (!stageEl) return;
+
+    // Таймер до конца года (31 декабря)
+    if (timerEl) {
+      const now = new Date();
+      const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
+      const daysLeft = Math.max(0, Math.ceil((endOfYear - now) / (1000 * 60 * 60 * 24)));
+      timerEl.textContent = `⏳ До вручения Кубка и Медалей конца ${now.getFullYear()} года осталось: ${daysLeft} дн. | Формула: Навыки + 📅Трен(×3) + 🏆Игры(×5) + ⚽/👟(×3) + ⭐MVP(+20)`;
+    }
+
+    const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
+    const basePool = realPlayers.length > 0 ? realPlayers : players;
+    const eligible = basePool
+      .filter(p => Number(p.rc || 0) === 0)
+      .map(p => ({ player: p, score: calcYearlyTopScore(p), ovr: calcOvr(p) }))
+      .sort((a, b) => b.score - a.score || b.ovr - a.ovr);
+
+    const first = eligible[0] || null;
+    const second = eligible[1] || null;
+    const third = eligible[2] || null;
+
+    const steps = [
+      { rank: 2, cls: 'step-silver', badge: '🥈 2 МЕСТО • СЕРЕБРЯНАЯ МЕДАЛЬ', data: second, refScore: first ? first.score : 0, refLabel: 'До Кубка и Золота' },
+      { rank: 1, cls: 'step-gold',   badge: '🏆 КУБОК ЛУЧШЕГО ИГРОКА + 🥇 ЗОЛОТО', data: first,  refScore: second ? second.score : 0, refLabel: 'Лидер сезона' },
+      { rank: 3, cls: 'step-bronze', badge: '🥉 3 МЕСТО • БРОНЗОВАЯ МЕДАЛЬ', data: third,  refScore: second ? second.score : 0, refLabel: 'До Серебра' }
+    ];
+
+    stageEl.innerHTML = steps.map(st => {
+      if (!st.data || !st.data.player) {
+        return `
+          <div class="top3-step ${st.cls}">
+            <div class="top3-prize-banner">${st.badge}</div>
+            <div class="top3-avatar">⏳</div>
+            <div class="top3-name" style="color:#888;">Свободно</div>
+            <div class="top3-points-box"><div class="top3-points-val">— балл.</div></div>
+          </div>
+        `;
+      }
+      const p = st.data.player;
+      const sc = st.data.score;
+      const shortPos = String(p.pos || 'НЕ ОПР').split(' (')[0];
+      const avatar = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : `#${p.num}`;
+      let gapHtml = '';
+      if (st.rank === 1) {
+        const lead = st.refScore ? (sc - st.refScore) : 0;
+        gapHtml = `<div class="top3-gap-hint">🔥 Отрыв от 2-го места: +${lead} балл.</div>`;
+      } else {
+        const diff = Math.max(1, st.refScore - sc + 1);
+        gapHtml = `<div class="top3-gap-hint">⚡ ${st.refLabel}: +${diff} балл.</div>`;
+      }
+
+      return `
+        <div class="top3-step ${st.cls}">
+          <div>
+            <div class="top3-prize-banner">${st.badge}</div>
+            <div class="top3-avatar">${avatar}</div>
+            <div class="top3-name" title="${p.name}">${p.name}</div>
+            <div class="top3-role-sub">Позиция: ${shortPos} • OVR ${st.data.ovr}</div>
+          </div>
+          <div>
+            <div class="top3-points-box">
+              <div class="top3-points-val">🏅 ${sc} очков</div>
+              <div class="top3-stats-mini">📅 ${p.att || 0} | 🏆 ${p.games || 0} | ⚽ ${p.goals || 0} | 👟 ${p.assists || 0} | ⭐ ${p.mvp || 0}</div>
+            </div>
+            ${gapHtml}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    if (chasersEl) {
+      const chasers = eligible.slice(3, 6);
+      if (chasers.length > 0 && third) {
+        const listStr = chasers.map((c, idx) => {
+          const need = Math.max(1, third.score - c.score + 1);
+          return `<b>${idx + 4}. ${c.player.name}</b> (${c.score} очк. — до бронзы 🥉 не хватает <b>${need}</b>)`;
+        }).join(' &nbsp;•&nbsp; ');
+        chasersEl.innerHTML = `🏃‍♂️ <b>Ближайшие преследователи:</b> ${listStr}`;
+      } else {
+        chasersEl.innerHTML = `💡 Посещай тренировки, получай звезды MVP и забивай голы, чтобы ворваться в ТОП-3 года!`;
+      }
+    }
+  }
 
   function renderPodium() {
+    renderYearlyTop3();
     const box = document.getElementById('podiumContainer');
     if (!box) return;
 
