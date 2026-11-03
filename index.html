@@ -3454,20 +3454,27 @@
     await loadRosterLocal();
   }
 
+// Флаг страховки: разрешает отправку в облако ТОЛЬКО после успешной загрузки из таблицы
+  let cloudLoadedSuccessfully = false;
+
   // Загрузка данных: Google Таблица — ГЛАВНЫЙ источник для всех!
   async function loadRosterLocal() {
     try {
       const response = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now(), { cache: 'no-store' });
       const cloudData = await response.json();
 
+      // Если скрипт вернул ошибку — не считаем загрузку успешной и идем в резервный кеш
+      if (cloudData && cloudData.error) {
+        throw new Error(cloudData.error);
+      }
+
       if (cloudData && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
-        // 1. Берем данные напрямую из Google Таблицы (перебиваем любой старый кеш!)
+        cloudLoadedSuccessfully = true; // ✅ Таблица успешно прочитана, сохранять безопасно!
         players = cloudData.p;
         coachData = (cloudData.c && Object.keys(cloudData.c).length > 0) ? cloudData.c : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
         calendarEvents = (Array.isArray(cloudData.cal) && cloudData.cal.length > 0) ? cloudData.cal : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
         ensureCoachStructure();
 
-        // 2. Счетчик визитов
         const todayStr = new Date().toLocaleDateString('ru-RU');
         if (!coachData.dailyStats || typeof coachData.dailyStats !== 'object') {
           coachData.dailyStats = { date: todayStr, count: 0 };
@@ -3480,7 +3487,6 @@
 
         cleanAllPlayersCards();
 
-        // Отправляем ТОЛЬКО +1 визит (не перезаписывая базу игроков!)
         if (!sessionStorage.getItem('visit_counted')) {
           sessionStorage.setItem('visit_counted', '1');
           coachData.visits += 1;
@@ -3502,7 +3508,6 @@
         const vTodayEl = document.getElementById('visitTodayCount');
         if (vTodayEl) vTodayEl.textContent = coachData.dailyStats.count;
 
-        // Обновляем локальный кеш свежими данными из таблицы
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
           localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
@@ -3515,12 +3520,16 @@
         renderFifaCards();
         renderCalendarTab();
         return;
+      } else if (cloudData && Array.isArray(cloudData.p) && cloudData.p.length === 0 && !cloudData.error) {
+        // Если таблица действительно совсем чистая (первый запуск с нуля)
+        cloudLoadedSuccessfully = true;
       }
     } catch (e) {
-      console.log('Таблица временно недоступна или пуста, берем резерв из памяти:', e);
+      cloudLoadedSuccessfully = false; // ⛔ Ошибка связи! Включаем защиту от перезаписи облака!
+      console.warn('Таблица временно недоступна, включена защита от перезаписи облака:', e);
     }
 
-    // Резервная загрузка (только если нет интернета или таблица еще совсем пустая до первого сохранения тренера)
+    // Резервная загрузка из памяти устройства
     const dict = getPassportDictionary();
     try {
       const savedRoster = localStorage.getItem(STORAGE_KEY);
@@ -3552,7 +3561,7 @@
     renderCalendarTab();
   }
 
-  // Сохранение в локальную память и в облачную Google Таблицу
+  // Сохранение в локальную память и защищенная отправка в облачную Google Таблицу
   async function saveRosterLocal() {
     cleanAllPlayersCards();
     try {
@@ -3570,6 +3579,16 @@
     syncBoardNamesWithRoster();
 
     const statusSub = document.getElementById('roleStatusText');
+
+    // СТРАХОВКА НА КЛИЕНТЕ: Если при открытии сайта не удалось загрузить таблицу — запрещаем затирать облако!
+    if (!cloudLoadedSuccessfully) {
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
+      }
+      alert('⚠️ Внимание! При открытии сайта не удалось связаться с Google Таблицей.\n\nЧтобы случайно не стереть облачную базу резервным шаблоном, отправка в таблицу заблокирована. Изменения сохранены на вашем устройстве. Проверьте интернет и обновите страницу!');
+      return;
+    }
+
     if (isCoachMode && statusSub) {
       statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
     }
@@ -4100,7 +4119,7 @@ const slots = [
     saveRosterLocal();
   }
 
-  // Сортировка по навыкам, рейтингу или позиции (ВРТ -> ФИК -> АЛА -> СТЛ -> УНИ -> НЕ ОПР)
+// Сортировка карточек на экране (без лишней перезаписи облачной таблицы!)
   function sortPlayersBy(criteria) {
     const posOrder = { 'ВРТ': 1, 'ФИК': 2, 'АЛА': 3, 'СТЛ': 4, 'УНИ': 5, 'НЕ ОПР': 6 };
     if (criteria === 'ovr') {
@@ -4116,9 +4135,9 @@ const slots = [
     } else {
       players.sort((a, b) => Number(b[criteria] || 0) - Number(a[criteria] || 0));
     }
-    saveRosterLocal();
+    renderFifaCards();
+    syncBoardNamesWithRoster();
   }
-
 // ================= ЛОГИКА БЫСТРОГО ЖУРНАЛА ТРЕНИРОВКИ И ТУРНИРА =================
   function openAttendanceModal() {
     const list = document.getElementById('attendanceListContainer');
