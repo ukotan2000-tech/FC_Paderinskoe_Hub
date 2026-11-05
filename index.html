@@ -226,7 +226,7 @@
     border-radius: 6px;
   }
 
-  /* ================= ПОДИУМ ЛИДЕРОВ (СИМВОЛИЧЕСКАЯ СБОРНАЯ) ================= */
+  /* ================= ПОДИУМ ЛИДЕРОВ ================= */
   .podium-section {
     background: linear-gradient(135deg, #16121e 0%, #1f1a12 50%, #121622 100%);
     border: 2px solid rgba(245, 197, 24, 0.55);
@@ -298,11 +298,7 @@
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   }
-  .podium-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .podium-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .podium-player-name {
     font-size: 14.5px;
     font-weight: 900;
@@ -330,7 +326,7 @@
     line-height: 1.3;
   }
 
-  /* ================= БЛОК ДВУХ ТРЕНЕРОВ (ЛЕГЕНДА И ИГРАЮЩИЙ ТРЕНЕР) ================= */
+  /* ================= БЛОК ДВУХ ТРЕНЕРОВ ================= */
   .coach-showcase {
     display: flex;
     flex-wrap: wrap;
@@ -339,7 +335,6 @@
     gap: 28px;
     margin-bottom: 24px;
   }
-  /* 1. Карточка Наставника-Легенды (99 все статы) */
   .fut-coach-legend {
     width: 315px;
     border-radius: 24px 24px 20px 20px;
@@ -355,8 +350,6 @@
     justify-content: space-between;
   }
   .fut-coach-legend:hover { transform: translateY(-4px); }
-
-  /* 2. Эксклюзивная карточка Играющего Тренера (выделяется среди игроков!) */
   .fut-playing-coach {
     width: 315px;
     border-radius: 24px 24px 20px 20px;
@@ -408,9 +401,8 @@
    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
    gap: 22px;
    justify-items: center;
-   align-items: start; /* <-- Добавь эту строчку */
+   align-items: start;
  }
-  /* Щит карточки игрока */
   .fut-card {
     width: 275px;
     border-radius: 22px 22px 18px 18px;
@@ -459,7 +451,6 @@
     box-shadow: 0 0 20px rgba(245, 197, 24, 0.35);
   }
 
-  /* Плашка статуса на турнир */
   .squad-status-bar {
     text-align: center;
     font-size: 11px;
@@ -486,7 +477,6 @@
     border: 1px solid #ff8a80;
   }
 
-  /* Спец-плашки: Именинник и Дисквалификация КК */
   .bday-banner {
     background: linear-gradient(90deg, #ff4081, #ffd740, #ff4081);
     color: #000;
@@ -501,7 +491,8 @@
   }
   @keyframes pulseBday { from { transform: scale(0.98); } to { transform: scale(1.02); } }
 
-  .card-timer-alert {
+  /* Плашка карточек ЖК/КК на карточке игрока (без таймера) */
+  .card-penalty-alert {
     background: rgba(0, 0, 0, 0.55);
     border: 1px solid #ff5252;
     color: #ffebee;
@@ -555,7 +546,6 @@
     color: var(--accent-yellow);
   }
 
-  /* Аватар / Фото игрока */
   .fut-avatar {
     width: 86px;
     height: 86px;
@@ -582,7 +572,6 @@
     border-color: var(--accent-yellow);
   }
 
-  /* Колонка с эмблемой клуба на карточке */
   .fut-badge-col {
     display: flex;
     flex-direction: column;
@@ -619,7 +608,6 @@
     color: #fff;
   }
 
-  /* Аккуратная плашка Даты Рождения под именем */
   .fut-dob-line {
     text-align: center;
     font-size: 10.5px;
@@ -655,7 +643,6 @@
   }
   .fut-stat-val { font-weight: 900; }
 
-  /* Плашка "Лучший на тренировке" (Звезды) */
   .fut-mvp-banner {
     margin-top: 6px;
     background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(245,197,24,0.28), rgba(0,0,0,0.45));
@@ -669,7 +656,6 @@
     text-shadow: 0 1px 2px rgba(0,0,0,0.8);
   }
 
-  /* Нижняя панель статистики: Голы, Пасы, Игры, Тренировки, ЖК, КК */
   .fut-footer {
     margin-top: 6px;
     padding-top: 6px;
@@ -690,7 +676,6 @@
     border-radius: 4px;
   }
 
-  /* Кнопка Наставления Тренера для игрока */
   .btn-coach-note {
     width: 100%;
     margin-top: 7px;
@@ -735,7 +720,7 @@
   }
   .btn-card-edit:hover { background: #000; border-color: var(--accent-yellow); color: var(--accent-yellow); }
 
-  /* СТИЛИ БЫСТРОГО ЖУРНАЛА ПЕРЕКЛИЧКИ */
+  /* ЖУРНАЛ ПЕРЕКЛИЧКИ */
  .att-row {
     display: flex;
     flex-wrap: wrap;
@@ -954,7 +939,7 @@
   th { background: #2b1419; color: var(--accent-yellow); }
   tr:nth-child(even) { background: var(--bg-panel); }
 
-  /* ================= СТИЛИ КАЛЕНДАРЯ ВЫЕЗДОВ ================= */
+  /* КАЛЕНДАРЬ ВЫЕЗДОВ */
   .cal-stats-bar {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
@@ -981,11 +966,7 @@
     margin-top: 4px;
     font-weight: 600;
   }
-  .cal-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .cal-list { display: flex; flex-direction: column; gap: 12px; }
   .cal-event-card {
     background: var(--bg-card);
     border: 1px solid var(--border-col);
@@ -994,9 +975,7 @@
     transition: 0.2s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.45);
   }
-  .cal-event-card:hover {
-    border-color: rgba(245, 197, 24, 0.6);
-  }
+  .cal-event-card:hover { border-color: rgba(245, 197, 24, 0.6); }
   .cal-event-header {
     padding: 14px 16px;
     display: flex;
@@ -1008,46 +987,12 @@
     user-select: none;
     background: linear-gradient(135deg, #1d1d26 0%, #16161d 100%);
   }
-  .cal-event-main {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-    min-width: 210px;
-  }
-  .cal-date-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px;
-    color: var(--accent-yellow);
-    font-weight: 800;
-  }
-  .cal-event-title {
-    font-size: 16.5px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 0.2px;
-  }
-  .cal-event-loc {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .cal-event-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .cal-res-badge {
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    white-space: nowrap;
-  }
+  .cal-event-main { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 210px; }
+  .cal-date-row { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--accent-yellow); font-weight: 800; }
+  .cal-event-title { font-size: 16.5px; font-weight: 900; color: #fff; letter-spacing: 0.2px; }
+  .cal-event-loc { font-size: 12px; color: var(--text-muted); }
+  .cal-event-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .cal-res-badge { padding: 6px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap; }
   .res-gold { background: linear-gradient(135deg, #ffd700, #b8860b); color: #1a1100; border: 1px solid #fff3b0; box-shadow: 0 0 12px rgba(255,215,0,0.4); }
   .res-silver { background: linear-gradient(135deg, #e0e5ec, #8a95a5); color: #11151c; border: 1px solid #ffffff; }
   .res-bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); color: #fff; border: 1px solid #f0b884; }
@@ -1056,34 +1001,11 @@
   .res-upcoming { background: rgba(245, 197, 24, 0.15); color: #ffe066; border: 1px solid var(--accent-yellow); }
   .res-played { background: var(--bg-panel); color: #ddd; border: 1px solid #555; }
 
-  .cal-toggle-icon {
-    font-size: 13px;
-    color: var(--accent-yellow);
-    background: rgba(255,255,255,0.06);
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: transform 0.2s;
-  }
-  .cal-event-card.open .cal-toggle-icon {
-    background: var(--accent-yellow);
-    color: #000;
-  }
-  .cal-event-body {
-    display: none;
-    padding: 15px 16px;
-    border-top: 1px solid var(--border-col);
-    background: #131319;
-  }
-  .cal-event-card.open .cal-event-body {
-    display: block;
-    animation: fadeIn 0.2s ease;
-  }
-  .cal-games-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .cal-toggle-icon { font-size: 13px; color: var(--accent-yellow); background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 6px; font-weight: bold; transition: transform 0.2s; }
+  .cal-event-card.open .cal-toggle-icon { background: var(--accent-yellow); color: #000; }
+  .cal-event-body { display: none; padding: 15px 16px; border-top: 1px solid var(--border-col); background: #131319; }
+  .cal-event-card.open .cal-event-body { display: block; animation: fadeIn 0.2s ease; }
+  .cal-games-list { display: flex; flex-direction: column; gap: 8px; }
   .cal-game-row {
     background: var(--bg-panel);
     border: 1px solid var(--border-col);
@@ -1095,41 +1017,11 @@
     align-items: center;
     gap: 10px;
   }
-  .cal-game-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .cal-game-time {
-    background: #101015;
-    color: var(--accent-yellow);
-    padding: 3px 7px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 800;
-    border: 1px solid #333;
-  }
-  .cal-game-teams {
-    font-size: 14px;
-    font-weight: 800;
-    color: #fff;
-  }
-  .cal-game-scorers {
-    font-size: 12px;
-    color: #b0b0c0;
-    width: 100%;
-    margin-top: 2px;
-    padding-left: 4px;
-  }
-  .cal-game-score {
-    font-size: 15px;
-    font-weight: 900;
-    padding: 4px 11px;
-    border-radius: 6px;
-    min-width: 68px;
-    text-align: center;
-  }
+  .cal-game-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .cal-game-time { background: #101015; color: var(--accent-yellow); padding: 3px 7px; border-radius: 5px; font-size: 12px; font-weight: 800; border: 1px solid #333; }
+  .cal-game-teams { font-size: 14px; font-weight: 800; color: #fff; }
+  .cal-game-scorers { font-size: 12px; color: #b0b0c0; width: 100%; margin-top: 2px; padding-left: 4px; }
+  .cal-game-score { font-size: 15px; font-weight: 900; padding: 4px 11px; border-radius: 6px; min-width: 68px; text-align: center; }
   .score-w { background: #1b5e20; color: #fff; border: 1px solid #00e676; }
   .score-d { background: #4d3800; color: #ffe066; border: 1px solid #f5c518; }
   .score-l { background: #6b1111; color: #fff; border: 1px solid #ff5252; }
@@ -1144,49 +1036,23 @@
     font-size: 13px;
     color: #eaeaea;
   }
-  .game-edit-row {
-    background: #16161f;
-    border: 1px solid var(--border-col);
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 8px;
-  }
-  /* ================= СТИЛИ ОКНА ПОДЕЛИТЬСЯ И QR-КОДОВ ================= */
+  .game-edit-row { background: #16161f; border: 1px solid var(--border-col); border-radius: 8px; padding: 10px; margin-bottom: 8px; }
+
+  /* ОКНО ПОДЕЛИТЬСЯ И QR-КОДЫ */
   .btn-t.share-hub-btn {
     background: linear-gradient(135deg, #0077ff 0%, #0044aa 100%);
     border-color: #66b0ff;
     color: #fff;
     padding: 6px 12px;
   }
-  .btn-t.share-hub-btn:hover {
-    background: var(--accent-yellow);
-    border-color: var(--accent-yellow);
-    color: #000;
-  }
-  .share-actions-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 14px;
-    justify-content: center;
-  }
+  .btn-t.share-hub-btn:hover { background: var(--accent-yellow); border-color: var(--accent-yellow); color: #000; }
+  .share-actions-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; justify-content: center; }
   .share-soc-btn {
-    flex: 1;
-    min-width: 135px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 800;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.25);
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    transition: transform 0.15s, filter 0.15s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    flex: 1; min-width: 135px; padding: 9px 12px; border-radius: 8px;
+    font-size: 12.5px; font-weight: 800; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.25); color: #fff; text-align: center;
+    text-decoration: none; transition: transform 0.15s, filter 0.15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   }
   .share-soc-btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
   .share-vk { background: #0077ff; }
@@ -1194,130 +1060,47 @@
   .share-copy { background: #2b2b38; border-color: var(--accent-yellow); color: var(--accent-yellow); }
   .share-native { background: #1b5e20; border-color: #00e676; }
 
-  .qr-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-    gap: 12px;
-    margin-top: 10px;
-  }
+  .qr-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; margin-top: 10px; }
   .qr-item-card {
-    background: var(--bg-panel);
-    border: 1.5px solid var(--border-col);
-    border-radius: 12px;
-    padding: 12px 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    background: var(--bg-panel); border: 1.5px solid var(--border-col);
+    border-radius: 12px; padding: 12px 10px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
     box-shadow: 0 4px 12px rgba(0,0,0,0.45);
   }
   .qr-item-card.qr-vk-group { border-color: #0077ff; }
   .qr-item-card.qr-vk-chat { border-color: #00e676; }
   .qr-item-card.qr-site { border-color: var(--accent-yellow); }
 
-  .qr-badge-title {
-    font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    color: #fff;
-  }
+  .qr-badge-title { font-size: 12px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; color: #fff; }
   .qr-img-box {
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 10px;
-    width: 146px;
-    height: 146px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    background: #ffffff; padding: 8px; border-radius: 10px;
+    width: 146px; height: 146px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.5);
   }
-  .qr-img-box img {
-    width: 130px;
-    height: 130px;
-    display: block;
-  }
-  .qr-desc {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  /* Полоски-ползунки и подсветка изменений на самой карточке (видят ВСЕ) */
-  .fut-stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .fut-stat-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .fut-stat-diff {
-    font-size: 10px;
-    font-weight: 900;
-    margin-left: 3px;
-    padding: 0 3px;
-    border-radius: 4px;
-  }
-  .diff-up {
-    color: #00e676;
-    background: rgba(0, 0, 0, 0.55);
-  }
-  .diff-down {
-    color: #ff5252;
-    background: rgba(0, 0, 0, 0.55);
-  }
-  .fut-mini-slider {
-    width: 100%;
-    height: 6px;
-    background: rgba(0, 0, 0, 0.38);
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  .fut-mini-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: rgba(255, 255, 255, 0.85);
-    transition: width 0.3s ease;
-  }
-  .fut-mini-fill.bar-up {
-    background: linear-gradient(90deg, #00c853, #69f0ae);
-    box-shadow: 0 0 6px rgba(0, 230, 118, 0.8);
-  }
-  .fut-mini-fill.bar-down {
-    background: linear-gradient(90deg, #d50000, #ff5252);
-    box-shadow: 0 0 6px rgba(255, 82, 82, 0.8);
-  }
+  .qr-img-box img { width: 130px; height: 130px; display: block; }
+  .qr-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.3; }
+
+  /* Полоски-ползунки и подсветка изменений на самой карточке */
+  .fut-stat-item { display: flex; flex-direction: column; gap: 2px; }
+  .fut-stat-top { display: flex; justify-content: space-between; align-items: center; }
+  .fut-stat-diff { font-size: 10px; font-weight: 900; margin-left: 3px; padding: 0 3px; border-radius: 4px; }
+  .diff-up { color: #00e676; background: rgba(0, 0, 0, 0.55); }
+  .diff-down { color: #ff5252; background: rgba(0, 0, 0, 0.55); }
+  .fut-mini-slider { width: 100%; height: 6px; background: rgba(0, 0, 0, 0.38); border-radius: 4px; overflow: hidden; position: relative; border: 1px solid rgba(255, 255, 255, 0.2); }
+  .fut-mini-fill { height: 100%; border-radius: 3px; background: rgba(255, 255, 255, 0.85); transition: width 0.3s ease; }
+  .fut-mini-fill.bar-up { background: linear-gradient(90deg, #00c853, #69f0ae); box-shadow: 0 0 6px rgba(0, 230, 118, 0.8); }
+  .fut-mini-fill.bar-down { background: linear-gradient(90deg, #d50000, #ff5252); box-shadow: 0 0 6px rgba(255, 82, 82, 0.8); }
 
   /* Подсветка ползунков в модальном окне тренера */
-  .form-row input[type="range"].slider-up {
-    accent-color: #00e676;
-    filter: drop-shadow(0 0 6px rgba(0, 230, 118, 0.55));
-  }
-  .form-row input[type="range"].slider-down {
-    accent-color: #ff5252;
-    filter: drop-shadow(0 0 6px rgba(255, 82, 82, 0.55));
-  }
+  .form-row input[type="range"].slider-up { accent-color: #00e676; filter: drop-shadow(0 0 6px rgba(0, 230, 118, 0.55)); }
+  .form-row input[type="range"].slider-down { accent-color: #ff5252; filter: drop-shadow(0 0 6px rgba(255, 82, 82, 0.55)); }
   .stat-val-up { color: #00e676 !important; font-weight: 900; }
   .stat-val-down { color: #ff5252 !important; font-weight: 900; }
 
-  /* Незаметная метка времени редактирования (ТОЛЬКО ДЛЯ ТРЕНЕРА) */
   .coach-edit-stamp {
-    width: 100%;
-    justify-content: center;
-    font-size: 9.5px;
-    color: rgba(255, 255, 255, 0.55);
-    margin-top: 5px;
-    letter-spacing: 0.2px;
+    width: 100%; justify-content: center; font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.55); margin-top: 5px; letter-spacing: 0.2px;
   }
-  /* Выравнивание навыков у обоих тренеров в одну линию: ПАС ...... 99 */
   .fut-coach-legend .fut-stat-item,
   .fut-playing-coach .fut-stat-item {
     flex-direction: row !important;
@@ -1325,28 +1108,15 @@
     align-items: center !important;
   }
 
-  /* Синяя кнопка отметки Турнира в журнале */
   .att-game-label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(41, 121, 255, 0.15);
-    border: 1px solid #2979ff;
-    color: #82b1ff;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    user-select: none;
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(41, 121, 255, 0.15); border: 1px solid #2979ff; color: #82b1ff;
+    padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 800;
+    cursor: pointer; user-select: none;
   }
-  .att-game-label input {
-    width: 16px;
-    height: 16px;
-    accent-color: #2979ff;
-    cursor: pointer;
-  }
-  /* ================= ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 (КУБОК И МЕДАЛИ) ================= */
+  .att-game-label input { width: 16px; height: 16px; accent-color: #2979ff; cursor: pointer; }
+
+  /* ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 */
   .top3-yearly-section {
     background: radial-gradient(circle at 50% 0%, #2e240c 0%, #14141d 65%, #0e0e14 100%);
     border: 2px solid var(--accent-yellow);
@@ -1357,196 +1127,48 @@
     position: relative;
     overflow: hidden;
   }
-  .top3-header {
-    text-align: center;
-    margin-bottom: 18px;
-  }
+  .top3-header { text-align: center; margin-bottom: 18px; }
   .top3-title {
-    font-size: 21px;
-    font-weight: 900;
-    color: var(--accent-yellow);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin: 0;
+    font-size: 21px; font-weight: 900; color: var(--accent-yellow);
+    text-transform: uppercase; letter-spacing: 0.8px; margin: 0;
     text-shadow: 0 2px 10px rgba(245, 197, 24, 0.4);
   }
-  .top3-sub {
-    font-size: 12.5px;
-    color: #dcdce6;
-    margin-top: 5px;
-    line-height: 1.4;
-  }
+  .top3-sub { font-size: 12.5px; color: #dcdce6; margin-top: 5px; line-height: 1.4; }
   .top3-countdown-pill {
-    display: inline-block;
-    margin-top: 8px;
-    background: rgba(0,0,0,0.55);
-    border: 1px solid rgba(245, 197, 24, 0.5);
-    color: #ffe066;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 20px;
+    display: inline-block; margin-top: 8px; background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(245, 197, 24, 0.5); color: #ffe066;
+    font-size: 11.5px; font-weight: 800; padding: 4px 12px; border-radius: 20px;
   }
-  .top3-stage {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 16px;
-    max-width: 920px;
-    margin: 10px auto 14px auto;
-    flex-wrap: wrap;
-  }
-  .top3-step {
-    flex: 1;
-    min-width: 235px;
-    max-width: 285px;
-    border-radius: 16px 16px 10px 10px;
-    padding: 14px 12px;
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.25s ease;
-  }
+  .top3-stage { display: flex; justify-content: center; align-items: flex-end; gap: 16px; max-width: 920px; margin: 10px auto 14px auto; flex-wrap: wrap; }
+  .top3-step { flex: 1; min-width: 235px; max-width: 285px; border-radius: 16px 16px 10px 10px; padding: 14px 12px; text-align: center; position: relative; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease; }
   .top3-step:hover { transform: translateY(-5px); }
 
-  /* 1 МЕСТО: ЗОЛОТО + КУБОК */
-  .step-gold {
-    order: 2;
-    min-height: 310px;
-    background: linear-gradient(160deg, #4a3505 0%, #1c170b 55%, #2e2104 100%);
-    border: 2.5px solid #ffd700;
-    box-shadow: 0 0 28px rgba(255, 215, 0, 0.35);
-    z-index: 2;
-  }
-  /* 2 МЕСТО: СЕРЕБРО */
-  .step-silver {
-    order: 1;
-    min-height: 270px;
-    background: linear-gradient(160deg, #323842 0%, #17191f 60%, #23272e 100%);
-    border: 2px solid #e0e5ec;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  }
-  /* 3 МЕСТО: БРОНЗА */
-  .step-bronze {
-    order: 3;
-    min-height: 250px;
-    background: linear-gradient(160deg, #422611 0%, #1a130e 60%, #2e1a0b 100%);
-    border: 2px solid #dfa06e;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  }
+  .step-gold { order: 2; min-height: 310px; background: linear-gradient(160deg, #4a3505 0%, #1c170b 55%, #2e2104 100%); border: 2.5px solid #ffd700; box-shadow: 0 0 28px rgba(255, 215, 0, 0.35); z-index: 2; }
+  .step-silver { order: 1; min-height: 270px; background: linear-gradient(160deg, #323842 0%, #17191f 60%, #23272e 100%); border: 2px solid #e0e5ec; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+  .step-bronze { order: 3; min-height: 250px; background: linear-gradient(160deg, #422611 0%, #1a130e 60%, #2e1a0b 100%); border: 2px solid #dfa06e; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
 
-  .top3-prize-banner {
-    font-size: 11px;
-    font-weight: 900;
-    text-transform: uppercase;
-    padding: 5px 8px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    letter-spacing: 0.4px;
-  }
-  .step-gold .top3-prize-banner {
-    background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b);
-    color: #1a1100;
-    font-size: 11.5px;
-    box-shadow: 0 2px 10px rgba(255,215,0,0.4);
-  }
-  .step-silver .top3-prize-banner {
-    background: linear-gradient(90deg, #8a95a5, #ffffff, #8a95a5);
-    color: #11151c;
-  }
-  .step-bronze .top3-prize-banner {
-    background: linear-gradient(90deg, #8b4513, #f3be94, #8b4513);
-    color: #1f0d00;
-  }
+  .top3-prize-banner { font-size: 11px; font-weight: 900; text-transform: uppercase; padding: 5px 8px; border-radius: 8px; margin-bottom: 10px; letter-spacing: 0.4px; }
+  .step-gold .top3-prize-banner { background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b); color: #1a1100; font-size: 11.5px; box-shadow: 0 2px 10px rgba(255,215,0,0.4); }
+  .step-silver .top3-prize-banner { background: linear-gradient(90deg, #8a95a5, #ffffff, #8a95a5); color: #11151c; }
+  .step-bronze .top3-prize-banner { background: linear-gradient(90deg, #8b4513, #f3be94, #8b4513); color: #1f0d00; }
 
-  .top3-avatar {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    margin: 0 auto 8px auto;
-    background: #101015;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 900;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-  }
-  .step-gold .top3-avatar {
-    width: 90px;
-    height: 90px;
-    border: 3px solid #ffd700;
-    box-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
-  }
+  .top3-avatar { width: 78px; height: 78px; border-radius: 50%; margin: 0 auto 8px auto; background: #101015; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: #fff; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+  .step-gold .top3-avatar { width: 90px; height: 90px; border: 3px solid #ffd700; box-shadow: 0 0 16px rgba(255, 215, 0, 0.5); }
   .step-silver .top3-avatar { border: 2.5px solid #e0e5ec; }
   .step-bronze .top3-avatar { border: 2.5px solid #dfa06e; }
   .top3-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-  .top3-name {
-    font-size: 16px;
-    font-weight: 900;
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .top3-name { font-size: 16px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .step-gold .top3-name { font-size: 17.5px; color: #ffe885; }
-
-  .top3-role-sub {
-    font-size: 11px;
-    color: #bbb;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .top3-points-box {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 6px 10px;
-    margin-bottom: 6px;
-  }
-  .step-gold .top3-points-box {
-    border-color: #ffd700;
-    background: rgba(255, 215, 0, 0.14);
-  }
-  .top3-points-val {
-    font-size: 17px;
-    font-weight: 900;
-    color: #fff;
-  }
+  .top3-role-sub { font-size: 11px; color: #bbb; font-weight: 700; margin-bottom: 8px; }
+  .top3-points-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 6px 10px; margin-bottom: 6px; }
+  .step-gold .top3-points-box { border-color: #ffd700; background: rgba(255, 215, 0, 0.14); }
+  .top3-points-val { font-size: 17px; font-weight: 900; color: #fff; }
   .step-gold .top3-points-val { color: #ffd700; font-size: 19px; }
-
-  .top3-stats-mini {
-    font-size: 11px;
-    color: #ccc;
-    margin-top: 3px;
-    font-weight: 700;
-  }
-  .top3-gap-hint {
-    font-size: 11px;
-    font-weight: 800;
-    color: #ffab91;
-    margin-top: 4px;
-  }
+  .top3-stats-mini { font-size: 11px; color: #ccc; margin-top: 3px; font-weight: 700; }
+  .top3-gap-hint { font-size: 11px; font-weight: 800; color: #ffab91; margin-top: 4px; }
   .step-gold .top3-gap-hint { color: #69f0ae; }
-
-  .top3-chasers-bar {
-    background: rgba(0,0,0,0.45);
-    border: 1px solid var(--border-col);
-    border-radius: 10px;
-    padding: 9px 14px;
-    font-size: 12px;
-    color: #ccc;
-    text-align: center;
-    max-width: 920px;
-    margin: 0 auto;
-  }
+  .top3-chasers-bar { background: rgba(0,0,0,0.45); border: 1px solid var(--border-col); border-radius: 10px; padding: 9px 14px; font-size: 12px; color: #ccc; text-align: center; max-width: 920px; margin: 0 auto; }
   @media (max-width: 760px) {
     .step-gold { order: 1; min-height: auto; }
     .step-silver { order: 2; min-height: auto; }
@@ -1682,7 +1304,7 @@
     <!-- РАСКРЫВАЮЩАЯСЯ ПАМЯТКА ДЛЯ ДЕТЕЙ -->
     <div class="kids-guide-banner" id="kidsGuideBanner">
       <div class="kids-guide-header" onclick="document.getElementById('kidsGuideBanner').classList.toggle('open')">
-        <span>❓ ПАМЯТКА ИГРОКАМ: Навыки (СКО, ПАС, ФИЗ), Подиум Лидеров и Сгорание Карточек (🟨/🟥)</span>
+        <span>❓ ПАМЯТКА ИГРОКАМ: Навыки (СКО, ПАС, ФИЗ), Подиум Лидеров и дисциплинарные карточки (🟨/🟥)</span>
         <span>🔽 Нажми, чтобы прочитать</span>
       </div>
       <div class="kids-guide-body">
@@ -1698,8 +1320,8 @@
         <div style="margin-top: 12px;">
           <b>2. Как попасть на Подиум Лидеров и правила дисциплинарных карточек (🟨 и 🟥):</b><br>
           • На подиуме 5 мест основы: <b>Вратарь, Фиксо, два Ала и Столб</b>! Компьютер считает твой <b>Индекс Лидера</b> (профильные навыки + 📅 тренировки + ⚽ голы + 👟 пасы + <b>20 баллов за каждую редкую Звезду MVP ⭐</b>).<br>
-          • 🟨 <b>Желтая карточка</b> отнимает очки рейтинга и висит ровно <b>7 дней (неделю)</b> с момента получения, после чего автоматически сгорает.<br>
-          • 🟥 <b>Красная карточка</b> висит <b>3 дня</b>: пока она активна, игрок получает <b>полный запрет на Подиум Лидеров</b>!
+          • 🟨 <b>Желтая карточка</b> — дисциплинарный штраф: <b>минус 5 очков</b> от Индекса Лидера. Снимается только тренером вручную (таймера сгорания больше нет).<br>
+          • 🟥 <b>Красная карточка</b> — серьёзный штраф: <b>минус 20 очков</b> от Индекса Лидера. Снимается только тренером вручную (таймера сгорания больше нет).
         </div>
       </div>
     </div>
@@ -1713,10 +1335,10 @@
       <span>⬛🟨 <b>Элита (85–99)</b></span>
     </div>
 
-    <!-- ЦЕНТРАЛЬНАЯ ВИТРИНА ТРЕНЕРСКОГО ШТАБА (2 ТРЕНЕРА: ЛЕГЕНДА И ИГРАЮЩИЙ ТРЕНЕР) -->
+    <!-- ЦЕНТРАЛЬНАЯ ВИТРИНА ТРЕНЕРСКОГО ШТАБА -->
     <div class="coach-showcase" id="coachCardContainer"></div>
-	
-	<!-- ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3: КУБОК ЛУЧШЕГО ИГРОКА И МЕДАЛИ -->
+
+	<!-- ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 -->
     <div class="top3-yearly-section">
       <div class="top3-header">
         <h3 class="top3-title">🏆 Главный Подиум Года: ТОП-3 Игрока Сезона</h3>
@@ -1729,11 +1351,11 @@
       <div class="top3-chasers-bar" id="top3ChasersContainer"></div>
     </div>
 
-    <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ (СИМВОЛИЧЕСКАЯ СБОРНАЯ 5х5) -->
+    <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ -->
     <div class="podium-section">
       <div class="podium-header">
         <h3 class="podium-title">🏆 Подиум Лидеров: Символическая Пятёрка</h3>
-        <div class="podium-sub">Автоматический рейтинг лучших игроков по позициям (Навыки роли + 📅 Тренировки + ⭐ Звезды Тренера + ⚽/👟 Результат • Без активных 🟥)</div>
+        <div class="podium-sub">Автоматический рейтинг лучших игроков по позициям (Навыки роли + 📅 Тренировки + ⭐ Звезды Тренера + ⚽/👟 Результат − 🟨×5 − 🟥×20)</div>
       </div>
       <div class="podium-grid" id="podiumContainer"></div>
     </div>
@@ -1752,10 +1374,7 @@
       </div>
     </div>
 
-    <!-- АВТОМАТИЧЕСКАЯ СВОДКА ВЫЕЗДОВ И МАТЧЕЙ -->
     <div class="cal-stats-bar" id="calendarStatsSummary"></div>
-
-    <!-- СПИСОК ВЫЕЗДОВ (КАРТОЧКИ С РАСКРЫВАЮЩИМИСЯ ИГРАМИ) -->
     <div class="cal-list" id="calendarEventsContainer"></div>
   </div>
 
@@ -1799,7 +1418,7 @@
       <ul class="badge-list">
         <li><b>Для чего карточки нужны Тренеру:</b> По карточкам и Журналу тренировок тренер видит полную картину — кто ходит без пропусков, кто получает звезды «Лучший на тренировке» (⭐), какие навыки растут и главное — <b>кого брать в основу на выездные турниры</b>.</li>
         <li><b>Жесткий закон отбора в состав:</b> Если у игрока слабая карточка (Красная или Оранжевая зона), он пропускает тренировки или ленится — на соревнованиях он <b>либо сидит на скамейке запасных, либо остается дома вне заявки</b>.</li>
-        <li><b>Автоматическое сгорание карточек:</b> Желтая карточка (🟨) действует <b>7 дней</b> и отнимает 20 баллов Подиума. Красная карточка (🟥) действует <b>3 дня</b> и полностью блокирует попадание игрока на Подиум Лидеров.</li>
+        <li><b>Дисциплинарные карточки:</b> Желтая карточка (🟨) отнимает <b>−5 баллов</b> от Индекса Лидера, красная (🟥) — <b>−20 баллов</b>. Таймера сгорания больше нет: карточки действуют до тех пор, пока тренер не снимет их вручную в редакторе игрока.</li>
       </ul>
     </div>
 
@@ -1850,11 +1469,11 @@
         </tbody>
       </table>
     </div>
-	
+
     <div class="info-block">
       <h2>3. Как считается Подиум Лидеров по позициям (Честная математика)</h2>
       <ul class="badge-list">
-        <li>📊 <b>База для всех позиций:</b> В копилку складываются <b>все 6 навыков</b> + 📅 тренировки + 🏆 турниры + ⚽ голы + 👟 голевые пасы. Каждая <b>Звезда ⭐ дает +20 баллов</b>, активная <b>Желтая карточка 🟨 отнимает -20 баллов</b>, а <b>Красная 🟥 блокирует попадание на подиум</b>!</li>
+        <li>📊 <b>База для всех позиций:</b> В копилку складываются <b>все 6 навыков</b> + 📅 тренировки + 🏆 турниры + ⚽ голы + 👟 голевые пасы. Каждая <b>Звезда ⭐ даёт +20 баллов</b>, <b>Жёлтая карточка 🟨 отнимает 5 баллов</b>, а <b>Красная 🟥 отнимает 20 баллов</b>!</li>
         <li>🧤 <b>Лучший Вратарь (ВРТ):</b> Сумма всех 6 навыков + вся активность (тренировки, игры, голы, пасы) + бонусы за Звезды ⭐.</li>
         <li>🛡 <b>Лучший Защитник (ФИК — Фиксо):</b> Главный упор на <b>Защиту (ЗАЩ × 2)</b> и <b>Первый пас (ПАС × 1.5)</b> + остальные навыки и статистика в сложение.</li>
         <li>⚡ <b>АЛА #1 и АЛА #2 (Два лучших Края):</b> На подиум попадают сразу два лучших края! Главный упор на <b>Дриблинг (ДРБ × 2)</b> и <b>Пас (ПАС × 1.5)</b> + остальные навыки и статистика в сложение.</li>
@@ -1961,7 +1580,6 @@
     <div class="info-block">
       <h2>4. Наглядные зарисовки правил (Учим глазами!)</h2>
       <div class="grid">
-        <!-- Картинка 1: Аут и 4 секунды в минике -->
         <div class="card">
           <div>
             <h3>1. Миник: Аут с линии + 4 секунды и 5 метров</h3>
@@ -1980,24 +1598,19 @@
           </div>
         </div>
 
-        <!-- Картинка 2: Офсайд в большом футболе -->
         <div class="card">
           <div>
             <h3>2. Большой футбол: Что такое «Вне игры» (Офсайд)</h3>
             <svg class="scheme" viewBox="0 0 400 250">
               <rect x="375" y="75" width="15" height="100" fill="none" stroke="#fff" stroke-width="3"></rect>
               <circle cx="360" cy="125" r="12" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="360" y="129" font-size="9" text-anchor="middle" fill="#000" font-weight="bold">ВР</text>
-              <!-- Линия последнего защитника -->
               <line x1="250" y1="10" x2="250" y2="240" stroke="#ffeb3b" stroke-width="3" stroke-dasharray="6,4"></line>
               <text x="245" y="25" font-size="10" fill="#ffeb3b" text-anchor="end" font-weight="bold">Линия офсайда</text>
               <circle cx="250" cy="95" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="250" y="99" font-size="10" text-anchor="middle" fill="#fff">З1</text>
               <circle cx="230" cy="185" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="230" y="189" font-size="10" text-anchor="middle" fill="#fff">З2</text>
-              <!-- Пасующий -->
               <circle cx="90" cy="140" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="90" y="144" font-size="10" text-anchor="middle" fill="#fff">И1</text>
-              <!-- Правильное открывание -->
               <circle cx="215" cy="60" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="215" y="64" font-size="10" text-anchor="middle" fill="#fff">ОК</text>
               <line x1="105" y1="130" x2="200" y2="68" stroke="#00e676" stroke-width="2.5" marker-end="url(#arr-run)"></line>
-              <!-- Игрок в офсайде -->
               <circle cx="310" cy="175" r="13" fill="#2979ff" stroke="#ff1744" stroke-width="3"></circle><text x="310" y="179" font-size="9" text-anchor="middle" fill="#fff">ОФС</text>
               <line x1="105" y1="145" x2="292" y2="172" stroke="#ff5252" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
             </svg>
@@ -2005,7 +1618,6 @@
           </div>
         </div>
 
-        <!-- Картинка 3: Накопительные фолы и Дабл-пенальти -->
         <div class="card">
           <div>
             <h3>3. Миник: 6-й фол и Дабл-пенальти (10 метров)</h3>
@@ -2013,7 +1625,6 @@
               <rect x="140" y="0" width="120" height="12" fill="none" stroke="#fff" stroke-width="3"></rect>
               <path d="M 90 0 A 110 90 0 0 0 310 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"></path>
               <circle cx="200" cy="24" r="13" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="200" y="28" font-size="9" text-anchor="middle" fill="#000" font-weight="bold">ВР</text>
-              <!-- Точка 6м и 10м -->
               <circle cx="200" cy="90" r="4" fill="#fff"></circle><text x="235" y="94" font-size="10" fill="#fff">6м (Пенальти)</text>
               <circle cx="200" cy="165" r="6" fill="#ffeb3b" stroke="#000" stroke-width="2"></circle><text x="255" y="169" font-size="11" fill="#ffeb3b" font-weight="bold">10м (6-й фол!)</text>
               <circle cx="200" cy="200" r="14" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">БЬЕТ</text>
@@ -2355,7 +1966,6 @@
       </div>
     </div>
   </div>
-  
 
   <!-- ================= ВКЛАДКА 6: ВРАТАРИ ================= -->
   <div id="tab-gk" class="tab-content">
@@ -2860,11 +2470,11 @@
 
     <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
       <div>
-        <label>🟨 Активные ЖК (сгорают за 7 дн.):</label>
+        <label>🟨 Жёлтые карточки (−5 к рейтингу за каждую):</label>
         <input type="number" id="pYc" min="0" value="0">
       </div>
       <div>
-        <label>🟥 Активные КК (сгорают за 3 дн.):</label>
+        <label>🟥 Красные карточки (−20 к рейтингу за каждую):</label>
         <input type="number" id="pRc" min="0" value="0">
       </div>
     </div>
@@ -2882,7 +2492,7 @@
   </div>
 </div>
 
-<!-- ================= МОДАЛЬНОЕ ОКНО БЫСТРОГО ЖУРНАЛА ТРЕНИРОВКИ И ТУРНИРА ================= -->
+<!-- ================= МОДАЛЬНОЕ ОКНО БЫСТРОГО ЖУРНАЛА ================= -->
 <div class="modal-overlay" id="attendanceModal">
   <div class="modal-card" style="max-width: 650px;">
     <h3>📋 Быстрый журнал: Тренировка / Турнир / Звезда</h3>
@@ -2903,7 +2513,7 @@
   </div>
 </div>
 
-<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ТРЕНЕРОВ (ЛЕГЕНДА ИЛИ ИГРАЮЩИЙ ТРЕНЕР) ================= -->
+<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ТРЕНЕРОВ ================= -->
 <div class="modal-overlay" id="coachModal">
   <div class="modal-card">
     <h3 id="coachModalHeader">👑 Редактировать карточку Тренера</h3>
@@ -2937,7 +2547,6 @@
       <textarea id="cMottoInput" rows="2" placeholder="Дисциплина бьет класс!"></textarea>
     </div>
 
-    <!-- Блок характеристик специально для Играющего Тренера -->
     <div id="playingCoachStatsSection" style="display:none; border-top:1px solid var(--border-col); padding-top:10px; margin-top:10px;">
       <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
         <div>
@@ -3002,7 +2611,7 @@
   </div>
 </div>
 
-<!-- ================= МОДАЛЬНОЕ ОКНО ПРОСМОТРА НАСТАВЛЕНИЯ ТРЕНЕРА ================= -->
+<!-- ================= МОДАЛЬНОЕ ОКНО ПРОСМОТРА НАСТАВЛЕНИЯ ================= -->
 <div class="modal-overlay" id="noteViewModal">
   <div class="modal-card">
     <h3 id="noteViewTitle">📩 Наставление от Тренера</h3>
@@ -3011,7 +2620,7 @@
   </div>
 </div>
 
-<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ВЫЕЗДА / ТУРНИРА ================= -->
+<!-- ================= МОДАЛЬНОЕ ОКНО РЕДАКТИРОВАНИЯ ВЫЕЗДА ================= -->
 <div class="modal-overlay" id="eventModal">
   <div class="modal-card" style="max-width: 620px;">
     <h3 id="eventModalTitle">📅 Карточка Выезда / Турнира</h3>
@@ -3054,14 +2663,14 @@
 
     <div class="form-row">
       <label>
-        <span>⚽ Игры этого выезда (можно менять название нашей команды в каждом матче):</span>
+        <span>⚽ Игры этого выезда:</span>
         <button type="button" class="btn-t" style="background:var(--accent-yellow); color:#000;" onclick="addGameRowInModal()">+ Добавить игру</button>
       </label>
       <div id="evGamesEditorList" style="margin-top:6px;"></div>
     </div>
 
     <div class="form-row">
-      <label>📋 Комментарий тренера по выезду (что взять с собой / итоги):</label>
+      <label>📋 Комментарий тренера по выезду:</label>
       <textarea id="evNote" rows="2" placeholder="Например: Берем две формы, воду, щитки обязательно!"></textarea>
     </div>
 
@@ -3072,7 +2681,8 @@
     </div>
   </div>
 </div>
-<!-- ================= МОДАЛЬНОЕ ОКНО: ПОДЕЛИТЬСЯ И QR-КОДЫ КОМАНДЫ ================= -->
+
+<!-- ================= МОДАЛЬНОЕ ОКНО: ПОДЕЛИТЬСЯ И QR-КОДЫ ================= -->
 <div class="modal-overlay" id="shareHubModal">
   <div class="modal-card" style="max-width: 640px;">
     <h3>📲 Ссылки и QR-коды ФК Падеринское</h3>
@@ -3080,7 +2690,6 @@
       Отправь ссылку на наш Командный Хаб друзьям или наведи камеру телефона на нужный QR-код!
     </p>
 
-    <!-- Кнопки Поделиться сайтом -->
     <div class="share-actions-bar">
       <button type="button" class="share-soc-btn share-copy" onclick="copySiteUrl()">📋 Скопировать ссылку</button>
       <a id="shareVkLink" href="#" target="_blank" rel="noopener" class="share-soc-btn share-vk">💙 Поделиться в ВК</a>
@@ -3088,15 +2697,12 @@
       <button type="button" id="btnNativeShare" class="share-soc-btn share-native" style="display:none;" onclick="triggerNativeShare()">📲 Поделиться...</button>
     </div>
 
-    <!-- Поле для ссылки сайта (если открыто локально с компьютера, можно вписать адрес) -->
     <div class="form-row" style="margin-bottom: 12px;">
       <label style="font-size:11.5px; color:#aaa;">🌐 Ссылка на наш сайт (для генерации QR-кода сайта):</label>
       <input type="text" id="siteShareUrlInput" oninput="updateSiteQrCode()" placeholder="Вставь ссылку на сайт...">
     </div>
 
-    <!-- 3 карточки с QR-кодами -->
     <div class="qr-cards-grid">
-      <!-- 1. QR Сайта -->
       <div class="qr-item-card qr-site">
         <div class="qr-badge-title" style="color:var(--accent-yellow);">🏆 Командный Хаб</div>
         <div class="qr-img-box">
@@ -3106,7 +2712,6 @@
         <button type="button" class="btn-t" style="width:100%; background:var(--accent-yellow); color:#000;" onclick="copySiteUrl()">📋 Скопировать</button>
       </div>
 
-      <!-- 2. QR Группы ВК -->
       <div class="qr-item-card qr-vk-group">
         <div class="qr-badge-title" style="color:#66b0ff;">💙 Группа ВКонтакте</div>
         <div class="qr-img-box">
@@ -3116,7 +2721,6 @@
         <a href="https://vk.ru/fc.paderinka" target="_blank" rel="noopener" class="btn-t" style="width:100%; background:#0077ff; color:#fff; text-decoration:none; display:block; text-align:center;">Перейти в группу ➔</a>
       </div>
 
-      <!-- 3. QR Чата ВК -->
       <div class="qr-item-card qr-vk-chat">
         <div class="qr-badge-title" style="color:#69f0ae;">💬 Чат Команды</div>
         <div class="qr-img-box">
@@ -3141,13 +2745,15 @@
   const CALENDAR_STORAGE_KEY = 'paderinskoe_5x5_calendar_v4';
   const COACH_PIN = '973556';
 
-  // Время жизни карточек в миллисекундах: ЖК = 7 дней, КК = 3 дня
-  const YC_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
-  const RC_DURATION_MS = 3 * 24 * 60 * 60 * 1000;
+  // ШТРАФЫ ЗА КАРТОЧКИ (без таймера сгорания):
+  // 🟨 Жёлтая = −5 к рейтингу Подиума за каждую
+  // 🟥 Красная = −20 к рейтингу Подиума за каждую
+  // Снимаются только тренером вручную в редакторе игрока.
+  const YC_PENALTY = 5;
+  const RC_PENALTY = 20;
 
-  // Ссылка на твою Google Таблицу (Apps Script Web App)
   const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbymD4YSZkPo_Mw_FNmXbfHMNpuK_GkahTf9coHzaU9ssOZPo47es6gOy-WHbDFTW-GcFw/exec';
-  
+
   let isCoachMode = false;
   let currentTempPhoto = '';
   let currentCoachTempPhoto = '';
@@ -3155,11 +2761,11 @@
   /*__EMBEDDED_DATA_START__*/
   const EMBEDDED_VERSION = 1792482697854;
   const EMBEDDED_ROSTER_DATA = [
-    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
-    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
-    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
-    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"note":"","photo":""},
-    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"ycList":[],"rcList":[],"status":"out","note":"","photo":""}
+    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""}
   ];
   const EMBEDDED_COACH_DATA = {
     "name": "Игорь Евгеньевич",
@@ -3200,7 +2806,6 @@
     return dKey ? `${nKey}__${dKey}` : nKey;
   }
 
-  // Проверка дня рождения (сегодня или в ближайшие 3 дня)
   function getBirthdayStatus(dobStr) {
     if (!dobStr) return null;
     const parts = String(dobStr).split('-');
@@ -3237,30 +2842,14 @@
     return `🎂 ${formatted}${ageLabel}`;
   }
 
-  // ================= ТАЙМЕР И АВТОСГОРАНИЕ КАРТОЧЕК (ЖК 7 ДНЕЙ, КК 3 ДНЯ) =================
+  // Дисциплинарные карточки: таймер сгорания убран.
+  // Просто синхронизируем числовые счётчики (и чистим старые массивы для совместимости).
   function syncAndCleanPlayerCards(p) {
-    const now = Date.now();
-    if (!Array.isArray(p.ycList)) {
-      p.ycList = [];
-      const initialYc = Number(p.yc || 0);
-      for (let i = 0; i < initialYc; i++) p.ycList.push(now);
-    }
-    if (!Array.isArray(p.rcList)) {
-      p.rcList = [];
-      const initialRc = Number(p.rc || 0);
-      for (let i = 0; i < initialRc; i++) p.rcList.push(now);
-    }
-
-    const prevYcLen = p.ycList.length;
-    const prevRcLen = p.rcList.length;
-
-    p.ycList = p.ycList.filter(ts => (now - Number(ts)) < YC_DURATION_MS);
-    p.rcList = p.rcList.filter(ts => (now - Number(ts)) < RC_DURATION_MS);
-
-    p.yc = p.ycList.length;
-    p.rc = p.rcList.length;
-
-    return (prevYcLen !== p.yc || prevRcLen !== p.rc);
+    p.yc = Math.max(0, Number(p.yc || 0));
+    p.rc = Math.max(0, Number(p.rc || 0));
+    if (Array.isArray(p.ycList)) p.ycList = [];
+    if (Array.isArray(p.rcList)) p.rcList = [];
+    return false;
   }
 
   function cleanAllPlayersCards() {
@@ -3271,32 +2860,18 @@
     return changed;
   }
 
-  function formatRemainingTime(msLeft) {
-    if (msLeft <= 0) return '0ч';
-    const totalHours = Math.ceil(msLeft / (1000 * 60 * 60));
-    const days = Math.floor(totalHours / 24);
-    const hours = totalHours % 24;
-    if (days > 0) return `${days}д ${hours}ч`;
-    return `${hours}ч`;
+  // Возвращает строку-описание штрафа для карточки игрока (без таймера)
+  function getCardPenaltyHint(p) {
+    const yc = Number(p.yc || 0);
+    const rc = Number(p.rc || 0);
+    if (yc === 0 && rc === 0) return '';
+    const parts = [];
+    if (yc > 0) parts.push(`🟨×${yc}`);
+    if (rc > 0) parts.push(`🟥×${rc}`);
+    const totalPenalty = yc * YC_PENALTY + rc * RC_PENALTY;
+    return `${parts.join(' ')} • Штраф: −${totalPenalty} к рейтингу Подиума`;
   }
 
-  function getCardExpiryHint(p) {
-    const now = Date.now();
-    const hints = [];
-    if (p.rc > 0 && Array.isArray(p.rcList) && p.rcList.length > 0) {
-      const oldestRc = Math.min(...p.rcList);
-      const left = RC_DURATION_MS - (now - oldestRc);
-      hints.push(`⛔ БАН ПОДИУМА (🟥 сгорит через ${formatRemainingTime(left)})`);
-    }
-    if (p.yc > 0 && Array.isArray(p.ycList) && p.ycList.length > 0) {
-      const oldestYc = Math.min(...p.ycList);
-      const left = YC_DURATION_MS - (now - oldestYc);
-      hints.push(`🟨 ЖК сгорит через ${formatRemainingTime(left)}`);
-    }
-    return hints.join(' • ');
-  }
-
-  // Гарантируем, что у объекта тренера есть и твои статы, и объект Легенды
   function ensureCoachStructure() {
     if (!coachData || typeof coachData !== 'object') {
       coachData = JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
@@ -3449,27 +3024,24 @@
     const box = document.getElementById('coachPhotoPreview');
     box.innerHTML = currentCoachTempPhoto ? `<img src="${currentCoachTempPhoto}" alt="Тренер">` : '👑';
   }
-// Автоматическая проверка и подгрузка свежих данных из Google Таблицы
+
   async function checkAppVersion() {
     await loadRosterLocal();
   }
 
-// Флаг страховки: разрешает отправку в облако ТОЛЬКО после успешной загрузки из таблицы
   let cloudLoadedSuccessfully = false;
 
-  // Загрузка данных: Google Таблица — ГЛАВНЫЙ источник для всех!
   async function loadRosterLocal() {
     try {
       const response = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now(), { cache: 'no-store' });
       const cloudData = await response.json();
 
-      // Если скрипт вернул ошибку — не считаем загрузку успешной и идем в резервный кеш
       if (cloudData && cloudData.error) {
         throw new Error(cloudData.error);
       }
 
       if (cloudData && Array.isArray(cloudData.p) && cloudData.p.length > 0) {
-        cloudLoadedSuccessfully = true; // ✅ Таблица успешно прочитана, сохранять безопасно!
+        cloudLoadedSuccessfully = true;
         players = cloudData.p;
         coachData = (cloudData.c && Object.keys(cloudData.c).length > 0) ? cloudData.c : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
         calendarEvents = (Array.isArray(cloudData.cal) && cloudData.cal.length > 0) ? cloudData.cal : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
@@ -3521,15 +3093,13 @@
         renderCalendarTab();
         return;
       } else if (cloudData && Array.isArray(cloudData.p) && cloudData.p.length === 0 && !cloudData.error) {
-        // Если таблица действительно совсем чистая (первый запуск с нуля)
         cloudLoadedSuccessfully = true;
       }
     } catch (e) {
-      cloudLoadedSuccessfully = false; // ⛔ Ошибка связи! Включаем защиту от перезаписи облака!
+      cloudLoadedSuccessfully = false;
       console.warn('Таблица временно недоступна, включена защита от перезаписи облака:', e);
     }
 
-    // Резервная загрузка из памяти устройства
     const dict = getPassportDictionary();
     try {
       const savedRoster = localStorage.getItem(STORAGE_KEY);
@@ -3561,7 +3131,6 @@
     renderCalendarTab();
   }
 
-  // Сохранение в локальную память и защищенная отправка в облачную Google Таблицу
   async function saveRosterLocal() {
     cleanAllPlayersCards();
     try {
@@ -3580,7 +3149,6 @@
 
     const statusSub = document.getElementById('roleStatusText');
 
-    // СТРАХОВКА НА КЛИЕНТЕ: Если при открытии сайта не удалось загрузить таблицу — запрещаем затирать облако!
     if (!cloudLoadedSuccessfully) {
       if (isCoachMode && statusSub) {
         statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
@@ -3617,7 +3185,8 @@
       }
     }
   }
-function resetToRedZone() {
+
+  function resetToRedZone() {
     if (confirm('Сбросить показатели всех игроков к старту Красной зоны (рейтинг 30)? Имена, даты рождения и фото каждого игрока сохранятся!')) {
       players = players.map((p, idx) => ({
         id: p.id || (idx + 1),
@@ -3627,7 +3196,6 @@ function resetToRedZone() {
         num: p.num || (idx + 1),
         pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30,
         goals: 0, assists: 0, games: 0, att: 1, mvp: 0, yc: 0, rc: 0,
-        ycList: [], rcList: [],
         status: "out",
         note: "Докажи свою полезность на тренировках!",
         photo: p.photo || ""
@@ -3639,8 +3207,9 @@ function resetToRedZone() {
   function calcOvr(p) {
     return Math.round((Number(p.pac) + Number(p.sho) + Number(p.pas) + Number(p.dri) + Number(p.def) + Number(p.phy)) / 6);
   }
- // ================= НОВАЯ ФОРМУЛА ПОДИУМА ЛИДЕРОВ =================
-  // Складываются ВСЕ показатели + коэффициенты роли + Звезда(+20) + ЖК(-20) + КК(блок)
+
+  // ================= НОВАЯ ФОРМУЛА ПОДИУМА ЛИДЕРОВ =================
+  // ЖК = −5, КК = −20. Красная НЕ блокирует подиум, только снимает баллы.
   function calcRoleScore(p, roleType) {
     const pac = Number(p.pac || 30);
     const sho = Number(p.sho || 30);
@@ -3657,48 +3226,39 @@ function resetToRedZone() {
     const yc = Number(p.yc || 0);
     const rc = Number(p.rc || 0);
 
-    // Если активна красная карточка — полный блок подиума
-    if (rc > 0) return -9999;
-
-    // Сумма всех дополнительных пунктов (тренировки, турниры, голы, пасы) + Звезда (+20) - ЖК (-20)
-    const activityAndCards = att + games + goals + assists + (mvp * 20) - (yc * 20);
+    // Звезда MVP: +20. Жёлтая: −5. Красная: −20. Красная больше НЕ блокирует подиум.
+    const activityAndCards = att + games + goals + assists + (mvp * 20) - (yc * YC_PENALTY) - (rc * RC_PENALTY);
 
     if (roleType === 'ВРТ') {
       return Math.round(pac + sho + pas + dri + def + phy + activityAndCards);
     }
     if (roleType === 'ФИК') {
-      // Защитники: Защита х2, Пас х1.5 + остальные навыки в сложение
       return Math.round(pac + sho + (pas * 1.5) + dri + (def * 2) + phy + activityAndCards);
     }
     if (roleType === 'АЛА') {
-      // Ала: Дриблинг х2, Пас х1.5 + остальные навыки в сложение
       return Math.round(pac + sho + (pas * 1.5) + (dri * 2) + def + phy + activityAndCards);
     }
     if (roleType === 'СТЛ') {
-      // Столбы: Пас х2, Дриблинг х1.5 + остальные навыки в сложение
       return Math.round(pac + sho + (pas * 2) + (dri * 1.5) + def + phy + activityAndCards);
     }
     return Math.round(pac + sho + pas + dri + def + phy + activityAndCards);
   }
-  
-// ================= РАСЧЕТ ГОДОВОГО ПОДИУМА ТОП-3 (КУБОК И МЕДАЛИ) =================
+
+  // ================= РАСЧЕТ ГОДОВОГО ПОДИУМА ТОП-3 =================
   function calcYearlyTopScore(p) {
-    // ⛔ Если позиция не определена или это системный игрок — исключаем с годового подиума
     const pos = String(p.pos || '').split(' (')[0].trim();
     if (pos === 'НЕ ОПР' || isGenericPlaceholderName(p.name)) return -9999;
-    
-    // Если активна красная карточка — полный бан подиума
-    if (Number(p.rc || 0) > 0) return -9999; 
 
     const skillsSum = Number(p.pac || 30) + Number(p.sho || 30) + Number(p.pas || 30) +
                       Number(p.dri || 30) + Number(p.def || 30) + Number(p.phy || 30);
-    const attPts = Number(p.att || 0) * 3;       // Тренировка = +3 балла
-    const gamesPts = Number(p.games || 0) * 5;   // Турнир = +5 баллов
-    const goalsPts = Number(p.goals || 0) * 3;   // Гол = +3 балла
-    const astPts = Number(p.assists || 0) * 3;   // Пас = +3 балла
-    const mvpPts = Number(p.mvp || 0) * 20;      // Звезда MVP = +20 баллов
-    const ycPenalty = Number(p.yc || 0) * 20;    // Активная ЖК = -20 баллов
-    return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty);
+    const attPts = Number(p.att || 0) * 3;
+    const gamesPts = Number(p.games || 0) * 5;
+    const goalsPts = Number(p.goals || 0) * 3;
+    const astPts = Number(p.assists || 0) * 3;
+    const mvpPts = Number(p.mvp || 0) * 20;
+    const ycPenalty = Number(p.yc || 0) * YC_PENALTY;    // Жёлтая = −5 баллов
+    const rcPenalty = Number(p.rc || 0) * RC_PENALTY;    // Красная = −20 баллов
+    return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty);
   }
 
   function renderYearlyTop3() {
@@ -3707,18 +3267,16 @@ function resetToRedZone() {
     const timerEl = document.getElementById('top3CountdownText');
     if (!stageEl) return;
 
-    // Таймер до конца года (31 декабря)
     if (timerEl) {
       const now = new Date();
       const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
       const daysLeft = Math.max(0, Math.ceil((endOfYear - now) / (1000 * 60 * 60 * 24)));
-      timerEl.textContent = `⏳ До вручения Кубка и Медалей конца ${now.getFullYear()} года осталось: ${daysLeft} дн. | Формула: Навыки + 📅Трен(×3) + 🏆Игры(×5) + ⚽/👟(×3) + ⭐MVP(+20)`;
+      timerEl.textContent = `⏳ До вручения Кубка и Медалей конца ${now.getFullYear()} года осталось: ${daysLeft} дн. | Формула: Навыки + 📅Трен(×3) + 🏆Игры(×5) + ⚽/👟(×3) + ⭐MVP(+20) − 🟨(×5) − 🟥(×20)`;
     }
 
     const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
     const basePool = realPlayers.length > 0 ? realPlayers : players;
     const eligible = basePool
-      .filter(p => Number(p.rc || 0) === 0)
       .map(p => ({ player: p, score: calcYearlyTopScore(p), ovr: calcOvr(p) }))
       .sort((a, b) => b.score - a.score || b.ovr - a.ovr);
 
@@ -3767,7 +3325,7 @@ function resetToRedZone() {
           <div>
             <div class="top3-points-box">
               <div class="top3-points-val">🏅 ${sc} очков</div>
-              <div class="top3-stats-mini">📅 ${p.att || 0} | 🏆 ${p.games || 0} | ⚽ ${p.goals || 0} | 👟 ${p.assists || 0} | ⭐ ${p.mvp || 0}</div>
+              <div class="top3-stats-mini">📅 ${p.att || 0} | 🏆 ${p.games || 0} | ⚽ ${p.goals || 0} | 👟 ${p.assists || 0} | ⭐ ${p.mvp || 0} | 🟨 ${p.yc || 0} | 🟥 ${p.rc || 0}</div>
             </div>
             ${gapHtml}
           </div>
@@ -3796,8 +3354,8 @@ function resetToRedZone() {
 
     const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
     const basePool = realPlayers.length > 0 ? realPlayers : players;
-    // Жесткий запрет на Подиум при активной Красной карточке!
-    const pool = basePool.filter(p => Number(p.rc || 0) === 0);
+    // Красная карточка теперь не блокирует подиум — она только снимает −20 баллов через calcRoleScore
+    const pool = basePool;
 
     const getPosCode = (p) => String(p.pos || 'НЕ ОПР').split(' (')[0];
 
@@ -3815,8 +3373,8 @@ function resetToRedZone() {
     const bestAla2 = bestAlas[1] || null;
     const bestPivot = pickBest('СТЛ', 1)[0] || null;
 
-const slots = [
-      { title: '🧤 Лучший Вратарь', data: bestGk, hint: 'Все пункты + ⭐(+20) / 🟨(-20)' },
+    const slots = [
+      { title: '🧤 Лучший Вратарь', data: bestGk, hint: 'Все пункты + ⭐(+20) / 🟨(−5) / 🟥(−20)' },
       { title: '🛡 Лучший Фиксо', data: bestFixo, hint: 'ЗАЩ×2 + ПАС×1.5 + Все пункты' },
       { title: '⚡ Лучший Ала #1', data: bestAla1, hint: 'ДРБ×2 + ПАС×1.5 + Все пункты' },
       { title: '⚡ Лучший Ала #2', data: bestAla2, hint: 'ДРБ×2 + ПАС×1.5 + Все пункты' },
@@ -3830,7 +3388,7 @@ const slots = [
             <div class="podium-role-badge">${s.title}</div>
             <div class="podium-avatar">⏳</div>
             <div class="podium-player-name" style="color:#888;">Место свободно</div>
-            <div class="podium-score-pill">Назначь позицию (без 🟥)</div>
+            <div class="podium-score-pill">Назначь позицию</div>
             <div class="podium-formula-hint">${s.hint}</div>
           </div>
         `;
@@ -3845,7 +3403,7 @@ const slots = [
             <div class="podium-player-name" title="${p.name}">${p.name}</div>
           </div>
           <div>
-            <div class="podium-score-pill">🔥 ${s.data.score} балл. | ⭐ MVP: ${p.mvp || 0}</div>
+            <div class="podium-score-pill">🔥 ${s.data.score} балл. | ⭐ ${p.mvp || 0} | 🟨 ${p.yc || 0} | 🟥 ${p.rc || 0}</div>
             <div class="podium-formula-hint">${s.hint}</div>
           </div>
         </div>
@@ -3868,7 +3426,6 @@ const slots = [
     return { cls: 'status-out', text: '🔴 Вне заявки / Лавка' };
   }
 
-  // Рендер сразу ДВУХ карточек тренеров: 1) Наставник-Легенда (все 99) и 2) Играющий Тренер (свои статы)
   function renderCoachCard() {
     const box = document.getElementById('coachCardContainer');
     if (!box) return;
@@ -3883,7 +3440,6 @@ const slots = [
     const playDob = coachData.dob ? formatDobDisplay(coachData.dob) : '⚡ Действующий Играющий Тренер';
 
     box.innerHTML = `
-      <!-- 1. КАРТОЧКА НАСТАВНИКА — ЛЕГЕНДЫ КЛУБА (ВСЕ СТАТЫ 99) -->
       <div class="fut-coach-legend">
         <div>
           <div class="coach-banner-top">★ ЛЕГЕНДА КЛУБА • НАСТАВНИК ★</div>
@@ -3919,7 +3475,6 @@ const slots = [
         </div>
       </div>
 
-      <!-- 2. КАРТОЧКА ИГРАЮЩЕГО ГЛАВНОГО ТРЕНЕРА (РЕДАКТИРУЕМЫЕ СТАТЫ) -->
       <div class="fut-playing-coach">
         <div>
           <div class="coach-banner-top playing-banner">⚡ ГЛАВНЫЙ ИГРАЮЩИЙ ТРЕНЕР ⚡</div>
@@ -3972,7 +3527,6 @@ const slots = [
     saveRosterLocal();
   }
 
-// Вспомогательная функция отрисовки навыка с ползунком на лицевой карточке
   function renderStatWithBar(label, key, p) {
     const val = Number(p[key] || 30);
     const prev = (p.prevStats && p.prevStats[key] !== undefined) ? Number(p.prevStats[key]) : val;
@@ -4020,7 +3574,7 @@ const slots = [
       const hasNote = p.note && p.note.trim().length > 0;
       const dobDisplay = formatDobDisplay(p.dob);
       const bdayBannerText = getBirthdayStatus(p.dob);
-      const cardExpiryText = getCardExpiryHint(p);
+      const cardPenaltyText = getCardPenaltyHint(p);
       const attCount = Number(p.att || 0);
       const fireIcon = attCount >= 10 ? '🔥' : '';
 
@@ -4054,15 +3608,15 @@ const slots = [
           </div>
         </div>
         <div>
-          ${cardExpiryText ? `<div class="card-timer-alert">${cardExpiryText}</div>` : ''}
+          ${cardPenaltyText ? `<div class="card-penalty-alert">${cardPenaltyText}</div>` : ''}
           <div class="fut-mvp-banner">⭐ Звезда MVP (Игра / Трен): ${p.mvp || 0}</div>
           <div class="fut-footer">
             <span title="Голы">⚽ ${p.goals || 0}</span>
             <span title="Голевые пасы">👟 ${p.assists || 0}</span>
             <span title="Игры на турнирах">🏆 ${p.games || 0}</span>
             <span title="Посещено тренировок (от 10 — огонек серии)">📅 ${attCount}${fireIcon}</span>
-            <span title="Желтые карточки (сгорают через 7 дней)">🟨 ${p.yc || 0}</span>
-            <span title="Красные карточки (сгорают через 3 дня, бан Подиума)">🟥 ${p.rc || 0}</span>
+            <span title="Жёлтые карточки (−5 к рейтингу за каждую)">🟨 ${p.yc || 0}</span>
+            <span title="Красные карточки (−20 к рейтингу за каждую)">🟥 ${p.rc || 0}</span>
           </div>
           <button class="btn-coach-note ${hasNote ? 'has-note' : ''}" onclick="openNoteViewModal(${idx})">
             ${hasNote ? '📩 Наставление (Открыть!)' : '📋 Наставление (пусто)'}
@@ -4077,8 +3631,8 @@ const slots = [
             <button class="btn-card-edit" onclick="quickMvp(${idx})" title="Лучший на тренировке (+1 звезда)">+⭐</button>
             <button class="btn-card-edit" onclick="quickGoal(${idx})" title="Гол">+⚽</button>
             <button class="btn-card-edit" onclick="quickAssist(${idx})" title="Пас">+👟</button>
-            <button class="btn-card-edit" onclick="quickCard(${idx}, 'yc')" title="Желтая на 7 дней">+🟨</button>
-            <button class="btn-card-edit" onclick="quickCard(${idx}, 'rc')" title="Красная на 3 дня">+🟥</button>
+            <button class="btn-card-edit" onclick="quickCard(${idx}, 'yc')" title="Жёлтая (−5 к рейтингу)">+🟨</button>
+            <button class="btn-card-edit" onclick="quickCard(${idx}, 'rc')" title="Красная (−20 к рейтингу)">+🟥</button>
             <button class="btn-card-edit" onclick="openPlayerModal(${idx})">⚙</button>
           </div>
         </div>
@@ -4105,21 +3659,15 @@ const slots = [
     saveRosterLocal();
   }
 
+  // Тач-кнопки на карточке: добавляют ЖК или КК (без таймера сгорания)
   function quickCard(idx, type) {
     const p = players[idx];
-    syncAndCleanPlayerCards(p);
-    if (type === 'rc') {
-      p.rcList.push(Date.now());
-      p.rc = p.rcList.length;
-    } else {
-      p.ycList.push(Date.now());
-      p.yc = p.ycList.length;
-    }
+    if (type === 'rc') p.rc = Number(p.rc || 0) + 1;
+    else p.yc = Number(p.yc || 0) + 1;
     playBeep(type === 'rc' ? 300 : 520, 350);
     saveRosterLocal();
   }
 
-// Сортировка карточек на экране (без лишней перезаписи облачной таблицы!)
   function sortPlayersBy(criteria) {
     const posOrder = { 'ВРТ': 1, 'ФИК': 2, 'АЛА': 3, 'СТЛ': 4, 'УНИ': 5, 'НЕ ОПР': 6 };
     if (criteria === 'ovr') {
@@ -4138,7 +3686,7 @@ const slots = [
     renderFifaCards();
     syncBoardNamesWithRoster();
   }
-// ================= ЛОГИКА БЫСТРОГО ЖУРНАЛА ТРЕНИРОВКИ И ТУРНИРА =================
+
   function openAttendanceModal() {
     const list = document.getElementById('attendanceListContainer');
     if (!list) return;
@@ -4240,7 +3788,6 @@ const slots = [
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
-      // Вместо saveRosterLocal(); отправляем точечную метку прочтения:
       fetch(CLOUD_SYNC_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -4255,7 +3802,6 @@ const slots = [
     }
   }
 
-  // Открытие окна редактирования тренера ('legend' или 'playing')
   function openCoachModal(coachType = 'playing') {
     ensureCoachStructure();
     document.getElementById('editCoachType').value = coachType;
@@ -4484,18 +4030,8 @@ let currentBaselineStats = null;
       }
     }
 
-    const desiredYc = Number(document.getElementById('pYc').value) || 0;
-    const desiredRc = Number(document.getElementById('pRc').value) || 0;
-    const now = Date.now();
-
-    let ycList = (idx >= 0 && players[idx] && Array.isArray(players[idx].ycList)) ? [...players[idx].ycList] : [];
-    let rcList = (idx >= 0 && players[idx] && Array.isArray(players[idx].rcList)) ? [...players[idx].rcList] : [];
-
-    while (ycList.length < desiredYc) ycList.push(now);
-    if (ycList.length > desiredYc) ycList = ycList.slice(ycList.length - desiredYc);
-
-    while (rcList.length < desiredRc) rcList.push(now);
-    if (rcList.length > desiredRc) rcList = rcList.slice(rcList.length - desiredRc);
+    const desiredYc = Math.max(0, Number(document.getElementById('pYc').value) || 0);
+    const desiredRc = Math.max(0, Number(document.getElementById('pRc').value) || 0);
 
     const dNow = new Date();
     const editStampStr = `${String(dNow.getDate()).padStart(2, '0')}.${String(dNow.getMonth() + 1).padStart(2, '0')} в ${String(dNow.getHours()).padStart(2, '0')}:${String(dNow.getMinutes()).padStart(2, '0')}`;
@@ -4537,10 +4073,8 @@ let currentBaselineStats = null;
       games: Number(document.getElementById('pGames').value) || 0,
       att: Number(document.getElementById('pAtt').value) || 0,
       mvp: Number(document.getElementById('pMvp').value) || 0,
-      yc: ycList.length,
-      rc: rcList.length,
-      ycList: ycList,
-      rcList: rcList,
+      yc: desiredYc,
+      rc: desiredRc,
       note: document.getElementById('pNote').value.trim(),
       noteReadAt: (idx >= 0 && players[idx] && players[idx].note === document.getElementById('pNote').value.trim()) ? (players[idx].noteReadAt || '') : '',
       lastEditedAt: editStampStr,
@@ -5167,15 +4701,13 @@ let currentBaselineStats = null;
   document.body.classList.remove('is-coach');
   loadRosterLocal();
   applyFormation('rhombus');
-  
+
   // ================= ФУНКЦИИ ОКНА ПОДЕЛИТЬСЯ И QR-КОДОВ =================
   function getDefaultSiteUrl() {
     const loc = window.location.href;
-    // Если файл открыт в интернете (например на GitHub Pages) — берем его реальный адрес
     if (loc.startsWith('http://') || loc.startsWith('https://')) {
       return loc;
     }
-    // Если открыт локально с компьютера — подставляем сохраненный адрес или группу ВК
     return localStorage.getItem('paderinskoe_custom_site_url') || 'https://vk.ru/fc.paderinka';
   }
 
