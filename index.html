@@ -1174,6 +1174,87 @@
     .step-silver { order: 2; min-height: auto; }
     .step-bronze { order: 3; min-height: auto; }
   }
+    /* ================= ПОДИУМ ДВОЕК ================= */
+  .pairs-podium-section {
+    background: radial-gradient(circle at 50% 0%, #132918 0%, #14141d 65%, #0e0e14 100%);
+    border: 2px solid #00e676;
+    border-radius: 18px;
+    padding: 20px 16px 18px 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.8), inset 0 0 25px rgba(0, 230, 118, 0.12);
+    position: relative; overflow: hidden;
+  }
+  .pairs-podium-header { text-align: center; margin-bottom: 18px; }
+  .pairs-podium-title {
+    font-size: 21px; font-weight: 900; color: #00e676;
+    text-transform: uppercase; letter-spacing: 0.8px; margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 230, 118, 0.4);
+  }
+  .pairs-podium-sub { font-size: 12.5px; color: #dcdce6; margin-top: 5px; line-height: 1.4; }
+  .pairs-podium-stage {
+    display: flex; justify-content: center; align-items: flex-end;
+    gap: 16px; max-width: 1100px; margin: 10px auto 14px auto; flex-wrap: wrap;
+  }
+  .pair-slot {
+    flex: 1; min-width: 290px; max-width: 340px;
+    border-radius: 16px 16px 10px 10px; padding: 14px 12px;
+    position: relative; display: flex; flex-direction: column;
+    transition: transform 0.25s ease;
+  }
+  .pair-slot:hover { transform: translateY(-5px); }
+  .pair-slot-gold { order: 2; min-height: 340px; background: linear-gradient(160deg, #4a3505 0%, #1c170b 55%, #2e2104 100%); border: 2.5px solid #ffd700; box-shadow: 0 0 28px rgba(255, 215, 0, 0.35); z-index: 2; }
+  .pair-slot-silver { order: 1; min-height: 300px; background: linear-gradient(160deg, #323842 0%, #17191f 60%, #23272e 100%); border: 2px solid #e0e5ec; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+  .pair-slot-bronze { order: 3; min-height: 280px; background: linear-gradient(160deg, #422611 0%, #1a130e 60%, #2e1a0b 100%); border: 2px solid #dfa06e; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+  .pair-banner { font-size: 11px; font-weight: 900; text-transform: uppercase; padding: 5px 8px; border-radius: 8px; margin-bottom: 10px; letter-spacing: 0.4px; text-align: center; }
+  .pair-slot-gold .pair-banner { background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b); color: #1a1100; }
+  .pair-slot-silver .pair-banner { background: linear-gradient(90deg, #8a95a5, #ffffff, #8a95a5); color: #11151c; }
+  .pair-slot-bronze .pair-banner { background: linear-gradient(90deg, #8b4513, #f3be94, #8b4513); color: #1f0d00; }
+  .pair-cards-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .pair-player-mini {
+    background: rgba(0,0,0,0.35); border-radius: 10px; padding: 10px 8px;
+    text-align: center; display: flex; flex-direction: column; align-items: center;
+    justify-content: space-between; min-height: 150px;
+  }
+  .pair-player-mini-avatar {
+    width: 60px; height: 60px; border-radius: 50%; background: #101015;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; color: #fff; overflow: hidden; margin-bottom: 6px;
+  }
+  .pair-slot-gold .pair-player-mini-avatar { border: 2.5px solid #ffd700; }
+  .pair-slot-silver .pair-player-mini-avatar { border: 2.5px solid #e0e5ec; }
+  .pair-slot-bronze .pair-player-mini-avatar { border: 2.5px solid #dfa06e; }
+  .pair-player-mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .pair-player-mini-name { font-size: 12px; font-weight: 900; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+  .pair-player-mini-pos { font-size: 10px; color: #bbb; font-weight: 700; margin-top: 2px; }
+  .pair-plus-sign { font-size: 24px; font-weight: 900; color: #ffeb3b; text-align: center; }
+  .pair-total-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; }
+  .pair-slot-gold .pair-total-box { border-color: #ffd700; background: rgba(255, 215, 0, 0.14); }
+  .pair-total-label { font-size: 10.5px; color: #ccc; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+  .pair-total-val { font-size: 20px; font-weight: 900; color: #fff; }
+  .pair-slot-gold .pair-total-val { color: #ffd700; font-size: 22px; }
+  .pair-gap-hint { font-size: 11px; font-weight: 800; color: #ffab91; margin-top: 6px; text-align: center; }
+  .pair-slot-gold .pair-gap-hint { color: #69f0ae; }
+  .pair-empty-slot { text-align: center; padding: 30px 10px; color: #888; font-size: 13px; }
+  .pair-empty-avatar { width: 60px; height: 60px; border-radius: 50%; background: #101015; margin: 0 auto 8px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .pairs-podium-chasers {
+    background: rgba(0,0,0,0.45); border: 1px solid var(--border-col);
+    border-radius: 10px; padding: 9px 14px; font-size: 12px; color: #ccc;
+    text-align: center; max-width: 1100px; margin: 0 auto;
+  }
+
+  /* Бейдж «в паре с…» на карточке игрока */
+  .pair-partner-badge {
+    margin-top: 5px; background: rgba(0, 230, 118, 0.12);
+    border: 1px solid rgba(0, 230, 118, 0.45); color: #b9f6ca;
+    padding: 3px 6px; border-radius: 5px; font-size: 10.5px;
+    font-weight: 800; text-align: center;
+  }
+
+  @media (max-width: 820px) {
+    .pair-slot-gold { order: 1; min-height: auto; }
+    .pair-slot-silver { order: 2; min-height: auto; }
+    .pair-slot-bronze { order: 3; min-height: auto; }
+  }
 </style>
 </head>
 <body id="appBody" class="">
@@ -1267,7 +1348,8 @@
       <div class="sync-bar">
         <button class="tool-btn green coach-only" onclick="openAttendanceModal()">📋 Журнал (+📅 / +🏆 / +⭐)</button>
         <button class="tool-btn active coach-only" onclick="openPlayerModal(-1)">➕ Добавить игрока</button>
-        <button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
+        <button class="tool-btn preset coach-only" onclick="openPairsEditorModal()">👥 Настроить двойки</button>
+		<button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
         <select class="sort-select" id="skillSortSelect" onchange="sortPlayersBy(this.value)">
           <option value="ovr">🔽 Сортировать по навыку / роли...</option>
           <option value="pos">📌 По Позиции (ВРТ ➔ ФИК ➔ АЛА ➔ СТЛ)</option>
@@ -1360,6 +1442,18 @@
       <div class="podium-grid" id="podiumContainer"></div>
     </div>
 
+    <!-- ПОДИУМ ДВОЕК -->
+    <div class="pairs-podium-section">
+      <div class="pairs-podium-header">
+        <h3 class="pairs-podium-title">👥 Подиум Двоек: Лучшие Дуэты Команды</h3>
+        <div class="pairs-podium-sub">
+          Очки пары = <b>Очки Игрока 1 + Очки Игрока 2</b>. Каждый игрок считается по формуле Подиума Года: навыки + 📅×3 + 🏆×5 + ⚽×3 + 👟×3 + ⭐×20 − 🟨×5 − 🟥×20. Оба партнёра получают свои очки полностью, мы их просто складываем!
+        </div>
+      </div>
+      <div class="pairs-podium-stage" id="pairsPodiumContainer"></div>
+      <div class="pairs-podium-chasers" id="pairsChasersContainer"></div>
+    </div>
+	
     <!-- СЕТКА ИГРОКОВ КОМАНДЫ -->
     <div class="fifa-grid" id="fifaCardsContainer"></div>
   </div>
@@ -1759,6 +1853,55 @@
           <p><b>Механика:</b> Игрок контролирует мяч перекатами на месте. Тренер кричит пример: «Три плюс четыре!» (7 — нечетное). Игрок должен за долю секунды посчитать в уме и на максимальной скорости поразить нужные ворота!</p>
         </div>
       </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Парный слалом с передачей на скорости»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <polygon points="90,80 82,95 98,95" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="150,125 142,140 158,140" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="230,80 222,95 238,95" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="310,125 302,140 318,140" fill="#ff6d00" stroke="#fff"></polygon>
+            <circle cx="45" cy="185" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="45" y="189" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="45" cy="215" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="45" y="219" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="58" y1="182" x2="85" y2="95" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="58" y1="218" x2="225" y2="100" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 58 175 Q 120 55 200 110 Q 260 145 320 90 Q 355 60 375 130" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> Два игрока двигаются синхронно через конусы, постоянно обмениваясь пасами. И1 пасует И2 — оба синхронно делают рывок к следующим воротам. Победа = дошли до конца без потери мяча.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «1v1: Убеги с мячом от партнёра»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="65" y="40" width="270" height="170" rx="20" fill="none" stroke="#ffeb3b" stroke-width="2" stroke-dasharray="6,6"></rect>
+            <circle cx="140" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="140" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="150" cy="135" r="5" fill="#fff"></circle>
+            <circle cx="200" cy="125" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="200" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <path d="M 155 120 Q 200 70 290 100 Q 320 130 280 175 Q 200 200 130 170" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> В квадрате 8×8 м И1 укрывает мяч корпусом и уходит от партнёра И2. Задача И2 — отобрать мяч чистым отбором за 15 секунд. Кто теряет мяч — становится защитником в следующем раунде.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Реакция на цвет: прими пас и пробей»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="150" y="0" width="100" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="200" cy="195" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="199" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="120" cy="215" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="120" y="219" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <rect x="330" y="100" width="14" height="14" fill="#ff1744" stroke="#000"></rect>
+            <rect x="355" y="100" width="14" height="14" fill="#00e676" stroke="#000"></rect>
+            <line x1="135" y1="210" x2="190" y2="175" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="200" y1="178" x2="200" y2="35" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И1 стоит спиной к И2. Тренер поднимает цветную манишку (🔴 = удар в правую девятку, 🟢 = в левую). И2 по сигналу катит пас И1, а тот разворачивается, принимает подошвой и бьёт в нужный угол.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1865,6 +2008,53 @@
           <p><b>Механика:</b> Классика мини-футбола! И1 тащит мяч по левой бровке и режет угол, выманивая вратаря. В этот момент И2 летит замыкать дальнюю штангу в 1 касание после сильного прострела низом.</p>
         </div>
       </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Стенка в движении (Give-and-Go) на скорость»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="150" y="0" width="100" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="90" cy="180" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="90" y="184" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="180" cy="120" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="180" y="124" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="230" cy="115" r="12" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="230" y="119" font-size="9" text-anchor="middle" fill="#fff">З</text>
+            <line x1="103" y1="176" x2="168" y2="130" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 90 168 L 90 50 L 220 50" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="192" y1="118" x2="225" y2="50" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="230" y1="45" x2="205" y2="30" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И1 отдаёт пас И2 и тут же делает рывок в свободную зону. И2 в одно касание возвращает мяч И1 «в стенку», а тот врывается и бьёт. Тренируем скорость принятия решения за 1–2 касания.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Длинный перевод через закрытую зону»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <circle cx="55" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="55" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="345" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="345" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="150" cy="80" r="12" fill="#ff1744" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="200" cy="125" r="12" fill="#ff1744" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="250" cy="170" r="12" fill="#ff1744" stroke="#fff" stroke-width="2"></circle>
+            <line x1="72" y1="118" x2="330" y2="72" stroke="#ffeb3b" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> Партнёры стоят по краям поля с соперниками в центре. Задача — точным дальним пасом (низом или верхом) перевести мяч через все три линии. Тренируем силу, точность и чтение коридоров.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Слепой пас по голосовой команде партнёра»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <circle cx="150" cy="125" r="14" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="150" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="255" cy="125" r="6" fill="#fff" stroke="#000" stroke-width="1.5"></circle>
+            <circle cx="90" cy="65" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="90" y="69" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="310" cy="185" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="310" y="189" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И3</text>
+            <line x1="160" y1="115" x2="105" y2="78" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="285" y1="135" x2="220" y2="175" stroke="#ff5252" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
+          </svg>
+          <p><b>Механика:</b> И1 стоит с закрытыми глазами (спиной к партнёрам). И2 и И3 бегут в разных направлениях и кричат «Один!» когда свободны. И1 по голосу определяет, кто открыт, и точно пасует.</p>
+        </div>
+      </div>
     </div>
   </div>
   <!-- ================= ВКЛАДКА 5: ДРИБЛИНГ 5х5 ================= -->
@@ -1964,6 +2154,53 @@
           <p><b>Механика:</b> Игроки ведут мячи по кругу. 1 свисток — мгновенная остановка подошвой и разворот на 180° в обратную сторону. 2 свистка — ускорение и обгон впереди бегущего товарища по внешнему радиусу!</p>
         </div>
       </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Восьмёрка в паре с передачей подошвой»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <circle cx="160" cy="90" r="6" fill="#fff" stroke="#000" stroke-width="1.5"></circle>
+            <circle cx="240" cy="160" r="6" fill="#fff" stroke="#000" stroke-width="1.5"></circle>
+            <circle cx="100" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="100" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="300" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="300" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <path d="M 165 85 Q 220 70 235 155" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <path d="M 235 170 Q 175 180 160 100" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="115" y1="118" x2="145" y2="95" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="285" y1="118" x2="255" y2="155" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> Партнёры обводят друг друга по траектории «восьмёрки», перекатывая мяч подошвой. На каждом круге обмениваются пасами через центр. Тренируем мягкий приём подошвой в движении.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Обведи партнёра 1v1 и развернись»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <polygon points="70,90 62,110 78,110" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="330,90 322,110 338,110" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="70,160 62,180 78,180" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="330,160 322,180 338,180" fill="#ff6d00" stroke="#fff"></polygon>
+            <circle cx="200" cy="125" r="14" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="200" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="200" cy="200" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <path d="M 190 190 Q 130 145 200 100 Q 260 75 330 100" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> 1v1 в квадрате с 4 воротами из конусов. И1 обводит И2 и должен провести мяч в любой из 4 ворот под контролем. И2 чисто отбирает за 10 секунд. Меняются ролями.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Салки с мячом в парах»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="65" y="40" width="270" height="170" rx="18" fill="none" stroke="#ffeb3b" stroke-width="2" stroke-dasharray="6,6"></rect>
+            <circle cx="150" cy="120" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="150" y="124" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="165" cy="130" r="5" fill="#fff"></circle>
+            <circle cx="250" cy="140" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="250" y="144" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <path d="M 165 115 Q 230 65 285 130 Q 285 185 195 175 Q 130 165 145 130" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> И2 — «водящий» без мяча. И1 ведёт мяч подошвой и убегает от И2 в течение 30 секунд. Если И2 коснулся И1 — роли меняются. Тренируем контроль мяча под давлением.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2058,6 +2295,53 @@
             <line x1="200" y1="108" x2="200" y2="75" stroke="#ff5252" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
           </svg>
           <p><b>Механика:</b> Вратарь выходит из ворот и помогает защитникам З1 и З2 разыграть лишнего против прессингующего нападающего (Н). Прием строго подошвой и спокойный пас на открытый край!</p>
+        </div>
+      </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Парная разминка: пас-ловля-удар»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="140" y="10" width="120" height="12" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="40" r="14" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="200" y="44" font-size="10" text-anchor="middle" fill="#000" font-weight="bold">ВР</text>
+            <circle cx="200" cy="180" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="184" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="90" cy="140" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="90" y="144" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="105" y1="130" x2="185" y2="70" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="195" y1="165" x2="200" y2="65" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+            <path d="M 205 55 L 240 35" fill="none" stroke="#ff5252" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arr-red)"></path>
+          </svg>
+          <p><b>Механика:</b> И2 отдаёт пас вратарю, вратарь ловит, тут же встаёт и отдаёт точный пас И1. И1 принимает подошвой и наносит удар в створ, вратарь тащит. Тренируем цепочку «приём паса + реакция на удар».</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Вратарь + полевой: выход 1v1»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="140" y="10" width="120" height="12" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="45" r="14" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="200" y="49" font-size="10" text-anchor="middle" fill="#000" font-weight="bold">ВР</text>
+            <circle cx="200" cy="160" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="164" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="200" cy="110" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="200" y="114" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">Н</text>
+            <line x1="200" y1="145" x2="200" y2="125" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 190 55 Q 155 110 165 130" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> И1 стоит сбоку от штрафной. Нападающий Н получает пас и выходит 1v1 на вратаря. Вратарь делает 2–3 шага навстречу и садится в «крест». Если отбил — сразу вводит мяч рукой И1.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Два вратаря: быстрая передача и реакция»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="90" y="15" width="80" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <rect x="230" y="15" width="80" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="130" cy="40" r="14" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="130" y="44" font-size="9" text-anchor="middle" fill="#000" font-weight="bold">ВР1</text>
+            <circle cx="270" cy="40" r="14" fill="#00e676" stroke="#fff" stroke-width="2"></circle><text x="270" y="44" font-size="9" text-anchor="middle" fill="#000" font-weight="bold">ВР2</text>
+            <circle cx="200" cy="145" r="14" fill="#aa00ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="149" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">ТР</text>
+            <line x1="145" y1="45" x2="255" y2="45" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="200" y1="128" x2="255" y2="60" stroke="#ff5252" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
+          </svg>
+          <p><b>Механика:</b> Два вратаря стоят в маленьких воротах лицом друг к другу. Тренер кричит «Играем!» — оба одновременно катят мячи друг другу. Каждый должен поймать свой мяч, встать и отдать точный пас обратно. Тренируем концентрацию и быструю реакцию.</p>
         </div>
       </div>
     </div>
@@ -2156,6 +2440,57 @@
           <p><b>Механика:</b> Нападающий (Н) стартует с мячом с форой в 2 метра впереди защитника. По крику тренера «ДОМ!» защитник на максимальном рывке должен догнать соперника по кратчайшей траектории и заблокировать удар в последний момент!</p>
         </div>
       </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «1v1 в коридоре с воротами»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <line x1="70" y1="30" x2="330" y2="30" stroke="#ffeb3b" stroke-width="3" stroke-dasharray="6,4"></line>
+            <line x1="70" y1="220" x2="330" y2="220" stroke="#ffeb3b" stroke-width="3" stroke-dasharray="6,4"></line>
+            <polygon points="70,125 62,140 78,140" fill="#ff6d00" stroke="#fff"></polygon>
+            <polygon points="330,125 322,140 338,140" fill="#ff6d00" stroke="#fff"></polygon>
+            <circle cx="160" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="160" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="160" cy="145" r="5" fill="#fff"></circle>
+            <circle cx="240" cy="125" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="240" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">З</text>
+            <path d="M 175 130 L 320 130" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="220" y1="130" x2="245" y2="130" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> В узком коридоре (8×15 м) с двумя воротами на концах И1 ведёт мяч и пытается пройти в дальние ворота. З чисто отбирает, не сбивая И1. Победа защитника = чистый перехват без фола.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Двойка защитников против тройки»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="25" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="120" cy="200" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="120" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">Н1</text>
+            <circle cx="200" cy="215" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="200" y="219" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">Н2</text>
+            <circle cx="280" cy="200" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="280" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">Н3</text>
+            <circle cx="150" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="150" y="129" font-size="9" text-anchor="middle" fill="#fff">З1</text>
+            <circle cx="250" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="250" y="129" font-size="9" text-anchor="middle" fill="#fff">З2</text>
+            <line x1="135" y1="190" x2="145" y2="140" stroke="#ff5252" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
+            <line x1="200" y1="200" x2="200" y2="140" stroke="#ff5252" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-red)"></line>
+            <path d="M 250 140 Q 210 100 145 120" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+          </svg>
+          <p><b>Механика:</b> Три нападающих атакуют, два защитника обороняются. Защитники не бросаются оба на одного, а двигаются «сдвоенным щитом»: З1 давит на игрока с мячом, З2 страхует и перекрывает пас. Отрабатываем координацию.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Отбор + мгновенная передача партнёру»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <circle cx="180" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="180" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="220" cy="125" r="13" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="220" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">З</text>
+            <circle cx="80" cy="125" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="80" y="129" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="165" y1="115" x2="105" y2="115" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 215 130 L 190 130" fill="none" stroke="#ff5252" stroke-width="2" stroke-dasharray="3,3"></path>
+          </svg>
+          <p><b>Механика:</b> И1 ведёт мяч, З пытается отобрать. Как только И1 чисто отобрал мяч — он должен за 2 секунды отдать точный пас И2. Тренируем «отбор + первый пас» как единое действие.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2252,6 +2587,55 @@
             <line x1="240" y1="110" x2="215" y2="25" stroke="#ffeb3b" stroke-width="3.5" marker-end="url(#arr-pass)"></line>
           </svg>
           <p><b>Механика:</b> И1 дает сильный пас вперед на Столба и тут же бежит под скидку. Столб подошвой мягко откатывает мяч назад под удар, и И1 вколачивает мяч в 1 касание подъемом!</p>
+        </div>
+      </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Пас-удар в 1 касание в паре на скорость»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="110" cy="195" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="110" y="199" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="290" cy="195" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="290" y="199" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="125" y1="185" x2="275" y2="185" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="290" y1="178" x2="255" y2="35" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И1 катит пас И2, И2 НЕ останавливает мяч, а сразу бьёт в 1 касание в створ. Засекаем время: 5 пар ударов на скорость с точностью. Каждый промах — +2 секунды штрафа.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Удар после ложного замаха партнёра»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="120" cy="180" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="120" y="184" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="240" cy="175" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="240" y="179" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <path d="M 245 165 L 215 100" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arr-run)"></path>
+            <line x1="120" y1="170" x2="190" y2="130" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="230" y1="160" x2="215" y2="35" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+            <line x1="205" y1="165" x2="195" y2="130" stroke="#ff5252" stroke-width="2" stroke-dasharray="3,3"></line>
+          </svg>
+          <p><b>Механика:</b> И1 пасует И2. И2 показывает мощный замах на удар, но в последний момент делает ложный замах и оставляет мяч И1. И1 с хода бьёт в открытый угол. Тренируем нестандартные решения в паре.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Дальний удар после скидки от партнёра»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="200" cy="100" r="14" fill="#ff6d00" stroke="#fff" stroke-width="2"></circle><text x="200" y="104" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="130" cy="215" r="14" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="130" y="219" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="145" y1="200" x2="190" y2="115" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 155 205 L 225 145" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="205" y1="108" x2="220" y2="135" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="235" y1="130" x2="215" y2="25" stroke="#ffeb3b" stroke-width="3.5" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И2 даёт сильный пас вперёд на И1. И1 подошвой мягко откатывает мяч назад под удар. И2 набегает и вколачивает мяч с дистанции в 1 касание. Классическая связка «столб + набегающий».</p>
         </div>
       </div>
     </div>
@@ -2358,6 +2742,57 @@
             <circle cx="200" cy="218" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="222" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">Фиксо</text>
           </svg>
           <p><b>Механика:</b> По команде «ДОМ!» вся четверка садится за центральную линию в плотный кулак. Центр на замке, страхуем друг друга, а при перехвате — пружиной вылетаем в контратаку 3 в 1!</p>
+        </div>
+      </div>
+	  
+	        <div class="card">
+        <div>
+          <h3>7. «Парный заслон (пик-н-ролл) в минике»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="130" cy="195" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="130" y="199" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="200" cy="160" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="200" y="164" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="210" cy="150" r="12" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="210" y="154" font-size="9" text-anchor="middle" fill="#fff">З</text>
+            <line x1="145" y1="185" x2="190" y2="165" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 145 185 Q 200 145 245 90" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="200" y1="145" x2="245" y2="95" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <line x1="250" y1="85" x2="225" y2="25" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И2 ставит заслон защитнику З, И1 ведёт мяч мимо него. Защитник переключается — И2 откатывается назад и получает пас от И1 в открытую зону. Классический «пик-н-ролл» в футзале.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>8. «Стандарт на двоих: розыгрыш + завершение»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="370" cy="15" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="370" y="19" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="180" cy="150" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="180" y="154" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <line x1="355" y1="22" x2="195" y2="140" stroke="#ffeb3b" stroke-width="2.5" marker-end="url(#arr-pass)"></line>
+            <path d="M 180 135 L 180 60" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="185" y1="135" x2="200" y2="35" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> И1 подаёт угловой, И2 подбегает под мяч, но НЕ бьёт — пропускает его между ног, а сам отбегает в сторону. И1 набегает и вколачивает мяч в дальний угол. Классическая «отвлекающая двойка».</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>9. «Парная контратака 2 в 1»</h3>
+          <svg class="scheme" viewBox="0 0 400 250">
+            <rect x="145" y="0" width="110" height="10" fill="none" stroke="#fff" stroke-width="3"></rect>
+            <circle cx="200" cy="20" r="11" fill="#00e676" stroke="#fff" stroke-width="2"></circle>
+            <circle cx="120" cy="200" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="120" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И1</text>
+            <circle cx="280" cy="200" r="13" fill="#2979ff" stroke="#fff" stroke-width="2"></circle><text x="280" y="204" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">И2</text>
+            <circle cx="200" cy="115" r="14" fill="#ff1744" stroke="#fff" stroke-width="2"></circle><text x="200" y="119" font-size="10" text-anchor="middle" fill="#fff" font-weight="bold">З</text>
+            <path d="M 130 190 Q 190 145 250 100" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <path d="M 270 190 Q 220 145 175 95" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-run)"></path>
+            <line x1="135" y1="185" x2="265" y2="185" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+            <line x1="275" y1="180" x2="220" y2="55" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arr-pass)"></line>
+          </svg>
+          <p><b>Механика:</b> Два наших игрока и один защитник бегут к воротам. И1 ведёт мяч, З пытается перехватить. И1 отдаёт И2, тот возвращает «на ход» И1 или сам бьёт. Тренируем передачу в 1–2 касания на скорости.</p>
         </div>
       </div>
     </div>
@@ -2682,6 +3117,23 @@
   </div>
 </div>
 
+<!-- ================= МОДАЛЬНОЕ ОКНО: РЕДАКТОР ПАР ================= -->
+<div class="modal-overlay" id="pairsEditorModal">
+  <div class="modal-card" style="max-width: 640px;">
+    <h3>👥 Настройка Пар (Двоек)</h3>
+    <p style="font-size:12.5px; color:#ccc; margin-top:0;">
+      Каждый игрок может быть только в <b>одной</b> паре. Рейтинг пары = сумма очков двух игроков по формуле Подиума Года.
+    </p>
+    <div id="pairsEditorList" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>
+    <div style="display:flex; gap:8px; margin-top:12px;">
+      <button type="button" class="tool-btn preset" onclick="addPairRow()" style="flex:1;">➕ Добавить пару</button>
+      <button type="button" class="tool-btn active" onclick="savePairsEditor()" style="flex:2;">💾 Сохранить пары</button>
+      <button type="button" class="tool-btn" onclick="closePairsEditorModal()">Отмена</button>
+    </div>
+  </div>
+</div>
+
+
 <!-- ================= МОДАЛЬНОЕ ОКНО: ПОДЕЛИТЬСЯ И QR-КОДЫ ================= -->
 <div class="modal-overlay" id="shareHubModal">
   <div class="modal-card" style="max-width: 640px;">
@@ -2898,6 +3350,7 @@
       };
     }
     if (coachData.legend.dob === undefined) coachData.legend.dob = '';
+    if (!Array.isArray(coachData.pairs)) coachData.pairs = [];
   }
 
   function getPassportDictionary() {
@@ -3260,6 +3713,232 @@
     const rcPenalty = Number(p.rc || 0) * RC_PENALTY;    // Красная = −20 баллов
     return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty);
   }
+  // ================= ПОДИУМ ДВОЕК =================
+  function calcPairScore(pair) {
+    if (!pair || !pair.p1 || !pair.p2) return null;
+    const p1 = players.find(pl => pl.id === pair.p1);
+    const p2 = players.find(pl => pl.id === pair.p2);
+    if (!p1 || !p2) return null;
+    const s1 = calcYearlyTopScore(p1);
+    const s2 = calcYearlyTopScore(p2);
+    return { p1: p1, p2: p2, score1: s1, score2: s2, total: s1 + s2 };
+  }
+
+  let tempPairs = [];
+
+  function openPairsEditorModal() {
+    if (!isCoachMode) return;
+    tempPairs = JSON.parse(JSON.stringify(coachData.pairs || []));
+    renderPairsEditorList();
+    document.getElementById('pairsEditorModal').classList.add('active');
+  }
+
+  function closePairsEditorModal() {
+    document.getElementById('pairsEditorModal').classList.remove('active');
+    tempPairs = [];
+  }
+
+  function renderPairsEditorList() {
+    const container = document.getElementById('pairsEditorList');
+    if (!container) return;
+
+    if (tempPairs.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">Пока нет пар. Нажмите «➕ Добавить пару».</div>';
+      return;
+    }
+
+    const usedIds = new Set();
+    tempPairs.forEach(pair => {
+      if (pair.p1) usedIds.add(pair.p1);
+      if (pair.p2) usedIds.add(pair.p2);
+    });
+
+    container.innerHTML = tempPairs.map((pair, idx) => {
+      const makeOptions = (selectedId) => {
+        let opts = '<option value="">— Выбрать игрока —</option>';
+        players.forEach(pl => {
+          const isSelectedHere = selectedId === pl.id;
+          const isUsedElsewhere = usedIds.has(pl.id) && !isSelectedHere;
+          if (isUsedElsewhere) return;
+          const shortPos = String(pl.pos || 'НЕ ОПР').split(' (')[0];
+          opts += `<option value="${pl.id}" ${isSelectedHere ? 'selected' : ''}>#${pl.num} ${pl.name} (${shortPos})</option>`;
+        });
+        return opts;
+      };
+
+      return `
+        <div class="att-row" style="flex-direction: column; align-items: stretch; gap: 8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:12px; font-weight:900; color:var(--accent-yellow);">ПАРА №${idx + 1}</span>
+            <button type="button" class="btn-t red" style="font-size:11px; padding:3px 8px;" onclick="removePairRow(${idx})">✖ Удалить пару</button>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr auto 1fr; gap:8px; align-items:center;">
+            <select onchange="updatePairSelection(${idx}, 'p1', this.value)" style="padding:7px; background:#101015; color:#fff; border:1px solid var(--border-col); border-radius:6px;">
+              ${makeOptions(pair.p1)}
+            </select>
+            <span style="color:var(--accent-yellow); font-weight:900;">+</span>
+            <select onchange="updatePairSelection(${idx}, 'p2', this.value)" style="padding:7px; background:#101015; color:#fff; border:1px solid var(--border-col); border-radius:6px;">
+              ${makeOptions(pair.p2)}
+            </select>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function addPairRow() {
+    tempPairs.push({ p1: null, p2: null });
+    renderPairsEditorList();
+  }
+
+  function removePairRow(idx) {
+    tempPairs.splice(idx, 1);
+    renderPairsEditorList();
+  }
+
+  function updatePairSelection(idx, field, value) {
+    tempPairs[idx][field] = value ? Number(value) : null;
+    renderPairsEditorList();
+  }
+
+  function savePairsEditor() {
+    const usedIds = new Set();
+    const cleanPairs = [];
+
+    for (let i = 0; i < tempPairs.length; i++) {
+      const pair = tempPairs[i];
+      if (!pair.p1 && !pair.p2) continue;
+      if (!pair.p1 || !pair.p2) {
+        alert(`⚠ Пара №${i + 1}: выберите обоих игроков или удалите пару.`);
+        return;
+      }
+      if (pair.p1 === pair.p2) {
+        alert(`⚠ Пара №${i + 1}: игрок не может быть в паре сам с собой.`);
+        return;
+      }
+      if (usedIds.has(pair.p1) || usedIds.has(pair.p2)) {
+        alert(`⚠ Игрок не может быть в двух парах одновременно (пара №${i + 1}).`);
+        return;
+      }
+      const exists1 = players.some(pl => pl.id === pair.p1);
+      const exists2 = players.some(pl => pl.id === pair.p2);
+      if (!exists1 || !exists2) {
+        alert(`⚠ Пара №${i + 1} содержит удалённого игрока. Удалите пару и создайте заново.`);
+        return;
+      }
+      usedIds.add(pair.p1);
+      usedIds.add(pair.p2);
+      cleanPairs.push({ p1: pair.p1, p2: pair.p2 });
+    }
+
+    coachData.pairs = cleanPairs;
+    closePairsEditorModal();
+    playBeep(1100, 200);
+    saveRosterLocal();
+  }
+
+  function renderPairsPodium() {
+    const stageEl = document.getElementById('pairsPodiumContainer');
+    const chasersEl = document.getElementById('pairsChasersContainer');
+    if (!stageEl) return;
+
+    if (!Array.isArray(coachData.pairs)) coachData.pairs = [];
+
+    const scoredPairs = coachData.pairs
+      .map(pair => {
+        const r = calcPairScore(pair);
+        return r ? { ...r, originalPair: pair } : null;
+      })
+      .filter(x => x !== null)
+      .sort((a, b) => b.total - a.total);
+
+    if (scoredPairs.length === 0) {
+      stageEl.innerHTML = `<div class="pair-empty-slot" style="width:100%;">
+        <div class="pair-empty-avatar">👥</div>
+        <div style="font-size:14px; color:#aaa; margin-top:6px;">
+          Пары ещё не настроены.<br>
+          ${isCoachMode ? 'Нажмите <b>👥 Настроить двойки</b> вверху.' : 'Тренер скоро создаст пары!'}
+        </div>
+      </div>`;
+      if (chasersEl) chasersEl.textContent = '💡 Игроков объединяют в пары тренером. Сумма очков обоих идёт в общий зачёт.';
+      return;
+    }
+
+    const first = scoredPairs[0];
+    const second = scoredPairs[1];
+    const third = scoredPairs[2];
+
+    const steps = [
+      { rank: 2, cls: 'pair-slot-silver', badge: '🥈 2 МЕСТО • СЕРЕБРО', data: second, refScore: first ? first.total : 0, refLabel: 'До золота' },
+      { rank: 1, cls: 'pair-slot-gold', badge: '🏆 1 МЕСТО • ЗОЛОТО', data: first, refScore: second ? second.total : 0, refLabel: 'Лидер сезона' },
+      { rank: 3, cls: 'pair-slot-bronze', badge: '🥉 3 МЕСТО • БРОНЗА', data: third, refScore: second ? second.total : 0, refLabel: 'До серебра' }
+    ];
+
+    stageEl.innerHTML = steps.map(st => {
+      if (!st.data) {
+        return `<div class="pair-slot ${st.cls}">
+          <div class="pair-banner">${st.badge}</div>
+          <div class="pair-empty-slot">
+            <div class="pair-empty-avatar">⏳</div>
+            <div style="color:#888;">Место свободно</div>
+          </div>
+        </div>`;
+      }
+      const d = st.data;
+      const p1Avatar = d.p1.photo ? `<img src="${d.p1.photo}" alt="${d.p1.name}">` : `#${d.p1.num}`;
+      const p2Avatar = d.p2.photo ? `<img src="${d.p2.photo}" alt="${d.p2.name}">` : `#${d.p2.num}`;
+      const pos1 = String(d.p1.pos || 'НЕ ОПР').split(' (')[0];
+      const pos2 = String(d.p2.pos || 'НЕ ОПР').split(' (')[0];
+      let gapHtml = '';
+      if (st.rank === 1) {
+        const lead = d.total - (st.refScore || 0);
+        gapHtml = `<div class="pair-gap-hint">🔥 Отрыв от 2-го места: +${lead} балл.</div>`;
+      } else {
+        const diff = Math.max(1, (st.refScore || 0) - d.total + 1);
+        gapHtml = `<div class="pair-gap-hint">⚡ ${st.refLabel}: +${diff} балл.</div>`;
+      }
+      return `<div class="pair-slot ${st.cls}">
+        <div>
+          <div class="pair-banner">${st.badge}</div>
+          <div class="pair-cards-row">
+            <div class="pair-player-mini">
+              <div class="pair-player-mini-avatar">${p1Avatar}</div>
+              <div>
+                <div class="pair-player-mini-name" title="${d.p1.name}">${d.p1.name.split(' ')[0]}</div>
+                <div class="pair-player-mini-pos">${pos1} • ${d.score1} очк.</div>
+              </div>
+            </div>
+            <div class="pair-plus-sign">+</div>
+            <div class="pair-player-mini">
+              <div class="pair-player-mini-avatar">${p2Avatar}</div>
+              <div>
+                <div class="pair-player-mini-name" title="${d.p2.name}">${d.p2.name.split(' ')[0]}</div>
+                <div class="pair-player-mini-pos">${pos2} • ${d.score2} очк.</div>
+              </div>
+            </div>
+          </div>
+          <div class="pair-total-box">
+            <div class="pair-total-label">ОБЩИЙ РЕЙТИНГ ПАРЫ</div>
+            <div class="pair-total-val">👥 ${d.total} очков</div>
+          </div>
+        </div>
+        <div>${gapHtml}</div>
+      </div>`;
+    }).join('');
+
+    if (chasersEl) {
+      const chasers = scoredPairs.slice(3, 6);
+      if (chasers.length > 0 && third) {
+        const listStr = chasers.map((c, idx) => {
+          const need = Math.max(1, third.total - c.total + 1);
+          return `<b>${idx + 4}. ${c.p1.name.split(' ')[0]} + ${c.p2.name.split(' ')[0]}</b> (${c.total} очк. — до бронзы <b>${need}</b>)`;
+        }).join(' &nbsp;•&nbsp; ');
+        chasersEl.innerHTML = `🏃‍♂️ <b>Ближайшие преследователи:</b> ${listStr}`;
+      } else {
+        chasersEl.innerHTML = `💡 Создавайте пары — и каждая будет бороться за медали!`;
+      }
+    }
+  }
 
   function renderYearlyTop3() {
     const stageEl = document.getElementById('top3YearlyContainer');
@@ -3349,6 +4028,7 @@
 
   function renderPodium() {
     renderYearlyTop3();
+    renderPairsPodium();
     const box = document.getElementById('podiumContainer');
     if (!box) return;
 
@@ -3567,6 +4247,17 @@
       const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
       if (selectedRole !== 'ALL' && shortPos !== selectedRole) return;
 
+      // Ищем партнёра по паре
+      const myPair = (coachData.pairs || []).find(pr => pr.p1 === p.id || pr.p2 === p.id);
+      let partnerBadge = '';
+      if (myPair) {
+        const partnerId = myPair.p1 === p.id ? myPair.p2 : myPair.p1;
+        const partner = players.find(pl => pl.id === partnerId);
+        if (partner) {
+          partnerBadge = `<div class="pair-partner-badge" title="В паре с: ${partner.name}">👥 В паре: ${partner.name.split(' ')[0]}</div>`;
+        }
+      }
+
       const ovr = calcOvr(p);
       const styleInfo = getCardClass(ovr);
       const statusInfo = getStatusBadge(p.status || 'out');
@@ -3610,6 +4301,7 @@
         <div>
           ${cardPenaltyText ? `<div class="card-penalty-alert">${cardPenaltyText}</div>` : ''}
           <div class="fut-mvp-banner">⭐ Звезда MVP (Игра / Трен): ${p.mvp || 0}</div>
+          ${partnerBadge}
           <div class="fut-footer">
             <span title="Голы">⚽ ${p.goals || 0}</span>
             <span title="Голевые пасы">👟 ${p.assists || 0}</span>
