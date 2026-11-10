@@ -1174,72 +1174,148 @@
     .step-silver { order: 2; min-height: auto; }
     .step-bronze { order: 3; min-height: auto; }
   }
-    /* ================= ПОДИУМ ДВОЕК ================= */
+
+  /* ================= ПОДИУМ ДВОЕК (PREMIUM) ================= */
   .pairs-podium-section {
-    background: radial-gradient(circle at 50% 0%, #132918 0%, #14141d 65%, #0e0e14 100%);
-    border: 2px solid #00e676;
-    border-radius: 18px;
-    padding: 20px 16px 18px 16px;
-    margin-bottom: 24px;
-    box-shadow: 0 10px 32px rgba(0,0,0,0.8), inset 0 0 25px rgba(0, 230, 118, 0.12);
-    position: relative; overflow: hidden;
+    background: radial-gradient(circle at 50% 0%, #162a1b 0%, #101014 60%, #09090b 100%);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 24px;
+    padding: 30px 20px 40px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8), inset 0 0 60px rgba(0, 230, 118, 0.05);
+    position: relative; 
+    overflow: hidden;
   }
-  .pairs-podium-header { text-align: center; margin-bottom: 18px; }
+  .pairs-podium-header { text-align: center; margin-bottom: 30px; position: relative; z-index: 2; }
   .pairs-podium-title {
-    font-size: 21px; font-weight: 900; color: #00e676;
-    text-transform: uppercase; letter-spacing: 0.8px; margin: 0;
-    text-shadow: 0 2px 10px rgba(0, 230, 118, 0.4);
+    font-size: 24px; font-weight: 900; color: #fff;
+    text-transform: uppercase; letter-spacing: 1.5px; margin: 0;
+    text-shadow: 0 0 20px rgba(0, 230, 118, 0.6), 0 0 40px rgba(0, 230, 118, 0.2);
   }
-  .pairs-podium-sub { font-size: 12.5px; color: #dcdce6; margin-top: 5px; line-height: 1.4; }
-  .pairs-podium-stage {
-    display: flex; justify-content: center; align-items: flex-end;
-    gap: 16px; max-width: 1100px; margin: 10px auto 14px auto; flex-wrap: wrap;
+  .pairs-podium-title span { color: #00e676; }
+  .pairs-podium-sub { font-size: 13px; color: #b0b0c0; margin-top: 8px; line-height: 1.5; max-width: 900px; margin-inline: auto; }
+
+  .pairs-podium-top-row {
+    display: flex; justify-content: center; align-items: flex-start; /* Изменено с flex-end на flex-start */
+    gap: 20px; max-width: 1100px; margin: 0 auto 40px auto; flex-wrap: wrap;
   }
+
+  .pairs-podium-bottom-row {
+    display: flex; justify-content: center; margin-top: 10px; position: relative;
+  }
+  .pairs-podium-bottom-row::before {
+    content: ''; position: absolute; top: -35px; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 35px; background: linear-gradient(to bottom, rgba(255,215,0,0) 0%, rgba(255,215,0,0.8) 100%);
+    z-index: 1;
+  }
+
   .pair-slot {
-    flex: 1; min-width: 290px; max-width: 340px;
-    border-radius: 16px 16px 10px 10px; padding: 14px 12px;
-    position: relative; display: flex; flex-direction: column;
-    transition: transform 0.25s ease;
+    border-radius: 20px; padding: 16px; position: relative; display: flex; flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s; z-index: 2;
+    backdrop-filter: blur(10px);
   }
-  .pair-slot:hover { transform: translateY(-5px); }
-  .pair-slot-gold { order: 2; min-height: 340px; background: linear-gradient(160deg, #4a3505 0%, #1c170b 55%, #2e2104 100%); border: 2.5px solid #ffd700; box-shadow: 0 0 28px rgba(255, 215, 0, 0.35); z-index: 2; }
-  .pair-slot-silver { order: 1; min-height: 300px; background: linear-gradient(160deg, #323842 0%, #17191f 60%, #23272e 100%); border: 2px solid #e0e5ec; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
-  .pair-slot-bronze { order: 3; min-height: 280px; background: linear-gradient(160deg, #422611 0%, #1a130e 60%, #2e1a0b 100%); border: 2px solid #dfa06e; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
-  .pair-banner { font-size: 11px; font-weight: 900; text-transform: uppercase; padding: 5px 8px; border-radius: 8px; margin-bottom: 10px; letter-spacing: 0.4px; text-align: center; }
-  .pair-slot-gold .pair-banner { background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b); color: #1a1100; }
+  .pair-slot:hover { transform: translateY(-8px) scale(1.02); }
+
+  .pair-slot-gold { width: 340px; margin-top: 0; background: linear-gradient(160deg, rgba(74,53,5,0.9) 0%, rgba(28,23,11,0.95) 60%, rgba(46,33,4,0.9) 100%); border: 2px solid #ffd700; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25), inset 0 0 20px rgba(255,215,0,0.1); }
+  .pair-slot-silver { width: 300px; margin-top: 50px; background: linear-gradient(160deg, rgba(50,56,66,0.9) 0%, rgba(23,25,31,0.95) 60%, rgba(35,39,46,0.9) 100%); border: 2px solid #e0e5ec; box-shadow: 0 10px 25px rgba(0,0,0,0.6); }
+  .pair-slot-bronze { width: 300px; margin-top: 50px; background: linear-gradient(160deg, rgba(66,38,17,0.9) 0%, rgba(26,19,14,0.95) 60%, rgba(46,26,11,0.9) 100%); border: 2px solid #dfa06e; box-shadow: 0 10px 25px rgba(0,0,0,0.6); } 
+  
+  .pair-slot-growing { 
+    width: 380px; 
+    background: linear-gradient(160deg, #2a3b15 0%, #1a1a22 50%, #111a0a 100%); 
+    border: 2.5px solid #69f0ae; 
+    box-shadow: 0 0 40px rgba(105, 240, 174, 0.3), inset 0 0 20px rgba(105, 240, 174, 0.1);
+    border-radius: 24px;
+  }
+  .pair-slot-growing .pair-banner { background: linear-gradient(90deg, #00c853, #69f0ae, #00c853); color: #00240c; text-shadow: none; box-shadow: 0 2px 10px rgba(0,230,118,0.5); }
+
+  .pair-banner { font-size: 12px; font-weight: 900; text-transform: uppercase; padding: 6px 10px; border-radius: 8px; margin-bottom: 15px; letter-spacing: 0.5px; text-align: center; }
+  .pair-slot-gold .pair-banner { background: linear-gradient(90deg, #b8860b, #fff3b0, #b8860b); color: #1a1100; box-shadow: 0 2px 10px rgba(255,215,0,0.3); }
   .pair-slot-silver .pair-banner { background: linear-gradient(90deg, #8a95a5, #ffffff, #8a95a5); color: #11151c; }
   .pair-slot-bronze .pair-banner { background: linear-gradient(90deg, #8b4513, #f3be94, #8b4513); color: #1f0d00; }
-  .pair-cards-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin-bottom: 10px; }
+
+  .pair-cards-row { display: flex; align-items: stretch; justify-content: space-between; margin-bottom: 15px; gap: 4px; }
   .pair-player-mini {
-    background: rgba(0,0,0,0.35); border-radius: 10px; padding: 10px 8px;
+    flex: 1; background: linear-gradient(145deg, rgba(30,30,40,0.8), rgba(15,15,20,0.9)); 
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 12px 8px;
     text-align: center; display: flex; flex-direction: column; align-items: center;
-    justify-content: space-between; min-height: 150px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4); position: relative;
   }
   .pair-player-mini-avatar {
-    width: 60px; height: 60px; border-radius: 50%; background: #101015;
+    width: 72px; height: 72px; border-radius: 50%; background: #101015;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 900; color: #fff; overflow: hidden; margin-bottom: 6px;
+    font-size: 20px; font-weight: 900; color: #fff; overflow: hidden; margin-bottom: 8px;
+    border: 3px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
   }
-  .pair-slot-gold .pair-player-mini-avatar { border: 2.5px solid #ffd700; }
-  .pair-slot-silver .pair-player-mini-avatar { border: 2.5px solid #e0e5ec; }
-  .pair-slot-bronze .pair-player-mini-avatar { border: 2.5px solid #dfa06e; }
+  .pair-slot-gold .pair-player-mini-avatar { border-color: #ffd700; box-shadow: 0 0 15px rgba(255,215,0,0.3); }
+  .pair-slot-silver .pair-player-mini-avatar { border-color: #e0e5ec; }
+  .pair-slot-bronze .pair-player-mini-avatar { border-color: #dfa06e; }
+  .pair-slot-growing .pair-player-mini-avatar { border-color: #69f0ae; box-shadow: 0 0 15px rgba(105,240,174,0.3); }
+  
   .pair-player-mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .pair-player-mini-name { font-size: 12px; font-weight: 900; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
-  .pair-player-mini-pos { font-size: 10px; color: #bbb; font-weight: 700; margin-top: 2px; }
-  .pair-plus-sign { font-size: 24px; font-weight: 900; color: #ffeb3b; text-align: center; }
-  .pair-total-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; }
-  .pair-slot-gold .pair-total-box { border-color: #ffd700; background: rgba(255, 215, 0, 0.14); }
-  .pair-total-label { font-size: 10.5px; color: #ccc; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
-  .pair-total-val { font-size: 20px; font-weight: 900; color: #fff; }
-  .pair-slot-gold .pair-total-val { color: #ffd700; font-size: 22px; }
-  .pair-gap-hint { font-size: 11px; font-weight: 800; color: #ffab91; margin-top: 6px; text-align: center; }
+  .pair-player-mini-name { font-size: 13px; font-weight: 900; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; letter-spacing: 0.2px; }
+  .pair-player-mini-pos { font-size: 10px; color: #9e9eae; font-weight: 700; margin-top: 3px; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 6px; }
+
+  .pair-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    padding: 10px 0;
+    width: 16px;
+    flex-shrink: 0;
+  }
+  .pair-divider::before,
+  .pair-divider::after {
+    content: '';
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(245, 197, 24, 0), rgba(245, 197, 24, 0.8), rgba(245, 197, 24, 0));
+    flex: 1;
+    border-radius: 2px;
+  }
+  .pair-divider span {
+    font-size: 16px;
+    color: #f5c518;
+    margin: 4px 0;
+    text-shadow: 0 0 10px rgba(245, 197, 24, 0.9);
+    line-height: 1;
+    animation: pulseStar 2s infinite alternate;
+  }
+  @keyframes pulseStar {
+    from { transform: scale(0.9); opacity: 0.7; }
+    to { transform: scale(1.1); opacity: 1; }
+  }
+
+  .pair-total-box { 
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 100%);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 10px; text-align: center;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
+  }
+  .pair-slot-gold .pair-total-box { border-color: rgba(255, 215, 0, 0.4); background: linear-gradient(180deg, rgba(74,53,5,0.5) 0%, rgba(0,0,0,0.8) 100%); }
+  .pair-slot-growing .pair-total-box { border-color: rgba(105, 240, 174, 0.4); background: linear-gradient(180deg, rgba(0,60,20,0.5) 0%, rgba(0,0,0,0.8) 100%); }
+  
+  .pair-total-label { font-size: 11px; color: #b0b0c0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .pair-total-val { font-size: 24px; font-weight: 900; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .pair-slot-gold .pair-total-val { color: #ffd700; }
+  .pair-slot-silver .pair-total-val { color: #e0e5ec; }
+  .pair-slot-bronze .pair-total-val { color: #dfa06e; }
+  .pair-slot-growing .pair-total-val { color: #69f0ae; }
+
+  .pair-gap-hint { font-size: 12px; font-weight: 800; color: #ffab91; margin-top: 10px; text-align: center; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 8px; }
   .pair-slot-gold .pair-gap-hint { color: #69f0ae; }
+  .pair-slot-growing .pair-gap-hint { color: #69f0ae; }
+  
   .pair-empty-slot { text-align: center; padding: 30px 10px; color: #888; font-size: 13px; }
   .pair-empty-avatar { width: 60px; height: 60px; border-radius: 50%; background: #101015; margin: 0 auto 8px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+
   .pairs-podium-chasers {
-    background: rgba(0,0,0,0.45); border: 1px solid var(--border-col);
-    border-radius: 10px; padding: 9px 14px; font-size: 12px; color: #ccc;
-    text-align: center; max-width: 1100px; margin: 0 auto;
+    background: rgba(0,0,0,0.4); border: 1px solid var(--border-col);
+    border-radius: 12px; padding: 12px 18px; font-size: 13px; color: #ccc;
+    text-align: center; max-width: 1100px; margin: 20px auto 0 auto;
+  }
+  .pairs-podium-chasers:empty {
+    display: none;
   }
 
   /* Бейдж «в паре с…» на карточке игрока */
@@ -1249,11 +1325,22 @@
     padding: 3px 6px; border-radius: 5px; font-size: 10.5px;
     font-weight: 800; text-align: center;
   }
+  
+  /* Кнопка и модалка истории */
+  .stat-archive-btn { background: rgba(0, 230, 118, 0.15); border: 1px solid #00e676; color: #69f0ae; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; cursor: pointer; display: inline-block; margin-left: auto; width: fit-content; margin-top: 5px; }
+  .stat-archive-btn:hover { background: #00e676; color: #000; }
+  .archive-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+  .archive-table th, .archive-table td { border: 1px solid var(--border-col); padding: 8px; text-align: center; }
+  .archive-table th { background: #242430; color: var(--accent-yellow); }
+  .archive-table tr:nth-child(even) { background: rgba(255,255,255,0.03); }
 
   @media (max-width: 820px) {
-    .pair-slot-gold { order: 1; min-height: auto; }
-    .pair-slot-silver { order: 2; min-height: auto; }
-    .pair-slot-bronze { order: 3; min-height: auto; }
+    .pairs-podium-top-row { flex-direction: column; align-items: center; gap: 30px; margin-bottom: 50px; }
+    .pair-slot-gold { order: 1; width: 100%; max-width: 340px; margin-top: 0; }
+    .pair-slot-silver { order: 2; width: 100%; max-width: 320px; margin-top: 0; }
+    .pair-slot-bronze { order: 3; width: 100%; max-width: 320px; margin-top: 0; }
+    .pair-slot-growing { width: 100%; max-width: 340px; }
+    .pairs-podium-bottom-row::before { display: none; }
   }
 </style>
 </head>
@@ -1349,6 +1436,7 @@
         <button class="tool-btn green coach-only" onclick="openAttendanceModal()">📋 Журнал (+📅 / +🏆 / +⭐)</button>
         <button class="tool-btn active coach-only" onclick="openPlayerModal(-1)">➕ Добавить игрока</button>
         <button class="tool-btn preset coach-only" onclick="openPairsEditorModal()">👥 Настроить двойки</button>
+		<button class="tool-btn preset" onclick="openCalcModal()" style="border-color: #aa00ff; color: #e040fb;">🧮 Калькулятор</button>
 		<button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
         <select class="sort-select" id="skillSortSelect" onchange="sortPlayersBy(this.value)">
           <option value="ovr">🔽 Сортировать по навыку / роли...</option>
@@ -1379,7 +1467,7 @@
       </div>
 
       <div class="sync-bar">
-        <button class="tool-btn danger coach-only" onclick="resetToRedZone()">🔄 Сброс (Старт 30)</button>
+        <button class="tool-btn green coach-only" onclick="startNewSeason()" style="background: #1b5e20; border-color: #00e676; color: #fff;" title="Архивирует статистику и фиксирует старт нового сезона">🚀 Начать новый сезон</button>   
       </div>
     </div>
 
@@ -1442,15 +1530,22 @@
       <div class="podium-grid" id="podiumContainer"></div>
     </div>
 
-    <!-- ПОДИУМ ДВОЕК -->
+    <!-- ПОДИУМ ДВОЕК (PREMIUM) -->
     <div class="pairs-podium-section">
       <div class="pairs-podium-header">
-        <h3 class="pairs-podium-title">👥 Подиум Двоек: Лучшие Дуэты Команды</h3>
+        <h3 class="pairs-podium-title">👥 <span>Подиум Двоек:</span> Лучшие Дуэты</h3>
         <div class="pairs-podium-sub">
-          Очки пары = <b>Очки Игрока 1 + Очки Игрока 2</b>. Каждый игрок считается по формуле Подиума Года: навыки + 📅×3 + 🏆×5 + ⚽×3 + 👟×3 + ⭐×20 − 🟨×5 − 🟥×20. Оба партнёра получают свои очки полностью, мы их просто складываем!
+          <b>Лучшая пара сезона</b> — по абсолютным очкам (навыки + активность).<br>
+          <b>Растущая пара</b> — те, кто совершил самый большой прогресс в навыках с начала сезона!
         </div>
       </div>
-      <div class="pairs-podium-stage" id="pairsPodiumContainer"></div>
+      
+      <!-- ТОП-3 (Золото, Серебро, Бронза) -->
+      <div class="pairs-podium-top-row" id="pairsPodiumTopRow"></div>
+      
+      <!-- РАСТУЩАЯ ПАРА (Ромбом снизу) -->
+      <div class="pairs-podium-bottom-row" id="pairsPodiumBottomRow"></div>
+
       <div class="pairs-podium-chasers" id="pairsChasersContainer"></div>
     </div>
 	
@@ -3133,6 +3228,100 @@
   </div>
 </div>
 
+<!-- ================= МОДАЛЬНОЕ ОКНО: КАЛЬКУЛЯТОР ================= -->
+<div class="modal-overlay" id="calcModal">
+  <div class="modal-card" style="max-width: 500px; border-color: #aa00ff; box-shadow: 0 0 30px rgba(170,0,255,0.4);">
+    <h3 style="color: #e040fb; border-bottom-color: rgba(170,0,255,0.3);">🧮 Калькулятор Баллов</h3>
+    <p style="font-size:12.5px; color:#ccc; margin-top:0;">
+      Покрути ползунки и введи цифры, чтобы узнать, сколько баллов ты получишь в Подиуме Года!
+    </p>
+
+    <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div>
+        <label><span>⚡ СКО:</span> <span id="calcValPac">50</span></label>
+        <input type="range" id="calcPac" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+      <div>
+        <label><span>💥 УДР:</span> <span id="calcValSho">50</span></label>
+        <input type="range" id="calcSho" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+      <div>
+        <label><span>🎯 ПАС:</span> <span id="calcValPas">50</span></label>
+        <input type="range" id="calcPas" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+      <div>
+        <label><span>👟 ДРБ:</span> <span id="calcValDri">50</span></label>
+        <input type="range" id="calcDri" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+      <div>
+        <label><span>🛡 ЗАЩ:</span> <span id="calcValDef">50</span></label>
+        <input type="range" id="calcDef" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+      <div>
+        <label><span>🔥 ФИЗ:</span> <span id="calcValPhy">50</span></label>
+        <input type="range" id="calcPhy" min="30" max="99" value="50" oninput="updateCalc()">
+      </div>
+    </div>
+
+    <div class="form-row" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+      <div>
+        <label>⚽ Голы:</label>
+        <input type="number" id="calcGoals" min="0" value="0" oninput="updateCalc()">
+      </div>
+      <div>
+        <label>👟 Пасы:</label>
+        <input type="number" id="calcAssists" min="0" value="0" oninput="updateCalc()">
+      </div>
+      <div>
+        <label>🏆 Игры:</label>
+        <input type="number" id="calcGames" min="0" value="0" oninput="updateCalc()">
+      </div>
+    </div>
+
+    <div class="form-row" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+      <div>
+        <label>📅 Трен:</label>
+        <input type="number" id="calcAtt" min="0" value="0" oninput="updateCalc()">
+      </div>
+      <div>
+        <label>⭐ MVP:</label>
+        <input type="number" id="calcMvp" min="0" value="0" oninput="updateCalc()">
+      </div>
+      <div>
+        <label>🟨 ЖК:</label>
+        <input type="number" id="calcYc" min="0" value="0" oninput="updateCalc()">
+      </div>
+    </div>
+    
+    <div class="form-row" style="margin-bottom: 0;">
+      <label>🟥 КК:</label>
+      <input type="number" id="calcRc" min="0" value="0" oninput="updateCalc()">
+    </div>
+
+    <div style="background: rgba(0,0,0,0.5); border: 1.5px solid #e040fb; border-radius: 10px; padding: 15px; margin-top: 15px; text-align: center;">
+      <div style="font-size: 12px; color: #ccc; text-transform: uppercase; font-weight: 800; margin-bottom: 4px;">Твой итоговый балл:</div>
+      <div id="calcTotalScore" style="font-size: 32px; font-weight: 900; color: #e040fb; text-shadow: 0 0 10px rgba(224,64,251,0.5);">300</div>
+      <div id="calcBreakdown" style="font-size: 11px; color: #999; margin-top: 5px; line-height: 1.4;">
+        Навыки: 300 | Активность: 0
+      </div>
+    </div>
+
+    <div style="display:flex; gap:8px; margin-top:15px;">
+      <button class="tool-btn" style="width:100%;" onclick="document.getElementById('calcModal').classList.remove('active')">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= МОДАЛЬНОЕ ОКНО: ИСТОРИЯ ИГРОКА ================= -->
+<div class="modal-overlay" id="archiveModal">
+  <div class="modal-card">
+    <h3 id="archiveModalTitle">📊 История игрока</h3>
+    <div id="archiveModalContent" style="max-height: 60vh; overflow-y: auto;"></div>
+    <div style="display:flex; gap:8px; margin-top:15px;">
+      <button class="tool-btn" style="width:100%;" onclick="document.getElementById('archiveModal').classList.remove('active')">Закрыть</button>
+    </div>
+  </div>
+</div>
 
 <!-- ================= МОДАЛЬНОЕ ОКНО: ПОДЕЛИТЬСЯ И QR-КОДЫ ================= -->
 <div class="modal-overlay" id="shareHubModal">
@@ -3351,6 +3540,9 @@
     }
     if (coachData.legend.dob === undefined) coachData.legend.dob = '';
     if (!Array.isArray(coachData.pairs)) coachData.pairs = [];
+    players.forEach(p => {
+      if (!p.archive) p.archive = {};
+    });
   }
 
   function getPassportDictionary() {
@@ -3424,6 +3616,7 @@
     if (p.mvp === undefined || p.mvp === null) p.mvp = 0;
     if (p.dob === undefined || p.dob === null) p.dob = '';
     syncAndCleanPlayerCards(p);
+    if (!p.archive) p.archive = {};
   }
 
   function handlePhotoUpload(e, targetType) {
@@ -3651,7 +3844,8 @@
         goals: 0, assists: 0, games: 0, att: 1, mvp: 0, yc: 0, rc: 0,
         status: "out",
         note: "Докажи свою полезность на тренировках!",
-        photo: p.photo || ""
+        photo: p.photo || "",
+        archive: p.archive || {}
       }));
       saveRosterLocal();
     }
@@ -3713,6 +3907,7 @@
     const rcPenalty = Number(p.rc || 0) * RC_PENALTY;    // Красная = −20 баллов
     return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty);
   }
+  
   // ================= ПОДИУМ ДВОЕК =================
   function calcPairScore(pair) {
     if (!pair || !pair.p1 || !pair.p2) return null;
@@ -3828,7 +4023,14 @@
       }
       usedIds.add(pair.p1);
       usedIds.add(pair.p2);
-      cleanPairs.push({ p1: pair.p1, p2: pair.p2 });
+      
+      let startOvr = pair.startOvr;
+      if (startOvr === undefined || startOvr === null) {
+        const pl1 = players.find(x => x.id === pair.p1);
+        const pl2 = players.find(x => x.id === pair.p2);
+        if (pl1 && pl2) startOvr = calcOvr(pl1) + calcOvr(pl2);
+      }
+      cleanPairs.push({ p1: pair.p1, p2: pair.p2, startOvr: startOvr });
     }
 
     coachData.pairs = cleanPairs;
@@ -3838,96 +4040,123 @@
   }
 
   function renderPairsPodium() {
-    const stageEl = document.getElementById('pairsPodiumContainer');
+    const stageElTop = document.getElementById('pairsPodiumTopRow');
+    const stageElBottom = document.getElementById('pairsPodiumBottomRow');
     const chasersEl = document.getElementById('pairsChasersContainer');
-    if (!stageEl) return;
+    
+    if (!stageElTop || !stageElBottom) return;
 
     if (!Array.isArray(coachData.pairs)) coachData.pairs = [];
 
     const scoredPairs = coachData.pairs
       .map(pair => {
+        const p1 = players.find(pl => pl.id === pair.p1);
+        const p2 = players.find(pl => pl.id === pair.p2);
+        if (!p1 || !p2) return null;
+
         const r = calcPairScore(pair);
-        return r ? { ...r, originalPair: pair } : null;
+        if (!r) return null;
+
+        const curOvr = calcOvr(p1) + calcOvr(p2);
+        // Если старт не зафиксирован (старая пара), считаем текущий OVR стартом
+        const startOvr = (pair.startOvr !== undefined && pair.startOvr !== null) ? pair.startOvr : curOvr;
+        const growth = curOvr - startOvr;
+
+        return { ...r, originalPair: pair, curOvr, startOvr, growth };
       })
-      .filter(x => x !== null)
-      .sort((a, b) => b.total - a.total);
+      .filter(x => x !== null);
+
+    // Сортировка по абсолютному рейтингу
+    const byTotal = [...scoredPairs].sort((a, b) => b.total - a.total);
+    // Сортировка по росту (только те, у кого рост > 0)
+    const byGrowth = [...scoredPairs].filter(x => x.growth > 0).sort((a, b) => b.growth - a.growth);
 
     if (scoredPairs.length === 0) {
-      stageEl.innerHTML = `<div class="pair-empty-slot" style="width:100%;">
+      stageElTop.innerHTML = `<div class="pair-empty-slot" style="width:100%;">
         <div class="pair-empty-avatar">👥</div>
-        <div style="font-size:14px; color:#aaa; margin-top:6px;">
-          Пары ещё не настроены.<br>
-          ${isCoachMode ? 'Нажмите <b>👥 Настроить двойки</b> вверху.' : 'Тренер скоро создаст пары!'}
-        </div>
+        <div style="font-size:14px; color:#aaa; margin-top:6px;">Пары ещё не настроены.<br>${isCoachMode ? 'Нажмите <b>👥 Настроить двойки</b> вверху.' : 'Тренер скоро создаст пары!'}</div>
       </div>`;
+      stageElBottom.innerHTML = '';
       if (chasersEl) chasersEl.textContent = '💡 Игроков объединяют в пары тренером. Сумма очков обоих идёт в общий зачёт.';
       return;
     }
 
-    const first = scoredPairs[0];
-    const second = scoredPairs[1];
-    const third = scoredPairs[2];
+    const first = byTotal[0];
+    const second = byTotal[1];
+    const third = byTotal[2];
+    const bestGrowing = byGrowth[0] || null;
 
-    const steps = [
-      { rank: 2, cls: 'pair-slot-silver', badge: '🥈 2 МЕСТО • СЕРЕБРО', data: second, refScore: first ? first.total : 0, refLabel: 'До золота' },
-      { rank: 1, cls: 'pair-slot-gold', badge: '🏆 1 МЕСТО • ЗОЛОТО', data: first, refScore: second ? second.total : 0, refLabel: 'Лидер сезона' },
-      { rank: 3, cls: 'pair-slot-bronze', badge: '🥉 3 МЕСТО • БРОНЗА', data: third, refScore: second ? second.total : 0, refLabel: 'До серебра' }
-    ];
-
-    stageEl.innerHTML = steps.map(st => {
-      if (!st.data) {
-        return `<div class="pair-slot ${st.cls}">
-          <div class="pair-banner">${st.badge}</div>
-          <div class="pair-empty-slot">
-            <div class="pair-empty-avatar">⏳</div>
-            <div style="color:#888;">Место свободно</div>
-          </div>
+    const renderSlot = (data, cls, badge, refScore, refLabel, isGrowing = false) => {
+      if (!data) {
+        return `<div class="pair-slot ${cls}">
+          <div class="pair-banner">${badge}</div>
+          <div class="pair-empty-slot"><div class="pair-empty-avatar">⏳</div><div style="color:#888;">Место свободно</div></div>
         </div>`;
       }
-      const d = st.data;
-      const p1Avatar = d.p1.photo ? `<img src="${d.p1.photo}" alt="${d.p1.name}">` : `#${d.p1.num}`;
-      const p2Avatar = d.p2.photo ? `<img src="${d.p2.photo}" alt="${d.p2.name}">` : `#${d.p2.num}`;
-      const pos1 = String(d.p1.pos || 'НЕ ОПР').split(' (')[0];
-      const pos2 = String(d.p2.pos || 'НЕ ОПР').split(' (')[0];
+      
+      const p1Avatar = data.p1.photo ? `<img src="${data.p1.photo}" alt="${data.p1.name}">` : `#${data.p1.num}`;
+      const p2Avatar = data.p2.photo ? `<img src="${data.p2.photo}" alt="${data.p2.name}">` : `#${data.p2.num}`;
+      const pos1 = String(data.p1.pos || 'НЕ ОПР').split(' (')[0];
+      const pos2 = String(data.p2.pos || 'НЕ ОПР').split(' (')[0];
+      
       let gapHtml = '';
-      if (st.rank === 1) {
-        const lead = d.total - (st.refScore || 0);
-        gapHtml = `<div class="pair-gap-hint">🔥 Отрыв от 2-го места: +${lead} балл.</div>`;
+      if (isGrowing) {
+        gapHtml = `<div class="pair-gap-hint">🚀 Рост: +${data.growth} OVR к навыкам</div>`;
+      } else if (!refScore) {
+        gapHtml = `<div class="pair-gap-hint">🏆 Лидер сезона</div>`;
       } else {
-        const diff = Math.max(1, (st.refScore || 0) - d.total + 1);
-        gapHtml = `<div class="pair-gap-hint">⚡ ${st.refLabel}: +${diff} балл.</div>`;
+        const diff = Math.max(1, refScore - data.total + 1);
+        gapHtml = `<div class="pair-gap-hint">⚡ ${refLabel}: +${diff} балл.</div>`;
       }
-      return `<div class="pair-slot ${st.cls}">
+
+      return `<div class="pair-slot ${cls}">
         <div>
-          <div class="pair-banner">${st.badge}</div>
+          <div class="pair-banner">${badge}</div>
           <div class="pair-cards-row">
             <div class="pair-player-mini">
               <div class="pair-player-mini-avatar">${p1Avatar}</div>
               <div>
-                <div class="pair-player-mini-name" title="${d.p1.name}">${d.p1.name.split(' ')[0]}</div>
-                <div class="pair-player-mini-pos">${pos1} • ${d.score1} очк.</div>
+                <div class="pair-player-mini-name" title="${data.p1.name}">${data.p1.name.split(' ')[0]}</div>
+                <div class="pair-player-mini-pos">${pos1} • ${data.score1} очк.</div>
               </div>
             </div>
-            <div class="pair-plus-sign">+</div>
+            <div class="pair-divider"><span>✦</span></div>
             <div class="pair-player-mini">
               <div class="pair-player-mini-avatar">${p2Avatar}</div>
               <div>
-                <div class="pair-player-mini-name" title="${d.p2.name}">${d.p2.name.split(' ')[0]}</div>
-                <div class="pair-player-mini-pos">${pos2} • ${d.score2} очк.</div>
+                <div class="pair-player-mini-name" title="${data.p2.name}">${data.p2.name.split(' ')[0]}</div>
+                <div class="pair-player-mini-pos">${pos2} • ${data.score2} очк.</div>
               </div>
             </div>
           </div>
           <div class="pair-total-box">
-            <div class="pair-total-label">ОБЩИЙ РЕЙТИНГ ПАРЫ</div>
-            <div class="pair-total-val">👥 ${d.total} очков</div>
+            <div class="pair-total-label">РЕЙТИНГ ПАРЫ</div>
+            <div class="pair-total-val">👥 ${data.total} очк.</div>
           </div>
         </div>
         <div>${gapHtml}</div>
       </div>`;
-    }).join('');
+    };
+
+    stageElTop.innerHTML = [
+      renderSlot(second, 'pair-slot-silver', '🥈 2 МЕСТО • СЕРЕБРО', first ? first.total : 0, 'До золота'),
+      renderSlot(first, 'pair-slot-gold', '🏆 1 МЕСТО • ЗОЛОТО', null, ''),
+      renderSlot(third, 'pair-slot-bronze', '🥉 3 МЕСТО • БРОНЗА', second ? second.total : 0, 'До серебра')
+    ].join('');
+
+    if (bestGrowing) {
+      stageElBottom.innerHTML = renderSlot(
+        bestGrowing, 'pair-slot-growing', '🚀 ЛУЧШАЯ РАСТУЩАЯ ДВОЙКА', null, '', true
+      );
+    } else {
+      stageElBottom.innerHTML = `<div class="pair-slot pair-slot-growing" style="opacity: 0.6;">
+        <div class="pair-banner">🚀 ЛУЧШАЯ РАСТУЩАЯ ДВОЙКА</div>
+        <div class="pair-empty-slot"><div class="pair-empty-avatar">⏳</div><div style="color:#888;">Пока нет пар с положительным ростом</div></div>
+      </div>`;
+    }
 
     if (chasersEl) {
-      const chasers = scoredPairs.slice(3, 6);
+      const chasers = byTotal.slice(3, 6);
       if (chasers.length > 0 && third) {
         const listStr = chasers.map((c, idx) => {
           const need = Math.max(1, third.total - c.total + 1);
@@ -3935,7 +4164,7 @@
         }).join(' &nbsp;•&nbsp; ');
         chasersEl.innerHTML = `🏃‍♂️ <b>Ближайшие преследователи:</b> ${listStr}`;
       } else {
-        chasersEl.innerHTML = `💡 Создавайте пары — и каждая будет бороться за медали!`;
+        chasersEl.innerHTML = '';
       }
     }
   }
@@ -4310,6 +4539,7 @@
             <span title="Жёлтые карточки (−5 к рейтингу за каждую)">🟨 ${p.yc || 0}</span>
             <span title="Красные карточки (−20 к рейтингу за каждую)">🟥 ${p.rc || 0}</span>
           </div>
+          <div class="stat-archive-btn" onclick="openArchiveModal(${idx})">📊 История</div>
           <button class="btn-coach-note ${hasNote ? 'has-note' : ''}" onclick="openNoteViewModal(${idx})">
             ${hasNote ? '📩 Наставление (Открыть!)' : '📋 Наставление (пусто)'}
           </button>
@@ -4604,7 +4834,7 @@
     }
   }
 
-let currentBaselineStats = null;
+  let currentBaselineStats = null;
 
   function openPlayerModal(idx) {
     document.getElementById('editPlayerIndex').value = idx;
@@ -4771,7 +5001,8 @@ let currentBaselineStats = null;
       noteReadAt: (idx >= 0 && players[idx] && players[idx].note === document.getElementById('pNote').value.trim()) ? (players[idx].noteReadAt || '') : '',
       lastEditedAt: editStampStr,
       prevStats: savedPrevStats,
-      photo: finalPhoto
+      photo: finalPhoto,
+      archive: (idx >= 0 && players[idx] && players[idx].archive) ? players[idx].archive : {}
     };
 
     if (idx === -1) players.push(newP);
@@ -5394,6 +5625,80 @@ let currentBaselineStats = null;
   loadRosterLocal();
   applyFormation('rhombus');
 
+  // ================= УПРАВЛЕНИЕ СЕЗОНОМ И ИСТОРИЕЙ =================
+  function startNewSeason() {
+    const currentYear = new Date().getFullYear();
+    if (!confirm(`⚠️ ВНИМАНИЕ! Это действие:\n1. Перенесет все голы, пасы, игры, тренировки, MVP и карточки в архив за ${currentYear} год.\n2. Обнулит текущую статистику игроков (характеристики НЕ тронутся!).\n3. Зафиксирует текущие навыки для расчета Прогресса Пар.\n\nВы уверены, что хотите начать новый сезон?`)) {
+      return;
+    }
+
+    // 1. Архивируем стату игроков
+    players.forEach(p => {
+      if (!p.archive) p.archive = {};
+      if (!p.archive[currentYear]) {
+        p.archive[currentYear] = { goals: 0, assists: 0, games: 0, att: 0, mvp: 0, yc: 0, rc: 0 };
+      }
+      
+      p.archive[currentYear].goals += Number(p.goals || 0);
+      p.archive[currentYear].assists += Number(p.assists || 0);
+      p.archive[currentYear].games += Number(p.games || 0);
+      p.archive[currentYear].att += Number(p.att || 0);
+      p.archive[currentYear].mvp += Number(p.mvp || 0);
+      p.archive[currentYear].yc += Number(p.yc || 0);
+      p.archive[currentYear].rc += Number(p.rc || 0);
+
+      // Обнуляем текущие
+      p.goals = 0; p.assists = 0; p.games = 0; p.att = 0; p.mvp = 0; p.yc = 0; p.rc = 0;
+    });
+
+    // 2. Фиксируем стартовый OVR для пар
+    coachData.pairs.forEach(pair => {
+      const p1 = players.find(pl => pl.id === pair.p1);
+      const p2 = players.find(pl => pl.id === pair.p2);
+      if (p1 && p2) {
+        pair.startOvr = calcOvr(p1) + calcOvr(p2);
+      }
+    });
+
+    alert(`✅ Сезон ${currentYear} успешно закрыт! Статистика обнулена, прогресс пар зафиксирован.`);
+    playBeep(1200, 300);
+    saveRosterLocal();
+  }
+
+  function openArchiveModal(idx) {
+    const p = players[idx];
+    document.getElementById('archiveModalTitle').textContent = `📊 История: ${p.name}`;
+    
+    let html = `<table class="archive-table">
+      <thead><tr><th>Год</th><th>⚽ Голы</th><th>👟 Пасы</th><th>🏆 Игры</th><th>📅 Трен</th><th>⭐ MVP</th><th>🟨</th><th>🟥</th></tr></thead>
+      <tbody>`;
+      
+    let hasHistory = false;
+    if (p.archive && Object.keys(p.archive).length > 0) {
+      hasHistory = true;
+      const years = Object.keys(p.archive).sort((a, b) => b - a); // Сначала новые
+      years.forEach(year => {
+        const a = p.archive[year];
+        html += `<tr>
+          <td><b>${year}</b></td>
+          <td>${a.goals || 0}</td><td>${a.assists || 0}</td><td>${a.games || 0}</td>
+          <td>${a.att || 0}</td><td>${a.mvp || 0}</td><td>${a.yc || 0}</td><td>${a.rc || 0}</td>
+        </tr>`;
+      });
+    }
+    
+    html += `</tbody></table>`;
+    
+    if (!hasHistory) {
+      html = `<div style="text-align:center; color:#888; padding:20px;">Пока нет архивных данных.<br>Нажмите «🚀 Начать новый сезон», чтобы сохранить текущую статистику.</div>`;
+    } else {
+      html += `<div style="font-size:11.5px; color:#aaa; margin-top:10px; text-align:center;">Текущий сезон: ⚽${p.goals||0} 👟${p.assists||0} 🏆${p.games||0} 📅${p.att||0} ⭐${p.mvp||0}</div>`;
+    }
+    
+    document.getElementById('archiveModalContent').innerHTML = html;
+    document.getElementById('archiveModal').classList.add('active');
+  }
+
   // ================= ФУНКЦИИ ОКНА ПОДЕЛИТЬСЯ И QR-КОДОВ =================
   function getDefaultSiteUrl() {
     const loc = window.location.href;
@@ -5452,6 +5757,66 @@ let currentBaselineStats = null;
     } else {
       prompt('Скопируй ссылку:', rawUrl);
     }
+  }
+  
+    // ================= КАЛЬКУЛЯТОР =================
+  function openCalcModal() {
+    document.getElementById('calcModal').classList.add('active');
+    updateCalc(); // Сразу делаем расчет при открытии
+  }
+
+  function updateCalc() {
+    // 1. Получаем значения навыков
+    const pac = Number(document.getElementById('calcPac').value);
+    const sho = Number(document.getElementById('calcSho').value);
+    const pas = Number(document.getElementById('calcPas').value);
+    const dri = Number(document.getElementById('calcDri').value);
+    const def = Number(document.getElementById('calcDef').value);
+    const phy = Number(document.getElementById('calcPhy').value);
+
+    // Обновляем цифры рядом с ползунками
+    document.getElementById('calcValPac').textContent = pac;
+    document.getElementById('calcValSho').textContent = sho;
+    document.getElementById('calcValPas').textContent = pas;
+    document.getElementById('calcValDri').textContent = dri;
+    document.getElementById('calcValDef').textContent = def;
+    document.getElementById('calcValPhy').textContent = phy;
+
+    // 2. Получаем значения активности
+    const goals = Math.max(0, Number(document.getElementById('calcGoals').value) || 0);
+    const assists = Math.max(0, Number(document.getElementById('calcAssists').value) || 0);
+    const games = Math.max(0, Number(document.getElementById('calcGames').value) || 0);
+    const att = Math.max(0, Number(document.getElementById('calcAtt').value) || 0);
+    const mvp = Math.max(0, Number(document.getElementById('calcMvp').value) || 0);
+    const yc = Math.max(0, Number(document.getElementById('calcYc').value) || 0);
+    const rc = Math.max(0, Number(document.getElementById('calcRc').value) || 0);
+
+    // 3. Считаем по формуле calcYearlyTopScore
+    const skillsSum = pac + sho + pas + dri + def + phy;
+    const attPts = att * 3;
+    const gamesPts = games * 5;
+    const goalsPts = goals * 3;
+    const astPts = assists * 3;
+    const mvpPts = mvp * 20;
+    const ycPenalty = yc * YC_PENALTY; // 5
+    const rcPenalty = rc * RC_PENALTY; // 20
+    
+    const activityPts = attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty;
+    const total = skillsSum + activityPts;
+
+    // 4. Выводим результат
+    document.getElementById('calcTotalScore').textContent = total;
+    
+    // Показываем расшифровку (чтобы дети видели, откуда цифры)
+    let breakdown = `Навыки: ${skillsSum} | `;
+    breakdown += `📅Трен: +${attPts} | `;
+    breakdown += `🏆Игры: +${gamesPts} | `;
+    breakdown += `⚽/👟: +${goalsPts + astPts}`;
+    if (mvp > 0) breakdown += ` | ⭐MVP: +${mvpPts}`;
+    if (yc > 0) breakdown += ` | 🟨: -${ycPenalty}`;
+    if (rc > 0) breakdown += ` | 🟥: -${rcPenalty}`;
+    
+    document.getElementById('calcBreakdown').textContent = breakdown;
   }
 
   function triggerNativeShare() {
