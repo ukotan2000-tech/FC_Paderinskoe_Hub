@@ -3429,6 +3429,7 @@
   /*__EMBEDDED_DATA_END__*/
 
   let players = [];
+  let lastSaveToken = 0;
   let coachData = {};
   let calendarEvents = [];
   let tempModalGames = [];
@@ -3690,7 +3691,7 @@
         cloudLoadedSuccessfully = true;
         players = cloudData.p;
         coachData = (cloudData.c && Object.keys(cloudData.c).length > 0) ? cloudData.c : JSON.parse(JSON.stringify(EMBEDDED_COACH_DATA));
-        calendarEvents = (Array.isArray(cloudData.cal) && cloudData.cal.length > 0) ? cloudData.cal : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
+        calendarEvents = Array.isArray(cloudData.cal) ? cloudData.cal : JSON.parse(JSON.stringify(EMBEDDED_CALENDAR_DATA));
         ensureCoachStructure();
 
         const todayStr = new Date().toLocaleDateString('ru-RU');
@@ -3720,7 +3721,9 @@
             })
           }).catch(() => {});
         }
-
+		
+        lastSaveToken = Number(cloudData.saveToken) || 0;
+		
         const vEl = document.getElementById('visitCount');
         if (vEl) vEl.textContent = coachData.visits;
         const vTodayEl = document.getElementById('visitTodayCount');
@@ -3777,60 +3780,83 @@
     renderCalendarTab();
   }
 
-  async function saveRosterLocal() {
-    cleanAllPlayersCards();
-    try {
-      updatePassportDictionaryFromRoster();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-      localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
-      localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
-    } catch (e) {
-      console.warn('Локальный кеш переполнен, сохраняем напрямую в Google Таблицу...');
-    }
+async function saveRosterLocal(forceReset) {
+  cleanAllPlayersCards();
+  try {
+    updatePassportDictionaryFromRoster();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+    localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
+    localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+  } catch (e) {
+    console.warn('Локальный кеш переполнен, сохраняем напрямую в Google Таблицу...');
+  }
 
-    renderCoachCard();
-    renderPodium();
-    renderFifaCards();
-    syncBoardNamesWithRoster();
+  renderCoachCard();
+  renderPodium();
+  renderFifaCards();
+  syncBoardNamesWithRoster();
 
-    const statusSub = document.getElementById('roleStatusText');
+  const statusSub = document.getElementById('roleStatusText');
 
-    if (!cloudLoadedSuccessfully) {
-      if (isCoachMode && statusSub) {
-        statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
-      }
-      alert('⚠️ Внимание! При открытии сайта не удалось связаться с Google Таблицей.\n\nЧтобы случайно не стереть облачную базу резервным шаблоном, отправка в таблицу заблокирована. Изменения сохранены на вашем устройстве. Проверьте интернет и обновите страницу!');
-      return;
-    }
-
+  if (!cloudLoadedSuccessfully) {
     if (isCoachMode && statusSub) {
-      statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
+      statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
     }
+    alert('⚠️ Внимание! При открытии сайта не удалось связаться с Google Таблицей.\n\nЧтобы случайно не стереть облачную базу резервным шаблоном, отправка в таблицу заблокирована. Изменения сохранены на вашем устройстве. Проверьте интернет и обновите страницу!');
+    return;
+  }
 
-    try {
-      const payload = {
+  if (isCoachMode && statusSub) {
+    statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
+  }
+
+  const expectedCount = players.length;
+  const expectedNamesSig = players.map(p => String(p.name || '')).join('|');
+
+  try {
+    await fetch(CLOUD_SYNC_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
         action: 'full_save',
         c: coachData,
         p: players,
-        cal: calendarEvents
-      };
-      await fetch(CLOUD_SYNC_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      });
+        cal: calendarEvents,
+        forceReset: forceReset === true
+      })
+    });
 
-      if (isCoachMode && statusSub) {
-        statusSub.textContent = 'Режим Тренера • ✅ Сохранено в Google Таблице!';
-      }
-    } catch (e) {
-      console.log('Ошибка отправки в облако:', e);
-      if (isCoachMode && statusSub) {
-        statusSub.textContent = 'Режим Тренера • ❌ Ошибка связи с таблицей';
-      }
+    // Контрольная проверка через GET
+    await new Promise(r => setTimeout(r, 800));
+    const verifyResp = await fetch(CLOUD_SYNC_URL + '?verify=' + Date.now(), { cache: 'no-store' });
+    const verifyData = await verifyResp.json();
+
+    if (verifyData.error) {
+      throw new Error('Сервер: ' + verifyData.error);
     }
+    if (verifyData.warning) {
+      throw new Error('Часть данных повреждена на сервере: ' + verifyData.warning);
+    }
+    const actualNamesSig = (verifyData.p || []).map(p => String(p.name || '')).join('|');
+    if (actualNamesSig !== expectedNamesSig) {
+      throw new Error('Проверка не прошла: в таблице не тот состав игроков, что отправлен. Проверьте, что в таблицу никто не вносил правки одновременно с вами.');
+    }
+
+    lastSaveToken = Number(verifyData.saveToken) || 0;
+
+    if (isCoachMode && statusSub) {
+      statusSub.textContent = 'Режим Тренера • ✅ Сохранено в Google Таблице!';
+    }
+  } catch (e) {
+    console.error('Save error:', e);
+    if (isCoachMode && statusSub) {
+      statusSub.textContent = 'Режим Тренера • ❌ ' + e.message;
+    }
+    alert('❌ Ошибка сохранения в Google Таблицу:\n' + e.message +
+          '\n\nИзменения сохранены локально, но НЕ в облако. Проверьте интернет или обновите страницу.');
   }
+}
 
   function resetToRedZone() {
     if (confirm('Сбросить показатели всех игроков к старту Красной зоны (рейтинг 30)? Имена, даты рождения и фото каждого игрока сохранятся!')) {
@@ -4710,16 +4736,16 @@
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
-      fetch(CLOUD_SYNC_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          action: 'read_note',
-          playerIndex: idx,
-          readAt: p.noteReadAt
-        })
-      }).catch(() => {});
+     fetch(CLOUD_SYNC_URL, {
+     method: 'POST',
+     mode: 'no-cors',
+     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+     body: JSON.stringify({
+     action: 'read_note',
+     playerId: String(p.id),
+    readAt: p.noteReadAt
+  })
+}).catch(() => {});
       renderFifaCards();
     }
   }
