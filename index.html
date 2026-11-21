@@ -225,105 +225,11 @@
     padding: 8px 11px;
     border-radius: 6px;
   }
-
-  /* ================= ПОДИУМ ЛИДЕРОВ ================= */
-  .podium-section {
-    background: linear-gradient(135deg, #16121e 0%, #1f1a12 50%, #121622 100%);
-    border: 2px solid rgba(245, 197, 24, 0.55);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 26px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.7);
+  .kids-guide-item.gk-item {
+    border-left-color: #00e676;
   }
-  .podium-header {
-    text-align: center;
-    margin-bottom: 14px;
-  }
-  .podium-title {
-    font-size: 19px;
-    font-weight: 900;
-    color: var(--accent-yellow);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin: 0;
-  }
-  .podium-sub {
-    font-size: 12px;
-    color: #bbb;
-    margin-top: 4px;
-  }
-  .podium-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-    gap: 14px;
-  }
-  .podium-slot {
-    background: linear-gradient(145deg, #252015 0%, #15151d 100%);
-    border: 1.5px solid #f5c518;
-    border-radius: 14px;
-    padding: 12px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .podium-slot:hover { transform: translateY(-4px); }
-  .podium-role-badge {
-    font-size: 11px;
-    font-weight: 900;
-    text-transform: uppercase;
-    padding: 4px 8px;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #c49316, #ffee88, #c49316);
-    color: #000;
-    margin-bottom: 10px;
-    letter-spacing: 0.4px;
-  }
-  .podium-avatar {
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    margin: 0 auto 8px auto;
-    border: 2.5px solid var(--accent-yellow);
-    background: #101015;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  }
-  .podium-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .podium-player-name {
-    font-size: 14.5px;
-    font-weight: 900;
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .podium-score-pill {
-    display: inline-block;
-    background: rgba(245, 197, 24, 0.2);
-    border: 1px solid var(--accent-yellow);
-    color: #ffe066;
-    font-size: 12px;
-    font-weight: 900;
-    padding: 3px 9px;
-    border-radius: 12px;
-    margin-bottom: 6px;
-  }
-  .podium-formula-hint {
-    font-size: 10.5px;
-    color: #aaa;
-    line-height: 1.3;
+  .kids-guide-item.beh-item {
+    border-left-color: #e040fb;
   }
 
   /* ================= БЛОК ДВУХ ТРЕНЕРОВ ================= */
@@ -396,15 +302,15 @@
   }
 
   /* СЕТКА ИГРОКОВ */
-   .fifa-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-   gap: 22px;
-   justify-items: center;
-   align-items: start;
- }
+  .fifa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+    gap: 22px;
+    justify-items: center;
+    align-items: start;
+  }
   .fut-card {
-    width: 275px;
+    width: 295px;
     border-radius: 22px 22px 18px 18px;
     padding: 13px 14px 14px 14px;
     position: relative;
@@ -491,7 +397,7 @@
   }
   @keyframes pulseBday { from { transform: scale(0.98); } to { transform: scale(1.02); } }
 
-  /* Плашка карточек ЖК/КК на карточке игрока (без таймера) */
+  /* Плашка карточек ЖК/КК на карточке игрока */
   .card-penalty-alert {
     background: rgba(0, 0, 0, 0.55);
     border: 1px solid #ff5252;
@@ -518,7 +424,7 @@
   .fut-rating-col {
     text-align: center;
     line-height: 1;
-    min-width: 54px;
+    min-width: 66px;
   }
   .fut-ovr {
     font-size: 36px;
@@ -526,10 +432,11 @@
     letter-spacing: -1px;
   }
   .fut-pos {
-    font-size: 12.5px;
-    font-weight: 800;
+    font-size: 11.5px;
+    font-weight: 900;
     text-transform: uppercase;
-    margin-top: 2px;
+    margin-top: 3px;
+    white-space: nowrap;
   }
   .fut-num-badge {
     display: inline-block;
@@ -628,9 +535,9 @@
   .fut-stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px 14px;
+    gap: 4px 12px;
     padding: 5px 8px 3px 8px;
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 800;
     border-top: 2px solid rgba(0,0,0,0.2);
   }
@@ -642,6 +549,118 @@
     justify-content: space-between;
   }
   .fut-stat-val { font-weight: 900; }
+
+  /* ОБЁРТКА: 6 НАВЫКОВ + ВЕРТИКАЛЬНАЯ ШКАЛА ХАРАКТЕР/ПОВЕДЕНИЕ */
+  .fut-stats-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    padding: 6px 2px 4px 4px;
+    border-top: 2px solid rgba(0,0,0,0.2);
+  }
+  .fut-totw .fut-stats-wrapper, .fut-red .fut-stats-wrapper, .fut-orange .fut-stats-wrapper {
+    border-top-color: rgba(255,255,255,0.22);
+  }
+.fut-stats-wrapper .fut-stats-grid {
+    flex: 1;
+    border-top: none;
+    padding: 0;
+    gap: 5px 8px;
+    font-size: 12px;
+  }
+  .fut-stats-wrapper .fut-stat-top {
+    white-space: nowrap;
+  }
+  .fut-beh-col {
+    width: 42px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.26);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 9px;
+    padding: 4px 2px;
+  }
+  .fut-beh-emoji {
+    font-size: 17px;
+    line-height: 1;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.65));
+  }
+  .fut-beh-track {
+    width: 11px;
+    height: 54px;
+    background: rgba(0,0,0,0.52);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.28);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 3px 0;
+  }
+  .fut-beh-fill {
+    width: 100%;
+    border-radius: 5px;
+    transition: height 0.3s ease;
+  }
+  .fut-beh-fill.beh-lvl-1 { background: linear-gradient(to top, #b71c1c, #ff5252); }
+  .fut-beh-fill.beh-lvl-2 { background: linear-gradient(to top, #e65100, #ff9800); }
+  .fut-beh-fill.beh-lvl-3 { background: linear-gradient(to top, #f9a825, #ffeb3b); }
+  .fut-beh-fill.beh-lvl-4 { background: linear-gradient(to top, #558b2f, #aed581); }
+  .fut-beh-fill.beh-lvl-5 { background: linear-gradient(to top, #00c853, #69f0ae); box-shadow: 0 0 6px rgba(105,240,174,0.7); }
+  .fut-beh-fill.beh-lvl-6 { background: linear-gradient(to top, #00bfa5, #00e676, #ffe57f); box-shadow: 0 0 8px rgba(255,229,127,0.85); }
+  .fut-beh-val {
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.05;
+    text-align: center;
+  }
+  .fut-beh-diff {
+    font-size: 8.5px;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 1px;
+    padding: 0 2px;
+    border-radius: 3px;
+  }
+  .fut-beh-label {
+    font-size: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    opacity: 0.85;
+    letter-spacing: 0.2px;
+    margin-top: 1px;
+  }
+  .beh-modal-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(224, 64, 251, 0.08);
+    border: 1px solid rgba(224, 64, 251, 0.4);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 6px;
+  }
+  .beh-modal-track {
+    width: 14px;
+    height: 48px;
+    background: #0d0d12;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .beh-modal-info {
+    flex: 1;
+    font-size: 12px;
+    color: #ddd;
+    line-height: 1.35;
+  }
 
   .fut-mvp-banner {
     margin-top: 6px;
@@ -721,7 +740,7 @@
   .btn-card-edit:hover { background: #000; border-color: var(--accent-yellow); color: var(--accent-yellow); }
 
   /* ЖУРНАЛ ПЕРЕКЛИЧКИ */
- .att-row {
+  .att-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -1083,7 +1102,7 @@
   /* Полоски-ползунки и подсветка изменений на самой карточке */
   .fut-stat-item { display: flex; flex-direction: column; gap: 2px; }
   .fut-stat-top { display: flex; justify-content: space-between; align-items: center; }
-  .fut-stat-diff { font-size: 10px; font-weight: 900; margin-left: 3px; padding: 0 3px; border-radius: 4px; }
+  .fut-stat-diff { font-size: 9.5px; font-weight: 900; margin-left: 2px; padding: 0 2px; border-radius: 4px; }
   .diff-up { color: #00e676; background: rgba(0, 0, 0, 0.55); }
   .diff-down { color: #ff5252; background: rgba(0, 0, 0, 0.55); }
   .fut-mini-slider { width: 100%; height: 6px; background: rgba(0, 0, 0, 0.38); border-radius: 4px; overflow: hidden; position: relative; border: 1px solid rgba(255, 255, 255, 0.2); }
@@ -1196,7 +1215,7 @@
   .pairs-podium-sub { font-size: 13px; color: #b0b0c0; margin-top: 8px; line-height: 1.5; max-width: 900px; margin-inline: auto; }
 
   .pairs-podium-top-row {
-    display: flex; justify-content: center; align-items: flex-start; /* Изменено с flex-end на flex-start */
+    display: flex; justify-content: center; align-items: flex-start;
     gap: 20px; max-width: 1100px; margin: 0 auto 40px auto; flex-wrap: wrap;
   }
 
@@ -1320,14 +1339,18 @@
 
   /* Бейдж «в паре с…» на карточке игрока */
   .pair-partner-badge {
-    margin-top: 5px; background: rgba(0, 230, 118, 0.12);
-    border: 1px solid rgba(0, 230, 118, 0.45); color: #b9f6ca;
+    margin-top: 5px; background: rgba(0, 36, 18, 0.78);
+    border: 1px solid #00e676; color: #b9f6ca;
     padding: 3px 6px; border-radius: 5px; font-size: 10.5px;
     font-weight: 800; text-align: center;
   }
   
   /* Кнопка и модалка истории */
-  .stat-archive-btn { background: rgba(0, 230, 118, 0.15); border: 1px solid #00e676; color: #69f0ae; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; cursor: pointer; display: inline-block; margin-left: auto; width: fit-content; margin-top: 5px; }
+ .stat-archive-btn {
+    background: rgba(0, 36, 18, 0.82); border: 1px solid #00e676; color: #69f0ae;
+    padding: 3px 8px; border-radius: 5px; font-size: 10.5px; font-weight: 800;
+    cursor: pointer; display: inline-block; margin-left: auto; width: fit-content; margin-top: 5px;
+  }
   .stat-archive-btn:hover { background: #00e676; color: #000; }
   .archive-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
   .archive-table th, .archive-table td { border: 1px solid var(--border-col); padding: 8px; text-align: center; }
@@ -1436,18 +1459,19 @@
         <button class="tool-btn green coach-only" onclick="openAttendanceModal()">📋 Журнал (+📅 / +🏆 / +⭐)</button>
         <button class="tool-btn active coach-only" onclick="openPlayerModal(-1)">➕ Добавить игрока</button>
         <button class="tool-btn preset coach-only" onclick="openPairsEditorModal()">👥 Настроить двойки</button>
-		<button class="tool-btn preset" onclick="openCalcModal()" style="border-color: #aa00ff; color: #e040fb;">🧮 Калькулятор</button>
-		<button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
+        <button class="tool-btn preset" onclick="openCalcModal()" style="border-color: #aa00ff; color: #e040fb;">🧮 Калькулятор</button>
+        <button class="tool-btn preset" onclick="sortPlayersBy('ovr')">🏅 По Рейтингу</button>
         <select class="sort-select" id="skillSortSelect" onchange="sortPlayersBy(this.value)">
           <option value="ovr">🔽 Сортировать по навыку / роли...</option>
-          <option value="pos">📌 По Позиции (ВРТ ➔ ФИК ➔ АЛА ➔ СТЛ)</option>
+          <option value="pos">📌 По Позиции (ВРТ ➔ Защита ➔ Края ➔ Нападение)</option>
+          <option value="beh">😄 По Характеру и Поведению</option>
           <option value="mvp">⭐ По Звездам MVP</option>
-          <option value="pac">⚡ По Скорости (СКО)</option>
-          <option value="sho">💥 По Удару (УДР)</option>
-          <option value="pas">🎯 По Пасу (ПАС)</option>
-          <option value="dri">👟 По Дриблингу (ДРБ)</option>
-          <option value="def">🛡 По Защите (ЗАЩ)</option>
-          <option value="phy">🔥 По Физике (ФИЗ)</option>
+          <option value="pac">⚡ По Скорости (СКО / РЕА)</option>
+          <option value="sho">💥 По Удару (УДР / ПРЫ)</option>
+          <option value="pas">🎯 По Пасу (ПАС / РУК)</option>
+          <option value="dri">👟 По Дриблингу (ДРБ / НОГ)</option>
+          <option value="def">🛡 По Защите (ЗАЩ / ПОЗ)</option>
+          <option value="phy">🔥 По Физике (ФИЗ / ВЫХ)</option>
           <option value="goals">⚽ По Голам</option>
           <option value="assists">👟 По Голевым пасам</option>
           <option value="games">🏆 По Играм на турнирах</option>
@@ -1456,42 +1480,61 @@
           <option value="rc">🟥 По Красным карточкам</option>
         </select>
         <select class="sort-select" id="roleFilterSelect" onchange="renderFifaCards()" style="border-color: var(--accent-yellow);">
-          <option value="ALL">👥 Все роли (Весь состав)</option>
-          <option value="ВРТ">🧤 Только ВРТ (Вратари)</option>
-          <option value="ФИК">🛡 Только ФИК (Защитники)</option>
-          <option value="АЛА">⚡ Только АЛА (Края)</option>
-          <option value="СТЛ">💥 Только СТЛ (Столбы)</option>
-          <option value="УНИ">🔄 Только УНИ (Универсалы)</option>
+          <option value="ALL">👥 Все позиции (Весь состав)</option>
+          <option value="ВРТ">🧤 ВРТ (Вратари)</option>
+          <option value="ФИК / ЦЗ">🛡 ФИК / ЦЗ (Центр. защитники)</option>
+          <option value="ФИК / КЗ">🛡 ФИК / КЗ (Крайние защитники)</option>
+          <option value="АЛА / ПЗ">⚡ АЛА / ПЗ (Фланги / Вингеры)</option>
+          <option value="УНИ / ЦП">🔄 УНИ / ЦП (Универсалы / Центр)</option>
+          <option value="СТЛ / НАП">💥 СТЛ / НАП (Столбы / Нападающие)</option>
           <option value="НЕ ОПР">❓ Не определены</option>
         </select>
       </div>
 
       <div class="sync-bar">
-        <button class="tool-btn green coach-only" onclick="startNewSeason()" style="background: #1b5e20; border-color: #00e676; color: #fff;" title="Архивирует статистику и фиксирует старт нового сезона">🚀 Начать новый сезон</button>   
+        <button class="tool-btn green coach-only" onclick="startNewSeason()" style="background: #1b5e20; border-color: #00e676; color: #fff;" title="Архивирует статистику и фиксирует старт нового сезона">🚀 Начать новый сезон</button>
       </div>
     </div>
 
     <!-- РАСКРЫВАЮЩАЯСЯ ПАМЯТКА ДЛЯ ДЕТЕЙ -->
     <div class="kids-guide-banner" id="kidsGuideBanner">
       <div class="kids-guide-header" onclick="document.getElementById('kidsGuideBanner').classList.toggle('open')">
-        <span>❓ ПАМЯТКА ИГРОКАМ: Навыки (СКО, ПАС, ФИЗ), Подиум Лидеров и дисциплинарные карточки (🟨/🟥)</span>
+        <span>❓ ПАМЯТКА ИГРОКАМ: Полевые и Вратарские навыки, Характер (×1.5), ТОП-3 и карточки (🟨/🟥)</span>
         <span>🔽 Нажми, чтобы прочитать</span>
       </div>
       <div class="kids-guide-body">
-        <b>1. Расшифровка 6 характеристик на твоей карточке:</b>
+        <b>1. Характеристики полевого игрока (6 навыков):</b>
         <div class="kids-guide-grid">
-          <div class="kids-guide-item">⚡ <b>СКО (Скорость):</b> Твой резкий старт с места за мячом, рывки в атаку и мгновенный возврат назад по команде «Дом!».</div>
-          <div class="kids-guide-item">💥 <b>УДР (Удар):</b> Сила и точность твоих ударов по воротам — как подъемом («молотком»), так и с носка («пыром»).</div>
+          <div class="kids-guide-item">⚡ <b>СКО (Скорость):</b> Резкий старт с места за мячом, рывки в атаку и быстрый возврат назад по команде «Дом!».</div>
+          <div class="kids-guide-item">💥 <b>УДР (Удар):</b> Сила и точность ударов по воротам — подъемом («молотком») и с носка («пыром»).</div>
           <div class="kids-guide-item">🎯 <b>ПАС (Передачи и Ум):</b> Мягкий прием мяча <b>подошвой</b>, поднятая голова и точный пас партнеру вовремя.</div>
           <div class="kids-guide-item">👟 <b>ДРБ (Дриблинг):</b> Контроль мяча на скорости, перекаты подошвой, финты и умение не потерять мяч под прессингом.</div>
-          <div class="kids-guide-item">🛡 <b>ЗАЩ (Защита):</b> Игра на полусогнутых ногах («стойка краба»), чистый отбор мяча, перехваты и блокировка ударов.</div>
-          <div class="kids-guide-item">🔥 <b>ФИЗ (Физика и Дух):</b> Твоя выносливость на всю смену, борьба плечом в плечо и громкий подсказ («Горишь!», «Один!»).</div>
+          <div class="kids-guide-item">🛡 <b>ЗАЩ (Защита):</b> Низкая стойка («стойка краба»), чистый отбор мяча, перехваты и блокировка ударов.</div>
+          <div class="kids-guide-item">🔥 <b>ФИЗ (Физика и Голос):</b> Выносливость на всю смену, борьба плечом в плечо и громкий подсказ («Горишь!», «Один!»).</div>
         </div>
+
+        <div style="margin-top: 12px;"><b>2. Отдельные характеристики Вратарей (ВРТ):</b></div>
+        <div class="kids-guide-grid">
+          <div class="kids-guide-item gk-item">⚡ <b>РЕА (Реакция):</b> Скорость рефлексов при резких ударах в упор и добиваниях.</div>
+          <div class="kids-guide-item gk-item">🤸 <b>ПРЫ (Прыжки):</b> Прыгучесть, нырки за мячом в нижние и верхние углы ворот.</div>
+          <div class="kids-guide-item gk-item">🧤 <b>РУК (Руки / Ловля):</b> Надёжный приём мяча намертво без лишних отскоков перед собой.</div>
+          <div class="kids-guide-item gk-item">👟 <b>НОГ (Игра ногами):</b> Уверенный пас ногами под прессингом и точный ввод мяча партнёру.</div>
+          <div class="kids-guide-item gk-item">📐 <b>ПОЗ (Позиция):</b> Умение правильно занять место в створе и сократить угол обстрела.</div>
+          <div class="kids-guide-item gk-item">🛡 <b>ВЫХ (Выходы 1 на 1):</b> Смелость на выходах, футзальный «крест» и перехват прострелов.</div>
+        </div>
+
+        <div style="margin-top: 12px;"><b>3. Вертикальная шкала «Характер / Поведение» (вес ×1.5 в рейтинге!):</b></div>
+        <div class="kids-guide-grid">
+          <div class="kids-guide-item beh-item">😡 <b>30–44 / 😠 45–54:</b> Баловство, споры с тренером или партнёрами, срыв упражнений.</div>
+          <div class="kids-guide-item beh-item">😐 <b>55–64 / 🙂 65–74:</b> Нормальная и хорошая дисциплина, старание и внимательность.</div>
+          <div class="kids-guide-item beh-item">😄 <b>75–84 / 🦁 85–99:</b> Образец характера, боевой дух, уважение к команде и лидерство.</div>
+        </div>
+
         <div style="margin-top: 12px;">
-          <b>2. Как попасть на Подиум Лидеров и правила дисциплинарных карточек (🟨 и 🟥):</b><br>
-          • На подиуме 5 мест основы: <b>Вратарь, Фиксо, два Ала и Столб</b>! Компьютер считает твой <b>Индекс Лидера</b> (профильные навыки + 📅 тренировки + ⚽ голы + 👟 пасы + <b>20 баллов за каждую редкую Звезду MVP ⭐</b>).<br>
-          • 🟨 <b>Желтая карточка</b> — дисциплинарный штраф: <b>минус 5 очков</b> от Индекса Лидера. Снимается только тренером вручную (таймера сгорания больше нет).<br>
-          • 🟥 <b>Красная карточка</b> — серьёзный штраф: <b>минус 20 очков</b> от Индекса Лидера. Снимается только тренером вручную (таймера сгорания больше нет).
+          <b>4. Как считаются очки Подиума Года (ТОП-3) и Подиума Двоек:</b><br>
+          • <b>Сумма 6 навыков</b> + <b>Характер × 1.5</b> (влияет сильнее обычных навыков!) + <b>📅 Трен × 3</b> + <b>🏆 Игры × 5</b> + <b>⚽ Голы × 3</b> + <b>👟 Пасы × 3</b> + <b>⭐ Звезда MVP × 20</b>.<br>
+          • 🟨 <b>Желтая карточка:</b> штраф <b>−5 очков</b> от рейтинга. Снимается только тренером вручную.<br>
+          • 🟥 <b>Красная карточка:</b> серьёзный штраф <b>−20 очков</b> от рейтинга. Снимается только тренером вручную.
         </div>
       </div>
     </div>
@@ -1508,7 +1551,7 @@
     <!-- ЦЕНТРАЛЬНАЯ ВИТРИНА ТРЕНЕРСКОГО ШТАБА -->
     <div class="coach-showcase" id="coachCardContainer"></div>
 
-	<!-- ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 -->
+    <!-- ГОДОВОЙ ПЬЕДЕСТАЛ ТОП-3 -->
     <div class="top3-yearly-section">
       <div class="top3-header">
         <h3 class="top3-title">🏆 Главный Подиум Года: ТОП-3 Игрока Сезона</h3>
@@ -1521,21 +1564,12 @@
       <div class="top3-chasers-bar" id="top3ChasersContainer"></div>
     </div>
 
-    <!-- ПОДИУМ ЛИДЕРОВ ПО ПОЗИЦИЯМ -->
-    <div class="podium-section">
-      <div class="podium-header">
-        <h3 class="podium-title">🏆 Подиум Лидеров: Символическая Пятёрка</h3>
-        <div class="podium-sub">Автоматический рейтинг лучших игроков по позициям (Навыки роли + 📅 Тренировки + ⭐ Звезды Тренера + ⚽/👟 Результат − 🟨×5 − 🟥×20)</div>
-      </div>
-      <div class="podium-grid" id="podiumContainer"></div>
-    </div>
-
     <!-- ПОДИУМ ДВОЕК (PREMIUM) -->
     <div class="pairs-podium-section">
       <div class="pairs-podium-header">
         <h3 class="pairs-podium-title">👥 <span>Подиум Двоек:</span> Лучшие Дуэты</h3>
         <div class="pairs-podium-sub">
-          <b>Лучшая пара сезона</b> — по абсолютным очкам (навыки + активность).<br>
+          <b>Лучшая пара сезона</b> — по абсолютным очкам (навыки + характер ×1.5 + активность).<br>
           <b>Растущая пара</b> — те, кто совершил самый большой прогресс в навыках с начала сезона!
         </div>
       </div>
@@ -1597,7 +1631,7 @@
     </div>
   </div>
 
-<!-- ================= ВКЛАДКА 1: ПСИХОЛОГИЯ И КАРТОЧКИ ================= -->
+  <!-- ================= ВКЛАДКА 1: ПСИХОЛОГИЯ И КАРТОЧКИ ================= -->
   <div id="tab-psych" class="tab-content">
     <div class="info-block">
       <h2>1. Зачем нужны Карточки Игроков и как работает отбор на соревнования</h2>
@@ -1605,14 +1639,14 @@
         «Карточка в нашем приложении — это ваше футбольное зеркало. Здесь нет любимчиков: каждый балл рейтинга, звезда от тренера и статус в заявке зарабатываются только потом, дисциплиной на тренировках и игрой на поле!»
       </div>
       <ul class="badge-list">
-        <li><b>Для чего карточки нужны Тренеру:</b> По карточкам и Журналу тренировок тренер видит полную картину — кто ходит без пропусков, кто получает звезды «Лучший на тренировке» (⭐), какие навыки растут и главное — <b>кого брать в основу на выездные турниры</b>.</li>
-        <li><b>Жесткий закон отбора в состав:</b> Если у игрока слабая карточка (Красная или Оранжевая зона), он пропускает тренировки или ленится — на соревнованиях он <b>либо сидит на скамейке запасных, либо остается дома вне заявки</b>.</li>
-        <li><b>Дисциплинарные карточки:</b> Желтая карточка (🟨) отнимает <b>−5 баллов</b> от Индекса Лидера, красная (🟥) — <b>−20 баллов</b>. Таймера сгорания больше нет: карточки действуют до тех пор, пока тренер не снимет их вручную в редакторе игрока.</li>
+        <li><b>Для чего карточки нужны Тренеру:</b> По карточкам и Журналу тренировок тренер видит полную картину — кто ходит без пропусков, кто держит дисциплину и получает звезды «Лучший на тренировке» (⭐), какие навыки растут и главное — <b>кого брать в основу на выездные турниры</b>.</li>
+        <li><b>Жесткий закон отбора в состав:</b> Если у игрока слабая карточка (Красная или Оранжевая зона), плохое поведение, он пропускает тренировки или ленится — на соревнованиях он <b>либо сидит на скамейке запасных, либо остается дома вне заявки</b>.</li>
+        <li><b>Дисциплинарные карточки:</b> Желтая карточка (🟨) отнимает <b>−5 баллов</b> от рейтинга Подиума, красная (🟥) — <b>−20 баллов</b>. Карточки действуют до тех пор, пока тренер не снимет их вручную в редакторе игрока.</li>
       </ul>
     </div>
 
     <div class="info-block">
-      <h2>2. Подробная расшифровка характеристик карточки и Подиума Лидеров</h2>
+      <h2>2. Подробная расшифровка характеристик карточки (Полевые, Вратари и Характер)</h2>
       <table>
         <tbody>
           <tr>
@@ -1637,7 +1671,7 @@
           </tr>
           <tr>
             <td><b>👟 ДРБ (Дриблинг)</b></td>
-            <td>Контроль мяча в узком пространстве зала, перекаты подошвой влево-вправо и уход от соперника 1 в 1.</td>
+            <td>Контроль мяча в узком пространстве зала и на большом поле, перекаты подошвой и уход от соперника 1 в 1.</td>
             <td>Держать мяч близко к стопе, работать перекатами подошвой и укрывать мяч корпусом.</td>
           </tr>
           <tr>
@@ -1647,33 +1681,43 @@
           </tr>
           <tr>
             <td><b>🔥 ФИЗ (Физика и Голос)</b></td>
-            <td>Выносливость на всю смену, силовая борьба плечо в плечо и громкий командный голос на площадке.</td>
+            <td>Выносливость на всю смену, силовая борьба плечом в плечо и громкий командный голос на площадке.</td>
             <td>Не выключаться из борьбы при усталости и громко подсказывать: «Горишь!», «Один!», «Дом!».</td>
           </tr>
           <tr>
-            <td><b>⭐ Звезда Тренера</b></td>
-            <td>⭐ Звезда MVP (Редкая награда) — Особая редкая награда от тренера лучшему игроку матча на выезде или за сверхусилие на тренировке.</td>
-            <td>Дает сразу <b>+20 баллов</b> к Индексу Подиума! Слушать тренера ушами, думать головой и стараться в каждом упражнении.</td>
+            <td><b>🧤 Вратари (РЕА, ПРЫ, РУК, НОГ, ПОЗ, ВЫХ)</b></td>
+            <td>Отдельная шкала для ВРТ: <b>Реакция</b>, <b>Прыжки</b>, <b>Ловля руками</b>, <b>Игра ногами и ввод</b>, <b>Выбор позиции</b> и <b>Выходы 1 на 1</b>.</td>
+            <td>Отрабатывать падения, ловить мяч намертво, не бояться выходить «крестом» и точно вводить мяч в игру.</td>
+          </tr>
+          <tr>
+            <td><b>😄 Характер / Поведение (×1.5!)</b></td>
+            <td>Вертикальная шкала со смайликом (от 😡 до 🦁): дисциплина на тренировках, уважение к тренеру, судье и команде, боевой настрой.</td>
+            <td>Слушать тренера с первого слова, поддерживать партнёров, не ныть при ошибках. <b>Влияет на Подиум в 1.5 раза сильнее обычных навыков!</b></td>
+          </tr>
+          <tr>
+            <td><b>⭐ Звезда MVP</b></td>
+            <td>Особая редкая награда от тренера лучшему игроку матча на выезде или за сверхусилие на тренировке.</td>
+            <td>Дает сразу <b>+20 баллов</b> к Подиуму Года! Слушать тренера ушами, думать головой и стараться в каждом упражнении.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="info-block">
-      <h2>3. Как считается Подиум Лидеров по позициям (Честная математика)</h2>
+      <h2>3. Как считается Главный Подиум Года (ТОП-3) и Подиум Двоек (Честная математика)</h2>
       <ul class="badge-list">
-        <li>📊 <b>База для всех позиций:</b> В копилку складываются <b>все 6 навыков</b> + 📅 тренировки + 🏆 турниры + ⚽ голы + 👟 голевые пасы. Каждая <b>Звезда ⭐ даёт +20 баллов</b>, <b>Жёлтая карточка 🟨 отнимает 5 баллов</b>, а <b>Красная 🟥 отнимает 20 баллов</b>!</li>
-        <li>🧤 <b>Лучший Вратарь (ВРТ):</b> Сумма всех 6 навыков + вся активность (тренировки, игры, голы, пасы) + бонусы за Звезды ⭐.</li>
-        <li>🛡 <b>Лучший Защитник (ФИК — Фиксо):</b> Главный упор на <b>Защиту (ЗАЩ × 2)</b> и <b>Первый пас (ПАС × 1.5)</b> + остальные навыки и статистика в сложение.</li>
-        <li>⚡ <b>АЛА #1 и АЛА #2 (Два лучших Края):</b> На подиум попадают сразу два лучших края! Главный упор на <b>Дриблинг (ДРБ × 2)</b> и <b>Пас (ПАС × 1.5)</b> + остальные навыки и статистика в сложение.</li>
-        <li>💥 <b>Лучший Столб (СТЛ — Нападающий):</b> Главный упор на <b>Пас в отыгрыше (ПАС × 2)</b> и <b>Дриблинг/Контроль (ДРБ × 1.5)</b> + остальные навыки и статистика в сложение.</li>
+        <li>📊 <b>Навыки на карточке:</b> Складываются все <b>6 основных навыков</b> игрока (у полевых — СКО/УДР/ПАС/ДРБ/ЗАЩ/ФИЗ, у вратарей — РЕА/ПРЫ/РУК/НОГ/ПОЗ/ВЫХ).</li>
+        <li>🦁 <b>Характер и Поведение (главный множитель!):</b> Умножается на <b>1.5</b>! Хорошее поведение и дисциплина приносят гораздо больше очков в Подиум, чем любой отдельный футбольный навык, а плохое — сильно тянет вниз.</li>
+        <li>🔥 <b>Активность и результат:</b> Каждая тренировка <b>📅 даёт +3 очка</b>, выездной турнир <b>🏆 +5 очков</b>, каждый гол <b>⚽ +3 очка</b>, голевой пас <b>👟 +3 очка</b>, а редкая <b>Звезда MVP ⭐ сразу +20 очков</b>!</li>
+        <li>🟨🟥 <b>Штрафы за карточки:</b> <b>Жёлтая карточка 🟨 отнимает 5 баллов</b>, а <b>Красная 🟥 отнимает 20 баллов</b>.</li>
+        <li>👥 <b>Подиум Двоек:</b> В зачёт пары идёт сумма годовых очков обоих партнёров, а в номинации <b>«Растущая двойка»</b> побеждают те, кто сильнее всех прокачал свой общий рейтинг OVR с начала сезона!</li>
       </ul>
     </div>
 
     <div class="info-block">
       <h2>4. Секретные голосовые коды команды (Слушать тренера и подсказывать друг другу!)</h2>
       <ul class="badge-list">
-        <li>🏠 <b>«ДОМ!» (или «ДОМОЙ!»)</b> — никаких жестов руками, учимся работать ушами! Услышали «Дом!» — все четверо полевых игроков мгновенно бросают чужую половину и садятся назад к своей штрафной площади в компактную оборону.</li>
+        <li>🏠 <b>«ДОМ!» (или «ДОМОЙ!»)</b> — никаких жестов руками, учимся работать ушами! Услышали «Дом!» — все полевые игроки мгновенно бросают чужую половину и садятся назад к своей штрафной площади в компактную оборону.</li>
         <li>🔥 <b>«РАЗОБРАЛИ!» (или «РАЗОБРАЛИ ИГРОКОВ!»)</b> — включаем высокий плотный прессинг! Каждый игрок мгновенно находит своего соперника и плотно берет его 1 в 1 на любом участке поля.</li>
         <li>⚠️ <b>«ГОРИШЬ!»</b> — сигнал партнеру с мячом, что ему в спину летит соперник, нужно играть быстро в 1 касание или через дом. <b>Каждый игрок обязан сам громко кричать «Горишь!» напарнику!</b></li>
         <li>👀 <b>«ОДИН!»</b> — сигнал игроку, что вокруг него нет соперников, можно спокойно наступить на мяч подошвой, поднять голову и развернуться. Открылся сам — громко крикни: <b>«Я один!»</b></li>
@@ -1722,7 +1766,7 @@
         </tr>
       </tbody></table>
     </div>
-	<div class="info-block">
+    <div class="info-block">
       <h2>3. Главные правила: Мини-футбол (5х5) против Большого футбола (11х11)</h2>
       <p style="font-size:13.5px; color:#ccc; margin-top:0;">Главные отличия, которые нужно знать наизусть, чтобы не дарить мяч сопернику:</p>
       <table>
@@ -1827,7 +1871,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- ================= ВКЛАДКА 3: СКОРОСТЬ И РЕАКЦИЯ ================= -->
   <div id="tab-speed" class="tab-content">
     <div class="grid">
@@ -1898,7 +1942,8 @@
           <p><b>Механика:</b> В квадрате 8х8 м у каждого игрока за шорты заправлена цветная манишка («хвост»). Ведем мяч подошвой с поднятой головой и смотрим на тренера: <b>при поднятии тренером манишки определенного цвета игрок должен догнать и выхватить «хвост» именно такого цвета</b> у соперника, сохранив свой мяч!</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Зеркало в коридоре» (Реакция на финт + Спринт)</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -1948,8 +1993,8 @@
           <p><b>Механика:</b> Игрок контролирует мяч перекатами на месте. Тренер кричит пример: «Три плюс четыре!» (7 — нечетное). Игрок должен за долю секунды посчитать в уме и на максимальной скорости поразить нужные ворота!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Парный слалом с передачей на скорости»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2054,7 +2099,8 @@
           <p><b>Механика:</b> Прямая линия между И1 и И3 закрыта. И1 дает пас на вершину треугольника (И2) и кричит «Горишь!». И2 в 1 касание переправляет мяч на И3.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Квадрат 3 против 1 в 2 касания (Рондо)»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2103,8 +2149,8 @@
           <p><b>Механика:</b> Классика мини-футбола! И1 тащит мяч по левой бровке и режет угол, выманивая вратаря. В этот момент И2 летит замыкать дальнюю штангу в 1 касание после сильного прострела низом.</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Стенка в движении (Give-and-Go) на скорость»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2152,6 +2198,7 @@
       </div>
     </div>
   </div>
+
   <!-- ================= ВКЛАДКА 5: ДРИБЛИНГ 5х5 ================= -->
   <div id="tab-drib" class="tab-content">
     <div class="grid">
@@ -2206,7 +2253,8 @@
           <p><b>Механика:</b> Игрок Н зажат в углу спиной к полю, З давит в спину. Укрываем мяч корпусом и выходим через пунктирную линию.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Замах Роналду (Уход под себя за опорную)»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2249,8 +2297,8 @@
           <p><b>Механика:</b> Игроки ведут мячи по кругу. 1 свисток — мгновенная остановка подошвой и разворот на 180° в обратную сторону. 2 свистка — ускорение и обгон впереди бегущего товарища по внешнему радиусу!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Восьмёрка в паре с передачей подошвой»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2344,7 +2392,8 @@
           <p><b>Механика:</b> Вратарь ловит удар и за 3 секунды сильным броском рукой вкладывает мяч в оранжевый коридор на ход бегущему по флангу И1.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Касание обеих штанг + Сейв низом»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2392,8 +2441,8 @@
           <p><b>Механика:</b> Вратарь выходит из ворот и помогает защитникам З1 и З2 разыграть лишнего против прессингующего нападающего (Н). Прием строго подошвой и спокойный пас на открытый край!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Парная разминка: пас-ловля-удар»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2490,7 +2539,8 @@
           <p><b>Механика:</b> На мягком мате учимся сгибать внутреннюю ногу под себя, скользить на бедре и дальней ногой прерывать прострел.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Тень защитника: Закрой линию паса на Столба»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2535,8 +2585,8 @@
           <p><b>Механика:</b> Нападающий (Н) стартует с мячом с форой в 2 метра впереди защитника. По крику тренера «ДОМ!» защитник на максимальном рывке должен догнать соперника по кратчайшей траектории и заблокировать удар в последний момент!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «1v1 в коридоре с воротами»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2636,7 +2686,8 @@
           <p><b>Механика:</b> Два игрока в упоре лежа (планке) лицом друг к другу пытаются одной рукой закатить мяч между рук соперника.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>4. «Удар с носка (Пыром) без замаха из-под конуса»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2684,8 +2735,8 @@
           <p><b>Механика:</b> И1 дает сильный пас вперед на Столба и тут же бежит под скидку. Столб подошвой мягко откатывает мяч назад под удар, и И1 вколачивает мяч в 1 касание подъемом!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Пас-удар в 1 касание в паре на скорость»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2774,7 +2825,8 @@
           <p><b>Механика:</b> И2 ставит заслон спиной защитнику соперника. В свободный коридор врывается И3, получает пас с аута и бьет по воротам или простреливает на дальнюю штангу на И4.</p>
         </div>
       </div>
-	  <div class="card">
+
+      <div class="card">
         <div>
           <h3>3. Схема «Квадрат (2-2)» при высоком прессинге соперника</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2839,8 +2891,8 @@
           <p><b>Механика:</b> По команде «ДОМ!» вся четверка садится за центральную линию в плотный кулак. Центр на замке, страхуем друг друга, а при перехвате — пружиной вылетаем в контратаку 3 в 1!</p>
         </div>
       </div>
-	  
-	        <div class="card">
+
+      <div class="card">
         <div>
           <h3>7. «Парный заслон (пик-н-ролл) в минике»</h3>
           <svg class="scheme" viewBox="0 0 400 250">
@@ -2923,16 +2975,17 @@
       </div>
     </div>
 
-    <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <div class="form-row" style="display:grid; grid-template-columns: 1.35fr 0.65fr; gap:10px;">
       <div>
-        <label>Позиция в 5х5:</label>
-        <select id="pPos">
+        <label>Позиция (Мини / Большой):</label>
+        <select id="pPos" onchange="updatePlayerModalSkillLabels()">
           <option value="НЕ ОПР (Не определен)">НЕ ОПР (Не определен)</option>
-          <option value="УНИ (Универсал)">УНИ (Универсал)</option>
-          <option value="АЛА (Край)">АЛА (Край)</option>
-          <option value="ФИК (Защитник)">ФИК (Последний защ.)</option>
-          <option value="СТЛ (Столб)">СТЛ (Столб / Пиво)</option>
           <option value="ВРТ (Вратарь)">ВРТ (Вратарь)</option>
+          <option value="ФИК / ЦЗ (Фиксо / Центр. защитник)">ФИК / ЦЗ (Фиксо / Центр. защ.)</option>
+          <option value="ФИК / КЗ (Фиксо / Крайний защитник)">ФИК / КЗ (Фиксо / Крайний защ.)</option>
+          <option value="АЛА / ПЗ (Ала / Фланговый ПЗ)">АЛА / ПЗ (Ала / Фланговый ПЗ)</option>
+          <option value="УНИ / ЦП (Универсал / Центр. ПЗ)">УНИ / ЦП (Универсал / Центр. ПЗ)</option>
+          <option value="СТЛ / НАП (Столб / Нападающий)">СТЛ / НАП (Столб / Нападающий)</option>
         </select>
       </div>
       <div>
@@ -2950,29 +3003,52 @@
       </select>
     </div>
 
+    <div id="gkSkillNotice" style="display:none; background:rgba(0,230,118,0.12); border:1px solid #00e676; color:#b9f6ca; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; margin-bottom:10px;">
+      🧤 Выбрана позиция <b>ВРТ</b> — включены специальные вратарские характеристики!
+    </div>
+
     <div class="form-row">
-      <label><span>⚡ СКО (Взрывная скорость и реакция):</span> <span id="valPac">30</span></label>
+      <label><span id="lblPac">⚡ СКО (Взрывная скорость и реакция):</span> <span id="valPac">30</span></label>
       <input type="range" id="pPac" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>💥 УДР (Сила и точность удара):</span> <span id="valSho">30</span></label>
+      <label><span id="lblSho">💥 УДР (Сила и точность удара):</span> <span id="valSho">30</span></label>
       <input type="range" id="pSho" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🎯 ПАС (Прием подошвой и чтение игры):</span> <span id="valPas">30</span></label>
+      <label><span id="lblPas">🎯 ПАС (Прием подошвой и чтение игры):</span> <span id="valPas">30</span></label>
       <input type="range" id="pPas" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>👟 ДРБ (Дриблинг, перекаты и баланс):</span> <span id="valDri">30</span></label>
+      <label><span id="lblDri">👟 ДРБ (Дриблинг, перекаты и баланс):</span> <span id="valDri">30</span></label>
       <input type="range" id="pDri" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🛡 ЗАЩ (Отбор на согнутых и подкат):</span> <span id="valDef">30</span></label>
+      <label><span id="lblDef">🛡 ЗАЩ (Отбор на согнутых и подкат):</span> <span id="valDef">30</span></label>
       <input type="range" id="pDef" min="30" max="99" value="30" oninput="updateModalSliders()">
     </div>
     <div class="form-row">
-      <label><span>🔥 ФИЗ (Выносливость, корпус и голос):</span> <span id="valPhy">30</span></label>
+      <label><span id="lblPhy">🔥 ФИЗ (Выносливость, корпус и голос):</span> <span id="valPhy">30</span></label>
       <input type="range" id="pPhy" min="30" max="99" value="30" oninput="updateModalSliders()">
+    </div>
+
+    <!-- ХАРАКТЕР / ПОВЕДЕНИЕ (ВЕС ×1.5 В РЕЙТИНГЕ ЛИДЕРОВ) -->
+    <div class="form-row" style="border-top:1px dashed rgba(224,64,251,0.45); padding-top:10px; margin-top:8px;">
+      <label>
+        <span style="color:#ea80fc;">🦁 ХАРАКТЕР / ПОВЕДЕНИЕ (Вес ×1.5 в Подиуме):</span>
+        <span id="valBeh">60</span>
+      </label>
+      <input type="range" id="pBeh" min="30" max="99" value="60" oninput="updateModalSliders()">
+      <div class="beh-modal-preview">
+        <div class="beh-modal-track">
+          <div class="fut-beh-fill beh-lvl-3" id="behModalFill" style="height: 60%;"></div>
+        </div>
+        <div style="font-size:28px; line-height:1;" id="behModalEmoji">😐</div>
+        <div class="beh-modal-info">
+          <div style="font-weight:900; color:#fff;" id="behModalTitle">Нейтрально</div>
+          <div style="font-size:11px; color:#bbb;" id="behModalHint">Вклад в очки Подиума: <b style="color:#ea80fc;">+90 очк.</b> (60 × 1.5)</div>
+        </div>
+      </div>
     </div>
 
     <div class="form-row" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:6px;">
@@ -3068,7 +3144,7 @@
       <label>Звание / Должность на карточке:</label>
       <input type="text" id="cTitleInput" placeholder="НАСТАВНИК • ФК ПАДЕРИНСКОЕ">
     </div>
-<div class="form-row">
+    <div class="form-row">
       <label>🎂 Дата рождения:</label>
       <input type="date" id="cDobInput">
     </div>
@@ -3230,37 +3306,53 @@
 
 <!-- ================= МОДАЛЬНОЕ ОКНО: КАЛЬКУЛЯТОР ================= -->
 <div class="modal-overlay" id="calcModal">
-  <div class="modal-card" style="max-width: 500px; border-color: #aa00ff; box-shadow: 0 0 30px rgba(170,0,255,0.4);">
+  <div class="modal-card" style="max-width: 520px; border-color: #aa00ff; box-shadow: 0 0 30px rgba(170,0,255,0.4);">
     <h3 style="color: #e040fb; border-bottom-color: rgba(170,0,255,0.3);">🧮 Калькулятор Баллов</h3>
     <p style="font-size:12.5px; color:#ccc; margin-top:0;">
       Покрути ползунки и введи цифры, чтобы узнать, сколько баллов ты получишь в Подиуме Года!
     </p>
 
+    <div class="form-row">
+      <label>Режим расчёта (Полевой / Вратарь):</label>
+      <select id="calcRoleMode" onchange="updateCalcRoleLabels()">
+        <option value="field">⚽ Полевой игрок (СКО, УДР, ПАС, ДРБ, ЗАЩ, ФИЗ)</option>
+        <option value="gk">🧤 Вратарь (РЕА, ПРЫ, РУК, НОГ, ПОЗ, ВЫХ)</option>
+      </select>
+    </div>
+
     <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
       <div>
-        <label><span>⚡ СКО:</span> <span id="calcValPac">50</span></label>
+        <label><span id="calcLblPac">⚡ СКО:</span> <span id="calcValPac">50</span></label>
         <input type="range" id="calcPac" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
       <div>
-        <label><span>💥 УДР:</span> <span id="calcValSho">50</span></label>
+        <label><span id="calcLblSho">💥 УДР:</span> <span id="calcValSho">50</span></label>
         <input type="range" id="calcSho" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
       <div>
-        <label><span>🎯 ПАС:</span> <span id="calcValPas">50</span></label>
+        <label><span id="calcLblPas">🎯 ПАС:</span> <span id="calcValPas">50</span></label>
         <input type="range" id="calcPas" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
       <div>
-        <label><span>👟 ДРБ:</span> <span id="calcValDri">50</span></label>
+        <label><span id="calcLblDri">👟 ДРБ:</span> <span id="calcValDri">50</span></label>
         <input type="range" id="calcDri" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
       <div>
-        <label><span>🛡 ЗАЩ:</span> <span id="calcValDef">50</span></label>
+        <label><span id="calcLblDef">🛡 ЗАЩ:</span> <span id="calcValDef">50</span></label>
         <input type="range" id="calcDef" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
       <div>
-        <label><span>🔥 ФИЗ:</span> <span id="calcValPhy">50</span></label>
+        <label><span id="calcLblPhy">🔥 ФИЗ:</span> <span id="calcValPhy">50</span></label>
         <input type="range" id="calcPhy" min="30" max="99" value="50" oninput="updateCalc()">
       </div>
+    </div>
+
+    <div class="form-row" style="background:rgba(224,64,251,0.08); border:1px solid rgba(224,64,251,0.35); border-radius:8px; padding:8px 10px;">
+      <label>
+        <span style="color:#ea80fc;"><span id="calcBehEmoji">😐</span> Характер / Поведение (×1.5):</span>
+        <span id="calcValBeh" style="color:#ea80fc;">60 (+90 очк.)</span>
+      </label>
+      <input type="range" id="calcBeh" min="30" max="99" value="60" oninput="updateCalc()">
     </div>
 
     <div class="form-row" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
@@ -3278,7 +3370,7 @@
       </div>
     </div>
 
-    <div class="form-row" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+    <div class="form-row" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px;">
       <div>
         <label>📅 Трен:</label>
         <input type="number" id="calcAtt" min="0" value="0" oninput="updateCalc()">
@@ -3291,18 +3383,17 @@
         <label>🟨 ЖК:</label>
         <input type="number" id="calcYc" min="0" value="0" oninput="updateCalc()">
       </div>
-    </div>
-    
-    <div class="form-row" style="margin-bottom: 0;">
-      <label>🟥 КК:</label>
-      <input type="number" id="calcRc" min="0" value="0" oninput="updateCalc()">
+      <div>
+        <label>🟥 КК:</label>
+        <input type="number" id="calcRc" min="0" value="0" oninput="updateCalc()">
+      </div>
     </div>
 
-    <div style="background: rgba(0,0,0,0.5); border: 1.5px solid #e040fb; border-radius: 10px; padding: 15px; margin-top: 15px; text-align: center;">
+    <div style="background: rgba(0,0,0,0.5); border: 1.5px solid #e040fb; border-radius: 10px; padding: 15px; margin-top: 12px; text-align: center;">
       <div style="font-size: 12px; color: #ccc; text-transform: uppercase; font-weight: 800; margin-bottom: 4px;">Твой итоговый балл:</div>
-      <div id="calcTotalScore" style="font-size: 32px; font-weight: 900; color: #e040fb; text-shadow: 0 0 10px rgba(224,64,251,0.5);">300</div>
+      <div id="calcTotalScore" style="font-size: 32px; font-weight: 900; color: #e040fb; text-shadow: 0 0 10px rgba(224,64,251,0.5);">390</div>
       <div id="calcBreakdown" style="font-size: 11px; color: #999; margin-top: 5px; line-height: 1.4;">
-        Навыки: 300 | Активность: 0
+        Навыки: 300 | Характер (×1.5): +90 | Активность: 0
       </div>
     </div>
 
@@ -3377,6 +3468,7 @@
     </div>
   </div>
 </div>
+
 <script>
   const STORAGE_KEY = 'paderinskoe_5x5_roster_v4';
   const COACH_STORAGE_KEY = 'paderinskoe_5x5_coach_v4';
@@ -3389,9 +3481,12 @@
   // ШТРАФЫ ЗА КАРТОЧКИ (без таймера сгорания):
   // 🟨 Жёлтая = −5 к рейтингу Подиума за каждую
   // 🟥 Красная = −20 к рейтингу Подиума за каждую
-  // Снимаются только тренером вручную в редакторе игрока.
   const YC_PENALTY = 5;
   const RC_PENALTY = 20;
+
+  // ХАРАКТЕР / ПОВЕДЕНИЕ: стартовое значение и коэффициент влияния на рейтинг Подиума
+  const DEFAULT_BEH = 60;
+  const BEH_WEIGHT = 1.5;
 
   const CLOUD_SYNC_URL = 'https://script.google.com/macros/s/AKfycbymD4YSZkPo_Mw_FNmXbfHMNpuK_GkahTf9coHzaU9ssOZPo47es6gOy-WHbDFTW-GcFw/exec';
 
@@ -3400,13 +3495,13 @@
   let currentCoachTempPhoto = '';
 
   /*__EMBEDDED_DATA_START__*/
-  const EMBEDDED_VERSION = 1792482697854;
+  const EMBEDDED_VERSION = 1792482697855;
   const EMBEDDED_ROSTER_DATA = [
-    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК (Защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА (Край)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
-    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""}
+    {"id":1,"name":"Жидилева Варя","dob":"","pos":"ФИК / ЦЗ (Фиксо / Центр. защитник)","num":1,"status":"out","pac":30,"sho":30,"pas":30,"dri":30,"def":45,"phy":45,"beh":60,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":2,"name":"Александрова Арина","dob":"","pos":"НЕ ОПР (Не определен)","num":2,"status":"out","pac":35,"sho":35,"pas":30,"dri":35,"def":30,"phy":35,"beh":60,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":3,"name":"Рыбалов Ярик","dob":"","pos":"АЛА / ПЗ (Ала / Фланговый ПЗ)","num":3,"status":"out","pac":40,"sho":35,"pas":30,"dri":40,"def":30,"phy":30,"beh":60,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":4,"name":"Остапенко Иван","dob":"","pos":"НЕ ОПР (Не определен)","num":4,"status":"out","pac":30,"sho":40,"pas":30,"dri":40,"def":30,"phy":40,"beh":60,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"note":"","photo":""},
+    {"id":5,"name":"Игрок 5","dob":"","pos":"НЕ ОПР (Не определен)","num":5,"pac":30,"sho":30,"pas":30,"dri":30,"def":30,"phy":30,"beh":60,"goals":0,"assists":0,"games":0,"att":1,"mvp":0,"yc":0,"rc":0,"status":"out","note":"","photo":""}
   ];
   const EMBEDDED_COACH_DATA = {
     "name": "Игорь Евгеньевич",
@@ -3433,6 +3528,85 @@
   let coachData = {};
   let calendarEvents = [];
   let tempModalGames = [];
+
+  // ================= СПРАВОЧНИК ПОЗИЦИЙ (МИНИ + БОЛЬШОЙ) И НАВЫКОВ =================
+  const LEGACY_POS_MAP = {
+    'ВРТ': 'ВРТ (Вратарь)',
+    'ФИК': 'ФИК / ЦЗ (Фиксо / Центр. защитник)',
+    'ФИК / ЦЗ': 'ФИК / ЦЗ (Фиксо / Центр. защитник)',
+    'ФИК / КЗ': 'ФИК / КЗ (Фиксо / Крайний защитник)',
+    'АЛА': 'АЛА / ПЗ (Ала / Фланговый ПЗ)',
+    'АЛА / ПЗ': 'АЛА / ПЗ (Ала / Фланговый ПЗ)',
+    'УНИ': 'УНИ / ЦП (Универсал / Центр. ПЗ)',
+    'УНИ / ЦП': 'УНИ / ЦП (Универсал / Центр. ПЗ)',
+    'СТЛ': 'СТЛ / НАП (Столб / Нападающий)',
+    'СТЛ / НАП': 'СТЛ / НАП (Столб / Нападающий)',
+    'НЕ ОПР': 'НЕ ОПР (Не определен)'
+  };
+
+  function normalizePosValue(posStr) {
+    const raw = String(posStr || '').trim();
+    if (!raw) return 'НЕ ОПР (Не определен)';
+    const code = raw.split(' (')[0].trim().toUpperCase();
+    return LEGACY_POS_MAP[code] || raw;
+  }
+
+  function getShortPos(posStr) {
+    return normalizePosValue(posStr).split(' (')[0].trim();
+  }
+
+  function isGoalkeeperPos(posStr) {
+    return getShortPos(posStr) === 'ВРТ';
+  }
+
+const FIELD_SKILL_META = {
+    pac: { short: '⚡СКО', full: '⚡ СКО (Взрывная скорость и реакция):', calc: '⚡ СКО:' },
+    sho: { short: '💥УДР', full: '💥 УДР (Сила и точность удара):', calc: '💥 УДР:' },
+    pas: { short: '🎯ПАС', full: '🎯 ПАС (Прием подошвой и чтение игры):', calc: '🎯 ПАС:' },
+    dri: { short: '👟ДРБ', full: '👟 ДРБ (Дриблинг, перекаты и баланс):', calc: '👟 ДРБ:' },
+    def: { short: '🛡ЗАЩ', full: '🛡 ЗАЩ (Отбор на согнутых и подкат):', calc: '🛡 ЗАЩ:' },
+    phy: { short: '🔥ФИЗ', full: '🔥 ФИЗ (Выносливость, корпус и голос):', calc: '🔥 ФИЗ:' }
+  };
+
+  const GK_SKILL_META = {
+    pac: { short: '⚡РЕА', full: '⚡ РЕА (Реакция и рефлексы):', calc: '⚡ РЕА:' },
+    sho: { short: '🤸ПРЫ', full: '🤸 ПРЫ (Прыжки и нырки в углы):', calc: '🤸 ПРЫ:' },
+    pas: { short: '🧤РУК', full: '🧤 РУК (Игра руками и ловля мяча):', calc: '🧤 РУК:' },
+    dri: { short: '👟НОГ', full: '👟 НОГ (Игра ногами и точность ввода):', calc: '👟 НОГ:' },
+    def: { short: '📐ПОЗ', full: '📐 ПОЗ (Выбор позиции в воротах):', calc: '📐 ПОЗ:' },
+    phy: { short: '🛡ВЫХ', full: '🛡 ВЫХ (Выходы 1 на 1 и смелость):', calc: '🛡 ВЫХ:' }
+  };
+
+  function getSkillMeta(posStr) {
+    return isGoalkeeperPos(posStr) ? GK_SKILL_META : FIELD_SKILL_META;
+  }
+
+  // ================= ХАРАКТЕР / ПОВЕДЕНИЕ =================
+  function getPlayerBeh(p) {
+    if (!p || p.beh === undefined || p.beh === null || isNaN(Number(p.beh))) return DEFAULT_BEH;
+    return Math.max(30, Math.min(99, Number(p.beh)));
+  }
+
+  function getBehaviorMeta(val) {
+    const v = Math.max(30, Math.min(99, Number(val || DEFAULT_BEH)));
+    const pct = Math.max(8, Math.min(100, Math.round(((v - 25) / 74) * 100)));
+    if (v < 45) return { emoji: '😡', cls: 'beh-lvl-1', title: 'Плохое поведение (нарушения, споры)', pct };
+    if (v < 55) return { emoji: '😠', cls: 'beh-lvl-2', title: 'Нестабильно (отвлекается, срывы)', pct };
+    if (v < 65) return { emoji: '😐', cls: 'beh-lvl-3', title: 'Нейтрально (есть куда расти)', pct };
+    if (v < 75) return { emoji: '🙂', cls: 'beh-lvl-4', title: 'Хорошая дисциплина и настрой', pct };
+    if (v < 85) return { emoji: '😄', cls: 'beh-lvl-5', title: 'Отличный характер и командный дух', pct };
+    return { emoji: '🦁', cls: 'beh-lvl-6', title: 'Образец характера и лидерства!', pct };
+  }
+
+  function normalizeAllPlayersData() {
+    players.forEach(p => {
+      if (!p) return;
+      p.pos = normalizePosValue(p.pos);
+      p.beh = getPlayerBeh(p);
+      if (!p.archive) p.archive = {};
+      syncAndCleanPlayerCards(p);
+    });
+  }
 
   function normalizeName(str) {
     return String(str || '').trim().toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ');
@@ -3485,7 +3659,6 @@
   }
 
   // Дисциплинарные карточки: таймер сгорания убран.
-  // Просто синхронизируем числовые счётчики (и чистим старые массивы для совместимости).
   function syncAndCleanPlayerCards(p) {
     p.yc = Math.max(0, Number(p.yc || 0));
     p.rc = Math.max(0, Number(p.rc || 0));
@@ -3502,7 +3675,6 @@
     return changed;
   }
 
-  // Возвращает строку-описание штрафа для карточки игрока (без таймера)
   function getCardPenaltyHint(p) {
     const yc = Number(p.yc || 0);
     const rc = Number(p.rc || 0);
@@ -3541,9 +3713,7 @@
     }
     if (coachData.legend.dob === undefined) coachData.legend.dob = '';
     if (!Array.isArray(coachData.pairs)) coachData.pairs = [];
-    players.forEach(p => {
-      if (!p.archive) p.archive = {};
-    });
+    normalizeAllPlayersData();
   }
 
   function getPassportDictionary() {
@@ -3616,6 +3786,8 @@
     }
     if (p.mvp === undefined || p.mvp === null) p.mvp = 0;
     if (p.dob === undefined || p.dob === null) p.dob = '';
+    p.pos = normalizePosValue(p.pos);
+    p.beh = getPlayerBeh(p);
     syncAndCleanPlayerCards(p);
     if (!p.archive) p.archive = {};
   }
@@ -3780,83 +3952,82 @@
     renderCalendarTab();
   }
 
-async function saveRosterLocal(forceReset) {
-  cleanAllPlayersCards();
-  try {
-    updatePassportDictionaryFromRoster();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-    localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
-    localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
-  } catch (e) {
-    console.warn('Локальный кеш переполнен, сохраняем напрямую в Google Таблицу...');
-  }
-
-  renderCoachCard();
-  renderPodium();
-  renderFifaCards();
-  syncBoardNamesWithRoster();
-
-  const statusSub = document.getElementById('roleStatusText');
-
-  if (!cloudLoadedSuccessfully) {
-    if (isCoachMode && statusSub) {
-      statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
-    }
-    alert('⚠️ Внимание! При открытии сайта не удалось связаться с Google Таблицей.\n\nЧтобы случайно не стереть облачную базу резервным шаблоном, отправка в таблицу заблокирована. Изменения сохранены на вашем устройстве. Проверьте интернет и обновите страницу!');
-    return;
-  }
-
-  if (isCoachMode && statusSub) {
-    statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
-  }
-
-  const expectedCount = players.length;
-  const expectedNamesSig = players.map(p => String(p.name || '')).join('|');
-
-  try {
-    await fetch(CLOUD_SYNC_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({
-        action: 'full_save',
-        c: coachData,
-        p: players,
-        cal: calendarEvents,
-        forceReset: forceReset === true
-      })
-    });
-
-    // Контрольная проверка через GET
-    await new Promise(r => setTimeout(r, 800));
-    const verifyResp = await fetch(CLOUD_SYNC_URL + '?verify=' + Date.now(), { cache: 'no-store' });
-    const verifyData = await verifyResp.json();
-
-    if (verifyData.error) {
-      throw new Error('Сервер: ' + verifyData.error);
-    }
-    if (verifyData.warning) {
-      throw new Error('Часть данных повреждена на сервере: ' + verifyData.warning);
-    }
-    const actualNamesSig = (verifyData.p || []).map(p => String(p.name || '')).join('|');
-    if (actualNamesSig !== expectedNamesSig) {
-      throw new Error('Проверка не прошла: в таблице не тот состав игроков, что отправлен. Проверьте, что в таблицу никто не вносил правки одновременно с вами.');
+  async function saveRosterLocal(forceReset) {
+    normalizeAllPlayersData();
+    try {
+      updatePassportDictionaryFromRoster();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+      localStorage.setItem(COACH_STORAGE_KEY, JSON.stringify(coachData));
+      localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(calendarEvents));
+    } catch (e) {
+      console.warn('Локальный кеш переполнен, сохраняем напрямую в Google Таблицу...');
     }
 
-    lastSaveToken = Number(verifyData.saveToken) || 0;
+    renderCoachCard();
+    renderPodium();
+    renderFifaCards();
+    syncBoardNamesWithRoster();
+
+    const statusSub = document.getElementById('roleStatusText');
+
+    if (!cloudLoadedSuccessfully) {
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = '⚠️ Офлайн-кеш! Запись в таблицу заблокирована для защиты базы (обновите страницу)';
+      }
+      alert('⚠️ Внимание! При открытии сайта не удалось связаться с Google Таблицей.\n\nЧтобы случайно не стереть облачную базу резервным шаблоном, отправка в таблицу заблокирована. Изменения сохранены на вашем устройстве. Проверьте интернет и обновите страницу!');
+      return;
+    }
 
     if (isCoachMode && statusSub) {
-      statusSub.textContent = 'Режим Тренера • ✅ Сохранено в Google Таблице!';
+      statusSub.textContent = '⏳ Сохранение в Google Таблицу...';
     }
-  } catch (e) {
-    console.error('Save error:', e);
-    if (isCoachMode && statusSub) {
-      statusSub.textContent = 'Режим Тренера • ❌ ' + e.message;
+
+    const expectedNamesSig = players.map(p => String(p.name || '')).join('|');
+
+    try {
+      await fetch(CLOUD_SYNC_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'full_save',
+          c: coachData,
+          p: players,
+          cal: calendarEvents,
+          forceReset: forceReset === true
+        })
+      });
+
+      // Контрольная проверка через GET
+      await new Promise(r => setTimeout(r, 800));
+      const verifyResp = await fetch(CLOUD_SYNC_URL + '?verify=' + Date.now(), { cache: 'no-store' });
+      const verifyData = await verifyResp.json();
+
+      if (verifyData.error) {
+        throw new Error('Сервер: ' + verifyData.error);
+      }
+      if (verifyData.warning) {
+        throw new Error('Часть данных повреждена на сервере: ' + verifyData.warning);
+      }
+      const actualNamesSig = (verifyData.p || []).map(p => String(p.name || '')).join('|');
+      if (actualNamesSig !== expectedNamesSig) {
+        throw new Error('Проверка не прошла: в таблице не тот состав игроков, что отправлен. Проверьте, что в таблицу никто не вносил правки одновременно с вами.');
+      }
+
+      lastSaveToken = Number(verifyData.saveToken) || 0;
+
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = 'Режим Тренера • ✅ Сохранено в Google Таблице!';
+      }
+    } catch (e) {
+      console.error('Save error:', e);
+      if (isCoachMode && statusSub) {
+        statusSub.textContent = 'Режим Тренера • ❌ ' + e.message;
+      }
+      alert('❌ Ошибка сохранения в Google Таблицу:\n' + e.message +
+            '\n\nИзменения сохранены локально, но НЕ в облако. Проверьте интернет или обновите страницу.');
     }
-    alert('❌ Ошибка сохранения в Google Таблицу:\n' + e.message +
-          '\n\nИзменения сохранены локально, но НЕ в облако. Проверьте интернет или обновите страницу.');
   }
-}
 
   function resetToRedZone() {
     if (confirm('Сбросить показатели всех игроков к старту Красной зоны (рейтинг 30)? Имена, даты рождения и фото каждого игрока сохранятся!')) {
@@ -3864,9 +4035,9 @@ async function saveRosterLocal(forceReset) {
         id: p.id || (idx + 1),
         name: p.name || `Игрок ${idx + 1}`,
         dob: p.dob || "",
-        pos: p.pos || "НЕ ОПР (Не определен)",
+        pos: normalizePosValue(p.pos),
         num: p.num || (idx + 1),
-        pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30,
+        pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, beh: DEFAULT_BEH,
         goals: 0, assists: 0, games: 0, att: 1, mvp: 0, yc: 0, rc: 0,
         status: "out",
         note: "Докажи свою полезность на тренировках!",
@@ -3881,49 +4052,14 @@ async function saveRosterLocal(forceReset) {
     return Math.round((Number(p.pac) + Number(p.sho) + Number(p.pas) + Number(p.dri) + Number(p.def) + Number(p.phy)) / 6);
   }
 
-  // ================= НОВАЯ ФОРМУЛА ПОДИУМА ЛИДЕРОВ =================
-  // ЖК = −5, КК = −20. Красная НЕ блокирует подиум, только снимает баллы.
-  function calcRoleScore(p, roleType) {
-    const pac = Number(p.pac || 30);
-    const sho = Number(p.sho || 30);
-    const pas = Number(p.pas || 30);
-    const dri = Number(p.dri || 30);
-    const def = Number(p.def || 30);
-    const phy = Number(p.phy || 30);
-
-    const goals = Number(p.goals || 0);
-    const assists = Number(p.assists || 0);
-    const games = Number(p.games || 0);
-    const att = Number(p.att || 0);
-    const mvp = Number(p.mvp || 0);
-    const yc = Number(p.yc || 0);
-    const rc = Number(p.rc || 0);
-
-    // Звезда MVP: +20. Жёлтая: −5. Красная: −20. Красная больше НЕ блокирует подиум.
-    const activityAndCards = att + games + goals + assists + (mvp * 20) - (yc * YC_PENALTY) - (rc * RC_PENALTY);
-
-    if (roleType === 'ВРТ') {
-      return Math.round(pac + sho + pas + dri + def + phy + activityAndCards);
-    }
-    if (roleType === 'ФИК') {
-      return Math.round(pac + sho + (pas * 1.5) + dri + (def * 2) + phy + activityAndCards);
-    }
-    if (roleType === 'АЛА') {
-      return Math.round(pac + sho + (pas * 1.5) + (dri * 2) + def + phy + activityAndCards);
-    }
-    if (roleType === 'СТЛ') {
-      return Math.round(pac + sho + (pas * 2) + (dri * 1.5) + def + phy + activityAndCards);
-    }
-    return Math.round(pac + sho + pas + dri + def + phy + activityAndCards);
-  }
-
-  // ================= РАСЧЕТ ГОДОВОГО ПОДИУМА ТОП-3 =================
+  // ================= РАСЧЕТ ГОДОВОГО ПОДИУМА ТОП-3 (С ХАРАКТЕРОМ ×1.5) =================
   function calcYearlyTopScore(p) {
-    const pos = String(p.pos || '').split(' (')[0].trim();
+    const pos = getShortPos(p.pos);
     if (pos === 'НЕ ОПР' || isGenericPlaceholderName(p.name)) return -9999;
 
     const skillsSum = Number(p.pac || 30) + Number(p.sho || 30) + Number(p.pas || 30) +
                       Number(p.dri || 30) + Number(p.def || 30) + Number(p.phy || 30);
+    const behPts = Math.round(getPlayerBeh(p) * BEH_WEIGHT); // Характер / Поведение × 1.5
     const attPts = Number(p.att || 0) * 3;
     const gamesPts = Number(p.games || 0) * 5;
     const goalsPts = Number(p.goals || 0) * 3;
@@ -3931,7 +4067,7 @@ async function saveRosterLocal(forceReset) {
     const mvpPts = Number(p.mvp || 0) * 20;
     const ycPenalty = Number(p.yc || 0) * YC_PENALTY;    // Жёлтая = −5 баллов
     const rcPenalty = Number(p.rc || 0) * RC_PENALTY;    // Красная = −20 баллов
-    return Math.round(skillsSum + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty);
+    return Math.round(skillsSum + behPts + attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty);
   }
   
   // ================= ПОДИУМ ДВОЕК =================
@@ -3981,7 +4117,7 @@ async function saveRosterLocal(forceReset) {
           const isSelectedHere = selectedId === pl.id;
           const isUsedElsewhere = usedIds.has(pl.id) && !isSelectedHere;
           if (isUsedElsewhere) return;
-          const shortPos = String(pl.pos || 'НЕ ОПР').split(' (')[0];
+          const shortPos = getShortPos(pl.pos);
           opts += `<option value="${pl.id}" ${isSelectedHere ? 'selected' : ''}>#${pl.num} ${pl.name} (${shortPos})</option>`;
         });
         return opts;
@@ -4084,7 +4220,6 @@ async function saveRosterLocal(forceReset) {
         if (!r) return null;
 
         const curOvr = calcOvr(p1) + calcOvr(p2);
-        // Если старт не зафиксирован (старая пара), считаем текущий OVR стартом
         const startOvr = (pair.startOvr !== undefined && pair.startOvr !== null) ? pair.startOvr : curOvr;
         const growth = curOvr - startOvr;
 
@@ -4092,9 +4227,7 @@ async function saveRosterLocal(forceReset) {
       })
       .filter(x => x !== null);
 
-    // Сортировка по абсолютному рейтингу
     const byTotal = [...scoredPairs].sort((a, b) => b.total - a.total);
-    // Сортировка по росту (только те, у кого рост > 0)
     const byGrowth = [...scoredPairs].filter(x => x.growth > 0).sort((a, b) => b.growth - a.growth);
 
     if (scoredPairs.length === 0) {
@@ -4122,8 +4255,8 @@ async function saveRosterLocal(forceReset) {
       
       const p1Avatar = data.p1.photo ? `<img src="${data.p1.photo}" alt="${data.p1.name}">` : `#${data.p1.num}`;
       const p2Avatar = data.p2.photo ? `<img src="${data.p2.photo}" alt="${data.p2.name}">` : `#${data.p2.num}`;
-      const pos1 = String(data.p1.pos || 'НЕ ОПР').split(' (')[0];
-      const pos2 = String(data.p2.pos || 'НЕ ОПР').split(' (')[0];
+      const pos1 = getShortPos(data.p1.pos);
+      const pos2 = getShortPos(data.p2.pos);
       
       let gapHtml = '';
       if (isGrowing) {
@@ -4205,7 +4338,7 @@ async function saveRosterLocal(forceReset) {
       const now = new Date();
       const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
       const daysLeft = Math.max(0, Math.ceil((endOfYear - now) / (1000 * 60 * 60 * 24)));
-      timerEl.textContent = `⏳ До вручения Кубка и Медалей конца ${now.getFullYear()} года осталось: ${daysLeft} дн. | Формула: Навыки + 📅Трен(×3) + 🏆Игры(×5) + ⚽/👟(×3) + ⭐MVP(+20) − 🟨(×5) − 🟥(×20)`;
+      timerEl.textContent = `⏳ До вручения Кубка и Медалей конца ${now.getFullYear()} года осталось: ${daysLeft} дн. | Формула: Навыки + 🦁Хар(×1.5) + 📅Трен(×3) + 🏆Игры(×5) + ⚽/👟(×3) + ⭐MVP(+20) − 🟨(×5) − 🟥(×20)`;
     }
 
     const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
@@ -4237,7 +4370,9 @@ async function saveRosterLocal(forceReset) {
       }
       const p = st.data.player;
       const sc = st.data.score;
-      const shortPos = String(p.pos || 'НЕ ОПР').split(' (')[0];
+      const shortPos = getShortPos(p.pos);
+      const behVal = getPlayerBeh(p);
+      const behMeta = getBehaviorMeta(behVal);
       const avatar = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : `#${p.num}`;
       let gapHtml = '';
       if (st.rank === 1) {
@@ -4259,7 +4394,7 @@ async function saveRosterLocal(forceReset) {
           <div>
             <div class="top3-points-box">
               <div class="top3-points-val">🏅 ${sc} очков</div>
-              <div class="top3-stats-mini">📅 ${p.att || 0} | 🏆 ${p.games || 0} | ⚽ ${p.goals || 0} | 👟 ${p.assists || 0} | ⭐ ${p.mvp || 0} | 🟨 ${p.yc || 0} | 🟥 ${p.rc || 0}</div>
+              <div class="top3-stats-mini">${behMeta.emoji} ${behVal} | 📅 ${p.att || 0} | 🏆 ${p.games || 0} | ⚽ ${p.goals || 0} | 👟 ${p.assists || 0} | ⭐ ${p.mvp || 0} | 🟨 ${p.yc || 0} | 🟥 ${p.rc || 0}</div>
             </div>
             ${gapHtml}
           </div>
@@ -4276,7 +4411,7 @@ async function saveRosterLocal(forceReset) {
         }).join(' &nbsp;•&nbsp; ');
         chasersEl.innerHTML = `🏃‍♂️ <b>Ближайшие преследователи:</b> ${listStr}`;
       } else {
-        chasersEl.innerHTML = `💡 Посещай тренировки, получай звезды MVP и забивай голы, чтобы ворваться в ТОП-3 года!`;
+        chasersEl.innerHTML = `💡 Посещай тренировки, держи характер и дисциплину, получай звезды MVP, чтобы ворваться в ТОП-3 года!`;
       }
     }
   }
@@ -4284,66 +4419,6 @@ async function saveRosterLocal(forceReset) {
   function renderPodium() {
     renderYearlyTop3();
     renderPairsPodium();
-    const box = document.getElementById('podiumContainer');
-    if (!box) return;
-
-    const realPlayers = players.filter(p => !isGenericPlaceholderName(p.name));
-    const basePool = realPlayers.length > 0 ? realPlayers : players;
-    // Красная карточка теперь не блокирует подиум — она только снимает −20 баллов через calcRoleScore
-    const pool = basePool;
-
-    const getPosCode = (p) => String(p.pos || 'НЕ ОПР').split(' (')[0];
-
-    const pickBest = (posCode, count = 1, allowUniversal = true) => {
-      let candidates = pool.filter(p => getPosCode(p) === posCode || (allowUniversal && getPosCode(p) === 'УНИ'));
-      const scored = candidates.map(p => ({ player: p, score: calcRoleScore(p, posCode) }));
-      scored.sort((a, b) => b.score - a.score);
-      return scored.slice(0, count);
-    };
-
-    const bestGk = pickBest('ВРТ', 1)[0] || null;
-    const bestFixo = pickBest('ФИК', 1)[0] || null;
-    const bestAlas = pickBest('АЛА', 2);
-    const bestAla1 = bestAlas[0] || null;
-    const bestAla2 = bestAlas[1] || null;
-    const bestPivot = pickBest('СТЛ', 1)[0] || null;
-
-    const slots = [
-      { title: '🧤 Лучший Вратарь', data: bestGk, hint: 'Все пункты + ⭐(+20) / 🟨(−5) / 🟥(−20)' },
-      { title: '🛡 Лучший Фиксо', data: bestFixo, hint: 'ЗАЩ×2 + ПАС×1.5 + Все пункты' },
-      { title: '⚡ Лучший Ала #1', data: bestAla1, hint: 'ДРБ×2 + ПАС×1.5 + Все пункты' },
-      { title: '⚡ Лучший Ала #2', data: bestAla2, hint: 'ДРБ×2 + ПАС×1.5 + Все пункты' },
-      { title: '💥 Лучший Столб', data: bestPivot, hint: 'ПАС×2 + ДРБ×1.5 + Все пункты' }
-    ];
-
-    box.innerHTML = slots.map(s => {
-      if (!s.data || !s.data.player) {
-        return `
-          <div class="podium-slot">
-            <div class="podium-role-badge">${s.title}</div>
-            <div class="podium-avatar">⏳</div>
-            <div class="podium-player-name" style="color:#888;">Место свободно</div>
-            <div class="podium-score-pill">Назначь позицию</div>
-            <div class="podium-formula-hint">${s.hint}</div>
-          </div>
-        `;
-      }
-      const p = s.data.player;
-      const avatar = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : `#${p.num}`;
-      return `
-        <div class="podium-slot">
-          <div>
-            <div class="podium-role-badge">${s.title}</div>
-            <div class="podium-avatar">${avatar}</div>
-            <div class="podium-player-name" title="${p.name}">${p.name}</div>
-          </div>
-          <div>
-            <div class="podium-score-pill">🔥 ${s.data.score} балл. | ⭐ ${p.mvp || 0} | 🟨 ${p.yc || 0} | 🟥 ${p.rc || 0}</div>
-            <div class="podium-formula-hint">${s.hint}</div>
-          </div>
-        </div>
-      `;
-    }).join('');
   }
 
   function getCardClass(ovr) {
@@ -4361,7 +4436,7 @@ async function saveRosterLocal(forceReset) {
     return { cls: 'status-out', text: '🔴 Вне заявки / Лавка' };
   }
 
-  function renderCoachCard() {
+function renderCoachCard() {
     const box = document.getElementById('coachCardContainer');
     if (!box) return;
     ensureCoachStructure();
@@ -4393,12 +4468,12 @@ async function saveRosterLocal(forceReset) {
           <div class="fut-name" style="color:#fff; margin-top:8px;">${leg.name || 'Тренер-Наставник'}</div>
           <div class="fut-dob-line" style="background:rgba(245,197,24,0.2); color:#ffe89e;">${legDob}</div>
           <div class="fut-stats-grid" style="border-top-color:rgba(245,197,24,0.3); color:#ffe89e;">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val">99</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val">99</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val">99</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val">99</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val">99</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>⚡ СКО</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>👟 ДРБ</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>💥 УДР</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>🛡 ЗАЩ</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>🎯 ПАС</span><span class="fut-stat-val">99</span></div>
+            <div class="fut-stat-item"><span>🔥 ФИЗ</span><span class="fut-stat-val">99</span></div>
           </div>
         </div>
         <div>
@@ -4428,12 +4503,12 @@ async function saveRosterLocal(forceReset) {
           <div class="fut-name" style="color:#fff; margin-top:8px;">${coachData.name || 'Игорь Евгеньевич'}</div>
           <div class="fut-dob-line" style="background:rgba(0,230,118,0.18); color:#b9f6ca;">${playDob}</div>
           <div class="fut-stats-grid" style="border-top-color:rgba(0,230,118,0.3); color:#e0fff9;">
-            <div class="fut-stat-item"><span>СКО</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pac}</span></div>
-            <div class="fut-stat-item"><span>ДРБ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.dri}</span></div>
-            <div class="fut-stat-item"><span>УДР</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.sho}</span></div>
-            <div class="fut-stat-item"><span>ЗАЩ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.def}</span></div>
-            <div class="fut-stat-item"><span>ПАС</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pas}</span></div>
-            <div class="fut-stat-item"><span>ФИЗ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.phy}</span></div>
+            <div class="fut-stat-item"><span>⚡ СКО</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pac}</span></div>
+            <div class="fut-stat-item"><span>👟 ДРБ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.dri}</span></div>
+            <div class="fut-stat-item"><span>💥 УДР</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.sho}</span></div>
+            <div class="fut-stat-item"><span>🛡 ЗАЩ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.def}</span></div>
+            <div class="fut-stat-item"><span>🎯 ПАС</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.pas}</span></div>
+            <div class="fut-stat-item"><span>🔥 ФИЗ</span><span class="fut-stat-val" style="color:#69f0ae;">${coachData.phy}</span></div>
           </div>
         </div>
         <div>
@@ -4490,6 +4565,30 @@ async function saveRosterLocal(forceReset) {
     `;
   }
 
+  function renderBehaviorVerticalBar(p) {
+    const val = getPlayerBeh(p);
+    const meta = getBehaviorMeta(val);
+    const prev = (p.prevStats && p.prevStats.beh !== undefined) ? Number(p.prevStats.beh) : val;
+    const diff = val - prev;
+
+    let diffHtml = '';
+    if (diff > 0) diffHtml = `<span class="fut-beh-diff diff-up">▲+${diff}</span>`;
+    else if (diff < 0) diffHtml = `<span class="fut-beh-diff diff-down">▼${diff}</span>`;
+
+    const contrib = Math.round(val * BEH_WEIGHT);
+    return `
+      <div class="fut-beh-col" title="Характер / Поведение: ${val} (${meta.title}) • Вклад в Подиум: +${contrib} очк. (×1.5)">
+        <div class="fut-beh-emoji">${meta.emoji}</div>
+        <div class="fut-beh-track">
+          <div class="fut-beh-fill ${meta.cls}" style="height: ${meta.pct}%;"></div>
+        </div>
+        <div class="fut-beh-val">${val}</div>
+        ${diffHtml}
+        <div class="fut-beh-label">ХАР</div>
+      </div>
+    `;
+  }
+
   function renderFifaCards() {
     const container = document.getElementById('fifaCardsContainer');
     if (!container) return;
@@ -4499,8 +4598,10 @@ async function saveRosterLocal(forceReset) {
     const selectedRole = roleFilterEl ? roleFilterEl.value : 'ALL';
 
     players.forEach((p, idx) => {
-      const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
+      const shortPos = getShortPos(p.pos);
       if (selectedRole !== 'ALL' && shortPos !== selectedRole) return;
+
+      const skillsMeta = getSkillMeta(p.pos);
 
       // Ищем партнёра по паре
       const myPair = (coachData.pairs || []).find(pr => pr.p1 === p.id || pr.p2 === p.id);
@@ -4533,7 +4634,7 @@ async function saveRosterLocal(forceReset) {
           <div class="fut-header">
             <div class="fut-rating-col">
               <div class="fut-ovr">${ovr}</div>
-              <div class="fut-pos">${shortPos}</div>
+              <div class="fut-pos" title="${p.pos}">${shortPos}</div>
               <div class="fut-num-badge">№ ${p.num}</div>
             </div>
             <div class="fut-avatar">${avatarContent}</div>
@@ -4544,13 +4645,16 @@ async function saveRosterLocal(forceReset) {
           </div>
           <div class="fut-name" title="${p.name}">${p.name}</div>
           <div class="fut-dob-line" title="Паспортная привязка игрока">${dobDisplay}</div>
-          <div class="fut-stats-grid">
-            ${renderStatWithBar('СКО', 'pac', p)}
-            ${renderStatWithBar('ДРБ', 'dri', p)}
-            ${renderStatWithBar('УДР', 'sho', p)}
-            ${renderStatWithBar('ЗАЩ', 'def', p)}
-            ${renderStatWithBar('ПАС', 'pas', p)}
-            ${renderStatWithBar('ФИЗ', 'phy', p)}
+          <div class="fut-stats-wrapper">
+            <div class="fut-stats-grid">
+              ${renderStatWithBar(skillsMeta.pac.short, 'pac', p)}
+              ${renderStatWithBar(skillsMeta.dri.short, 'dri', p)}
+              ${renderStatWithBar(skillsMeta.sho.short, 'sho', p)}
+              ${renderStatWithBar(skillsMeta.def.short, 'def', p)}
+              ${renderStatWithBar(skillsMeta.pas.short, 'pas', p)}
+              ${renderStatWithBar(skillsMeta.phy.short, 'phy', p)}
+            </div>
+            ${renderBehaviorVerticalBar(p)}
           </div>
         </div>
         <div>
@@ -4607,7 +4711,6 @@ async function saveRosterLocal(forceReset) {
     saveRosterLocal();
   }
 
-  // Тач-кнопки на карточке: добавляют ЖК или КК (без таймера сгорания)
   function quickCard(idx, type) {
     const p = players[idx];
     if (type === 'rc') p.rc = Number(p.rc || 0) + 1;
@@ -4617,13 +4720,23 @@ async function saveRosterLocal(forceReset) {
   }
 
   function sortPlayersBy(criteria) {
-    const posOrder = { 'ВРТ': 1, 'ФИК': 2, 'АЛА': 3, 'СТЛ': 4, 'УНИ': 5, 'НЕ ОПР': 6 };
+    const posOrder = {
+      'ВРТ': 1,
+      'ФИК / ЦЗ': 2,
+      'ФИК / КЗ': 3,
+      'АЛА / ПЗ': 4,
+      'УНИ / ЦП': 5,
+      'СТЛ / НАП': 6,
+      'НЕ ОПР': 7
+    };
     if (criteria === 'ovr') {
       players.sort((a, b) => calcOvr(b) - calcOvr(a));
+    } else if (criteria === 'beh') {
+      players.sort((a, b) => getPlayerBeh(b) - getPlayerBeh(a));
     } else if (criteria === 'pos') {
       players.sort((a, b) => {
-        const posA = String(a.pos || 'НЕ ОПР').split(' (')[0];
-        const posB = String(b.pos || 'НЕ ОПР').split(' (')[0];
+        const posA = getShortPos(a.pos);
+        const posB = getShortPos(b.pos);
         const orderDiff = (posOrder[posA] || 99) - (posOrder[posB] || 99);
         if (orderDiff !== 0) return orderDiff;
         return calcOvr(b) - calcOvr(a);
@@ -4641,7 +4754,7 @@ async function saveRosterLocal(forceReset) {
     list.innerHTML = '';
 
     players.forEach((p, idx) => {
-      const shortPos = (p.pos || 'НЕ ОПР').split(' (')[0];
+      const shortPos = getShortPos(p.pos);
       const row = document.createElement('div');
       row.className = 'att-row';
       row.innerHTML = `
@@ -4736,16 +4849,16 @@ async function saveRosterLocal(forceReset) {
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       p.noteReadAt = `${day}.${month} в ${hours}:${mins}`;
-     fetch(CLOUD_SYNC_URL, {
-     method: 'POST',
-     mode: 'no-cors',
-     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-     body: JSON.stringify({
-     action: 'read_note',
-     playerId: String(p.id),
-    readAt: p.noteReadAt
-  })
-}).catch(() => {});
+      fetch(CLOUD_SYNC_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'read_note',
+          playerId: String(p.id),
+          readAt: p.noteReadAt
+        })
+      }).catch(() => {});
       renderFifaCards();
     }
   }
@@ -4757,7 +4870,7 @@ async function saveRosterLocal(forceReset) {
     const statsSec = document.getElementById('playingCoachStatsSection');
 
     if (coachType === 'legend') {
-	  document.getElementById('cDobInput').value = coachData.legend.dob || '';
+      document.getElementById('cDobInput').value = coachData.legend.dob || '';
       document.getElementById('coachModalHeader').textContent = '🏆 Настроить карточку Наставника-Легенды (Все 99)';
       document.getElementById('cNameInput').value = coachData.legend.name || '';
       document.getElementById('cTitleInput').value = coachData.legend.title || '';
@@ -4808,7 +4921,7 @@ async function saveRosterLocal(forceReset) {
     const coachType = document.getElementById('editCoachType').value;
 
     if (coachType === 'legend') {
-	  coachData.legend.dob = document.getElementById('cDobInput').value.trim() || '';
+      coachData.legend.dob = document.getElementById('cDobInput').value.trim() || '';
       coachData.legend.name = document.getElementById('cNameInput').value.trim() || 'Тренер-Наставник';
       coachData.legend.title = document.getElementById('cTitleInput').value.trim() || 'ЛЕГЕНДА КЛУБА • УЧИТЕЛЬ ТРЕНЕРА';
       coachData.legend.motto = document.getElementById('cMottoInput').value.trim() || 'Фундамент побед закладывается характером и дисциплиной!';
@@ -4862,6 +4975,22 @@ async function saveRosterLocal(forceReset) {
 
   let currentBaselineStats = null;
 
+  function updatePlayerModalSkillLabels() {
+    const posVal = document.getElementById('pPos').value;
+    const isGk = isGoalkeeperPos(posVal);
+    const meta = getSkillMeta(posVal);
+
+    document.getElementById('lblPac').textContent = meta.pac.full;
+    document.getElementById('lblSho').textContent = meta.sho.full;
+    document.getElementById('lblPas').textContent = meta.pas.full;
+    document.getElementById('lblDri').textContent = meta.dri.full;
+    document.getElementById('lblDef').textContent = meta.def.full;
+    document.getElementById('lblPhy').textContent = meta.phy.full;
+
+    const notice = document.getElementById('gkSkillNotice');
+    if (notice) notice.style.display = isGk ? 'block' : 'none';
+  }
+
   function openPlayerModal(idx) {
     document.getElementById('editPlayerIndex').value = idx;
     document.getElementById('pPhotoInput').value = '';
@@ -4874,6 +5003,7 @@ async function saveRosterLocal(forceReset) {
       document.getElementById('pNum').value = players.length + 1;
       document.getElementById('pStatus').value = 'out';
       ['Pac','Sho','Pas','Dri','Def','Phy'].forEach(s => document.getElementById('p'+s).value = 30);
+      document.getElementById('pBeh').value = DEFAULT_BEH;
       document.getElementById('pGoals').value = 0;
       document.getElementById('pAssists').value = 0;
       document.getElementById('pGames').value = 0;
@@ -4883,16 +5013,17 @@ async function saveRosterLocal(forceReset) {
       document.getElementById('pRc').value = 0;
       document.getElementById('pNote').value = '';
       currentTempPhoto = '';
-      currentBaselineStats = { pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30 };
+      currentBaselineStats = { pac: 30, sho: 30, pas: 30, dri: 30, def: 30, phy: 30, beh: DEFAULT_BEH };
       btnDel.style.display = 'none';
     } else {
       const p = players[idx];
       syncAndCleanPlayerCards(p);
+      const behVal = getPlayerBeh(p);
       const editStamp = p.lastEditedAt ? ` (ред. ${p.lastEditedAt})` : '';
       document.getElementById('modalTitle').textContent = `Карточка: ${p.name}${editStamp}`;
       document.getElementById('pName').value = p.name;
       document.getElementById('pDob').value = p.dob || '';
-      document.getElementById('pPos').value = p.pos || 'НЕ ОПР (Не определен)';
+      document.getElementById('pPos').value = normalizePosValue(p.pos);
       document.getElementById('pNum').value = p.num;
       document.getElementById('pStatus').value = p.status || 'out';
       document.getElementById('pPac').value = p.pac;
@@ -4901,6 +5032,7 @@ async function saveRosterLocal(forceReset) {
       document.getElementById('pDri').value = p.dri;
       document.getElementById('pDef').value = p.def;
       document.getElementById('pPhy').value = p.phy;
+      document.getElementById('pBeh').value = behVal;
       document.getElementById('pGoals').value = p.goals || 0;
       document.getElementById('pAssists').value = p.assists || 0;
       document.getElementById('pGames').value = p.games || 0;
@@ -4910,13 +5042,14 @@ async function saveRosterLocal(forceReset) {
       document.getElementById('pRc').value = p.rc || 0;
       document.getElementById('pNote').value = p.note || '';
       currentTempPhoto = p.photo || '';
-      currentBaselineStats = p.prevStats ? { ...p.prevStats } : {
+      currentBaselineStats = p.prevStats ? { beh: behVal, ...p.prevStats } : {
         pac: Number(p.pac), sho: Number(p.sho), pas: Number(p.pas),
-        dri: Number(p.dri), def: Number(p.def), phy: Number(p.phy)
+        dri: Number(p.dri), def: Number(p.def), phy: Number(p.phy), beh: behVal
       };
       btnDel.style.display = 'inline-block';
     }
     renderModalPhotoPreview();
+    updatePlayerModalSkillLabels();
     updateModalSliders();
     document.getElementById('playerModal').classList.add('active');
   }
@@ -4925,15 +5058,17 @@ async function saveRosterLocal(forceReset) {
     const idx = Number(document.getElementById('editPlayerIndex').value);
     const p = idx >= 0 ? players[idx] : null;
 
-    ['Pac','Sho','Pas','Dri','Def','Phy'].forEach(s => {
+    ['Pac','Sho','Pas','Dri','Def','Phy','Beh'].forEach(s => {
       const key = s.toLowerCase();
       const slider = document.getElementById('p' + s);
       const valSpan = document.getElementById('val' + s);
+      if (!slider || !valSpan) return;
       const curVal = Number(slider.value);
 
+      const savedVal = p ? (key === 'beh' ? getPlayerBeh(p) : Number(p[key])) : curVal;
       let refVal = curVal;
-      if (p && curVal !== Number(p[key])) {
-        refVal = Number(p[key]);
+      if (p && curVal !== savedVal) {
+        refVal = savedVal;
       } else if (currentBaselineStats && currentBaselineStats[key] !== undefined) {
         refVal = Number(currentBaselineStats[key]);
       }
@@ -4954,6 +5089,24 @@ async function saveRosterLocal(forceReset) {
         valSpan.textContent = curVal;
       }
     });
+
+    // Обновляем живой предпросмотр вертикальной шкалы Характера / Поведения
+    const behVal = Number(document.getElementById('pBeh').value || DEFAULT_BEH);
+    const behMeta = getBehaviorMeta(behVal);
+    const behFill = document.getElementById('behModalFill');
+    const behEmoji = document.getElementById('behModalEmoji');
+    const behTitle = document.getElementById('behModalTitle');
+    const behHint = document.getElementById('behModalHint');
+    if (behFill) {
+      behFill.className = `fut-beh-fill ${behMeta.cls}`;
+      behFill.style.height = `${behMeta.pct}%`;
+    }
+    if (behEmoji) behEmoji.textContent = behMeta.emoji;
+    if (behTitle) behTitle.textContent = behMeta.title;
+    if (behHint) {
+      const contrib = Math.round(behVal * BEH_WEIGHT);
+      behHint.innerHTML = `Вклад в очки Подиума: <b style="color:#ea80fc;">+${contrib} очк.</b> (${behVal} × ${BEH_WEIGHT})`;
+    }
   }
 
   function closePlayerModal() {
@@ -4990,15 +5143,19 @@ async function saveRosterLocal(forceReset) {
       pas: Number(document.getElementById('pPas').value),
       dri: Number(document.getElementById('pDri').value),
       def: Number(document.getElementById('pDef').value),
-      phy: Number(document.getElementById('pPhy').value)
+      phy: Number(document.getElementById('pPhy').value),
+      beh: Number(document.getElementById('pBeh').value)
     };
 
-    let savedPrevStats = (idx >= 0 && players[idx] && players[idx].prevStats) ? { ...players[idx].prevStats } : { ...newStats };
+    let savedPrevStats = (idx >= 0 && players[idx] && players[idx].prevStats)
+      ? { beh: getPlayerBeh(players[idx]), ...players[idx].prevStats }
+      : { ...newStats };
     if (idx >= 0 && players[idx]) {
       const oldP = players[idx];
-      ['pac','sho','pas','dri','def','phy'].forEach(k => {
-        if (Number(oldP[k]) !== newStats[k]) {
-          savedPrevStats[k] = Number(oldP[k]);
+      ['pac','sho','pas','dri','def','phy','beh'].forEach(k => {
+        const oldVal = (k === 'beh') ? getPlayerBeh(oldP) : Number(oldP[k]);
+        if (oldVal !== newStats[k]) {
+          savedPrevStats[k] = oldVal;
         }
       });
     }
@@ -5007,7 +5164,7 @@ async function saveRosterLocal(forceReset) {
       id: playerId,
       name: enteredName,
       dob: enteredDob,
-      pos: document.getElementById('pPos').value,
+      pos: normalizePosValue(document.getElementById('pPos').value),
       num: Number(document.getElementById('pNum').value) || 1,
       status: document.getElementById('pStatus').value,
       pac: newStats.pac,
@@ -5016,6 +5173,7 @@ async function saveRosterLocal(forceReset) {
       dri: newStats.dri,
       def: newStats.def,
       phy: newStats.phy,
+      beh: newStats.beh,
       goals: Number(document.getElementById('pGoals').value) || 0,
       assists: Number(document.getElementById('pAssists').value) || 0,
       games: Number(document.getElementById('pGames').value) || 0,
@@ -5654,11 +5812,10 @@ async function saveRosterLocal(forceReset) {
   // ================= УПРАВЛЕНИЕ СЕЗОНОМ И ИСТОРИЕЙ =================
   function startNewSeason() {
     const currentYear = new Date().getFullYear();
-    if (!confirm(`⚠️ ВНИМАНИЕ! Это действие:\n1. Перенесет все голы, пасы, игры, тренировки, MVP и карточки в архив за ${currentYear} год.\n2. Обнулит текущую статистику игроков (характеристики НЕ тронутся!).\n3. Зафиксирует текущие навыки для расчета Прогресса Пар.\n\nВы уверены, что хотите начать новый сезон?`)) {
+    if (!confirm(`⚠️ ВНИМАНИЕ! Это действие:\n1. Перенесет все голы, пасы, игры, тренировки, MVP и карточки в архив за ${currentYear} год.\n2. Обнулит текущую статистику игроков (характеристики и характер НЕ тронутся!).\n3. Зафиксирует текущие навыки для расчета Прогресса Пар.\n\nВы уверены, что хотите начать новый сезон?`)) {
       return;
     }
 
-    // 1. Архивируем стату игроков
     players.forEach(p => {
       if (!p.archive) p.archive = {};
       if (!p.archive[currentYear]) {
@@ -5673,11 +5830,9 @@ async function saveRosterLocal(forceReset) {
       p.archive[currentYear].yc += Number(p.yc || 0);
       p.archive[currentYear].rc += Number(p.rc || 0);
 
-      // Обнуляем текущие
       p.goals = 0; p.assists = 0; p.games = 0; p.att = 0; p.mvp = 0; p.yc = 0; p.rc = 0;
     });
 
-    // 2. Фиксируем стартовый OVR для пар
     coachData.pairs.forEach(pair => {
       const p1 = players.find(pl => pl.id === pair.p1);
       const p2 = players.find(pl => pl.id === pair.p2);
@@ -5702,7 +5857,7 @@ async function saveRosterLocal(forceReset) {
     let hasHistory = false;
     if (p.archive && Object.keys(p.archive).length > 0) {
       hasHistory = true;
-      const years = Object.keys(p.archive).sort((a, b) => b - a); // Сначала новые
+      const years = Object.keys(p.archive).sort((a, b) => b - a);
       years.forEach(year => {
         const a = p.archive[year];
         html += `<tr>
@@ -5784,23 +5939,34 @@ async function saveRosterLocal(forceReset) {
       prompt('Скопируй ссылку:', rawUrl);
     }
   }
-  
-    // ================= КАЛЬКУЛЯТОР =================
+
+  // ================= КАЛЬКУЛЯТОР =================
   function openCalcModal() {
     document.getElementById('calcModal').classList.add('active');
-    updateCalc(); // Сразу делаем расчет при открытии
+    updateCalcRoleLabels();
+    updateCalc();
+  }
+
+  function updateCalcRoleLabels() {
+    const mode = document.getElementById('calcRoleMode') ? document.getElementById('calcRoleMode').value : 'field';
+    const meta = (mode === 'gk') ? GK_SKILL_META : FIELD_SKILL_META;
+    document.getElementById('calcLblPac').textContent = meta.pac.calc;
+    document.getElementById('calcLblSho').textContent = meta.sho.calc;
+    document.getElementById('calcLblPas').textContent = meta.pas.calc;
+    document.getElementById('calcLblDri').textContent = meta.dri.calc;
+    document.getElementById('calcLblDef').textContent = meta.def.calc;
+    document.getElementById('calcLblPhy').textContent = meta.phy.calc;
   }
 
   function updateCalc() {
-    // 1. Получаем значения навыков
     const pac = Number(document.getElementById('calcPac').value);
     const sho = Number(document.getElementById('calcSho').value);
     const pas = Number(document.getElementById('calcPas').value);
     const dri = Number(document.getElementById('calcDri').value);
     const def = Number(document.getElementById('calcDef').value);
     const phy = Number(document.getElementById('calcPhy').value);
+    const beh = Number(document.getElementById('calcBeh').value);
 
-    // Обновляем цифры рядом с ползунками
     document.getElementById('calcValPac').textContent = pac;
     document.getElementById('calcValSho').textContent = sho;
     document.getElementById('calcValPas').textContent = pas;
@@ -5808,7 +5974,11 @@ async function saveRosterLocal(forceReset) {
     document.getElementById('calcValDef').textContent = def;
     document.getElementById('calcValPhy').textContent = phy;
 
-    // 2. Получаем значения активности
+    const behMeta = getBehaviorMeta(beh);
+    const behPts = Math.round(beh * BEH_WEIGHT);
+    document.getElementById('calcBehEmoji').textContent = behMeta.emoji;
+    document.getElementById('calcValBeh').textContent = `${beh} (+${behPts} очк.)`;
+
     const goals = Math.max(0, Number(document.getElementById('calcGoals').value) || 0);
     const assists = Math.max(0, Number(document.getElementById('calcAssists').value) || 0);
     const games = Math.max(0, Number(document.getElementById('calcGames').value) || 0);
@@ -5817,27 +5987,22 @@ async function saveRosterLocal(forceReset) {
     const yc = Math.max(0, Number(document.getElementById('calcYc').value) || 0);
     const rc = Math.max(0, Number(document.getElementById('calcRc').value) || 0);
 
-    // 3. Считаем по формуле calcYearlyTopScore
     const skillsSum = pac + sho + pas + dri + def + phy;
     const attPts = att * 3;
     const gamesPts = games * 5;
     const goalsPts = goals * 3;
     const astPts = assists * 3;
     const mvpPts = mvp * 20;
-    const ycPenalty = yc * YC_PENALTY; // 5
-    const rcPenalty = rc * RC_PENALTY; // 20
+    const ycPenalty = yc * YC_PENALTY;
+    const rcPenalty = rc * RC_PENALTY;
     
     const activityPts = attPts + gamesPts + goalsPts + astPts + mvpPts - ycPenalty - rcPenalty;
-    const total = skillsSum + activityPts;
+    const total = skillsSum + behPts + activityPts;
 
-    // 4. Выводим результат
     document.getElementById('calcTotalScore').textContent = total;
     
-    // Показываем расшифровку (чтобы дети видели, откуда цифры)
-    let breakdown = `Навыки: ${skillsSum} | `;
-    breakdown += `📅Трен: +${attPts} | `;
-    breakdown += `🏆Игры: +${gamesPts} | `;
-    breakdown += `⚽/👟: +${goalsPts + astPts}`;
+    let breakdown = `Навыки: ${skillsSum} | ${behMeta.emoji}Хар(×1.5): +${behPts} | `;
+    breakdown += `📅Трен: +${attPts} | 🏆Игры: +${gamesPts} | ⚽/👟: +${goalsPts + astPts}`;
     if (mvp > 0) breakdown += ` | ⭐MVP: +${mvpPts}`;
     if (yc > 0) breakdown += ` | 🟨: -${ycPenalty}`;
     if (rc > 0) breakdown += ` | 🟥: -${rcPenalty}`;
