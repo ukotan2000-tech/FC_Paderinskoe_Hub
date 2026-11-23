@@ -1365,6 +1365,64 @@
     .pair-slot-growing { width: 100%; max-width: 340px; }
     .pairs-podium-bottom-row::before { display: none; }
   }
+  .full-standings-wrap {
+    max-width: 920px;
+    margin: 14px auto 0 auto;
+    background: rgba(0, 0, 0, 0.42);
+    border: 1px solid var(--border-col);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .full-standings-toggle {
+    width: 100%;
+    background: var(--bg-panel);
+    color: var(--accent-yellow);
+    border: 1px solid rgba(245, 197, 24, 0.45);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .full-standings-toggle:hover {
+    background: rgba(245, 197, 24, 0.12);
+  }
+  .full-standings-body {
+    margin-top: 10px;
+    overflow-x: auto;
+  }
+  .full-standings-wrap.collapsed .full-standings-body {
+    display: none;
+  }
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    font-size: 12.5px;
+  }
+  .standings-table th, .standings-table td {
+    border: 1px solid var(--border-col);
+    padding: 7px 8px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .standings-table th {
+    background: #242430;
+    color: var(--accent-yellow);
+    font-size: 11.5px;
+    text-transform: uppercase;
+  }
+  .standings-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .standings-gap-col {
+    color: #ffab91;
+    font-weight: 800;
+  }
 </style>
 </head>
 <body id="appBody" class="">
@@ -1562,6 +1620,13 @@
       </div>
       <div class="top3-stage" id="top3YearlyContainer"></div>
       <div class="top3-chasers-bar" id="top3ChasersContainer"></div>
+	  <div class="full-standings-wrap" id="fullStandingsWrap">
+        <button type="button" class="full-standings-toggle" onclick="toggleFullStandings()">
+          <span id="fullStandingsBtnLabel">📊 Вся турнирная таблица очков (с 4-го места и далее)</span>
+          <span id="fullStandingsArrow">🔼 Свернуть</span>
+        </button>
+        <div class="full-standings-body" id="fullStandingsContainer"></div>
+      </div>
     </div>
 
     <!-- ПОДИУМ ДВОЕК (PREMIUM) -->
@@ -4328,9 +4393,11 @@ const FIELD_SKILL_META = {
     }
   }
 
-  function renderYearlyTop3() {
+function renderYearlyTop3() {
     const stageEl = document.getElementById('top3YearlyContainer');
     const chasersEl = document.getElementById('top3ChasersContainer');
+    const fullStandingsEl = document.getElementById('fullStandingsContainer');
+    const fullWrapEl = document.getElementById('fullStandingsWrap');
     const timerEl = document.getElementById('top3CountdownText');
     if (!stageEl) return;
 
@@ -4412,6 +4479,56 @@ const FIELD_SKILL_META = {
         chasersEl.innerHTML = `🏃‍♂️ <b>Ближайшие преследователи:</b> ${listStr}`;
       } else {
         chasersEl.innerHTML = `💡 Посещай тренировки, держи характер и дисциплину, получай звезды MVP, чтобы ворваться в ТОП-3 года!`;
+      }
+    }
+
+    if (fullStandingsEl && fullWrapEl) {
+      const rest = eligible.slice(3);
+      if (rest.length === 0) {
+        fullWrapEl.style.display = 'none';
+        fullStandingsEl.innerHTML = '';
+      } else {
+        fullWrapEl.style.display = 'block';
+        const bronzeScore = third ? third.score : 0;
+        const rowsHtml = rest.map((item, idx) => {
+          const place = idx + 4;
+          const p = item.player;
+          const shortPos = getShortPos(p.pos);
+          const behVal = getPlayerBeh(p);
+          const behMeta = getBehaviorMeta(behVal);
+          const needBronze = third ? Math.max(1, bronzeScore - item.score + 1) : 0;
+          const gapText = third ? `+${needBronze} до 🥉` : '—';
+          return `
+            <tr>
+              <td><b>${place}</b></td>
+              <td><b>${p.name}</b></td>
+              <td>${shortPos}</td>
+              <td>${item.ovr}</td>
+              <td>${behMeta.emoji} ${behVal}</td>
+              <td>📅${p.att || 0} 🏆${p.games || 0} ⚽${p.goals || 0} 👟${p.assists || 0} ⭐${p.mvp || 0}</td>
+              <td><b>${item.score}</b></td>
+              <td class="standings-gap-col">${gapText}</td>
+            </tr>
+          `;
+        }).join('');
+
+        fullStandingsEl.innerHTML = `
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Игрок</th>
+                <th>Поз.</th>
+                <th>OVR</th>
+                <th>Хар.</th>
+                <th>Активность</th>
+                <th>Очки</th>
+                <th>До 3-го</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        `;
       }
     }
   }
@@ -6020,6 +6137,14 @@ function renderCoachCard() {
         url: rawUrl
       }).catch(() => {});
     }
+  }
+  
+  function toggleFullStandings() {
+    const wrap = document.getElementById('fullStandingsWrap');
+    const arrow = document.getElementById('fullStandingsArrow');
+    if (!wrap) return;
+    const isCollapsed = wrap.classList.toggle('collapsed');
+    if (arrow) arrow.textContent = isCollapsed ? '🔽 Показать' : '🔼 Свернуть';
   }
 </script>
 </body>
